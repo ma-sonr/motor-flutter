@@ -1,0 +1,115 @@
+import Flutter
+import UIKit
+import SonrMotor
+
+public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
+  public static func register(with registrar: FlutterPluginRegistrar) {
+    let channel = FlutterMethodChannel(name: "motor_flutter", binaryMessenger: registrar.messenger())
+    let instance = SwiftMotorFlutterPlugin()
+    registrar.addMethodCallDelegate(instance, channel: channel)
+  }
+
+  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+     // Switch by Call Method
+    switch call.method {
+    // Starts the Node
+    case "newWallet":
+      // let args = call.arguments as! FlutterStandardTypedData
+      // To send binary data to Obj-c call, args.data as a param
+      var error : NSError?
+      let success = SonrMotor.MotorNewWallet(&error)
+
+      // Check for eerror
+      if let errorMessage = error?.userInfo.description {
+        result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + errorMessage,
+                                 details: nil))
+      } else {
+        result(success)
+      }
+
+
+    // Resumes the Node
+    case "exportWallet":
+      let rawBuf = SonrMotor.MotorMarshalWallet()
+      if let buf = rawBuf {
+        let resp = FlutterStandardTypedData.init(bytes: buf)
+        result(resp)
+      }else{
+        result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + "Failed to Marshal MPCWallet",
+                                 details: nil))
+      }
+
+    // Pauses the Node
+    case "loadWallet":
+      var error : NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      SonrMotor.MotorLoadWallet(args.data, &error)
+      // Check for eerror
+      if let errorMessage = error?.userInfo.description {
+        result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + errorMessage,
+                                 details: nil))
+      } else {
+        result(true)
+      }
+
+
+    // Stops the node
+    case "address":
+      let addr = SonrMotor.MotorAddress()
+      result(addr)
+
+    // Stops the node
+    case "didDoc":
+      let didDoc = SonrMotor.MotorDidDoc()
+      result(didDoc)
+
+    // Stops the node
+    case "importCredential":
+      var error : NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      SonrMotor.MotorLoadWallet(args.data, &error)
+
+      if let errorMessage = error?.userInfo.description {
+        result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + errorMessage,
+                                 details: nil))
+      } else {
+        result(true)
+      }
+
+    // Stops the node
+    case "sign":
+      var error : NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = SonrMotor.MotorSign("", args.data, &error)
+
+      if let errorMessage = error?.userInfo.description {
+        result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + errorMessage,
+                                 details: nil))
+      } else {
+      if let buf = rawBuf {
+        let resp = FlutterStandardTypedData.init(bytes: buf)
+        result(resp)
+        }else{
+          result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + "Failed to Marshal MPCWallet",
+                                 details: nil))
+        }
+      }
+
+
+    // Stops the node
+    case "verify":
+      // Core.SonrStop()
+      result(nil)
+
+    // ! Method not found
+    default:
+      result("iOS " + UIDevice.current.systemVersion)
+    }
+  }
+}
