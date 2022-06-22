@@ -14,18 +14,23 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
     switch call.method {
     // Starts the Node
     case "newWallet":
-      // let args = call.arguments as! FlutterStandardTypedData
-      // To send binary data to Obj-c call, args.data as a param
       var error : NSError?
-      let success = SonrMotor.MotorNewWallet(&error)
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = SonrMotor.MotorNewWallet(args.data, &error)
 
-      // Check for eerror
       if let errorMessage = error?.userInfo.description {
         result(FlutterError.init(code: "NATIVE_ERR",
                                  message: "Error: " + errorMessage,
                                  details: nil))
       } else {
-        result(success)
+      if let buf = rawBuf {
+        let resp = FlutterStandardTypedData.init(bytes: buf)
+        result(resp)
+        }else{
+          result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + "Failed to Create New Wallet",
+                                 details: nil))
+        }
       }
 
 
@@ -45,16 +50,22 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
     case "loadWallet":
       var error : NSError?
       let args = call.arguments as! FlutterStandardTypedData
-      SonrMotor.MotorLoadWallet(args.data, &error)
-      // Check for eerror
+      let rawBuf = SonrMotor.MotorLoadWallet(args.data, &error)
+
       if let errorMessage = error?.userInfo.description {
         result(FlutterError.init(code: "NATIVE_ERR",
                                  message: "Error: " + errorMessage,
                                  details: nil))
       } else {
-        result(true)
+      if let buf = rawBuf {
+        let resp = FlutterStandardTypedData.init(bytes: buf)
+        result(resp)
+        }else{
+          result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + "Failed to Load Wallet",
+                                 details: nil))
+        }
       }
-
 
     // Stops the node
     case "address":
@@ -70,21 +81,28 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
     case "importCredential":
       var error : NSError?
       let args = call.arguments as! FlutterStandardTypedData
-      SonrMotor.MotorLoadWallet(args.data, &error)
+      let rawBuf = SonrMotor.MotorImportCredential(args.data, &error)
 
       if let errorMessage = error?.userInfo.description {
         result(FlutterError.init(code: "NATIVE_ERR",
                                  message: "Error: " + errorMessage,
                                  details: nil))
       } else {
-        result(true)
+      if let buf = rawBuf {
+        let resp = FlutterStandardTypedData.init(bytes: buf)
+        result(resp)
+        }else{
+          result(FlutterError.init(code: "NATIVE_ERR",
+                                 message: "Error: " + "Failed to Import Credential",
+                                 details: nil))
+        }
       }
 
     // Stops the node
     case "sign":
       var error : NSError?
       let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = SonrMotor.MotorSign("", args.data, &error)
+      let rawBuf = SonrMotor.MotorSign(args.data, &error)
 
       if let errorMessage = error?.userInfo.description {
         result(FlutterError.init(code: "NATIVE_ERR",
@@ -104,8 +122,10 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
 
     // Stops the node
     case "verify":
-      // Core.SonrStop()
-      result(nil)
+      var error : NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let resp = SonrMotor.MotorVerify(args.data)
+      result(resp)
 
     // ! Method not found
     default:

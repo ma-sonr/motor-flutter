@@ -18,7 +18,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<bool?> newWallet() async {
+  Future<bool?> newWallet(Uint8List buf) async {
     final ok = await methodChannel.invokeMethod<bool>('newWallet');
     return ok;
   }

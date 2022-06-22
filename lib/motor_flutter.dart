@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'gen/core/v1/request.pb.dart';
 import 'motor_flutter_platform_interface.dart';
 import 'package:alan/alan.dart';
 import 'package:alan/proto/cosmos/tx/v1beta1/export.dart' as tx;
@@ -10,7 +11,8 @@ class MotorFlutter {
   }
 
   Future<bool?> newWallet() {
-    return MotorFlutterPlatform.instance.newWallet();
+    final req = NewWalletRequest();
+    return MotorFlutterPlatform.instance.newWallet(req.writeToBuffer());
   }
 
   Future<Uint8List?> exportWallet() async {
@@ -29,16 +31,5 @@ class MotorFlutter {
     return MotorFlutterPlatform.instance.didDoc();
   }
 
-  Future<bool?> sendTx() async {
-    // Create a wallet
-    final networkInfo = NetworkInfo.fromSingleHost(
-      bech32Hrp: 'snr',
-      host: '137.184.190.146:9090',
-    );
-
-    final msg = tx.TxRaw.fromBuffer(i)
-
-    final txSender = TxSender.fromNetworkInfo(networkInfo);
-    final response = await txSender.broadcastTx(tx);
-  }
+  Future<bool?> sendTx() async {}
 }
