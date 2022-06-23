@@ -10,7 +10,7 @@ class MotorFlutter {
     return MotorFlutterPlatform.instance.getPlatformVersion();
   }
 
-  Future<bool?> newWallet() {
+  Future<Uint8List?> newWallet() {
     final req = NewWalletRequest();
     return MotorFlutterPlatform.instance.newWallet(req.writeToBuffer());
   }
@@ -19,7 +19,7 @@ class MotorFlutter {
     return MotorFlutterPlatform.instance.exportWallet();
   }
 
-  Future<bool?> loadWallet(Uint8List buf) async {
+  Future<Uint8List?> loadWallet(Uint8List buf) async {
     return MotorFlutterPlatform.instance.loadWallet(buf);
   }
 

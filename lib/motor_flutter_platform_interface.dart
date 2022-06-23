@@ -29,7 +29,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<bool?> newWallet(Uint8List buf) {
+  Future<Uint8List?> newWallet(Uint8List buf) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
@@ -37,7 +37,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
-  Future<bool?> loadWallet(Uint8List buf) {
+  Future<Uint8List?> loadWallet(Uint8List buf) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
@@ -52,7 +52,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   }
 
 
-  Future<bool?> importCredential(Uint8List buf) {
+  Future<Uint8List?> importCredential(Uint8List buf) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
@@ -62,7 +62,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   }
 
 
-  Future<bool?> verify(Uint8List? msg) {
+  Future<Uint8List?> verify(Uint8List? msg) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 }

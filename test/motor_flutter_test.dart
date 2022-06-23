@@ -11,43 +11,43 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<bool?> newWallet() => Future.value(true);
+  Future<Uint8List?> newWallet(Uint8List buf) => Future.value(null);
 
   @override
-  Future<bool?> loadWallet(Uint8List buf) => Future.value(true);
-  
+  Future<Uint8List?> loadWallet(Uint8List buf) => Future.value(null);
+
   @override
   Future<String?> address() {
     // TODO: implement address
     throw UnimplementedError();
   }
-  
+
   @override
   Future<String?> didDoc() {
     // TODO: implement didDoc
     throw UnimplementedError();
   }
-  
+
   @override
   Future<Uint8List?> exportWallet() {
     // TODO: implement exportWallet
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<bool?> importCredential(Uint8List buf) {
+  Future<Uint8List?> importCredential(Uint8List buf) {
     // TODO: implement importCredential
     throw UnimplementedError();
   }
-  
+
   @override
   Future<Uint8List?> sign(Uint8List? buf) {
     // TODO: implement sign
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<bool?> verify(Uint8List? msg, Uint8List? sig) {
+  Future<Uint8List?> verify(Uint8List? msg) {
     // TODO: implement verify
     throw UnimplementedError();
   }
