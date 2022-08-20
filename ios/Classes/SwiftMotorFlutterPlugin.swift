@@ -4,7 +4,7 @@ import Motor
 
 public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "io.sonr.motor.ios/MethodChannel", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "io.sonr.motor/MethodChannel", binaryMessenger: registrar.messenger())
     let instance = SwiftMotorFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
@@ -68,7 +68,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
                                        details: nil))
               }
             }
-        
+
         // Resumes the Node
         case "login":
             var error : NSError?
@@ -89,7 +89,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
                                        details: nil))
               }
             }
-        
+
         // Resumes the Node
         case "createSchema":
             var error : NSError?
@@ -110,7 +110,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
                                        details: nil))
               }
             }
-        
+
         // Resumes the Node
         case "queryWhatIs":
             var error : NSError?

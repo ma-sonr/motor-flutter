@@ -7,6 +7,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
+import motor.Motor;
 
 /** MotorFlutterPlugin */
 public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
@@ -18,16 +19,100 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "motor_flutter");
+    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "io.sonr.motor/MethodChannel");
     channel.setMethodCallHandler(this);
   }
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
-      result.notImplemented();
+    // Switch by Call Method
+    switch (call.method) {
+      // Resumes the Node
+      case "address":
+        final String addressResp = Motor.address();
+        result.success(addressResp);
+        break;
+
+      // Pauses the Node
+      case "balance":
+        final long balanceResp = Motor.balance();
+        result.success(balanceResp);
+        break;
+
+      // Stops the Node
+      case "didDoc":
+        final String didDocResp = Motor.didDoc();
+        result.success(didDocResp);
+        break;
+
+      // Starts the Node
+      case "initialize":
+        try {
+          final byte[] initArgs = call.arguments();
+          final byte[] initResp = Motor.init(initArgs);
+          result.success(initResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "createAccount":
+        try {
+          final byte[] createAccountArgs = call.arguments();
+          final byte[] createAccountResp = Motor.createAccount(createAccountArgs);
+          result.success(createAccountResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "login":
+        try {
+          final byte[] loginArgs = call.arguments();
+          final byte[] loginResp = Motor.login(loginArgs);
+          result.success(loginResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "createSchema":
+        try {
+          final byte[] createSchemaArgs = call.arguments();
+          final byte[] createSchemaResp = Motor.createSchema(createSchemaArgs);
+          result.success(createSchemaResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "queryWhatIs":
+        try {
+          final byte[] queryWhatIsArgs = call.arguments();
+          final byte[] queryWhatIsResp = Motor.queryWhatIs(queryWhatIsArgs);
+          result.success(queryWhatIsResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Stops the Node
+      case "getPlatformVersion":
+        result.success("Android " + android.os.Build.VERSION.RELEASE);
+        break;
+
+      // ! Method not found
+      default:
+        result.notImplemented();
     }
   }
 

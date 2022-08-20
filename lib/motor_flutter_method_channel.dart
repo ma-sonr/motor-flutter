@@ -10,7 +10,7 @@ import 'motor_flutter_platform_interface.dart';
 class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('io.sonr.motor.ios/MethodChannel');
+  final methodChannel = const MethodChannel('io.sonr.motor/MethodChannel');
 
   @override
   Future<InitializeResponse?> initialize(InitializeRequest req) async {

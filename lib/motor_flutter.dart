@@ -1,4 +1,5 @@
 import 'package:motor_flutter/gen/generated.dart';
+import 'package:motor_flutter/utils/crypto.dart';
 import 'package:motor_flutter/utils/request_builder.dart';
 import 'motor_flutter_platform_interface.dart';
 
@@ -9,19 +10,27 @@ class MotorFlutter {
   }
 
   Future<CreateAccountResponse?> createAccount(String password, Map<String, String> metadata) async {
+    final result = await AESController.generateAndStoreKey();
+    if (result == null) {
+      return null;
+    }
     return MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
       metadata: metadata,
-      aesDscKey: [], // TODO: implement aesDscKey
+      aesDscKey: result.toBytes(),
     ));
   }
 
   Future<LoginResponse?> login(String did, String password) async {
+    final result = await AESController.fetchKey();
+    if (result == null) {
+      return null;
+    }
     return await MotorFlutterPlatform.instance.login(LoginRequest(
       password: password,
       did: did,
-      aesDscKey: [], // TODO
-      aesPskKey: [], // TODO
+      aesDscKey: result.toBytes(),
+      aesPskKey: [],
     ));
   }
 
