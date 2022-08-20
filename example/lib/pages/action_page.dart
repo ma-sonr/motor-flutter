@@ -48,22 +48,22 @@ class _ActionPageState extends State<ActionPage> {
         }
         break;
       case 1:
-        final res = await motor.didDoc();
-        Alert(message: "DID Document \n $res").show();
+        final res = await motor.stat();
+        Alert(message: "Balance \n ${res?.didDocument.toString()}").show();
         if (kDebugMode) {
           print("didDoc(): $res");
         }
         break;
       case 2:
-        final res = await motor.address();
-        Alert(message: "Address \n $res").show();
+        final res = await motor.stat();
+        Alert(message: "Balance \n ${res?.address.toString()}").show();
         if (kDebugMode) {
           print("address(): $res");
         }
         break;
       case 3:
-        final res = await motor.balance();
-        Alert(message: "Balance \n $res").show();
+        final res = await motor.stat();
+        Alert(message: "Balance \n ${res?.balance.toString()}").show();
         if (kDebugMode) {
           print("address(): $res");
         }

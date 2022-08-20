@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:motor_flutter/motor_flutter.dart';
-import 'package:motor_flutter_example/models/profile.dart';
+import 'package:motor_flutter_example/models/user.dart';
 
 class UserPage extends StatefulWidget {
   final MotorFlutter motor;
@@ -13,7 +13,7 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  late final UserProfile profile;
+  late final UserProfile? profile;
 
   @override
   void initState() {
@@ -55,22 +55,27 @@ class _UserPageState extends State<UserPage> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                profile.domain,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              Container(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text(
+                  profile?.domain ?? 'test.snr/',
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              Text(
-                profile.address,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 18,
+              Container(
+                padding: const EdgeInsets.only(top: 8),
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Text(
+                  profile?.address ?? 'snr123abc',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 16,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
             ],
@@ -83,7 +88,7 @@ class _UserPageState extends State<UserPage> {
                 color: Colors.lightGreenAccent.shade700,
                 child: ListTile(
                   title: Text(
-                    profile.balance,
+                    profile?.balance ?? '0',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -107,7 +112,7 @@ class _UserPageState extends State<UserPage> {
                 color: Colors.lightBlueAccent,
                 child: ListTile(
                   title: Text(
-                    profile.staked,
+                    profile?.staked ?? '0',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -140,7 +145,7 @@ class _UserPageState extends State<UserPage> {
                 ),
               ),
               subtitle: Text(
-                profile.didDoc,
+                profile?.didUrl ?? 'Failed to load DID Doc',
                 style: const TextStyle(
                   fontSize: 18,
                 ),
@@ -156,17 +161,15 @@ class _UserPageState extends State<UserPage> {
   void _handleTap() {}
 
   void _fetchProfile() async {
-    final bal = await widget.motor.balance();
-    final addr = await widget.motor.address();
-    final didDoc = await widget.motor.didDoc();
-    final newProfile = UserProfile(
-      address: addr,
-      balance: bal.toString(),
-      didDoc: didDoc,
-    );
-
-    setState(() {
-      profile = newProfile;
-    });
+    final res = await widget.motor.stat();
+    if (res != null) {
+      setState(() {
+        profile = UserProfile.fromStatResponse(res);
+      });
+    } else {
+      setState(() {
+        profile = UserProfile(address: "ERROR");
+      });
+    }
   }
 }
