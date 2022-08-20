@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:alert/alert.dart';
-import 'package:flutter/services.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 
 const methods = ["newWallet", "exportWallet", "loadWallet", "address", "didDoc", "importCredential", "sign", "verify"];
@@ -46,11 +45,11 @@ class _MyAppState extends State<MyApp> {
   Future<void> _onTap(BuildContext context, MotorFlutter motor, int idx) async {
     switch (idx) {
       case 0:
-        final res = await motor.newWallet();
-        Alert(message: "Response: $res").show();
-        if (kDebugMode) {
-          print(res);
-        }
+        //final res = await motor.newWallet();
+        // Alert(message: "Response: $res").show();
+        // if (kDebugMode) {
+        //   print(res);
+        // }
         break;
       case 1:
         final res = await motor.exportWallet();
