@@ -1,32 +1,64 @@
-import 'dart:typed_data';
-
+import 'package:motor_flutter/gen/generated.dart';
+import 'package:motor_flutter/utils/request_builder.dart';
 import 'motor_flutter_platform_interface.dart';
 
 class MotorFlutter {
-  Future<String?> getPlatformVersion() {
-    return MotorFlutterPlatform.instance.getPlatformVersion();
+  Future<InitializeResponse?> initialize() async {
+    final req = await RequestBuilder.newInitializeRequest();
+    return await MotorFlutterPlatform.instance.initialize(req);
   }
 
-  // Future<Uint8List?> newWallet() {
-  //   // final req = NewWalletRequest();
-  //   return MotorFlutterPlatform.instance.newWallet();
-  // }
-
-  Future<Uint8List?> exportWallet() async {
-    return MotorFlutterPlatform.instance.exportWallet();
+  Future<CreateAccountResponse?> createAccount(String password, Map<String, String> metadata) async {
+    return MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
+      password: password,
+      metadata: metadata,
+      aesDscKey: [], // TODO: implement aesDscKey
+    ));
   }
 
-  Future<Uint8List?> loadWallet(Uint8List buf) async {
-    return MotorFlutterPlatform.instance.loadWallet(buf);
+  Future<LoginResponse?> login(String did, String password) async {
+    return await MotorFlutterPlatform.instance.login(LoginRequest(
+      password: password,
+      did: did,
+      aesDscKey: [], // TODO
+      aesPskKey: [], // TODO
+    ));
   }
 
-  Future<String?> address() async {
-    return MotorFlutterPlatform.instance.address();
+  Future<CreateSchemaResponse?> createSchema({
+    required String label,
+    required Map<String, SchemaKind> fields,
+    Map<String, String>? metadata,
+  }) async {
+    return await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
+      label: label,
+      fields: fields,
+      metadata: metadata,
+    ));
   }
 
-  Future<String?> didDoc() async {
-    return MotorFlutterPlatform.instance.didDoc();
+  // QueryWhatIs takes in a single string value which can be either a DID URL or a creator address.
+  Future<QueryWhatIsResponse?> queryWhatIs(String q) async {
+    if (q.contains("did:snr")) {
+      return await MotorFlutterPlatform.instance.queryWhatIs(QueryWhatIsRequest(did: q));
+    } else {
+      return await MotorFlutterPlatform.instance.queryWhatIs(QueryWhatIsRequest(creator: q));
+    }
   }
 
-  Future<bool?> sendTx() async {}
+  Future<String> address() async {
+    return await MotorFlutterPlatform.instance.address();
+  }
+
+  Future<int> balance() async {
+    return await MotorFlutterPlatform.instance.balance();
+  }
+
+  Future<String> didDoc() async {
+    return await MotorFlutterPlatform.instance.didDoc();
+  }
+
+  Future<String?> getPlatformVersion() async {
+    return await MotorFlutterPlatform.instance.getPlatformVersion();
+  }
 }

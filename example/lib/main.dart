@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         // }
         break;
       case 1:
-        final res = await motor.exportWallet();
+        final res = await motor.address();
         Alert(message: "Response: $res").show();
         if (kDebugMode) {
           print(res);

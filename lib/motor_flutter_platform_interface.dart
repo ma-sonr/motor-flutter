@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
+import 'package:motor_flutter/gen/generated.dart';
 import 'motor_flutter_method_channel.dart';
 
 abstract class MotorFlutterPlatform extends PlatformInterface {
@@ -25,44 +25,39 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  Future<InitializeResponse?> initialize(InitializeRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<LoginResponse?> login(LoginRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<CreateSchemaResponse?> createSchema(CreateSchemaRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<QueryWhatIsResponse?> queryWhatIs(QueryWhatIsRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<String> address() {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<int> balance() {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<String> didDoc() {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
-  Future<Uint8List?> newWallet(Uint8List buf) {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-  Future<Uint8List?> exportWallet() {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-  Future<Uint8List?> loadWallet(Uint8List buf) {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-
-  Future<String?> address() {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-
-  Future<String?> didDoc() {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-
-  Future<Uint8List?> importCredential(Uint8List buf) {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-
-  Future<Uint8List?> sign(Uint8List? buf) {
-    throw UnimplementedError('newWallet() has not been implemented.');
-  }
-
-
-  Future<Uint8List?> verify(Uint8List? msg) {
-    throw UnimplementedError('newWallet() has not been implemented.');
   }
 }

@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
-import SonrMotor
+import Motor
 
 public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "motor_flutter", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "io.sonr.motor.ios/MethodChannel", binaryMessenger: registrar.messenger())
     let instance = SwiftMotorFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
@@ -12,121 +12,125 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
      // Switch by Call Method
     switch call.method {
-    // Starts the Node
-    case "newWallet":
-      var error : NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = SonrMotor.MotorNewWallet(args.data, &error)
+        // Stops the node
+        case "address":
+          let addr = Motor.SNRMotorAddress()
+          result(addr)
 
-      if let errorMessage = error?.userInfo.description {
-        result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + errorMessage,
-                                 details: nil))
-      } else {
-      if let buf = rawBuf {
-        let resp = FlutterStandardTypedData.init(bytes: buf)
-        result(resp)
-        }else{
-          result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + "Failed to Create New Wallet",
-                                 details: nil))
-        }
-      }
+        // Stops the node
+        case "balance":
+          let didDoc = Motor.SNRMotorBalance()
+          result(didDoc)
 
+        // Stops the node
+        case "didDoc":
+          let didDoc = Motor.SNRMotorDidDoc()
+          result(didDoc)
 
-    // Resumes the Node
-    case "exportWallet":
-      let rawBuf = SonrMotor.MotorMarshalWallet()
-      if let buf = rawBuf {
-        let resp = FlutterStandardTypedData.init(bytes: buf)
-        result(resp)
-      }else{
-        result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + "Failed to Marshal MPCWallet",
-                                 details: nil))
-      }
+        // Starts the Node
+        case "initialize":
+          var error : NSError?
+          let args = call.arguments as! FlutterStandardTypedData
+            let rawBuf = Motor.SNRMotorInit(args.data, &error)
 
-    // Pauses the Node
-    case "loadWallet":
-      var error : NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = SonrMotor.MotorLoadWallet(args.data, &error)
+          if let errorMessage = error?.userInfo.description {
+            result(FlutterError.init(code: "NATIVE_ERR",
+                                     message: "Error: " + errorMessage,
+                                     details: nil))
+          } else {
+          if let buf = rawBuf {
+            let resp = FlutterStandardTypedData.init(bytes: buf)
+            result(resp)
+            }else{
+                result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + "Failed to Marshal result",
+                                       details: nil))
+            }
+          }
 
-      if let errorMessage = error?.userInfo.description {
-        result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + errorMessage,
-                                 details: nil))
-      } else {
-      if let buf = rawBuf {
-        let resp = FlutterStandardTypedData.init(bytes: buf)
-        result(resp)
-        }else{
-          result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + "Failed to Load Wallet",
-                                 details: nil))
-        }
-      }
+        // Resumes the Node
+        case "createAccount":
+            var error : NSError?
+            let args = call.arguments as! FlutterStandardTypedData
+              let rawBuf = Motor.SNRMotorCreateAccount(args.data, &error)
 
-    // Stops the node
-    case "address":
-      let addr = SonrMotor.MotorAddress()
-      result(addr)
+            if let errorMessage = error?.userInfo.description {
+              result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + errorMessage,
+                                       details: nil))
+            } else {
+            if let buf = rawBuf {
+              let resp = FlutterStandardTypedData.init(bytes: buf)
+              result(resp)
+              }else{
+                result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + "Failed to Marshal result",
+                                       details: nil))
+              }
+            }
+        
+        // Resumes the Node
+        case "login":
+            var error : NSError?
+            let args = call.arguments as! FlutterStandardTypedData
+              let rawBuf = Motor.SNRMotorLogin(args.data, &error)
 
-    // Stops the node
-    case "didDoc":
-      let didDoc = SonrMotor.MotorDidDoc()
-      result(didDoc)
+            if let errorMessage = error?.userInfo.description {
+              result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + errorMessage,
+                                       details: nil))
+            } else {
+            if let buf = rawBuf {
+              let resp = FlutterStandardTypedData.init(bytes: buf)
+              result(resp)
+              }else{
+                result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + "Failed to Marshal result",
+                                       details: nil))
+              }
+            }
+        
+        // Resumes the Node
+        case "createSchema":
+            var error : NSError?
+            let args = call.arguments as! FlutterStandardTypedData
+              let rawBuf = Motor.SNRMotorCreateSchema(args.data, &error)
 
-    // Stops the node
-    case "importCredential":
-      var error : NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = SonrMotor.MotorImportCredential(args.data, &error)
+            if let errorMessage = error?.userInfo.description {
+              result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + errorMessage,
+                                       details: nil))
+            } else {
+            if let buf = rawBuf {
+              let resp = FlutterStandardTypedData.init(bytes: buf)
+              result(resp)
+              }else{
+                result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + "Failed to Marshal result",
+                                       details: nil))
+              }
+            }
+        
+        // Resumes the Node
+        case "queryWhatIs":
+            var error : NSError?
+            let args = call.arguments as! FlutterStandardTypedData
+              let rawBuf = Motor.SNRMotorQueryWhatIs(args.data, &error)
 
-      if let errorMessage = error?.userInfo.description {
-        result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + errorMessage,
-                                 details: nil))
-      } else {
-      if let buf = rawBuf {
-        let resp = FlutterStandardTypedData.init(bytes: buf)
-        result(resp)
-        }else{
-          result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + "Failed to Import Credential",
-                                 details: nil))
-        }
-      }
-
-    // Stops the node
-    case "sign":
-      var error : NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = SonrMotor.MotorSign(args.data, &error)
-
-      if let errorMessage = error?.userInfo.description {
-        result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + errorMessage,
-                                 details: nil))
-      } else {
-      if let buf = rawBuf {
-        let resp = FlutterStandardTypedData.init(bytes: buf)
-        result(resp)
-        }else{
-          result(FlutterError.init(code: "NATIVE_ERR",
-                                 message: "Error: " + "Failed to Marshal MPCWallet",
-                                 details: nil))
-        }
-      }
-
-
-    // Stops the node
-    case "verify":
-      var error : NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let resp = SonrMotor.MotorVerify(args.data)
-      result(resp)
-
+            if let errorMessage = error?.userInfo.description {
+              result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + errorMessage,
+                                       details: nil))
+            } else {
+            if let buf = rawBuf {
+              let resp = FlutterStandardTypedData.init(bytes: buf)
+              result(resp)
+              }else{
+                result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + "Failed to Marshal result",
+                                       details: nil))
+              }
+            }
     // ! Method not found
     default:
       result("iOS " + UIDevice.current.systemVersion)
