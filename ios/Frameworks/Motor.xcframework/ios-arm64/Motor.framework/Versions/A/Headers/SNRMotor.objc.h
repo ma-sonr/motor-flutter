@@ -19,7 +19,15 @@ FOUNDATION_EXPORT NSData* _Nullable SNRMotorInit(NSData* _Nullable buf, NSError*
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorLogin(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
+/**
+ * QueryWhatIs returns the Document of the specified Schema.
+ */
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorQueryWhatIs(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+
+/**
+ * SendTokens sends tokens to the specified address.
+ */
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorSendTokens(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 /**
  * Stat returns general information about the Motor node its wallet and accompanying Account.
