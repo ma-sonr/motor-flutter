@@ -18,12 +18,14 @@ export 'query.pb.dart';
 abstract class QueryServiceBase extends $pb.GeneratedService {
   $async.Future<$3.QueryParamsResponse> params($pb.ServerContext ctx, $3.QueryParamsRequest request);
   $async.Future<$3.QueryGetWhereIsResponse> whereIs($pb.ServerContext ctx, $3.QueryGetWhereIsRequest request);
+  $async.Future<$3.QueryGetWhereIsByCreatorResponse> whereIsByCreator($pb.ServerContext ctx, $3.QueryGetWhereIsByCreatorRequest request);
   $async.Future<$3.QueryAllWhereIsResponse> whereIsAll($pb.ServerContext ctx, $3.QueryAllWhereIsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
       case 'Params': return $3.QueryParamsRequest();
       case 'WhereIs': return $3.QueryGetWhereIsRequest();
+      case 'WhereIsByCreator': return $3.QueryGetWhereIsByCreatorRequest();
       case 'WhereIsAll': return $3.QueryAllWhereIsRequest();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
@@ -33,6 +35,7 @@ abstract class QueryServiceBase extends $pb.GeneratedService {
     switch (method) {
       case 'Params': return this.params(ctx, request as $3.QueryParamsRequest);
       case 'WhereIs': return this.whereIs(ctx, request as $3.QueryGetWhereIsRequest);
+      case 'WhereIsByCreator': return this.whereIsByCreator(ctx, request as $3.QueryGetWhereIsByCreatorRequest);
       case 'WhereIsAll': return this.whereIsAll(ctx, request as $3.QueryAllWhereIsRequest);
       default: throw $core.ArgumentError('Unknown method: $method');
     }

@@ -10,6 +10,7 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../schema/v1/what_is.pb.dart' as $6;
+import '../../registry/did.pb.dart' as $7;
 
 class InitializeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
@@ -428,5 +429,96 @@ class UploadObjectResponse extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(2);
   @$pb.TagNumber(3)
   void clearMessage() => clearField(3);
+}
+
+class StatResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StatResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOM<$7.DIDDocument>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'didDocument', subBuilder: $7.DIDDocument.create)
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'balance', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stake', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  StatResponse._() : super();
+  factory StatResponse({
+    $core.String? address,
+    $7.DIDDocument? didDocument,
+    $core.int? balance,
+    $core.int? stake,
+  }) {
+    final _result = create();
+    if (address != null) {
+      _result.address = address;
+    }
+    if (didDocument != null) {
+      _result.didDocument = didDocument;
+    }
+    if (balance != null) {
+      _result.balance = balance;
+    }
+    if (stake != null) {
+      _result.stake = stake;
+    }
+    return _result;
+  }
+  factory StatResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory StatResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  StatResponse clone() => StatResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  StatResponse copyWith(void Function(StatResponse) updates) => super.copyWith((message) => updates(message as StatResponse)) as StatResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static StatResponse create() => StatResponse._();
+  StatResponse createEmptyInstance() => create();
+  static $pb.PbList<StatResponse> createRepeated() => $pb.PbList<StatResponse>();
+  @$core.pragma('dart2js:noInline')
+  static StatResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StatResponse>(create);
+  static StatResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get address => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set address($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAddress() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $7.DIDDocument get didDocument => $_getN(1);
+  @$pb.TagNumber(2)
+  set didDocument($7.DIDDocument v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDidDocument() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDidDocument() => clearField(2);
+  @$pb.TagNumber(2)
+  $7.DIDDocument ensureDidDocument() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.int get balance => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set balance($core.int v) { $_setSignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasBalance() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearBalance() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get stake => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set stake($core.int v) { $_setSignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasStake() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearStake() => clearField(4);
 }
 

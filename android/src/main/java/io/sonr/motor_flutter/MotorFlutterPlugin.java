@@ -27,30 +27,23 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     // Switch by Call Method
     switch (call.method) {
-      // Resumes the Node
-      case "address":
-        final String addressResp = Motor.address();
-        result.success(addressResp);
-        break;
-
-      // Pauses the Node
-      case "balance":
-        final long balanceResp = Motor.balance();
-        result.success(balanceResp);
-        break;
-
-      // Stops the Node
-      case "didDoc":
-        final String didDocResp = Motor.didDoc();
-        result.success(didDocResp);
-        break;
-
       // Starts the Node
       case "initialize":
         try {
           final byte[] initArgs = call.arguments();
           final byte[] initResp = Motor.init(initArgs);
           result.success(initResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "stat":
+        try {
+          final byte[] statResp = Motor.init();
+          result.success(statResp);
         }catch (Exception e) {
           System.out.println(e.toString());
           result.error(e.getMessage(), e.getMessage(), null);

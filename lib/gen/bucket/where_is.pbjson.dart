@@ -32,6 +32,18 @@ const BucketVisibility$json = const {
 
 /// Descriptor for `BucketVisibility`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List bucketVisibilityDescriptor = $convert.base64Decode('ChBCdWNrZXRWaXNpYmlsaXR5Eg8KC1VOU1BFQ0lGSUVEEAASCgoGUFVCTElDEAESCwoHUFJJVkFURRAC');
+@$core.Deprecated('Use resourceIdentifierDescriptor instead')
+const ResourceIdentifier$json = const {
+  '1': 'ResourceIdentifier',
+  '2': const [
+    const {'1': 'None', '2': 0},
+    const {'1': 'DID', '2': 1},
+    const {'1': 'CID', '2': 2},
+  ],
+};
+
+/// Descriptor for `ResourceIdentifier`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List resourceIdentifierDescriptor = $convert.base64Decode('ChJSZXNvdXJjZUlkZW50aWZpZXISCAoETm9uZRAAEgcKA0RJRBABEgcKA0NJRBAC');
 @$core.Deprecated('Use whereIsDescriptor instead')
 const WhereIs$json = const {
   '1': 'WhereIs',
@@ -87,11 +99,11 @@ const BucketItem$json = const {
   '1': 'BucketItem',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'item_did', '3': 2, '4': 1, '5': 9, '10': 'itemDid'},
-    const {'1': 'item_cid', '3': 3, '4': 1, '5': 9, '10': 'itemCid'},
-    const {'1': 'timestamp', '3': 4, '4': 1, '5': 3, '10': 'timestamp'},
+    const {'1': 'uri', '3': 2, '4': 1, '5': 9, '10': 'uri'},
+    const {'1': 'timestamp', '3': 3, '4': 1, '5': 3, '10': 'timestamp'},
+    const {'1': 'type', '3': 4, '4': 1, '5': 14, '6': '.sonrio.sonr.bucket.ResourceIdentifier', '10': 'type'},
   ],
 };
 
 /// Descriptor for `BucketItem`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List bucketItemDescriptor = $convert.base64Decode('CgpCdWNrZXRJdGVtEhIKBG5hbWUYASABKAlSBG5hbWUSGQoIaXRlbV9kaWQYAiABKAlSB2l0ZW1EaWQSGQoIaXRlbV9jaWQYAyABKAlSB2l0ZW1DaWQSHAoJdGltZXN0YW1wGAQgASgDUgl0aW1lc3RhbXA=');
+final $typed_data.Uint8List bucketItemDescriptor = $convert.base64Decode('CgpCdWNrZXRJdGVtEhIKBG5hbWUYASABKAlSBG5hbWUSEAoDdXJpGAIgASgJUgN1cmkSHAoJdGltZXN0YW1wGAMgASgDUgl0aW1lc3RhbXASOgoEdHlwZRgEIAEoDjImLnNvbnJpby5zb25yLmJ1Y2tldC5SZXNvdXJjZUlkZW50aWZpZXJSBHR5cGU=');

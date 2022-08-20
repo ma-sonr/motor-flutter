@@ -10,19 +10,48 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'where_is.pb.dart' as $1;
+
+import 'where_is.pbenum.dart' as $1;
+
 class MsgCreateWhereIs extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateWhereIs', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
+    ..e<$1.BucketVisibility>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'visibility', $pb.PbFieldType.OE, defaultOrMaker: $1.BucketVisibility.UNSPECIFIED, valueOf: $1.BucketVisibility.valueOf, enumValues: $1.BucketVisibility.values)
+    ..e<$1.BucketRole>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: $1.BucketRole.NONE, valueOf: $1.BucketRole.valueOf, enumValues: $1.BucketRole.values)
+    ..pc<$1.BucketItem>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content', $pb.PbFieldType.PM, subBuilder: $1.BucketItem.create)
+    ..m<$core.String, $1.AclJwks>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'contentAcl', entryClassName: 'MsgCreateWhereIs.ContentAclEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.AclJwks.create, packageName: const $pb.PackageName('sonrio.sonr.bucket'))
     ..hasRequiredFields = false
   ;
 
   MsgCreateWhereIs._() : super();
   factory MsgCreateWhereIs({
     $core.String? creator,
+    $core.String? label,
+    $1.BucketVisibility? visibility,
+    $1.BucketRole? role,
+    $core.Iterable<$1.BucketItem>? content,
+    $core.Map<$core.String, $1.AclJwks>? contentAcl,
   }) {
     final _result = create();
     if (creator != null) {
       _result.creator = creator;
+    }
+    if (label != null) {
+      _result.label = label;
+    }
+    if (visibility != null) {
+      _result.visibility = visibility;
+    }
+    if (role != null) {
+      _result.role = role;
+    }
+    if (content != null) {
+      _result.content.addAll(content);
+    }
+    if (contentAcl != null) {
+      _result.contentAcl.addAll(contentAcl);
     }
     return _result;
   }
@@ -55,6 +84,39 @@ class MsgCreateWhereIs extends $pb.GeneratedMessage {
   $core.bool hasCreator() => $_has(0);
   @$pb.TagNumber(1)
   void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get label => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set label($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLabel() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLabel() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $1.BucketVisibility get visibility => $_getN(2);
+  @$pb.TagNumber(3)
+  set visibility($1.BucketVisibility v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasVisibility() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearVisibility() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $1.BucketRole get role => $_getN(3);
+  @$pb.TagNumber(4)
+  set role($1.BucketRole v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasRole() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRole() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$1.BucketItem> get content => $_getList(4);
+
+  @$pb.TagNumber(6)
+  $core.Map<$core.String, $1.AclJwks> get contentAcl => $_getMap(5);
 }
 
 class MsgCreateWhereIsResponse extends $pb.GeneratedMessage {
@@ -108,6 +170,11 @@ class MsgUpdateWhereIs extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateWhereIs', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
+    ..e<$1.BucketVisibility>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'visibility', $pb.PbFieldType.OE, defaultOrMaker: $1.BucketVisibility.UNSPECIFIED, valueOf: $1.BucketVisibility.valueOf, enumValues: $1.BucketVisibility.values)
+    ..e<$1.BucketRole>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: $1.BucketRole.NONE, valueOf: $1.BucketRole.valueOf, enumValues: $1.BucketRole.values)
+    ..pc<$1.BucketItem>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content', $pb.PbFieldType.PM, subBuilder: $1.BucketItem.create)
+    ..m<$core.String, $1.AclJwks>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'contentAcl', entryClassName: 'MsgUpdateWhereIs.ContentAclEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.AclJwks.create, packageName: const $pb.PackageName('sonrio.sonr.bucket'))
     ..hasRequiredFields = false
   ;
 
@@ -115,6 +182,11 @@ class MsgUpdateWhereIs extends $pb.GeneratedMessage {
   factory MsgUpdateWhereIs({
     $core.String? creator,
     $core.String? did,
+    $core.String? label,
+    $1.BucketVisibility? visibility,
+    $1.BucketRole? role,
+    $core.Iterable<$1.BucketItem>? content,
+    $core.Map<$core.String, $1.AclJwks>? contentAcl,
   }) {
     final _result = create();
     if (creator != null) {
@@ -122,6 +194,21 @@ class MsgUpdateWhereIs extends $pb.GeneratedMessage {
     }
     if (did != null) {
       _result.did = did;
+    }
+    if (label != null) {
+      _result.label = label;
+    }
+    if (visibility != null) {
+      _result.visibility = visibility;
+    }
+    if (role != null) {
+      _result.role = role;
+    }
+    if (content != null) {
+      _result.content.addAll(content);
+    }
+    if (contentAcl != null) {
+      _result.contentAcl.addAll(contentAcl);
     }
     return _result;
   }
@@ -163,6 +250,39 @@ class MsgUpdateWhereIs extends $pb.GeneratedMessage {
   $core.bool hasDid() => $_has(1);
   @$pb.TagNumber(2)
   void clearDid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get label => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set label($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLabel() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLabel() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $1.BucketVisibility get visibility => $_getN(3);
+  @$pb.TagNumber(4)
+  set visibility($1.BucketVisibility v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasVisibility() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearVisibility() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $1.BucketRole get role => $_getN(4);
+  @$pb.TagNumber(5)
+  set role($1.BucketRole v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasRole() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearRole() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<$1.BucketItem> get content => $_getList(5);
+
+  @$pb.TagNumber(7)
+  $core.Map<$core.String, $1.AclJwks> get contentAcl => $_getMap(6);
 }
 
 class MsgUpdateWhereIsResponse extends $pb.GeneratedMessage {

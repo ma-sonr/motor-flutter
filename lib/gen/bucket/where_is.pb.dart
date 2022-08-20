@@ -205,31 +205,31 @@ class AclJwks extends $pb.GeneratedMessage {
 class BucketItem extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BucketItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemDid')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemCid')
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uri')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
+    ..e<ResourceIdentifier>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: ResourceIdentifier.None, valueOf: ResourceIdentifier.valueOf, enumValues: ResourceIdentifier.values)
     ..hasRequiredFields = false
   ;
 
   BucketItem._() : super();
   factory BucketItem({
     $core.String? name,
-    $core.String? itemDid,
-    $core.String? itemCid,
+    $core.String? uri,
     $fixnum.Int64? timestamp,
+    ResourceIdentifier? type,
   }) {
     final _result = create();
     if (name != null) {
       _result.name = name;
     }
-    if (itemDid != null) {
-      _result.itemDid = itemDid;
-    }
-    if (itemCid != null) {
-      _result.itemCid = itemCid;
+    if (uri != null) {
+      _result.uri = uri;
     }
     if (timestamp != null) {
       _result.timestamp = timestamp;
+    }
+    if (type != null) {
+      _result.type = type;
     }
     return _result;
   }
@@ -264,30 +264,30 @@ class BucketItem extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get itemDid => $_getSZ(1);
+  $core.String get uri => $_getSZ(1);
   @$pb.TagNumber(2)
-  set itemDid($core.String v) { $_setString(1, v); }
+  set uri($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasItemDid() => $_has(1);
+  $core.bool hasUri() => $_has(1);
   @$pb.TagNumber(2)
-  void clearItemDid() => clearField(2);
+  void clearUri() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get itemCid => $_getSZ(2);
+  $fixnum.Int64 get timestamp => $_getI64(2);
   @$pb.TagNumber(3)
-  set itemCid($core.String v) { $_setString(2, v); }
+  set timestamp($fixnum.Int64 v) { $_setInt64(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasItemCid() => $_has(2);
+  $core.bool hasTimestamp() => $_has(2);
   @$pb.TagNumber(3)
-  void clearItemCid() => clearField(3);
+  void clearTimestamp() => clearField(3);
 
   @$pb.TagNumber(4)
-  $fixnum.Int64 get timestamp => $_getI64(3);
+  ResourceIdentifier get type => $_getN(3);
   @$pb.TagNumber(4)
-  set timestamp($fixnum.Int64 v) { $_setInt64(3, v); }
+  set type(ResourceIdentifier v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasTimestamp() => $_has(3);
+  $core.bool hasType() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTimestamp() => clearField(4);
+  void clearType() => clearField(4);
 }
 

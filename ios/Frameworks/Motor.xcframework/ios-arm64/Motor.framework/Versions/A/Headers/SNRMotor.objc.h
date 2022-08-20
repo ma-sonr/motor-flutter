@@ -11,29 +11,19 @@
 #include "Universe.objc.h"
 
 
-/**
- * Address returns the address of the wallet.
- */
-FOUNDATION_EXPORT NSString* _Nonnull SNRMotorAddress(void);
-
-/**
- * Balance returns the balance of the wallet.
- */
-FOUNDATION_EXPORT long SNRMotorBalance(void);
-
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorCreateAccount(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorCreateSchema(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
-
-/**
- * DidDoc returns the DID document as JSON
- */
-FOUNDATION_EXPORT NSString* _Nonnull SNRMotorDidDoc(void);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorInit(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorLogin(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorQueryWhatIs(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+
+/**
+ * Stat returns general information about the Motor node its wallet and accompanying Account.
+ */
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorStat(NSError* _Nullable* _Nullable error);
 
 #endif

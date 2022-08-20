@@ -84,3 +84,16 @@ const UploadObjectResponse$json = const {
 
 /// Descriptor for `UploadObjectResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List uploadObjectResponseDescriptor = $convert.base64Decode('ChRVcGxvYWRPYmplY3RSZXNwb25zZRISCgRjb2RlGAEgASgFUgRjb2RlEkIKCXJlZmVyZW5jZRgCIAEoCzIkLnNvbnJpby5tb3Rvci5hcGkudjEuT2JqZWN0UmVmZXJlbmNlUglyZWZlcmVuY2USGAoHbWVzc2FnZRgDIAEoCVIHbWVzc2FnZQ==');
+@$core.Deprecated('Use statResponseDescriptor instead')
+const StatResponse$json = const {
+  '1': 'StatResponse',
+  '2': const [
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'did_document', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.registry.DIDDocument', '10': 'didDocument'},
+    const {'1': 'balance', '3': 3, '4': 1, '5': 5, '10': 'balance'},
+    const {'1': 'stake', '3': 4, '4': 1, '5': 5, '10': 'stake'},
+  ],
+};
+
+/// Descriptor for `StatResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List statResponseDescriptor = $convert.base64Decode('CgxTdGF0UmVzcG9uc2USGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxJECgxkaWRfZG9jdW1lbnQYAiABKAsyIS5zb25yaW8uc29uci5yZWdpc3RyeS5ESUREb2N1bWVudFILZGlkRG9jdW1lbnQSGAoHYmFsYW5jZRgDIAEoBVIHYmFsYW5jZRIUCgVzdGFrZRgEIAEoBVIFc3Rha2U=');

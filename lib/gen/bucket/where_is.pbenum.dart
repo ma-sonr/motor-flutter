@@ -43,3 +43,20 @@ class BucketVisibility extends $pb.ProtobufEnum {
   const BucketVisibility._($core.int v, $core.String n) : super(v, n);
 }
 
+class ResourceIdentifier extends $pb.ProtobufEnum {
+  static const ResourceIdentifier None = ResourceIdentifier._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'None');
+  static const ResourceIdentifier DID = ResourceIdentifier._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DID');
+  static const ResourceIdentifier CID = ResourceIdentifier._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CID');
+
+  static const $core.List<ResourceIdentifier> values = <ResourceIdentifier> [
+    None,
+    DID,
+    CID,
+  ];
+
+  static final $core.Map<$core.int, ResourceIdentifier> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static ResourceIdentifier? valueOf($core.int value) => _byValue[value];
+
+  const ResourceIdentifier._($core.int v, $core.String n) : super(v, n);
+}
+

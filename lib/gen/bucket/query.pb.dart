@@ -94,15 +94,20 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
 
 class QueryGetWhereIsRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGetWhereIsRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
     ..hasRequiredFields = false
   ;
 
   QueryGetWhereIsRequest._() : super();
   factory QueryGetWhereIsRequest({
+    $core.String? creator,
     $core.String? did,
   }) {
     final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
     if (did != null) {
       _result.did = did;
     }
@@ -130,13 +135,22 @@ class QueryGetWhereIsRequest extends $pb.GeneratedMessage {
   static QueryGetWhereIsRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get did => $_getSZ(0);
+  $core.String get creator => $_getSZ(0);
   @$pb.TagNumber(1)
-  set did($core.String v) { $_setString(0, v); }
+  set creator($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDid() => $_has(0);
+  $core.bool hasCreator() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDid() => clearField(1);
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get did => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set did($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDid() => clearField(2);
 }
 
 class QueryGetWhereIsResponse extends $pb.GeneratedMessage {
@@ -186,6 +200,126 @@ class QueryGetWhereIsResponse extends $pb.GeneratedMessage {
   void clearWhereIs() => clearField(1);
   @$pb.TagNumber(1)
   $1.WhereIs ensureWhereIs() => $_ensure(0);
+}
+
+class QueryGetWhereIsByCreatorRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGetWhereIsByCreatorRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOM<$2.PageRequest>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageRequest.create)
+    ..hasRequiredFields = false
+  ;
+
+  QueryGetWhereIsByCreatorRequest._() : super();
+  factory QueryGetWhereIsByCreatorRequest({
+    $core.String? creator,
+    $2.PageRequest? pagination,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (pagination != null) {
+      _result.pagination = pagination;
+    }
+    return _result;
+  }
+  factory QueryGetWhereIsByCreatorRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryGetWhereIsByCreatorRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryGetWhereIsByCreatorRequest clone() => QueryGetWhereIsByCreatorRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryGetWhereIsByCreatorRequest copyWith(void Function(QueryGetWhereIsByCreatorRequest) updates) => super.copyWith((message) => updates(message as QueryGetWhereIsByCreatorRequest)) as QueryGetWhereIsByCreatorRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryGetWhereIsByCreatorRequest create() => QueryGetWhereIsByCreatorRequest._();
+  QueryGetWhereIsByCreatorRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryGetWhereIsByCreatorRequest> createRepeated() => $pb.PbList<QueryGetWhereIsByCreatorRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryGetWhereIsByCreatorRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryGetWhereIsByCreatorRequest>(create);
+  static QueryGetWhereIsByCreatorRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $2.PageRequest get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($2.PageRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $2.PageRequest ensurePagination() => $_ensure(1);
+}
+
+class QueryGetWhereIsByCreatorResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGetWhereIsByCreatorResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
+    ..pc<$1.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', $pb.PbFieldType.PM, subBuilder: $1.WhereIs.create)
+    ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageResponse.create)
+    ..hasRequiredFields = false
+  ;
+
+  QueryGetWhereIsByCreatorResponse._() : super();
+  factory QueryGetWhereIsByCreatorResponse({
+    $core.Iterable<$1.WhereIs>? whereIs,
+    $2.PageResponse? pagination,
+  }) {
+    final _result = create();
+    if (whereIs != null) {
+      _result.whereIs.addAll(whereIs);
+    }
+    if (pagination != null) {
+      _result.pagination = pagination;
+    }
+    return _result;
+  }
+  factory QueryGetWhereIsByCreatorResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryGetWhereIsByCreatorResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryGetWhereIsByCreatorResponse clone() => QueryGetWhereIsByCreatorResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryGetWhereIsByCreatorResponse copyWith(void Function(QueryGetWhereIsByCreatorResponse) updates) => super.copyWith((message) => updates(message as QueryGetWhereIsByCreatorResponse)) as QueryGetWhereIsByCreatorResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryGetWhereIsByCreatorResponse create() => QueryGetWhereIsByCreatorResponse._();
+  QueryGetWhereIsByCreatorResponse createEmptyInstance() => create();
+  static $pb.PbList<QueryGetWhereIsByCreatorResponse> createRepeated() => $pb.PbList<QueryGetWhereIsByCreatorResponse>();
+  @$core.pragma('dart2js:noInline')
+  static QueryGetWhereIsByCreatorResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryGetWhereIsByCreatorResponse>(create);
+  static QueryGetWhereIsByCreatorResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$1.WhereIs> get whereIs => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $2.PageResponse get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($2.PageResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $2.PageResponse ensurePagination() => $_ensure(1);
 }
 
 class QueryAllWhereIsRequest extends $pb.GeneratedMessage {
@@ -305,6 +439,10 @@ class QueryApi {
   $async.Future<QueryGetWhereIsResponse> whereIs($pb.ClientContext? ctx, QueryGetWhereIsRequest request) {
     var emptyResponse = QueryGetWhereIsResponse();
     return _client.invoke<QueryGetWhereIsResponse>(ctx, 'Query', 'WhereIs', request, emptyResponse);
+  }
+  $async.Future<QueryGetWhereIsByCreatorResponse> whereIsByCreator($pb.ClientContext? ctx, QueryGetWhereIsByCreatorRequest request) {
+    var emptyResponse = QueryGetWhereIsByCreatorResponse();
+    return _client.invoke<QueryGetWhereIsByCreatorResponse>(ctx, 'Query', 'WhereIsByCreator', request, emptyResponse);
   }
   $async.Future<QueryAllWhereIsResponse> whereIsAll($pb.ClientContext? ctx, QueryAllWhereIsRequest request) {
     var emptyResponse = QueryAllWhereIsResponse();

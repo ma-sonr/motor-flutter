@@ -19,6 +19,7 @@ abstract class QueryServiceBase extends $pb.GeneratedService {
   $async.Future<$14.QueryParamsResponse> params($pb.ServerContext ctx, $14.QueryParamsRequest request);
   $async.Future<$14.QuerySchemaResponse> schema($pb.ServerContext ctx, $14.QuerySchemaRequest request);
   $async.Future<$14.QueryWhatIsResponse> whatIs($pb.ServerContext ctx, $14.QueryWhatIsRequest request);
+  $async.Future<$14.QueryWhatIsCreatorResponse> whatIsByCreator($pb.ServerContext ctx, $14.QueryWhatIsCreatorRequest request);
   $async.Future<$14.QueryAllWhatIsResponse> whatIsAll($pb.ServerContext ctx, $14.QueryAllWhatIsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
@@ -26,6 +27,7 @@ abstract class QueryServiceBase extends $pb.GeneratedService {
       case 'Params': return $14.QueryParamsRequest();
       case 'Schema': return $14.QuerySchemaRequest();
       case 'WhatIs': return $14.QueryWhatIsRequest();
+      case 'WhatIsByCreator': return $14.QueryWhatIsCreatorRequest();
       case 'WhatIsAll': return $14.QueryAllWhatIsRequest();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
@@ -36,6 +38,7 @@ abstract class QueryServiceBase extends $pb.GeneratedService {
       case 'Params': return this.params(ctx, request as $14.QueryParamsRequest);
       case 'Schema': return this.schema(ctx, request as $14.QuerySchemaRequest);
       case 'WhatIs': return this.whatIs(ctx, request as $14.QueryWhatIsRequest);
+      case 'WhatIsByCreator': return this.whatIsByCreator(ctx, request as $14.QueryWhatIsCreatorRequest);
       case 'WhatIsAll': return this.whatIsAll(ctx, request as $14.QueryAllWhatIsRequest);
       default: throw $core.ArgumentError('Unknown method: $method');
     }

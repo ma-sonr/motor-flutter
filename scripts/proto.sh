@@ -20,7 +20,6 @@ chmod +x "${BIN_DIR}/buf"
 echo "Generating protobuf files with buf..."
 cd ${GEN_DIR} && ls -d  */ | xargs rm -rf
 cd ${LIB_DIR}
-$(${BUF_CMD} generate buf.build/sonr-io/motor)
 $(${BUF_CMD} generate buf.build/sonr-io/blockchain)
 $(${BUF_CMD} generate buf.build/cosmos/cosmos-sdk)
 

@@ -12,27 +12,32 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
      // Switch by Call Method
     switch call.method {
-        // Stops the node
-        case "address":
-          let addr = Motor.SNRMotorAddress()
-          result(addr)
-
-        // Stops the node
-        case "balance":
-          let didDoc = Motor.SNRMotorBalance()
-          result(didDoc)
-
-        // Stops the node
-        case "didDoc":
-          let didDoc = Motor.SNRMotorDidDoc()
-          result(didDoc)
-
         // Starts the Node
         case "initialize":
           var error : NSError?
           let args = call.arguments as! FlutterStandardTypedData
             let rawBuf = Motor.SNRMotorInit(args.data, &error)
 
+          if let errorMessage = error?.userInfo.description {
+            print("Error: " + errorMessage)
+            result(FlutterError.init(code: "NATIVE_ERR",
+                                     message: "Error: " + errorMessage,
+                                     details: nil))
+          } else {
+          if let buf = rawBuf {
+            let resp = FlutterStandardTypedData.init(bytes: buf)
+            result(resp)
+            }else{
+                result(FlutterError.init(code: "NATIVE_ERR",
+                                       message: "Error: " + "Failed to Marshal result",
+                                       details: nil))
+            }
+          }
+
+        // Starts the Node
+        case "stat":
+          var error : NSError?
+          let rawBuf = Motor.SNRMotorStat(&error)
           if let errorMessage = error?.userInfo.description {
             print("Error: " + errorMessage)
             result(FlutterError.init(code: "NATIVE_ERR",

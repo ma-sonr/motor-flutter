@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
@@ -73,21 +72,15 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<String> address() async {
-    final res = await methodChannel.invokeMethod<String>('address');
-    return res ?? '';
-  }
-
-  @override
-  Future<int> balance() async {
-    final res = await methodChannel.invokeMethod<int>('balance');
-    return res ?? 0;
-  }
-
-  @override
-  Future<String> didDoc() async {
-    final res = await methodChannel.invokeMethod<String>('didDoc');
-    return res ?? '';
+  Future<StatResponse?> stat() async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('stat');
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return StatResponse.fromBuffer(buf.toList());
   }
 
   @override

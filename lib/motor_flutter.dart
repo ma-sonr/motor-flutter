@@ -2,6 +2,7 @@ import 'package:motor_flutter/gen/generated.dart';
 import 'package:motor_flutter/utils/crypto.dart';
 import 'package:motor_flutter/utils/information.dart';
 import 'motor_flutter_platform_interface.dart';
+export 'package:motor_flutter/gen/generated.dart';
 
 class MotorFlutter {
   Future<InitializeResponse?> initialize() async {
@@ -56,16 +57,8 @@ class MotorFlutter {
     }
   }
 
-  Future<String> address() async {
-    return await MotorFlutterPlatform.instance.address();
-  }
-
-  Future<int> balance() async {
-    return await MotorFlutterPlatform.instance.balance();
-  }
-
-  Future<String> didDoc() async {
-    return await MotorFlutterPlatform.instance.didDoc();
+  Future<StatResponse?> stat() async {
+    return await MotorFlutterPlatform.instance.stat();
   }
 
   Future<String?> getPlatformVersion() async {

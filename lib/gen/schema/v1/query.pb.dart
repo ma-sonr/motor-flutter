@@ -321,6 +321,69 @@ class QueryWhatIsRequest extends $pb.GeneratedMessage {
   void clearDid() => clearField(2);
 }
 
+class QueryWhatIsCreatorRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsCreatorRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOM<$2.PageRequest>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageRequest.create)
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhatIsCreatorRequest._() : super();
+  factory QueryWhatIsCreatorRequest({
+    $core.String? creator,
+    $2.PageRequest? pagination,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (pagination != null) {
+      _result.pagination = pagination;
+    }
+    return _result;
+  }
+  factory QueryWhatIsCreatorRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhatIsCreatorRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsCreatorRequest clone() => QueryWhatIsCreatorRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsCreatorRequest copyWith(void Function(QueryWhatIsCreatorRequest) updates) => super.copyWith((message) => updates(message as QueryWhatIsCreatorRequest)) as QueryWhatIsCreatorRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsCreatorRequest create() => QueryWhatIsCreatorRequest._();
+  QueryWhatIsCreatorRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryWhatIsCreatorRequest> createRepeated() => $pb.PbList<QueryWhatIsCreatorRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsCreatorRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhatIsCreatorRequest>(create);
+  static QueryWhatIsCreatorRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $2.PageRequest get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($2.PageRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $2.PageRequest ensurePagination() => $_ensure(1);
+}
+
 class QuerySchemaResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QuerySchemaResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
     ..aOM<$5.SchemaDefinition>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'definition', subBuilder: $5.SchemaDefinition.create)
@@ -372,7 +435,7 @@ class QuerySchemaResponse extends $pb.GeneratedMessage {
 
 class QueryWhatIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOM<$6.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', protoName: 'whatIs', subBuilder: $6.WhatIs.create)
+    ..aOM<$6.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $6.WhatIs.create)
     ..hasRequiredFields = false
   ;
 
@@ -419,6 +482,47 @@ class QueryWhatIsResponse extends $pb.GeneratedMessage {
   $6.WhatIs ensureWhatIs() => $_ensure(0);
 }
 
+class QueryWhatIsCreatorResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsCreatorResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
+    ..pc<$6.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', $pb.PbFieldType.PM, subBuilder: $6.WhatIs.create)
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhatIsCreatorResponse._() : super();
+  factory QueryWhatIsCreatorResponse({
+    $core.Iterable<$6.WhatIs>? whatIs,
+  }) {
+    final _result = create();
+    if (whatIs != null) {
+      _result.whatIs.addAll(whatIs);
+    }
+    return _result;
+  }
+  factory QueryWhatIsCreatorResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhatIsCreatorResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsCreatorResponse clone() => QueryWhatIsCreatorResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsCreatorResponse copyWith(void Function(QueryWhatIsCreatorResponse) updates) => super.copyWith((message) => updates(message as QueryWhatIsCreatorResponse)) as QueryWhatIsCreatorResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsCreatorResponse create() => QueryWhatIsCreatorResponse._();
+  QueryWhatIsCreatorResponse createEmptyInstance() => create();
+  static $pb.PbList<QueryWhatIsCreatorResponse> createRepeated() => $pb.PbList<QueryWhatIsCreatorResponse>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsCreatorResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhatIsCreatorResponse>(create);
+  static QueryWhatIsCreatorResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$6.WhatIs> get whatIs => $_getList(0);
+}
+
 class QueryApi {
   $pb.RpcClient _client;
   QueryApi(this._client);
@@ -434,6 +538,10 @@ class QueryApi {
   $async.Future<QueryWhatIsResponse> whatIs($pb.ClientContext? ctx, QueryWhatIsRequest request) {
     var emptyResponse = QueryWhatIsResponse();
     return _client.invoke<QueryWhatIsResponse>(ctx, 'Query', 'WhatIs', request, emptyResponse);
+  }
+  $async.Future<QueryWhatIsCreatorResponse> whatIsByCreator($pb.ClientContext? ctx, QueryWhatIsCreatorRequest request) {
+    var emptyResponse = QueryWhatIsCreatorResponse();
+    return _client.invoke<QueryWhatIsCreatorResponse>(ctx, 'Query', 'WhatIsByCreator', request, emptyResponse);
   }
   $async.Future<QueryAllWhatIsResponse> whatIsAll($pb.ClientContext? ctx, QueryAllWhatIsRequest request) {
     var emptyResponse = QueryAllWhatIsResponse();

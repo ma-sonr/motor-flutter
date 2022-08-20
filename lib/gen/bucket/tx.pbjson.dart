@@ -8,16 +8,34 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+import 'where_is.pbjson.dart' as $1;
+
 @$core.Deprecated('Use msgCreateWhereIsDescriptor instead')
 const MsgCreateWhereIs$json = const {
   '1': 'MsgCreateWhereIs',
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'label', '3': 2, '4': 1, '5': 9, '10': 'label'},
+    const {'1': 'visibility', '3': 3, '4': 1, '5': 14, '6': '.sonrio.sonr.bucket.BucketVisibility', '10': 'visibility'},
+    const {'1': 'role', '3': 4, '4': 1, '5': 14, '6': '.sonrio.sonr.bucket.BucketRole', '10': 'role'},
+    const {'1': 'content', '3': 5, '4': 3, '5': 11, '6': '.sonrio.sonr.bucket.BucketItem', '10': 'content'},
+    const {'1': 'content_acl', '3': 6, '4': 3, '5': 11, '6': '.sonrio.sonr.bucket.MsgCreateWhereIs.ContentAclEntry', '10': 'contentAcl'},
   ],
+  '3': const [MsgCreateWhereIs_ContentAclEntry$json],
+};
+
+@$core.Deprecated('Use msgCreateWhereIsDescriptor instead')
+const MsgCreateWhereIs_ContentAclEntry$json = const {
+  '1': 'ContentAclEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.bucket.AclJwks', '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `MsgCreateWhereIs`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgCreateWhereIsDescriptor = $convert.base64Decode('ChBNc2dDcmVhdGVXaGVyZUlzEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3I=');
+final $typed_data.Uint8List msgCreateWhereIsDescriptor = $convert.base64Decode('ChBNc2dDcmVhdGVXaGVyZUlzEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISFAoFbGFiZWwYAiABKAlSBWxhYmVsEkQKCnZpc2liaWxpdHkYAyABKA4yJC5zb25yaW8uc29uci5idWNrZXQuQnVja2V0VmlzaWJpbGl0eVIKdmlzaWJpbGl0eRIyCgRyb2xlGAQgASgOMh4uc29ucmlvLnNvbnIuYnVja2V0LkJ1Y2tldFJvbGVSBHJvbGUSOAoHY29udGVudBgFIAMoCzIeLnNvbnJpby5zb25yLmJ1Y2tldC5CdWNrZXRJdGVtUgdjb250ZW50ElUKC2NvbnRlbnRfYWNsGAYgAygLMjQuc29ucmlvLnNvbnIuYnVja2V0Lk1zZ0NyZWF0ZVdoZXJlSXMuQ29udGVudEFjbEVudHJ5Ugpjb250ZW50QWNsGloKD0NvbnRlbnRBY2xFbnRyeRIQCgNrZXkYASABKAlSA2tleRIxCgV2YWx1ZRgCIAEoCzIbLnNvbnJpby5zb25yLmJ1Y2tldC5BY2xKd2tzUgV2YWx1ZToCOAE=');
 @$core.Deprecated('Use msgCreateWhereIsResponseDescriptor instead')
 const MsgCreateWhereIsResponse$json = const {
   '1': 'MsgCreateWhereIsResponse',
@@ -34,11 +52,27 @@ const MsgUpdateWhereIs$json = const {
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'did', '3': 2, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'label', '3': 3, '4': 1, '5': 9, '10': 'label'},
+    const {'1': 'visibility', '3': 4, '4': 1, '5': 14, '6': '.sonrio.sonr.bucket.BucketVisibility', '10': 'visibility'},
+    const {'1': 'role', '3': 5, '4': 1, '5': 14, '6': '.sonrio.sonr.bucket.BucketRole', '10': 'role'},
+    const {'1': 'content', '3': 6, '4': 3, '5': 11, '6': '.sonrio.sonr.bucket.BucketItem', '10': 'content'},
+    const {'1': 'content_acl', '3': 7, '4': 3, '5': 11, '6': '.sonrio.sonr.bucket.MsgUpdateWhereIs.ContentAclEntry', '10': 'contentAcl'},
   ],
+  '3': const [MsgUpdateWhereIs_ContentAclEntry$json],
+};
+
+@$core.Deprecated('Use msgUpdateWhereIsDescriptor instead')
+const MsgUpdateWhereIs_ContentAclEntry$json = const {
+  '1': 'ContentAclEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.bucket.AclJwks', '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `MsgUpdateWhereIs`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgUpdateWhereIsDescriptor = $convert.base64Decode('ChBNc2dVcGRhdGVXaGVyZUlzEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISEAoDZGlkGAIgASgJUgNkaWQ=');
+final $typed_data.Uint8List msgUpdateWhereIsDescriptor = $convert.base64Decode('ChBNc2dVcGRhdGVXaGVyZUlzEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISEAoDZGlkGAIgASgJUgNkaWQSFAoFbGFiZWwYAyABKAlSBWxhYmVsEkQKCnZpc2liaWxpdHkYBCABKA4yJC5zb25yaW8uc29uci5idWNrZXQuQnVja2V0VmlzaWJpbGl0eVIKdmlzaWJpbGl0eRIyCgRyb2xlGAUgASgOMh4uc29ucmlvLnNvbnIuYnVja2V0LkJ1Y2tldFJvbGVSBHJvbGUSOAoHY29udGVudBgGIAMoCzIeLnNvbnJpby5zb25yLmJ1Y2tldC5CdWNrZXRJdGVtUgdjb250ZW50ElUKC2NvbnRlbnRfYWNsGAcgAygLMjQuc29ucmlvLnNvbnIuYnVja2V0Lk1zZ1VwZGF0ZVdoZXJlSXMuQ29udGVudEFjbEVudHJ5Ugpjb250ZW50QWNsGloKD0NvbnRlbnRBY2xFbnRyeRIQCgNrZXkYASABKAlSA2tleRIxCgV2YWx1ZRgCIAEoCzIbLnNvbnJpby5zb25yLmJ1Y2tldC5BY2xKd2tzUgV2YWx1ZToCOAE=');
 @$core.Deprecated('Use msgUpdateWhereIsResponseDescriptor instead')
 const MsgUpdateWhereIsResponse$json = const {
   '1': 'MsgUpdateWhereIsResponse',
@@ -76,8 +110,13 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.sonrio.sonr.bucket.MsgCreateWhereIs': MsgCreateWhereIs$json,
+  '.sonrio.sonr.bucket.BucketItem': $1.BucketItem$json,
+  '.sonrio.sonr.bucket.MsgCreateWhereIs.ContentAclEntry': MsgCreateWhereIs_ContentAclEntry$json,
+  '.sonrio.sonr.bucket.AclJwks': $1.AclJwks$json,
+  '.sonrio.sonr.bucket.AclJwks.EncryptedJwksEntry': $1.AclJwks_EncryptedJwksEntry$json,
   '.sonrio.sonr.bucket.MsgCreateWhereIsResponse': MsgCreateWhereIsResponse$json,
   '.sonrio.sonr.bucket.MsgUpdateWhereIs': MsgUpdateWhereIs$json,
+  '.sonrio.sonr.bucket.MsgUpdateWhereIs.ContentAclEntry': MsgUpdateWhereIs_ContentAclEntry$json,
   '.sonrio.sonr.bucket.MsgUpdateWhereIsResponse': MsgUpdateWhereIsResponse$json,
   '.sonrio.sonr.bucket.MsgDeleteWhereIs': MsgDeleteWhereIs$json,
   '.sonrio.sonr.bucket.MsgDeleteWhereIsResponse': MsgDeleteWhereIsResponse$json,
