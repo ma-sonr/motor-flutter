@@ -6,7 +6,7 @@ import 'dart:async';
 import 'package:alert/alert.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 
-const methods = ["newWallet", "exportWallet", "loadWallet", "address", "didDoc", "importCredential", "sign", "verify"];
+const methods = ["initialize", "createAccount", "login", "createSchema", "queryWhatIs", "address", "balance", "didDoc"];
 
 void main() {
   runApp(const MyApp());
@@ -45,25 +45,26 @@ class _MyAppState extends State<MyApp> {
   Future<void> _onTap(BuildContext context, MotorFlutter motor, int idx) async {
     switch (idx) {
       case 0:
-        //final res = await motor.newWallet();
-        // Alert(message: "Response: $res").show();
-        // if (kDebugMode) {
-        //   print(res);
-        // }
+        final res = await motor.initialize();
+        Alert(message: "Response: $res").show();
+        if (kDebugMode) {
+          print(res);
+        }
         break;
       case 1:
-        final res = await motor.address();
+        final res = await motor.createAccount("password");
         Alert(message: "Response: $res").show();
         if (kDebugMode) {
           print(res);
         }
         break;
       case 2:
-        // final addr = await motor.loadWallet();
-        Alert(message: "Not Implemented in Dart.").show();
-        // if (kDebugMode) {
-        //   print(addr);
-        // }
+        final didDoc = await motor.didDoc();
+        final res = await motor.login(didDoc, "password");
+        Alert(message: "Response: $res").show();
+        if (kDebugMode) {
+          print(res);
+        }
         break;
       case 3:
         final addr = await motor.address();

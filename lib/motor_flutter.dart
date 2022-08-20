@@ -9,7 +9,7 @@ class MotorFlutter {
     return await MotorFlutterPlatform.instance.initialize(req);
   }
 
-  Future<CreateAccountResponse?> createAccount(String password, Map<String, String> metadata) async {
+  Future<CreateAccountResponse?> createAccount(String password, {Map<String, String>? metadata}) async {
     final result = await AESController.generateAndStoreKey();
     if (result == null) {
       return null;
