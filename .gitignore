@@ -29,6 +29,3 @@ tmp
 .dart_tool/
 .packages
 build/
-
-!*/**/Motor.xcframework
-!*/**/io.sonr.motor.aar
