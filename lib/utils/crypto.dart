@@ -40,22 +40,25 @@ class AESController {
   //
   // Returns: LockerItem or null if failed
   static Future<LockerItem?> generateAndStoreKey() async {
+    // Check current state
     final hasLocker = await FlutterLocker.canAuthenticate() ?? false;
-    if (!hasLocker) {
-      if (kDebugMode) {
-        print('[Motor-Flutter] Device does not have Biometric authentication');
-      }
+    if (!hasLocker && !kDebugMode) {
       return null;
     }
 
+    // Generate AES Key
     final algorithm = AesGcm.with128bits();
     final secretKey = await algorithm.newSecretKey();
     final item = await LockerItem.fromSecretKey(secretKey);
-    await FlutterLocker.save(SaveSecretRequest(
-      key: item.key,
-      secret: item.secret,
-      androidPrompt: AndroidPrompt(title: "Authenticate", cancelLabel: "Cancel"),
-    ));
+
+    // Store AES Key in Locker or Temporary Storage
+    if (hasLocker) {
+      await FlutterLocker.save(SaveSecretRequest(
+        key: item.key,
+        secret: item.secret,
+        androidPrompt: AndroidPrompt(title: "Authenticate", cancelLabel: "Cancel"),
+      ));
+    }
     return item;
   }
 

@@ -34,6 +34,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
             let rawBuf = Motor.SNRMotorInit(args.data, &error)
 
           if let errorMessage = error?.userInfo.description {
+            print("Error: " + errorMessage)
             result(FlutterError.init(code: "NATIVE_ERR",
                                      message: "Error: " + errorMessage,
                                      details: nil))
@@ -55,6 +56,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
               let rawBuf = Motor.SNRMotorCreateAccount(args.data, &error)
 
             if let errorMessage = error?.userInfo.description {
+              print("Error: " + errorMessage)
               result(FlutterError.init(code: "NATIVE_ERR",
                                        message: "Error: " + errorMessage,
                                        details: nil))
@@ -76,6 +78,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
               let rawBuf = Motor.SNRMotorLogin(args.data, &error)
 
             if let errorMessage = error?.userInfo.description {
+              print("Error: " + errorMessage)
               result(FlutterError.init(code: "NATIVE_ERR",
                                        message: "Error: " + errorMessage,
                                        details: nil))
@@ -97,6 +100,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
               let rawBuf = Motor.SNRMotorCreateSchema(args.data, &error)
 
             if let errorMessage = error?.userInfo.description {
+              print("Error: " + errorMessage)
               result(FlutterError.init(code: "NATIVE_ERR",
                                        message: "Error: " + errorMessage,
                                        details: nil))
@@ -118,6 +122,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
               let rawBuf = Motor.SNRMotorQueryWhatIs(args.data, &error)
 
             if let errorMessage = error?.userInfo.description {
+              print("Error: " + errorMessage)
               result(FlutterError.init(code: "NATIVE_ERR",
                                        message: "Error: " + errorMessage,
                                        details: nil))

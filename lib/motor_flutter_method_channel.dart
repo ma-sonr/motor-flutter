@@ -14,62 +14,62 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
 
   @override
   Future<InitializeResponse?> initialize(InitializeRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('initialize', req.writeToJson());
+    final buf = await methodChannel.invokeMethod<Uint8List>('initialize', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
       }
       return null;
     }
-    return InitializeResponse.fromJson(utf8.decode(buf.toList()));
+    return InitializeResponse.fromBuffer(buf.toList());
   }
 
   @override
   Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('createAccount', req.writeToJson());
+    final buf = await methodChannel.invokeMethod<Uint8List>('createAccount', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
       }
       return null;
     }
-    return CreateAccountResponse.fromJson(utf8.decode(buf.toList()));
+    return CreateAccountResponse.fromBuffer(buf.toList());
   }
 
   @override
   Future<LoginResponse?> login(LoginRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('login', req.writeToJson());
+    final buf = await methodChannel.invokeMethod<Uint8List>('login', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
       }
       return null;
     }
-    return LoginResponse.fromJson(utf8.decode(buf.toList()));
+    return LoginResponse.fromBuffer(buf.toList());
   }
 
   @override
   Future<CreateSchemaResponse?> createSchema(CreateSchemaRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('createSchema', req.writeToJson());
+    final buf = await methodChannel.invokeMethod<Uint8List>('createSchema', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
       }
       return null;
     }
-    return CreateSchemaResponse.fromJson(utf8.decode(buf.toList()));
+    return CreateSchemaResponse.fromBuffer(buf.toList());
   }
 
   @override
   Future<QueryWhatIsResponse?> queryWhatIs(QueryWhatIsRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('queryWhatIs', req.writeToJson());
+    final buf = await methodChannel.invokeMethod<Uint8List>('queryWhatIs', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
       }
       return null;
     }
-    return QueryWhatIsResponse.fromJson(utf8.decode(buf.toList()));
+    return QueryWhatIsResponse.fromBuffer(buf.toList());
   }
 
   @override

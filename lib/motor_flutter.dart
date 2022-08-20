@@ -1,11 +1,12 @@
 import 'package:motor_flutter/gen/generated.dart';
 import 'package:motor_flutter/utils/crypto.dart';
-import 'package:motor_flutter/utils/request_builder.dart';
+import 'package:motor_flutter/utils/information.dart';
 import 'motor_flutter_platform_interface.dart';
 
 class MotorFlutter {
   Future<InitializeResponse?> initialize() async {
-    final req = await RequestBuilder.newInitializeRequest();
+    final peerInfo = await PeerInformation.fetch();
+    final req = peerInfo.toInitializeRequest();
     return await MotorFlutterPlatform.instance.initialize(req);
   }
 
