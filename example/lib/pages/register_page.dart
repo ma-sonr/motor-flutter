@@ -3,7 +3,9 @@
 import 'dart:async';
 
 import 'package:fancy_password_field/fancy_password_field.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:motor_flutter_example/service.dart';
@@ -78,13 +80,12 @@ class LoginWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        const Center(
-          child: Text("Motor Eureka",
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.white,
-              )),
-        ),
+        Center(
+            child: SvgPicture.asset(
+          "assets/logo-light.svg",
+          semanticsLabel: 'Eureka Logo',
+          width: Get.width * 0.8,
+        )),
         const Padding(
           padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
           child: Text("A Preview by the Sonr team for the future of the internet",
@@ -169,6 +170,7 @@ class AccountCreationPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 40,
                   color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 )),
           ),
           const Padding(
@@ -186,13 +188,13 @@ class AccountCreationPage extends StatelessWidget {
             child: FancyPasswordField(
               validationRules: {
                 // DigitValidationRule(),
-                // UppercaseValidationRule(),
+                UppercaseValidationRule(),
                 // LowercaseValidationRule(),
-                // SpecialCharacterValidationRule(),
-                // MinCharactersValidationRule(12),
+                SpecialCharacterValidationRule(),
+                MinCharactersValidationRule(12),
               },
               onFieldSubmitted: (String value) {
-                Get.to(RegisterLoadingPage(password: value));
+                Get.off(RegisterLoadingPage(password: value));
               },
             ),
           ),
@@ -215,6 +217,9 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
     "Generating MPC Wallet",
     "Building your DID Document",
     "Airdropping you some funds",
+    "Watering plastic office plants",
+    "Questioning interns about Radar",
+    "Found out solana is down again",
     "Registering your account",
     "Finishing up small details",
   ];
@@ -232,59 +237,79 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_isFinished) {
-      Get.to(const HomePage());
-    }
     return Scaffold(
         appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(
-                child: Text(
-              "Setting Up...",
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.black,
-              ),
-            )),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-              child: Lottie.asset(
-                'assets/loader.json',
-                width: MediaQuery.of(context).size.width * 0.8,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-              child: Text(
-                "$_quote (${_progress}s)",
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 17,
+        body: Padding(
+          padding: const EdgeInsets.only(bottom: 144),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Center(
+                  child: Text(
+                "Setting Up...",
+                style: TextStyle(
+                  fontSize: 40,
                   color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+                child: Lottie.asset(
+                  'assets/loader.json',
+                  width: MediaQuery.of(context).size.width * 0.8,
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                child: Text(
+                  "$_quote (${_progress}s)",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ));
+  }
+
+  @override
+  void dispose() {
+    _stopwatch.stop();
+    super.dispose();
   }
 
   Future<void> _createAccount() async {
     _stopwatch.start();
     MotorService.to.createAccount(widget.password, callback: (res) {
       setState(() {
+        if (kDebugMode) {
+          print("Account generation is finished!");
+        }
         _isFinished = true;
-        Get.to(const HomePage());
       });
     });
     Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      setState(() {
-        double elapsed = _stopwatch.elapsedMilliseconds / 1000;
-        _progress = (elapsed).toStringAsFixed(1);
-        _quote = loadingQuotes[elapsed.floor() % loadingQuotes.length];
-      });
+      if (_isFinished) {
+        timer.cancel();
+        _redirect();
+      } else {
+        setState(() {
+          double elapsed = _stopwatch.elapsedMilliseconds / 1000;
+          _progress = (elapsed).toStringAsFixed(1);
+          _quote = loadingQuotes[elapsed.floor() % loadingQuotes.length];
+        });
+      }
+    });
+  }
+
+  Future<void> _redirect() async {
+    Future.delayed(100.milliseconds, () {
+      Get.offAll(const HomePage());
     });
   }
 }

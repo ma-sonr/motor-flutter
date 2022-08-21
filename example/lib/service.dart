@@ -21,21 +21,32 @@ class MotorService extends GetxService {
 
   /// Initializes Motor Node & Returns GetxService
   Future<MotorService> init() async {
-    final resp = await instance.initialize();
-    _debugPrint(resp?.toDebugString());
+    try {
+      final resp = await instance.initialize();
+      _debugPrint(resp?.toDebugString());
+    } catch (e) {
+      _debugPrint(e.toString());
+    }
     return this;
   }
 
   void createAccount(String password, {required void Function(CreateAccountResponse?) callback}) async {
+    // Check if already initialized
     if (authorized.value) {
       _debugPrint("User is already authorized");
       return null;
     }
-    final resp = await instance.createAccount(password);
-    _debugPrint(resp?.toDebugString());
-    authorized(true);
-    if (callback != null) {
+
+    // Wrap instance method with try catch
+    try {
+      final resp = await instance.createAccount(password);
+      _debugPrint(resp?.toDebugString());
       callback(resp);
+      authorized(true);
+    } catch (e) {
+      _debugPrint(e.toString());
+      callback(null);
+      authorized(true); // This should be commented out when production
     }
   }
 
@@ -45,20 +56,23 @@ class MotorService extends GetxService {
       _debugPrint("User is not yet authorized");
       return false;
     }
-    final res = await instance.stat();
-    if (res == null) {
-      _debugPrint("Error refreshing account information");
+
+    // Wrap instance method with try catch
+    try {
+      final resp = await instance.stat();
+      _debugPrint(resp!.toDebugString());
+      // Update reactive variables
+      didDocument(resp.didDocument);
+      address(resp.address);
+      domain(resp.didDocument.alsoKnownAs.isNotEmpty ? resp.didDocument.alsoKnownAs[0] : "test.snr/");
+      balance(resp.balance.toString());
+      didUrl(resp.didDocument.id);
+      staked(resp.stake.toString());
+      return true;
+    } catch (e) {
+      _debugPrint(e.toString());
       return false;
     }
-
-    // Update reactive variables
-    didDocument(res.didDocument);
-    address(res.address);
-    domain(res.didDocument.alsoKnownAs.isNotEmpty ? res.didDocument.alsoKnownAs[0] : "test.snr/");
-    balance(res.balance.toString());
-    didUrl(res.didDocument.id);
-    staked(res.stake.toString());
-    return true;
   }
 }
 

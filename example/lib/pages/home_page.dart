@@ -1,8 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:motor_flutter_example/pages/action_page.dart';
+import 'package:get/get.dart';
 import 'package:motor_flutter_example/pages/pay_page.dart';
+import 'package:motor_flutter_example/pages/search_page.dart';
 import 'package:motor_flutter_example/pages/user_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,14 +17,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                Get.dialog(
+                  const SearchPage(),
+                  useSafeArea: false,
+                );
+              },
+            ),
+          ],
           backgroundColor: Colors.black,
-          title: const Text('Motor Eureka'),
+          title: const Text('Eureka'),
           bottom: const TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.functions)),
               Tab(icon: Icon(Icons.monetization_on)),
               Tab(icon: Icon(Icons.person)),
             ],
@@ -31,7 +42,6 @@ class _HomePageState extends State<HomePage> {
         ),
         body: const TabBarView(
           children: [
-            ActionPage(),
             PayPage(),
             UserPage(),
           ],

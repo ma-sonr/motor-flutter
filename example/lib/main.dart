@@ -2,10 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/pages/action_page.dart';
-import 'package:motor_flutter_example/pages/pay_page.dart';
+import 'package:motor_flutter_example/pages/home_page.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
-import 'package:motor_flutter_example/pages/user_page.dart';
 import 'package:motor_flutter_example/service.dart';
 
 Future<void> main() async {
@@ -33,29 +31,7 @@ class InitialPage extends StatelessWidget {
         GetObserver(),
       ],
       home: MotorService.to.authorized.value
-          ? DefaultTabController(
-              length: 3,
-              child: Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Colors.black,
-                  title: const Text('Motor Eureka'),
-                  bottom: const TabBar(
-                    tabs: [
-                      Tab(icon: Icon(Icons.functions)),
-                      Tab(icon: Icon(Icons.monetization_on)),
-                      Tab(icon: Icon(Icons.person)),
-                    ],
-                  ),
-                ),
-                body: const TabBarView(
-                  children: [
-                    ActionPage(),
-                    PayPage(),
-                    UserPage(),
-                  ],
-                ),
-              ),
-            )
+          ? const HomePage()
           : const RegisterPage(),
     );
   }
