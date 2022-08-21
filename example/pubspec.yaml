@@ -32,6 +32,7 @@ dependencies:
   alert: ^2.0.1
   video_player: ^2.4.6
   get: ^4.6.5
+  fancy_password_field: ^1.0.4
 
 dev_dependencies:
   flutter_test:

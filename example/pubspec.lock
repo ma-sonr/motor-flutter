@@ -232,6 +232,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  fancy_password_field:
+    dependency: "direct main"
+    description:
+      name: fancy_password_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   ffi:
     dependency: transitive
     description:
@@ -282,6 +289,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: transitive
+    description:
+      name: font_awesome_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "10.1.0"
   get:
     dependency: "direct main"
     description:
@@ -415,6 +429,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  password_strength:
+    dependency: transitive
+    description:
+      name: password_strength
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   path:
     dependency: transitive
     description:

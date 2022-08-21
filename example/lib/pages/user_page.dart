@@ -9,6 +9,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MotorService.to.refresh();
     return ListView(
       children: <Widget>[
         Container(
