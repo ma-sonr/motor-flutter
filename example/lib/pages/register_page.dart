@@ -3,6 +3,8 @@
 import 'package:fancy_password_field/fancy_password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import 'package:motor_flutter_example/controllers/register_controller.dart';
 import 'package:motor_flutter_example/service.dart';
 import 'package:video_player/video_player.dart';
 
@@ -177,9 +179,7 @@ class AccountCreationPage extends StatelessWidget {
                   color: Colors.black,
                 )),
           ),
-          const SizedBox(
-            height: 100.0,
-          ),
+          const SizedBox(height: 100.0),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
             child: FancyPasswordField(
@@ -191,9 +191,7 @@ class AccountCreationPage extends StatelessWidget {
                 MinCharactersValidationRule(12),
               },
               onFieldSubmitted: (String value) {
-                MotorService.to.createAccount(value).then((value) => {
-                      Get.to(const HomePage()),
-                    });
+                Get.to(RegisterLoadingPage(password: value));
               },
             ),
           ),
@@ -203,61 +201,52 @@ class AccountCreationPage extends StatelessWidget {
   }
 }
 
-
 class RegisterLoadingPage extends StatelessWidget {
-  const RegisterLoadingPage({Key? key}) : super(key: key);
+  final String password;
+  const RegisterLoadingPage({Key? key, required this.password}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put<RegisterController>(RegisterController());
+    controller.startAccountCreation(password);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-        backgroundColor: Colors.black,
-      ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Center(
-            child: Text("Create Account",
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                )),
+        body: Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Center(
+            child: Text(
+          "Setting Up...",
+          style: TextStyle(
+            fontSize: 40,
+            color: Colors.black,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-            child: Text("Input a secure password in order to register a new Sonr user",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Colors.black,
-                )),
+        )),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+          child: Lottie.asset(
+            'assets/loader.json',
+            width: MediaQuery.of(context).size.width * 0.8,
           ),
-          const SizedBox(
-            height: 100.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-            child: FancyPasswordField(
-              validationRules: {
-                DigitValidationRule(),
-                UppercaseValidationRule(),
-                LowercaseValidationRule(),
-                SpecialCharacterValidationRule(),
-                MinCharactersValidationRule(12),
-              },
-              onFieldSubmitted: (String value) {
-                MotorService.to.createAccount(value).then((value) => {
-                      Get.to(const HomePage()),
-                    });
-              },
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+          child: Obx(
+            () => Text(
+              "${controller.quote.value} (${_formatElapsed(controller.elapsedMilliseconds.value)}s)",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 17,
+                color: Colors.black,
+              ),
             ),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ));
   }
+
+  String _formatElapsed(int n) => (n / 1000).toStringAsFixed(1);
 }
 
 class AccountLoginPage extends StatelessWidget {
@@ -284,28 +273,15 @@ class AccountLoginPage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-            child: Text("This feature is still under Development..",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Colors.black,
-                )),
+            child: Text(
+              "This feature is still under Development..",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 17,
+                color: Colors.black,
+              ),
+            ),
           ),
-          // FancyPasswordField(
-          //   validationRules: {
-          //     DigitValidationRule(),
-          //     UppercaseValidationRule(),
-          //     LowercaseValidationRule(),
-          //     SpecialCharacterValidationRule(),
-          //     MinCharactersValidationRule(6),
-          //     MaxCharactersValidationRule(12),
-          //   },
-          //   onFieldSubmitted: (String value) async {
-          //     MotorService.to.createAccount(value).then((value) => {
-          //           Get.to(const HomePage()),
-          //         });
-          //   },
-          // ),
         ],
       ),
     );
