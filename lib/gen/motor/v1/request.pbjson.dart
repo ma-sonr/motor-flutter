@@ -16,47 +16,16 @@ const InitializeRequest$json = const {
     const {'1': 'home_dir', '3': 2, '4': 1, '5': 9, '10': 'homeDir'},
     const {'1': 'support_dir', '3': 3, '4': 1, '5': 9, '10': 'supportDir'},
     const {'1': 'temp_dir', '3': 4, '4': 1, '5': 9, '10': 'tempDir'},
-    const {'1': 'host_options', '3': 5, '4': 1, '5': 11, '6': '.sonrio.motor.api.v1.InitializeRequest.HostOptions', '10': 'hostOptions'},
-    const {'1': 'device_keyprint_pub', '3': 6, '4': 1, '5': 12, '10': 'deviceKeyprintPub'},
-  ],
-  '3': const [InitializeRequest_HostOptions$json, InitializeRequest_IPAddress$json],
-};
-
-@$core.Deprecated('Use initializeRequestDescriptor instead')
-const InitializeRequest_HostOptions$json = const {
-  '1': 'HostOptions',
-  '2': const [
-    const {'1': 'quic_transport', '3': 1, '4': 1, '5': 8, '10': 'quicTransport'},
-    const {'1': 'http_transport', '3': 2, '4': 1, '5': 8, '10': 'httpTransport'},
-    const {'1': 'ipv4_only', '3': 3, '4': 1, '5': 8, '10': 'ipv4Only'},
-    const {'1': 'listen_addrs', '3': 4, '4': 3, '5': 11, '6': '.sonrio.motor.api.v1.InitializeRequest.IPAddress', '10': 'listenAddrs'},
-  ],
-};
-
-@$core.Deprecated('Use initializeRequestDescriptor instead')
-const InitializeRequest_IPAddress$json = const {
-  '1': 'IPAddress',
-  '2': const [
-    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'address', '3': 2, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'internal', '3': 3, '4': 1, '5': 8, '10': 'internal'},
-    const {'1': 'family', '3': 4, '4': 1, '5': 14, '6': '.sonrio.motor.api.v1.InitializeRequest.IPAddress.Family', '10': 'family'},
-  ],
-  '4': const [InitializeRequest_IPAddress_Family$json],
-};
-
-@$core.Deprecated('Use initializeRequestDescriptor instead')
-const InitializeRequest_IPAddress_Family$json = const {
-  '1': 'Family',
-  '2': const [
-    const {'1': 'FAMILY_UNSPECIFIED', '2': 0},
-    const {'1': 'FAMILY_IPV4', '2': 1},
-    const {'1': 'FAMILY_IPV6', '2': 2},
+    const {'1': 'enable_host', '3': 5, '4': 1, '5': 8, '10': 'enableHost'},
+    const {'1': 'enable_discovery', '3': 6, '4': 1, '5': 8, '10': 'enableDiscovery'},
+    const {'1': 'discovery_latitude', '3': 7, '4': 1, '5': 1, '10': 'discoveryLatitude'},
+    const {'1': 'discovery_longitude', '3': 8, '4': 1, '5': 1, '10': 'discoveryLongitude'},
+    const {'1': 'device_keyprint_pub', '3': 9, '4': 1, '5': 12, '10': 'deviceKeyprintPub'},
   ],
 };
 
 /// Descriptor for `InitializeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initializeRequestDescriptor = $convert.base64Decode('ChFJbml0aWFsaXplUmVxdWVzdBIbCglkZXZpY2VfaWQYASABKAlSCGRldmljZUlkEhkKCGhvbWVfZGlyGAIgASgJUgdob21lRGlyEh8KC3N1cHBvcnRfZGlyGAMgASgJUgpzdXBwb3J0RGlyEhkKCHRlbXBfZGlyGAQgASgJUgd0ZW1wRGlyElUKDGhvc3Rfb3B0aW9ucxgFIAEoCzIyLnNvbnJpby5tb3Rvci5hcGkudjEuSW5pdGlhbGl6ZVJlcXVlc3QuSG9zdE9wdGlvbnNSC2hvc3RPcHRpb25zEi4KE2RldmljZV9rZXlwcmludF9wdWIYBiABKAxSEWRldmljZUtleXByaW50UHViGs0BCgtIb3N0T3B0aW9ucxIlCg5xdWljX3RyYW5zcG9ydBgBIAEoCFINcXVpY1RyYW5zcG9ydBIlCg5odHRwX3RyYW5zcG9ydBgCIAEoCFINaHR0cFRyYW5zcG9ydBIbCglpcHY0X29ubHkYAyABKAhSCGlwdjRPbmx5ElMKDGxpc3Rlbl9hZGRycxgEIAMoCzIwLnNvbnJpby5tb3Rvci5hcGkudjEuSW5pdGlhbGl6ZVJlcXVlc3QuSVBBZGRyZXNzUgtsaXN0ZW5BZGRycxrqAQoJSVBBZGRyZXNzEhIKBG5hbWUYASABKAlSBG5hbWUSGAoHYWRkcmVzcxgCIAEoCVIHYWRkcmVzcxIaCghpbnRlcm5hbBgDIAEoCFIIaW50ZXJuYWwSTwoGZmFtaWx5GAQgASgOMjcuc29ucmlvLm1vdG9yLmFwaS52MS5Jbml0aWFsaXplUmVxdWVzdC5JUEFkZHJlc3MuRmFtaWx5UgZmYW1pbHkiQgoGRmFtaWx5EhYKEkZBTUlMWV9VTlNQRUNJRklFRBAAEg8KC0ZBTUlMWV9JUFY0EAESDwoLRkFNSUxZX0lQVjYQAg==');
+final $typed_data.Uint8List initializeRequestDescriptor = $convert.base64Decode('ChFJbml0aWFsaXplUmVxdWVzdBIbCglkZXZpY2VfaWQYASABKAlSCGRldmljZUlkEhkKCGhvbWVfZGlyGAIgASgJUgdob21lRGlyEh8KC3N1cHBvcnRfZGlyGAMgASgJUgpzdXBwb3J0RGlyEhkKCHRlbXBfZGlyGAQgASgJUgd0ZW1wRGlyEh8KC2VuYWJsZV9ob3N0GAUgASgIUgplbmFibGVIb3N0EikKEGVuYWJsZV9kaXNjb3ZlcnkYBiABKAhSD2VuYWJsZURpc2NvdmVyeRItChJkaXNjb3ZlcnlfbGF0aXR1ZGUYByABKAFSEWRpc2NvdmVyeUxhdGl0dWRlEi8KE2Rpc2NvdmVyeV9sb25naXR1ZGUYCCABKAFSEmRpc2NvdmVyeUxvbmdpdHVkZRIuChNkZXZpY2Vfa2V5cHJpbnRfcHViGAkgASgMUhFkZXZpY2VLZXlwcmludFB1Yg==');
 @$core.Deprecated('Use createAccountRequestDescriptor instead')
 const CreateAccountRequest$json = const {
   '1': 'CreateAccountRequest',
@@ -148,3 +117,16 @@ const QuerySchemaRequest$json = const {
 
 /// Descriptor for `QuerySchemaRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List querySchemaRequestDescriptor = $convert.base64Decode('ChJRdWVyeVNjaGVtYVJlcXVlc3QSGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIQCgNkaWQYAiABKAlSA2RpZA==');
+@$core.Deprecated('Use sendTokenRequestDescriptor instead')
+const SendTokenRequest$json = const {
+  '1': 'SendTokenRequest',
+  '2': const [
+    const {'1': 'to', '3': 1, '4': 1, '5': 9, '10': 'to'},
+    const {'1': 'from', '3': 2, '4': 1, '5': 9, '10': 'from'},
+    const {'1': 'amount', '3': 3, '4': 1, '5': 3, '10': 'amount'},
+    const {'1': 'memo', '3': 4, '4': 1, '5': 9, '10': 'memo'},
+  ],
+};
+
+/// Descriptor for `SendTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendTokenRequestDescriptor = $convert.base64Decode('ChBTZW5kVG9rZW5SZXF1ZXN0Eg4KAnRvGAEgASgJUgJ0bxISCgRmcm9tGAIgASgJUgRmcm9tEhYKBmFtb3VudBgDIAEoA1IGYW1vdW50EhIKBG1lbW8YBCABKAlSBG1lbW8=');

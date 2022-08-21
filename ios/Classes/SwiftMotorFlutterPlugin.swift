@@ -3,10 +3,13 @@ import Motor
 import UIKit
 
 public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
+    var callback : SwiftMotorCallback?
+    
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(
       name: "io.sonr.motor/MethodChannel", binaryMessenger: registrar.messenger())
     let instance = SwiftMotorFlutterPlugin()
+    instance.callback = SwiftMotorCallback(chan: channel)
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -18,7 +21,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       var error: NSError?
       let args = call.arguments as! FlutterStandardTypedData
       DispatchQueue.global(qos: .userInitiated).async {
-        let rawBuf = Motor.SNRMotorInit(args.data, &error)
+          let rawBuf = Motor.SNRMotorInit(args.data, self.callback, &error)
         DispatchQueue.main.async {
           if let errorMessage = error?.userInfo.description {
             print("Error: " + errorMessage)

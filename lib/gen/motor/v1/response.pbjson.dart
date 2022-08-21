@@ -97,3 +97,15 @@ const StatResponse$json = const {
 
 /// Descriptor for `StatResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List statResponseDescriptor = $convert.base64Decode('CgxTdGF0UmVzcG9uc2USGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxJECgxkaWRfZG9jdW1lbnQYAiABKAsyIS5zb25yaW8uc29uci5yZWdpc3RyeS5ESUREb2N1bWVudFILZGlkRG9jdW1lbnQSGAoHYmFsYW5jZRgDIAEoBVIHYmFsYW5jZRIUCgVzdGFrZRgEIAEoBVIFc3Rha2U=');
+@$core.Deprecated('Use sendTokenResponseDescriptor instead')
+const SendTokenResponse$json = const {
+  '1': 'SendTokenResponse',
+  '2': const [
+    const {'1': 'code', '3': 1, '4': 1, '5': 5, '10': 'code'},
+    const {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+    const {'1': 'tx_hash', '3': 3, '4': 1, '5': 9, '10': 'txHash'},
+  ],
+};
+
+/// Descriptor for `SendTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendTokenResponseDescriptor = $convert.base64Decode('ChFTZW5kVG9rZW5SZXNwb25zZRISCgRjb2RlGAEgASgFUgRjb2RlEhgKB21lc3NhZ2UYAiABKAlSB21lc3NhZ2USFwoHdHhfaGFzaBgDIAEoCVIGdHhIYXNo');

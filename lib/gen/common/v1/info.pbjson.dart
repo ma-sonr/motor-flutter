@@ -24,7 +24,7 @@ final $typed_data.Uint8List directionDescriptor = $convert.base64Decode('CglEaXJ
 const MIME$json = const {
   '1': 'MIME',
   '2': const [
-    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.sonrio.motor.common.v1.MIME.Type', '10': 'type'},
+    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.sonrio.common.v1.MIME.Type', '10': 'type'},
     const {'1': 'subtype', '3': 2, '4': 1, '5': 9, '10': 'subtype'},
     const {'1': 'value', '3': 3, '4': 1, '5': 9, '10': 'value'},
   ],
@@ -47,31 +47,16 @@ const MIME_Type$json = const {
 };
 
 /// Descriptor for `MIME`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List mIMEDescriptor = $convert.base64Decode('CgRNSU1FEjUKBHR5cGUYASABKA4yIS5zb25yaW8ubW90b3IuY29tbW9uLnYxLk1JTUUuVHlwZVIEdHlwZRIYCgdzdWJ0eXBlGAIgASgJUgdzdWJ0eXBlEhQKBXZhbHVlGAMgASgJUgV2YWx1ZSKNAQoEVHlwZRIUChBUWVBFX1VOU1BFQ0lGSUVEEAASDgoKVFlQRV9BVURJTxABEhEKDVRZUEVfRE9DVU1FTlQQAhIOCgpUWVBFX0lNQUdFEAMSDQoJVFlQRV9URVhUEAQSDgoKVFlQRV9WSURFTxAFEgwKCFRZUEVfVVJMEAYSDwoLVFlQRV9DUllQVE8QBw==');
+final $typed_data.Uint8List mIMEDescriptor = $convert.base64Decode('CgRNSU1FEi8KBHR5cGUYASABKA4yGy5zb25yaW8uY29tbW9uLnYxLk1JTUUuVHlwZVIEdHlwZRIYCgdzdWJ0eXBlGAIgASgJUgdzdWJ0eXBlEhQKBXZhbHVlGAMgASgJUgV2YWx1ZSKNAQoEVHlwZRIUChBUWVBFX1VOU1BFQ0lGSUVEEAASDgoKVFlQRV9BVURJTxABEhEKDVRZUEVfRE9DVU1FTlQQAhIOCgpUWVBFX0lNQUdFEAMSDQoJVFlQRV9URVhUEAQSDgoKVFlQRV9WSURFTxAFEgwKCFRZUEVfVVJMEAYSDwoLVFlQRV9DUllQVE8QBw==');
 @$core.Deprecated('Use peerDescriptor instead')
 const Peer$json = const {
   '1': 'Peer',
   '2': const [
-    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
-    const {'1': 'status', '3': 2, '4': 1, '5': 14, '6': '.sonrio.motor.common.v1.Peer.Status', '10': 'status'},
-    const {'1': 'device', '3': 3, '4': 1, '5': 11, '6': '.sonrio.motor.common.v1.Peer.Device', '10': 'device'},
-    const {'1': 'public_key', '3': 4, '4': 1, '5': 12, '10': 'publicKey'},
-    const {'1': 'last_modified', '3': 6, '4': 1, '5': 3, '10': 'lastModified'},
+    const {'1': 'peer_id', '3': 1, '4': 1, '5': 9, '10': 'peerId'},
+    const {'1': 'did', '3': 2, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'status', '3': 3, '4': 1, '5': 14, '6': '.sonrio.common.v1.Peer.Status', '10': 'status'},
   ],
-  '3': const [Peer_Device$json],
   '4': const [Peer_Status$json],
-};
-
-@$core.Deprecated('Use peerDescriptor instead')
-const Peer_Device$json = const {
-  '1': 'Device',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {'1': 'host_name', '3': 2, '4': 1, '5': 9, '10': 'hostName'},
-    const {'1': 'os', '3': 3, '4': 1, '5': 9, '10': 'os'},
-    const {'1': 'arch', '3': 4, '4': 1, '5': 9, '10': 'arch'},
-    const {'1': 'model', '3': 5, '4': 1, '5': 9, '10': 'model'},
-  ],
 };
 
 @$core.Deprecated('Use peerDescriptor instead')
@@ -86,4 +71,4 @@ const Peer_Status$json = const {
 };
 
 /// Descriptor for `Peer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List peerDescriptor = $convert.base64Decode('CgRQZWVyEhAKA2RpZBgBIAEoCVIDZGlkEjsKBnN0YXR1cxgCIAEoDjIjLnNvbnJpby5tb3Rvci5jb21tb24udjEuUGVlci5TdGF0dXNSBnN0YXR1cxI7CgZkZXZpY2UYAyABKAsyIy5zb25yaW8ubW90b3IuY29tbW9uLnYxLlBlZXIuRGV2aWNlUgZkZXZpY2USHQoKcHVibGljX2tleRgEIAEoDFIJcHVibGljS2V5EiMKDWxhc3RfbW9kaWZpZWQYBiABKANSDGxhc3RNb2RpZmllZBpvCgZEZXZpY2USDgoCaWQYASABKAlSAmlkEhsKCWhvc3RfbmFtZRgCIAEoCVIIaG9zdE5hbWUSDgoCb3MYAyABKAlSAm9zEhIKBGFyY2gYBCABKAlSBGFyY2gSFAoFbW9kZWwYBSABKAlSBW1vZGVsIlUKBlN0YXR1cxIWChJTVEFUVVNfVU5TUEVDSUZJRUQQABIRCg1TVEFUVVNfT05MSU5FEAESDwoLU1RBVFVTX0FXQVkQAhIPCgtTVEFUVVNfQlVTWRAD');
+final $typed_data.Uint8List peerDescriptor = $convert.base64Decode('CgRQZWVyEhcKB3BlZXJfaWQYASABKAlSBnBlZXJJZBIQCgNkaWQYAiABKAlSA2RpZBI1CgZzdGF0dXMYAyABKA4yHS5zb25yaW8uY29tbW9uLnYxLlBlZXIuU3RhdHVzUgZzdGF0dXMiVQoGU3RhdHVzEhYKElNUQVRVU19VTlNQRUNJRklFRBAAEhEKDVNUQVRVU19PTkxJTkUQARIPCgtTVEFUVVNfQVdBWRACEg8KC1NUQVRVU19CVVNZEAM=');

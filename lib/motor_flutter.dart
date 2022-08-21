@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:typed_data';
+
+import 'package:flutter/services.dart';
 import 'package:motor_flutter/gen/generated.dart';
 import 'package:motor_flutter/utils/crypto.dart';
 import 'package:motor_flutter/utils/information.dart';
@@ -5,6 +9,13 @@ import 'motor_flutter_platform_interface.dart';
 export 'package:motor_flutter/gen/generated.dart';
 
 class MotorFlutter {
+  final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
+  final methodChannel = const MethodChannel('io.sonr.motor/MethodChannel');
+
+  MotorFlutter() {
+    methodChannel.setMethodCallHandler(_handleMethodCall);
+  }
+
   Future<InitializeResponse?> initialize() async {
     final peerInfo = await PeerInformation.fetch();
     final req = peerInfo.toInitializeRequest();
@@ -63,5 +74,21 @@ class MotorFlutter {
 
   Future<String?> getPlatformVersion() async {
     return await MotorFlutterPlatform.instance.getPlatformVersion();
+  }
+
+  Future<dynamic> _handleMethodCall(MethodCall call) async {
+    switch (call.method) {
+      case 'onDiscover':
+        if (call.arguments is Uint8List) {
+          final buf = call.arguments as Uint8List;
+          discoverEvents.add(RefreshEvent.fromBuffer(buf.toList()));
+        }
+        break;
+      default:
+        throw PlatformException(
+          code: 'Unimplemented',
+          details: "The method '${call.method}' is not implemented",
+        );
+    }
   }
 }

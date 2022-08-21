@@ -18,7 +18,6 @@ class LobbyMessage extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to')
     ..hasRequiredFields = false
   ;
 
@@ -28,7 +27,6 @@ class LobbyMessage extends $pb.GeneratedMessage {
     $core.List<$core.int>? body,
     $core.List<$core.int>? signature,
     $fixnum.Int64? createdAt,
-    $core.String? to,
   }) {
     final _result = create();
     if (from != null) {
@@ -42,9 +40,6 @@ class LobbyMessage extends $pb.GeneratedMessage {
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
-    }
-    if (to != null) {
-      _result.to = to;
     }
     return _result;
   }
@@ -106,14 +101,74 @@ class LobbyMessage extends $pb.GeneratedMessage {
   $core.bool hasCreatedAt() => $_has(3);
   @$pb.TagNumber(4)
   void clearCreatedAt() => clearField(4);
+}
 
-  @$pb.TagNumber(5)
-  $core.String get to => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set to($core.String v) { $_setString(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasTo() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearTo() => clearField(5);
+class RefreshEvent extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RefreshEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'topicName')
+    ..pc<$16.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peers', $pb.PbFieldType.PM, subBuilder: $16.Peer.create)
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receivedAt')
+    ..hasRequiredFields = false
+  ;
+
+  RefreshEvent._() : super();
+  factory RefreshEvent({
+    $core.String? topicName,
+    $core.Iterable<$16.Peer>? peers,
+    $fixnum.Int64? receivedAt,
+  }) {
+    final _result = create();
+    if (topicName != null) {
+      _result.topicName = topicName;
+    }
+    if (peers != null) {
+      _result.peers.addAll(peers);
+    }
+    if (receivedAt != null) {
+      _result.receivedAt = receivedAt;
+    }
+    return _result;
+  }
+  factory RefreshEvent.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RefreshEvent.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  RefreshEvent clone() => RefreshEvent()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RefreshEvent copyWith(void Function(RefreshEvent) updates) => super.copyWith((message) => updates(message as RefreshEvent)) as RefreshEvent; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RefreshEvent create() => RefreshEvent._();
+  RefreshEvent createEmptyInstance() => create();
+  static $pb.PbList<RefreshEvent> createRepeated() => $pb.PbList<RefreshEvent>();
+  @$core.pragma('dart2js:noInline')
+  static RefreshEvent getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RefreshEvent>(create);
+  static RefreshEvent? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get topicName => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set topicName($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTopicName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTopicName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$16.Peer> get peers => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get receivedAt => $_getI64(2);
+  @$pb.TagNumber(3)
+  set receivedAt($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasReceivedAt() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearReceivedAt() => clearField(3);
 }
 

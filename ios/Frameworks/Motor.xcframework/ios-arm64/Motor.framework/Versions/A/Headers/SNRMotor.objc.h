@@ -11,11 +11,18 @@
 #include "Universe.objc.h"
 
 
+@protocol SNRMotorMotorCallback;
+@class SNRMotorMotorCallback;
+
+@protocol SNRMotorMotorCallback <NSObject>
+- (void)onDiscover:(NSData* _Nullable)data;
+@end
+
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorCreateAccount(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorCreateSchema(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
-FOUNDATION_EXPORT NSData* _Nullable SNRMotorInit(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorInit(NSData* _Nullable buf, id<SNRMotorMotorCallback> _Nullable cb, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorLogin(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
@@ -33,5 +40,15 @@ FOUNDATION_EXPORT NSData* _Nullable SNRMotorSendTokens(NSData* _Nullable buf, NS
  * Stat returns general information about the Motor node its wallet and accompanying Account.
  */
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorStat(NSError* _Nullable* _Nullable error);
+
+@class SNRMotorMotorCallback;
+
+@interface SNRMotorMotorCallback : NSObject <goSeqRefInterface, SNRMotorMotorCallback> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (void)onDiscover:(NSData* _Nullable)data;
+@end
 
 #endif

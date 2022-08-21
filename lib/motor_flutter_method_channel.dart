@@ -11,6 +11,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('io.sonr.motor/MethodChannel');
 
+
   @override
   Future<InitializeResponse?> initialize(InitializeRequest req) async {
     final buf = await methodChannel.invokeMethod<Uint8List>('initialize', req.writeToBuffer());
@@ -88,4 +89,6 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+
 }

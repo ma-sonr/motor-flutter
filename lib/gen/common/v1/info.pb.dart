@@ -7,7 +7,6 @@
 
 import 'dart:core' as $core;
 
-import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'info.pbenum.dart';
@@ -15,7 +14,7 @@ import 'info.pbenum.dart';
 export 'info.pbenum.dart';
 
 class MIME extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MIME', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.common.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MIME', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.common.v1'), createEmptyInstance: create)
     ..e<MIME_Type>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: MIME_Type.TYPE_UNSPECIFIED, valueOf: MIME_Type.valueOf, enumValues: MIME_Type.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subtype')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value')
@@ -89,142 +88,29 @@ class MIME extends $pb.GeneratedMessage {
   void clearValue() => clearField(3);
 }
 
-class Peer_Device extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Peer.Device', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.common.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hostName')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'os')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'arch')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model')
-    ..hasRequiredFields = false
-  ;
-
-  Peer_Device._() : super();
-  factory Peer_Device({
-    $core.String? id,
-    $core.String? hostName,
-    $core.String? os,
-    $core.String? arch,
-    $core.String? model,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (hostName != null) {
-      _result.hostName = hostName;
-    }
-    if (os != null) {
-      _result.os = os;
-    }
-    if (arch != null) {
-      _result.arch = arch;
-    }
-    if (model != null) {
-      _result.model = model;
-    }
-    return _result;
-  }
-  factory Peer_Device.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Peer_Device.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Peer_Device clone() => Peer_Device()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Peer_Device copyWith(void Function(Peer_Device) updates) => super.copyWith((message) => updates(message as Peer_Device)) as Peer_Device; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Peer_Device create() => Peer_Device._();
-  Peer_Device createEmptyInstance() => create();
-  static $pb.PbList<Peer_Device> createRepeated() => $pb.PbList<Peer_Device>();
-  @$core.pragma('dart2js:noInline')
-  static Peer_Device getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Peer_Device>(create);
-  static Peer_Device? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get hostName => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set hostName($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasHostName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearHostName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get os => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set os($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasOs() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearOs() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get arch => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set arch($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasArch() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearArch() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.String get model => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set model($core.String v) { $_setString(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasModel() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearModel() => clearField(5);
-}
-
 class Peer extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Peer', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.common.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
-    ..e<Peer_Status>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: Peer_Status.STATUS_UNSPECIFIED, valueOf: Peer_Status.valueOf, enumValues: Peer_Status.values)
-    ..aOM<Peer_Device>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'device', subBuilder: Peer_Device.create)
-    ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey', $pb.PbFieldType.OY)
-    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Peer', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.common.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..e<Peer_Status>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OE, defaultOrMaker: Peer_Status.STATUS_UNSPECIFIED, valueOf: Peer_Status.valueOf, enumValues: Peer_Status.values)
     ..hasRequiredFields = false
   ;
 
   Peer._() : super();
   factory Peer({
+    $core.String? peerId,
     $core.String? did,
     Peer_Status? status,
-    Peer_Device? device,
-    $core.List<$core.int>? publicKey,
-    $fixnum.Int64? lastModified,
   }) {
     final _result = create();
+    if (peerId != null) {
+      _result.peerId = peerId;
+    }
     if (did != null) {
       _result.did = did;
     }
     if (status != null) {
       _result.status = status;
-    }
-    if (device != null) {
-      _result.device = device;
-    }
-    if (publicKey != null) {
-      _result.publicKey = publicKey;
-    }
-    if (lastModified != null) {
-      _result.lastModified = lastModified;
     }
     return _result;
   }
@@ -250,50 +136,30 @@ class Peer extends $pb.GeneratedMessage {
   static Peer? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get did => $_getSZ(0);
+  $core.String get peerId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set did($core.String v) { $_setString(0, v); }
+  set peerId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDid() => $_has(0);
+  $core.bool hasPeerId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDid() => clearField(1);
+  void clearPeerId() => clearField(1);
 
   @$pb.TagNumber(2)
-  Peer_Status get status => $_getN(1);
+  $core.String get did => $_getSZ(1);
   @$pb.TagNumber(2)
-  set status(Peer_Status v) { setField(2, v); }
+  set did($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasStatus() => $_has(1);
+  $core.bool hasDid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearStatus() => clearField(2);
+  void clearDid() => clearField(2);
 
   @$pb.TagNumber(3)
-  Peer_Device get device => $_getN(2);
+  Peer_Status get status => $_getN(2);
   @$pb.TagNumber(3)
-  set device(Peer_Device v) { setField(3, v); }
+  set status(Peer_Status v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasDevice() => $_has(2);
+  $core.bool hasStatus() => $_has(2);
   @$pb.TagNumber(3)
-  void clearDevice() => clearField(3);
-  @$pb.TagNumber(3)
-  Peer_Device ensureDevice() => $_ensure(2);
-
-  @$pb.TagNumber(4)
-  $core.List<$core.int> get publicKey => $_getN(3);
-  @$pb.TagNumber(4)
-  set publicKey($core.List<$core.int> v) { $_setBytes(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasPublicKey() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearPublicKey() => clearField(4);
-
-  @$pb.TagNumber(6)
-  $fixnum.Int64 get lastModified => $_getI64(4);
-  @$pb.TagNumber(6)
-  set lastModified($fixnum.Int64 v) { $_setInt64(4, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasLastModified() => $_has(4);
-  @$pb.TagNumber(6)
-  void clearLastModified() => clearField(6);
+  void clearStatus() => clearField(3);
 }
 
