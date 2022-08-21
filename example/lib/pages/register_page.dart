@@ -1,10 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:async';
+
 import 'package:fancy_password_field/fancy_password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:motor_flutter_example/controllers/register_controller.dart';
 import 'package:motor_flutter_example/service.dart';
 import 'package:video_player/video_player.dart';
 
@@ -201,14 +202,30 @@ class AccountCreationPage extends StatelessWidget {
   }
 }
 
-class RegisterLoadingPage extends StatelessWidget {
+class RegisterLoadingPage extends StatefulWidget {
   final String password;
   const RegisterLoadingPage({Key? key, required this.password}) : super(key: key);
 
   @override
+  State<RegisterLoadingPage> createState() => _RegisterLoadingPageState();
+}
+
+class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
+  final loadingQuotes = [
+    "Generating MPC Wallet",
+    "Building your DID Document",
+    "Airdropping you some funds",
+    "Registering your account",
+    "Finishing up small details",
+  ];
+
+  final Stopwatch _stopwatch = Stopwatch();
+  double _timeElapsed = 0.0;
+  String _quote = "";
+  bool _isFinished = false;
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put<RegisterController>(RegisterController());
-    controller.startAccountCreation(password);
     return Scaffold(
         body: Column(
       mainAxisSize: MainAxisSize.max,
@@ -233,7 +250,7 @@ class RegisterLoadingPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
           child: Obx(
             () => Text(
-              "${controller.quote.value} (${_formatElapsed(controller.elapsedMilliseconds.value)}s)",
+              "$_quote (${_formatElapsed(_timeElapsed)}s)",
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 17,
@@ -246,7 +263,34 @@ class RegisterLoadingPage extends StatelessWidget {
     ));
   }
 
-  String _formatElapsed(int n) => (n / 1000).toStringAsFixed(1);
+  Future<void> createAccount() async {
+    _startAccountCreation();
+    final res = await MotorService.to.createAccount(widget.password);
+    setState(() {
+      _isFinished = true;
+    });
+  }
+
+  void _startAccountCreation() {
+    _stopwatch.start();
+    Timer.periodic(const Duration(milliseconds: 100), (timer) {
+      setState(() {
+        if (_isFinished) {
+          timer.cancel();
+          _stopwatch.stop();
+          _timeElapsed = 0.0;
+          Get.off(const HomePage());
+        } else {
+          _timeElapsed = _stopwatch.elapsed.inMilliseconds / 1000;
+          if (_timeElapsed < loadingQuotes.length * 3000) {
+            _quote = loadingQuotes[_timeElapsed ~/ 3000];
+          }
+        }
+      });
+    });
+  }
+
+  String _formatElapsed(double n) => (n / 1000).toStringAsFixed(1);
 }
 
 class AccountLoginPage extends StatelessWidget {
