@@ -76,7 +76,7 @@ class UserPage extends StatelessWidget {
                 color: Colors.lightGreenAccent.shade700,
                 child: ListTile(
                   title: Obx(
-                    () => Text(MotorService.to.balance.value,
+                    () => Text(MotorService.to.balance.value.toString(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,

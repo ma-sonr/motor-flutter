@@ -12,7 +12,7 @@ class MotorService extends GetxService {
   // Reactive variables
   final address = 'snr123abc'.obs;
   final domain = 'test.snr/'.obs;
-  final balance = '0'.obs;
+  final balance = 0.obs;
   final didUrl = 'did:snr:abc123'.obs;
   final staked = '0'.obs;
   final didDocument = DIDDocument().obs;
@@ -77,7 +77,7 @@ class MotorService extends GetxService {
       didDocument(resp.didDocument);
       address(resp.address);
       domain(resp.didDocument.alsoKnownAs.isNotEmpty ? resp.didDocument.alsoKnownAs[0] : "test.snr/");
-      balance(resp.balance.toString());
+      balance(resp.balance);
       didUrl(resp.didDocument.id);
       staked(resp.stake.toString());
       return true;

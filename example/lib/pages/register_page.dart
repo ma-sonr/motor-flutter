@@ -240,7 +240,7 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
     return Scaffold(
         appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
         body: Padding(
-          padding: const EdgeInsets.only(bottom: 144),
+          padding: const EdgeInsets.only(bottom: 200),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
