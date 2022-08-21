@@ -26,6 +26,12 @@ class MotorService extends GetxService {
     return this;
   }
 
+  Future<CreateAccountResponse?> createAccount(String password) async {
+    final resp = await _motorInstance.createAccount(password);
+    _debugPrint(resp?.toDebugString());
+    return resp;
+  }
+
   // Refresh updates the current account information
   Future<bool> refresh() async {
     if (!authorized.value) {

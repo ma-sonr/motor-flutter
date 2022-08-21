@@ -1,25 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:motor_flutter/motor_flutter.dart';
-import 'package:motor_flutter_example/models/user.dart';
+import 'package:get/get.dart';
+import 'package:motor_flutter_example/service.dart';
 
-class UserPage extends StatefulWidget {
-  final MotorFlutter motor;
-  const UserPage({Key? key, required this.motor}) : super(key: key);
-
-  @override
-  State<UserPage> createState() => _UserPageState();
-}
-
-class _UserPageState extends State<UserPage> {
-  late final UserProfile? profile;
-
-  @override
-  void initState() {
-    _fetchProfile();
-    super.initState();
-  }
+class UserPage extends StatelessWidget {
+  const UserPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,27 +42,28 @@ class _UserPageState extends State<UserPage> {
                 ],
               ),
               Container(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text(
-                  profile?.domain ?? 'test.snr/',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Obx(
+                    () => Text(
+                      MotorService.to.domain.value,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )),
               Container(
                 padding: const EdgeInsets.only(top: 8),
                 width: MediaQuery.of(context).size.width * 0.8,
-                child: Text(
-                  profile?.address ?? 'snr123abc',
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 16,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
+                child: Obx(() => Text(
+                      MotorService.to.address.value,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 16,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )),
               ),
             ],
           ),
@@ -87,14 +74,14 @@ class _UserPageState extends State<UserPage> {
               child: Container(
                 color: Colors.lightGreenAccent.shade700,
                 child: ListTile(
-                  title: Text(
-                    profile?.balance ?? '0',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
+                  title: Obx(
+                    () => Text(MotorService.to.balance.value,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Colors.white,
+                        )),
                   ),
                   subtitle: const Text(
                     'Balance',
@@ -111,14 +98,14 @@ class _UserPageState extends State<UserPage> {
               child: Container(
                 color: Colors.lightBlueAccent,
                 child: ListTile(
-                  title: Text(
-                    profile?.staked ?? '0',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
+                  title: Obx(
+                    () => Text(MotorService.to.staked.value,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Colors.white,
+                        )),
                   ),
                   subtitle: const Text(
                     'Staked',
@@ -144,10 +131,12 @@ class _UserPageState extends State<UserPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              subtitle: Text(
-                profile?.didUrl ?? 'Failed to load DID Doc',
-                style: const TextStyle(
-                  fontSize: 18,
+              subtitle: Obx(
+                () => Text(
+                  MotorService.to.didUrl.value,
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
               ),
               onTap: _handleTap,
@@ -159,17 +148,4 @@ class _UserPageState extends State<UserPage> {
   }
 
   void _handleTap() {}
-
-  void _fetchProfile() async {
-    final res = await widget.motor.stat();
-    if (res != null) {
-      setState(() {
-        profile = UserProfile.fromStatResponse(res);
-      });
-    } else {
-      setState(() {
-        profile = UserProfile(address: "ERROR");
-      });
-    }
-  }
 }
