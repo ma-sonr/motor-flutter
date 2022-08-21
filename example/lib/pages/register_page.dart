@@ -322,6 +322,7 @@ class AccountLoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
+        backgroundColor: Colors.black,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
