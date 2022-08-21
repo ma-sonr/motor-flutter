@@ -27,7 +27,7 @@ class MotorFlutter {
     if (result == null) {
       return null;
     }
-    return MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
+    return await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
       metadata: metadata,
       aesDscKey: result.toBytes(),

@@ -37,6 +37,12 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -76,77 +82,79 @@ class LoginWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Center(
-            child: SvgPicture.asset(
-          "assets/logo-light.svg",
-          semanticsLabel: 'Eureka Logo',
-          width: Get.width * 0.8,
-        )),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-          child: Text("A Preview by the Sonr team for the future of the internet",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 17,
-                color: Colors.white60,
-              )),
-        ),
-        const SizedBox(
-          height: 320.0,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withAlpha(160),
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              topRight: Radius.circular(10.0),
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Center(
+              child: SvgPicture.asset(
+            "assets/logo-light.svg",
+            semanticsLabel: 'Eureka Logo',
+            width: Get.width * 0.8,
+          )),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+            child: Text("A Preview by the Sonr team for the future of the internet",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.white60,
+                )),
+          ),
+          const SizedBox(
+            height: 320.0,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withAlpha(160),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0),
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+              ),
+            ),
+            padding: const EdgeInsets.all(16),
+            width: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ButtonTheme(
+                  minWidth: 300.0,
+                  child: MaterialButton(
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    color: Colors.black,
+                    child: const Text(
+                      'Register Account',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    onPressed: () {
+                      Get.to(const AccountCreationPage());
+                    },
+                  ),
+                ),
+                ButtonTheme(
+                  minWidth: 300.0,
+                  child: TextButton(
+                    child: Text(
+                      'Already have an account? Login',
+                      style: TextStyle(color: Colors.grey.shade800, fontSize: 12),
+                    ),
+                    onPressed: () {
+                      Get.to(const AccountLoginPage());
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
-          padding: const EdgeInsets.all(16),
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              ButtonTheme(
-                minWidth: 300.0,
-                child: MaterialButton(
-                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  color: Colors.black,
-                  child: const Text(
-                    'Register Account',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Get.to(const AccountCreationPage());
-                  },
-                ),
-              ),
-              ButtonTheme(
-                minWidth: 300.0,
-                child: TextButton(
-                  child: Text(
-                    'Already have an account? Login',
-                    style: TextStyle(color: Colors.grey.shade800, fontSize: 12),
-                  ),
-                  onPressed: () {
-                    Get.to(const AccountLoginPage());
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -231,8 +239,8 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
 
   @override
   void initState() {
-    _createAccount();
     super.initState();
+    _createAccount();
   }
 
   @override
@@ -308,7 +316,7 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
   }
 
   Future<void> _redirect() async {
-    Future.delayed(100.milliseconds, () {
+    Future.delayed(400.milliseconds, () {
       Get.offAll(const HomePage());
     });
   }
