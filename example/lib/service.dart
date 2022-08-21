@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+
 import 'package:motor_flutter/motor_flutter.dart';
 
 class MotorService extends GetxService {
@@ -15,12 +18,15 @@ class MotorService extends GetxService {
   final didDocument = DIDDocument().obs;
   final authorized = false.obs;
   final hasBiometricCapability = false.obs;
-
+  final nearbyPeers = <Peer>[].obs;
   // Private
   final instance = MotorFlutter();
 
+  late final StreamSubscription<RefreshEvent> _nearbySubscription;
+
   /// Initializes Motor Node & Returns GetxService
   Future<MotorService> init() async {
+    _nearbySubscription = instance.discoverEvents.stream.listen(_handleRefreshStream);
     try {
       final resp = await instance.initialize();
       _debugPrint(resp?.toDebugString());
@@ -28,6 +34,12 @@ class MotorService extends GetxService {
       _debugPrint(e.toString());
     }
     return this;
+  }
+
+  @override
+  void onClose() {
+    _nearbySubscription.cancel();
+    super.onClose();
   }
 
   void createAccount(String password, {required void Function(CreateAccountResponse?) callback}) async {
@@ -73,6 +85,11 @@ class MotorService extends GetxService {
       _debugPrint(e.toString());
       return false;
     }
+  }
+
+  void _handleRefreshStream(RefreshEvent event) {
+    nearbyPeers(event.peers);
+    _debugPrint(event.toDebugString());
   }
 }
 
