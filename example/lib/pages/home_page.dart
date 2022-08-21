@@ -14,6 +14,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    PayPage(),
+    UserPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -33,20 +39,38 @@ class _HomePageState extends State<HomePage> {
           ],
           backgroundColor: Colors.black,
           title: const Text('Eureka'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.monetization_on)),
-              Tab(icon: Icon(Icons.person)),
-            ],
-          ),
         ),
-        body: const TabBarView(
-          children: [
-            PayPage(),
-            UserPage(),
+        body: _widgetOptions.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.lightBlueAccent,
+          backgroundColor: Colors.black,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              backgroundColor: Colors.white,
+              icon: Icon(
+                Icons.monetization_on,
+              ),
+              label: 'Pay',
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.white,
+              icon: Icon(
+                Icons.person,
+              ),
+              label: 'Me',
+            ),
           ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
         ),
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }

@@ -12,8 +12,8 @@ class PayPage extends StatefulWidget {
 class _PayPageState extends State<PayPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Pay Page")),
+    return const Center(
+      child: Text('Pay'),
     );
   }
 }
