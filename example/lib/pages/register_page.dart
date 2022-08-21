@@ -185,11 +185,11 @@ class AccountCreationPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
             child: FancyPasswordField(
               validationRules: {
-                DigitValidationRule(),
-                UppercaseValidationRule(),
-                LowercaseValidationRule(),
-                SpecialCharacterValidationRule(),
-                MinCharactersValidationRule(12),
+                // DigitValidationRule(),
+                // UppercaseValidationRule(),
+                // LowercaseValidationRule(),
+                // SpecialCharacterValidationRule(),
+                // MinCharactersValidationRule(12),
               },
               onFieldSubmitted: (String value) {
                 Get.to(RegisterLoadingPage(password: value));
@@ -220,77 +220,73 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
   ];
 
   final Stopwatch _stopwatch = Stopwatch();
-  double _timeElapsed = 0.0;
+  String _progress = "0.0";
   String _quote = "";
   bool _isFinished = false;
 
   @override
+  void initState() {
+    _createAccount();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (_isFinished) {
+      Get.to(const HomePage());
+    }
     return Scaffold(
+        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
         body: Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Center(
-            child: Text(
-          "Setting Up...",
-          style: TextStyle(
-            fontSize: 40,
-            color: Colors.black,
-          ),
-        )),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-          child: Lottie.asset(
-            'assets/loader.json',
-            width: MediaQuery.of(context).size.width * 0.8,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-          child: Obx(
-            () => Text(
-              "$_quote (${_formatElapsed(_timeElapsed)}s)",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 17,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Center(
+                child: Text(
+              "Setting Up...",
+              style: TextStyle(
+                fontSize: 40,
                 color: Colors.black,
               ),
+            )),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+              child: Lottie.asset(
+                'assets/loader.json',
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
             ),
-          ),
-        ),
-      ],
-    ));
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+              child: Text(
+                "$_quote (${_progress}s)",
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 17,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 
-  Future<void> createAccount() async {
-    _startAccountCreation();
-    final res = await MotorService.to.createAccount(widget.password);
-    setState(() {
-      _isFinished = true;
-    });
-  }
-
-  void _startAccountCreation() {
+  Future<void> _createAccount() async {
     _stopwatch.start();
+    MotorService.to.createAccount(widget.password, callback: (res) {
+      setState(() {
+        _isFinished = true;
+        Get.to(const HomePage());
+      });
+    });
     Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() {
-        if (_isFinished) {
-          timer.cancel();
-          _stopwatch.stop();
-          _timeElapsed = 0.0;
-          Get.off(const HomePage());
-        } else {
-          _timeElapsed = _stopwatch.elapsed.inMilliseconds / 1000;
-          if (_timeElapsed < loadingQuotes.length * 3000) {
-            _quote = loadingQuotes[_timeElapsed ~/ 3000];
-          }
-        }
+        double elapsed = _stopwatch.elapsedMilliseconds / 1000;
+        _progress = (elapsed).toStringAsFixed(1);
+        _quote = loadingQuotes[elapsed.floor() % loadingQuotes.length];
       });
     });
   }
-
-  String _formatElapsed(double n) => (n / 1000).toStringAsFixed(1);
 }
 
 class AccountLoginPage extends StatelessWidget {

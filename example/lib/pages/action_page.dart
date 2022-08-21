@@ -39,13 +39,6 @@ class _ActionPageState extends State<ActionPage> {
 
   Future<void> _onTap(BuildContext context, int idx) async {
     switch (idx) {
-      case 0:
-        final res = await MotorService.to.createAccount("password");
-        Alert(message: "Registration Response \n $res").show();
-        if (kDebugMode) {
-          print("createAccount(): $res");
-        }
-        break;
       default:
         Alert(message: "Not Implemented in Dart.").show();
         break;

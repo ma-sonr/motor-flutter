@@ -17,24 +17,26 @@ class MotorService extends GetxService {
   final hasBiometricCapability = false.obs;
 
   // Private
-  final _motorInstance = MotorFlutter();
+  final instance = MotorFlutter();
 
   /// Initializes Motor Node & Returns GetxService
   Future<MotorService> init() async {
-    final resp = await _motorInstance.initialize();
+    final resp = await instance.initialize();
     _debugPrint(resp?.toDebugString());
     return this;
   }
 
-  Future<CreateAccountResponse?> createAccount(String password) async {
+  void createAccount(String password, {required void Function(CreateAccountResponse?) callback}) async {
     if (authorized.value) {
       _debugPrint("User is already authorized");
       return null;
     }
-    final resp = await _motorInstance.createAccount(password);
+    final resp = await instance.createAccount(password);
     _debugPrint(resp?.toDebugString());
     authorized(true);
-    return resp;
+    if (callback != null) {
+      callback(resp);
+    }
   }
 
   // Refresh updates the current account information
@@ -43,7 +45,7 @@ class MotorService extends GetxService {
       _debugPrint("User is not yet authorized");
       return false;
     }
-    final res = await _motorInstance.stat();
+    final res = await instance.stat();
     if (res == null) {
       _debugPrint("Error refreshing account information");
       return false;
