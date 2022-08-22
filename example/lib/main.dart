@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:motor_flutter_example/clients/query.dart';
 import 'package:motor_flutter_example/pages/home_page.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
-import 'package:motor_flutter_example/service.dart';
+import 'package:motor_flutter_example/clients/motor.dart';
 
 Future<void> main() async {
   // Init Services
@@ -13,7 +14,10 @@ Future<void> main() async {
     () => MotorService().init(),
     permanent: true,
   );
-
+  // await Get.putAsync(
+  //   () => QueryService().init(),
+  //   permanent: true,
+  // );
   // Check Platform
   runApp(const InitialPage());
 }

@@ -7,6 +7,7 @@ import 'package:motor_flutter/utils/crypto.dart';
 import 'package:motor_flutter/utils/information.dart';
 import 'motor_flutter_platform_interface.dart';
 export 'package:motor_flutter/gen/generated.dart';
+import 'package:tuple/tuple.dart';
 
 class MotorFlutter {
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
@@ -22,28 +23,22 @@ class MotorFlutter {
     return await MotorFlutterPlatform.instance.initialize(req);
   }
 
-  Future<CreateAccountResponse?> createAccount(String password, {Map<String, String>? metadata}) async {
-    final result = await AESController.generateAndStoreKey();
-    if (result == null) {
-      return null;
-    }
-    return await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
+  Future<Tuple2<CreateAccountResponse?, Uint8List>> createAccount(String password, {Map<String, String>? metadata}) async {
+    final result = await AESController.generateDSCKey();
+    final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
       metadata: metadata,
-      aesDscKey: result.toBytes(),
+      aesDscKey: result.toList(),
     ));
+    return Tuple2(resp, result);
   }
 
-  Future<LoginResponse?> login(String did, String password) async {
-    final result = await AESController.fetchKey();
-    if (result == null) {
-      return null;
-    }
+  Future<LoginResponse?> login(String did, String password, Uint8List? aesDscKey, Uint8List? aesPskKey) async {
     return await MotorFlutterPlatform.instance.login(LoginRequest(
       password: password,
       did: did,
-      aesDscKey: result.toBytes(),
-      aesPskKey: [],
+      aesDscKey: aesDscKey?.toList(),
+      aesPskKey: aesPskKey?.toList(),
     ));
   }
 
