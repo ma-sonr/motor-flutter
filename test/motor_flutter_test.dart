@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter/motor_flutter_platform_interface.dart';
@@ -11,44 +9,32 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<Uint8List?> newWallet(Uint8List buf) => Future.value(null);
-
-  @override
-  Future<Uint8List?> loadWallet(Uint8List buf) => Future.value(null);
-
-  @override
-  Future<String?> address() {
-    // TODO: implement address
+  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
     throw UnimplementedError();
   }
 
   @override
-  Future<String?> didDoc() {
-    // TODO: implement didDoc
+  Future<CreateSchemaResponse?> createSchema(CreateSchemaRequest req) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Uint8List?> exportWallet() {
-    // TODO: implement exportWallet
+  Future<InitializeResponse?> initialize(InitializeRequest req) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Uint8List?> importCredential(Uint8List buf) {
-    // TODO: implement importCredential
+  Future<LoginResponse?> login(LoginRequest req) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Uint8List?> sign(Uint8List? buf) {
-    // TODO: implement sign
+  Future<QueryWhatIsResponse?> queryWhatIs(QueryWhatIsRequest req) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Uint8List?> verify(Uint8List? msg) {
-    // TODO: implement verify
+  Future<StatResponse?> stat() {
     throw UnimplementedError();
   }
 }

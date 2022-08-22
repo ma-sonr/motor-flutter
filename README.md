@@ -1,6 +1,6 @@
-# Motor for React-Native
+# Motor for Flutter
 
-React Native bindings for the Sonr Motor Node.
+Flutter bindings for the Sonr Motor Node.
 
 ## Installation
 

@@ -1,95 +1,69 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:alert/alert.dart';
-import 'package:flutter/services.dart';
-import 'package:motor_flutter/motor_flutter.dart';
+import 'package:get/get.dart';
+import 'package:motor_flutter_example/pages/home_page.dart';
+import 'package:motor_flutter_example/pages/register_page.dart';
+import 'package:motor_flutter_example/service.dart';
 
-const methods = ["newWallet", "exportWallet", "loadWallet", "address", "didDoc", "importCredential", "sign", "verify"];
+Future<void> main() async {
+  // Init Services
+  WidgetsFlutterBinding.ensureInitialized();
+  await Get.putAsync(
+    () => MotorService().init(),
+    permanent: true,
+  );
 
-void main() {
-  runApp(const MyApp());
+  // Check Platform
+  runApp(const InitialPage());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final _motorFlutterPlugin = MotorFlutter();
-
+/// #### Root App Widget
+class InitialPage extends StatelessWidget {
+  const InitialPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Motor Flutter Exampler'),
-        ),
-        body: ListView.builder(
-          itemCount: methods.length,
-          itemBuilder: ((context, index) {
-            return ListTile(
-              title: Text(methods[index]),
-              onTap: () => _onTap(context, _motorFlutterPlugin, index),
-            );
-          }),
-        ),
-      ),
+    return GetMaterialApp(
+      // onInit: () => _checkInitialPage(),
+      themeMode: ThemeMode.dark,
+      navigatorKey: Get.key,
+      navigatorObservers: [
+        GetObserver(),
+      ],
+      home: MotorService.to.authorized.value
+          ? const HomePage()
+          : const RegisterPage(),
     );
   }
 
-  Future<void> _onTap(BuildContext context, MotorFlutter motor, int idx) async {
-    switch (idx) {
-      case 0:
-        final res = await motor.newWallet();
-        Alert(message: "Response: $res").show();
-        if (kDebugMode) {
-          print(res);
-        }
-        break;
-      case 1:
-        final res = await motor.exportWallet();
-        Alert(message: "Response: $res").show();
-        if (kDebugMode) {
-          print(res);
-        }
-        break;
-      case 2:
-        // final addr = await motor.loadWallet();
-        Alert(message: "Not Implemented in Dart.").show();
-        // if (kDebugMode) {
-        //   print(addr);
-        // }
-        break;
-      case 3:
-        final addr = await motor.address();
-        Alert(message: "Address: $addr").show();
-        if (kDebugMode) {
-          print(addr);
-        }
-        break;
-      case 4:
-        final addr = await motor.didDoc();
-        Alert(message: "DIDDocr: $addr").show();
-        if (kDebugMode) {
-          print(addr);
-        }
-        Alert(message: "Not Implemented in Dart.").show();
-        break;
-      case 5:
-        Alert(message: "Not Implemented in Dart.").show();
-        break;
-      case 6:
-        Alert(message: "Not Implemented in Dart.").show();
-        break;
-      case 7:
-        Alert(message: "Not Implemented in Dart.").show();
-        break;
-    }
-  }
+  // Future<void> _checkInitialPage() async {
+  //   // Create Profile
+  //   final hint = TextUtils.hintFullName;
+  //   final profile = Profile(
+  //     firstName: hint.item1,
+  //     lastName: hint.item2,
+  //     sName: hint.item1[0] + hint.item2,
+  //   );
+
+  //   await SonrService.to.start(
+  //       location: Location(
+  //         latitude: 0,
+  //         longitude: 0,
+  //       ),
+  //       profile: profile);
+
+  //   // All Valid
+  //   if (await Permissions.Location.isGranted) {
+  //     AppPage.Home.off(args: HomeArguments.FirstLoad);
+  //   }
+
+  //   // No Location
+  //   else {
+  //     AppPage.Onboarding.off();
+  //   }
+
+  //   // } else {
+  //   //   AppPage.Error.to(args: ErrorPageArgs.noNetwork());
+  //   // }
+  // }
 }

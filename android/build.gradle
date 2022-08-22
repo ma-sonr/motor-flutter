@@ -15,7 +15,11 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        mavenCentral()
+//        mavenCentral()
+        jcenter()
+        flatDir {
+            dirs project(':motor_flutter').file('libs')
+        }
     }
 }
 
@@ -30,6 +34,14 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 24
+        targetSdkVersion 31
     }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    implementation api(name: 'io.sonr.motor', ext: 'aar')
 }
