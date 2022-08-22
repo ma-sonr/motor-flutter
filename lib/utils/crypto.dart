@@ -1,13 +1,10 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:convert';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:cryptography/cryptography.dart';
 import 'package:motor_flutter/utils/information.dart';
-import 'package:pointycastle/export.dart';
-import 'package:pointycastle/pointycastle.dart';
 
 // AESController is a class which is used to encrypt and decrypt data from the iOS and Android platforms.
 class AESController {

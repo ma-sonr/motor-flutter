@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:motor_flutter_example/clients/motor.dart';
+import 'package:motor_flutter_example/models/query_response.dart';
 
 enum PaymentOperation {
   receive,
@@ -85,18 +87,17 @@ class _StagingPageState extends State<StagingPage> {
                       if (controller.recipient.value.isEmpty) {
                         return Container();
                       } else {
-                        if (controller.searchResults.isEmpty) {
+                        if (controller.accountsList.isEmpty) {
                           return const EmptyView();
                         } else {
                           return ListView.builder(
                               itemBuilder: (context, index) {
                                 return ListTile(
-                                  title: Text('Item $index'),
-                                  subtitle: Text('Subitem $index'),
-                                  trailing: Text('$index'),
+                                  title: Text("User ${index + 1}"),
+                                  subtitle: Text('${controller.accountsList[index].address}'),
                                 );
                               },
-                              itemCount: 10);
+                              itemCount: controller.accountsList.length);
                         }
                       }
                     })),
@@ -162,17 +163,31 @@ class ConfirmPageController extends GetxController {
   final recipient = "".obs;
   final forNote = "".obs;
   final searchResults = RxList<String>([]);
+  final accountsList = RxList<Account>([]);
 
   ConfirmPageController({
     required this.operation,
     required this.amount,
-  });
+  }) {
+    refreshAccounts();
+    recipient.listen(_handleSearchQueryChanged);
+  }
 
-  void queryRegistry(String query) {
-    searchResults.value = [
-      "Address: $query",
-      "Name: $query",
-      "DID: $query",
-    ];
+  void refreshAccounts() async {
+    final result = await MotorService.to.fetchAllAccounts();
+    if (result.accounts == null) {
+      return;
+    }
+    for (var a in result.accounts!) {
+      if (a.address != null) {
+        accountsList.add(a);
+      }
+    }
+    accountsList.refresh();
+  }
+
+  void _handleSearchQueryChanged(String query) {
+    // searchResults.clear();
+    refreshAccounts();
   }
 }

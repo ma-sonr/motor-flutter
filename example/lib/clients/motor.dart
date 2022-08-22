@@ -6,6 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:biometric_storage/biometric_storage.dart';
 import 'package:motor_flutter/motor_flutter.dart';
+import 'package:motor_flutter_example/models/query_response.dart';
+import 'package:motor_flutter_example/pages/home_page.dart';
 
 class MotorService extends GetxService {
   // Accessor Method
@@ -75,12 +77,12 @@ class MotorService extends GetxService {
     }
   }
 
-  Future<bool> login() async {
+  Future<void> login() async {
     // Get Auth Info
     final authEntry = await _getAuthInfo();
     if (authEntry == null) {
       _debugPrint("No Auth Info Found");
-      return false;
+      return;
     }
     final result = await instance.login(
       authEntry.did,
@@ -90,11 +92,21 @@ class MotorService extends GetxService {
     );
     if (result == null) {
       _debugPrint("Login Failed");
-      return false;
+      return;
     }
     _debugPrint(result.toDebugString());
-    authorized(true); 
-    return true;
+    authorized(true);
+    Get.offAll(const HomePage());
+  }
+
+  Future<QueryAccountsResponse> fetchAllAccounts() async {
+    final c = GetHttpClient();
+    final result =
+        await c.get('http://v1-beta.sonr.ws:1317/cosmos/auth/v1beta1/accounts?pagination.count_total=true', headers: {"accept": "application/json"});
+    // Get Response Body
+    final body = await result.body;
+    final resp = QueryAccountsResponse.fromJson(body);
+    return resp;
   }
 
   // Refresh updates the current account information

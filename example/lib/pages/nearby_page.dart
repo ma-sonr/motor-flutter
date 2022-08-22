@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter_example/pages/pay_page.dart';
-import 'package:motor_flutter_example/service.dart';
+import 'package:motor_flutter_example/clients/motor.dart';
 
 class NearbyPage extends StatelessWidget {
   const NearbyPage({Key? key}) : super(key: key);

@@ -27,63 +27,64 @@ class _PayPageState extends State<PayPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
         body: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(
-            height: 235,
-            child: Center(
-              child: Obx(
-                () => RichText(
-                  text: TextSpan(
-                    text: "SNR",
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blueGrey),
-                    children: [
-                      TextSpan(
-                        text: PayPageController.to.amount.value,
-                        style: const TextStyle(fontSize: 96, fontWeight: FontWeight.normal, color: Colors.black),
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+                height: 235,
+                child: Center(
+                  child: Obx(
+                    () => RichText(
+                      text: TextSpan(
+                        text: "SNR",
+                        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blueGrey),
+                        children: [
+                          TextSpan(
+                            text: PayPageController.to.amount.value,
+                            style: const TextStyle(fontSize: 96, fontWeight: FontWeight.normal, color: Colors.white),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
-            )),
-        const Expanded(child: _KeyboardView()),
-        SizedBox(
-            height: 100,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const Expanded(
-                  child: MaterialButton(
-                    textColor: Colors.white,
-                    height: 64,
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    onPressed: null, // () => PayPageController.to.redirectToConfirmPage(PaymentOperation.receive),
-                    color: Colors.purple,
-                    child: Text(
-                      "Receive",
-                      style: TextStyle(fontSize: 20),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: MaterialButton(
-                    height: 64,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    onPressed: () => PayPageController.to.redirectToConfirmPage(PaymentOperation.send),
-                    color: Colors.greenAccent,
-                    child: const Text(
-                      "Send",
-                      style: TextStyle(fontSize: 20),
+                )),
+            const Expanded(child: _KeyboardView()),
+            SizedBox(
+                height: 100,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Expanded(
+                      child: MaterialButton(
+                        textColor: Colors.white,
+                        height: 64,
+                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        onPressed: null, // () => PayPageController.to.redirectToConfirmPage(PaymentOperation.receive),
+                        color: Colors.purple,
+                        child: Text(
+                          "Receive",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            )),
-      ],
-    ));
+                    Expanded(
+                      child: MaterialButton(
+                        height: 64,
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        onPressed: () => PayPageController.to.redirectToConfirmPage(PaymentOperation.send),
+                        color: Colors.greenAccent,
+                        child: const Text(
+                          "Send",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          ],
+        ));
   }
 }
 
@@ -92,7 +93,8 @@ class _KeyboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: Get.height * 0.3,
+        height: Get.height * 0.26,
+        width: Get.width * 0.9,
         child: Column(
           children: [
             Expanded(
@@ -145,15 +147,23 @@ class _KeyboardView extends StatelessWidget {
       adjVal = 1;
       textVal = "0";
     } else if (index == 11) {
-      adjVal = -1;
-      textVal = "⬅️";
+      return IconButton(
+        onPressed: () => PayPageController.to.handleIndexPressed(index),
+        icon: const Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
+      );
     } else {
       textVal = adjVal.toString();
     }
 
     return TextButton(
       onPressed: () => PayPageController.to.handleIndexPressed(index),
-      child: Text(textVal),
+      child: Text(
+        textVal,
+        style: const TextStyle(fontSize: 24, color: Colors.white),
+      ),
     );
   }
 }

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/service.dart';
+import 'package:motor_flutter_example/clients/motor.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);

@@ -4,5 +4,5 @@ managed:
   go_package_prefix:
     default: github.com/sonr-io/motor-flutter
 plugins:
-  - remote: buf.build/protocolbuffers/plugins/dart:v20.0.1-1
+  - remote: buf.build/protocolbuffers/plugins/dart:v20.0.1-1 
     out: gen
