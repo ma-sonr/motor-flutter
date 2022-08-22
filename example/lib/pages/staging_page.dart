@@ -47,6 +47,7 @@ class _StagingPageState extends State<StagingPage> {
                 SizedBox(
                   height: 72,
                   child: TextFormField(
+                    controller: controller.recipientController,
                     autofocus: true,
                     decoration: InputDecoration(
                       labelText: 'To',
@@ -95,6 +96,7 @@ class _StagingPageState extends State<StagingPage> {
                                 return ListTile(
                                   title: Text("User ${index + 1}"),
                                   subtitle: Text('${controller.accountsList[index].address}'),
+                                  onTap: () => controller.handleListItemTap(index),
                                 );
                               },
                               itemCount: controller.accountsList.length);
@@ -158,6 +160,7 @@ class EmptyView extends StatelessWidget {
 }
 
 class ConfirmPageController extends GetxController {
+  final TextEditingController recipientController = TextEditingController();
   final PaymentOperation operation;
   final double amount;
   final recipient = "".obs;
@@ -171,6 +174,11 @@ class ConfirmPageController extends GetxController {
   }) {
     refreshAccounts();
     recipient.listen(_handleSearchQueryChanged);
+  }
+
+  void handleListItemTap(int index) {
+    recipient(accountsList[index].address ?? "");
+    recipientController.text = accountsList[index].address ?? "";
   }
 
   void refreshAccounts() async {
