@@ -12,7 +12,7 @@ class AESController {
   // Returns: LockerItem or null if not found
   static Future<LockerItem?> fetchKey({String? v}) async {
     // Check if KeyName is provided
-    final key = v ?? await _getKeyName();
+    //final key = v ?? await _getKeyName();
 
     // // Retreive AES Key String
     // final String result = await FlutterLocker.retrieve(RetrieveSecretRequest(
@@ -62,10 +62,10 @@ class AESController {
   }
 
   // HELPER: Get Deterministic Key Name for storage
-  static Future<String> _getKeyName() async {
-    final deviceInfo = await DeviceInformation.get();
-    return "SNR_MOTOR_${deviceInfo.model.toLowerCase()}";
-  }
+  // static Future<String> _getKeyName() async {
+  //   final deviceInfo = await DeviceInformation.get();
+  //   return "SNR_MOTOR_${deviceInfo.model.toLowerCase()}";
+  // }
 }
 
 // LockerItem is a wrapper class for the underlying AES SecretKey
