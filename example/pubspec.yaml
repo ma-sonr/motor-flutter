@@ -36,6 +36,7 @@ dependencies:
   lottie: ^1.4.1
   flutter_svg: ^1.1.4
   searchable_listview: ^2.0.0
+  biometric_storage: ^4.1.3
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
     - assets/loader.json
     - assets/logo.svg
     - assets/logo-light.svg
+    - assets/nearby-empty.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

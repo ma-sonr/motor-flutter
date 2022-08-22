@@ -1,71 +1,27 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:convert';
+import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:cryptography/cryptography.dart';
 import 'package:motor_flutter/utils/information.dart';
+import 'package:pointycastle/export.dart';
+import 'package:pointycastle/pointycastle.dart';
 
 // AESController is a class which is used to encrypt and decrypt data from the iOS and Android platforms.
 class AESController {
-  // Fetch AES key from storage
-  //
-  // Returns: LockerItem or null if not found
-  static Future<LockerItem?> fetchKey({String? v}) async {
-    // Check if KeyName is provided
-    //final key = v ?? await _getKeyName();
-
-    // // Retreive AES Key String
-    // final String result = await FlutterLocker.retrieve(RetrieveSecretRequest(
-    //     key: key,
-    //     androidPrompt: AndroidPrompt(
-    //       title: "Authenticate",
-    //       cancelLabel: "Cancel",
-    //     ),
-    //     iOsPrompt: IOsPrompt(
-    //       touchIdText: "Authenticate",
-    //     )));
-
-    return null;
-    // // Check if Key is found
-    // if (result == null || result.isEmpty) {
-    //   return null;
-    // }
-
-    // // Decode Key
-    // return LockerItem.fromString(json.decode(result));
-  }
-
   // Generate AES Key and then insert into storage
   //
   // Returns: LockerItem or null if failed
-  static Future<LockerItem?> generateAndStoreKey() async {
-    // // Check current state
-    // final hasLocker = await FlutterLocker.canAuthenticate() ?? false;
-    // if (!hasLocker && !kDebugMode) {
-    //   return null;
-    // }
-
-    // Generate AES Key
-    final algorithm = AesGcm.with128bits();
+  static Future<Uint8List> generateDSCKey() async {
+    final algorithm = AesCbc.with256bits(
+      macAlgorithm: Hmac.sha256(),
+    );
     final secretKey = await algorithm.newSecretKey();
-    final item = await LockerItem.fromSecretKey(secretKey);
-
-    // Store AES Key in Locker or Temporary Storage
-    //if (hasLocker) {
-    // await FlutterLocker.save(SaveSecretRequest(
-    //   key: item.key,
-    //   secret: item.secret,
-    //   // androidPrompt: AndroidPrompt(title: "Authenticate", cancelLabel: "Cancel"),
-    // ));
-    //}
-    return item;
+    final secretKeyBytes = await secretKey.extractBytes();
+    return Uint8List.fromList(secretKeyBytes);
   }
-
-  // HELPER: Get Deterministic Key Name for storage
-  // static Future<String> _getKeyName() async {
-  //   final deviceInfo = await DeviceInformation.get();
-  //   return "SNR_MOTOR_${deviceInfo.model.toLowerCase()}";
-  // }
 }
 
 // LockerItem is a wrapper class for the underlying AES SecretKey

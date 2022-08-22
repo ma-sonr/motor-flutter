@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:motor_flutter_example/pages/staging_page.dart';
 
 class PayPage extends StatefulWidget {
   final String peerId;
@@ -54,14 +55,14 @@ class _PayPageState extends State<PayPage> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Expanded(
+                const Expanded(
                   child: MaterialButton(
                     textColor: Colors.white,
                     height: 64,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    onPressed: () {},
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    onPressed: null, // () => PayPageController.to.redirectToConfirmPage(PaymentOperation.receive),
                     color: Colors.purple,
-                    child: const Text(
+                    child: Text(
                       "Receive",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -71,7 +72,7 @@ class _PayPageState extends State<PayPage> {
                   child: MaterialButton(
                     height: 64,
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    onPressed: () {},
+                    onPressed: () => PayPageController.to.redirectToConfirmPage(PaymentOperation.send),
                     color: Colors.greenAccent,
                     child: const Text(
                       "Send",
@@ -161,6 +162,34 @@ class PayPageController extends GetxController {
   final amount = Rx<String>("0");
   final recipientId = Rx<String>("UNKNOWN");
   static PayPageController get to => Get.find<PayPageController>();
+
+  double get amountDouble => double.tryParse(amount.value) ?? 0.0;
+
+  void redirectToConfirmPage(PaymentOperation operation) {
+    if (amountDouble > 0) {
+      Get.to(StagingPage(
+        amount: amountDouble,
+        operation: operation,
+      ));
+
+      Future.delayed(const Duration(milliseconds: 500), () {
+        amount.value = "0";
+        recipientId.value = "UNKNOWN";
+      });
+    } else {
+      Get.snackbar(
+        "Error",
+        "Please enter a valid amount",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        borderRadius: 8,
+        margin: const EdgeInsets.all(8),
+        snackStyle: SnackStyle.FLOATING,
+        animationDuration: const Duration(milliseconds: 600),
+      );
+    }
+  }
 
   void handleIndexPressed(int index) {
     if (index == 11) {
