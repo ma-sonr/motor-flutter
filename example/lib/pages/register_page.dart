@@ -95,10 +95,10 @@ class LoginWidget extends StatelessWidget {
           )),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-            child: Text("A Preview by the Sonr team for the future of the internet",
+            child: Text("A Quick Preview for the future of the internet, powered by the Sonr Motor node.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: 16,
                   color: Colors.white60,
                 )),
           ),
