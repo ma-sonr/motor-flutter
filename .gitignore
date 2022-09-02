@@ -32,3 +32,4 @@ android/libs
 .packages
 build/
 node_modules/
+ios/Frameworks/
