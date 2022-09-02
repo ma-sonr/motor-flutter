@@ -1,12 +1,20 @@
-# Motor for Flutter
+# motor_flutter
 
-Flutter bindings for the Sonr Motor Node.
+Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io).
 
 ## Installation
 
+Integrating into your existing Flutter project
+```yaml
+dependencies:
+  motor_flutter: ^0.0.1
+```
+
+Cloing the Plugin
 ```sh
-flutter pub get motor_flutter
-pub global activate derry
+git clone git@github.com:sonr-io/motor-flutter.git
+sh scripts/download.sh
+sh scripts/proto.sh
 ```
 
 ## Usage
