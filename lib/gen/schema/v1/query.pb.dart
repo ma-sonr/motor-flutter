@@ -10,10 +10,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'params.pb.dart' as $13;
+import 'params.pb.dart' as $15;
 import '../../cosmos/base/query/v1beta1/pagination.pb.dart' as $2;
-import 'what_is.pb.dart' as $6;
-import 'schema.pb.dart' as $5;
+import 'what_is.pb.dart' as $9;
+import 'schema.pb.dart' as $6;
 
 class QueryParamsRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
@@ -46,13 +46,13 @@ class QueryParamsRequest extends $pb.GeneratedMessage {
 
 class QueryParamsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOM<$13.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $13.Params.create)
+    ..aOM<$15.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $15.Params.create)
     ..hasRequiredFields = false
   ;
 
   QueryParamsResponse._() : super();
   factory QueryParamsResponse({
-    $13.Params? params,
+    $15.Params? params,
   }) {
     final _result = create();
     if (params != null) {
@@ -82,15 +82,15 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
   static QueryParamsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $13.Params get params => $_getN(0);
+  $15.Params get params => $_getN(0);
   @$pb.TagNumber(1)
-  set params($13.Params v) { setField(1, v); }
+  set params($15.Params v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasParams() => $_has(0);
   @$pb.TagNumber(1)
   void clearParams() => clearField(1);
   @$pb.TagNumber(1)
-  $13.Params ensureParams() => $_ensure(0);
+  $15.Params ensureParams() => $_ensure(0);
 }
 
 class QueryAllWhatIsRequest extends $pb.GeneratedMessage {
@@ -144,14 +144,14 @@ class QueryAllWhatIsRequest extends $pb.GeneratedMessage {
 
 class QueryAllWhatIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAllWhatIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..pc<$6.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', $pb.PbFieldType.PM, subBuilder: $6.WhatIs.create)
+    ..pc<$9.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', $pb.PbFieldType.PM, subBuilder: $9.WhatIs.create)
     ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   QueryAllWhatIsResponse._() : super();
   factory QueryAllWhatIsResponse({
-    $core.Iterable<$6.WhatIs>? whatIs,
+    $core.Iterable<$9.WhatIs>? whatIs,
     $2.PageResponse? pagination,
   }) {
     final _result = create();
@@ -185,7 +185,7 @@ class QueryAllWhatIsResponse extends $pb.GeneratedMessage {
   static QueryAllWhatIsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$6.WhatIs> get whatIs => $_getList(0);
+  $core.List<$9.WhatIs> get whatIs => $_getList(0);
 
   @$pb.TagNumber(2)
   $2.PageResponse get pagination => $_getN(1);
@@ -386,13 +386,13 @@ class QueryWhatIsCreatorRequest extends $pb.GeneratedMessage {
 
 class QuerySchemaResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QuerySchemaResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOM<$5.SchemaDefinition>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'definition', subBuilder: $5.SchemaDefinition.create)
+    ..aOM<$6.SchemaDefinition>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'definition', subBuilder: $6.SchemaDefinition.create)
     ..hasRequiredFields = false
   ;
 
   QuerySchemaResponse._() : super();
   factory QuerySchemaResponse({
-    $5.SchemaDefinition? definition,
+    $6.SchemaDefinition? definition,
   }) {
     final _result = create();
     if (definition != null) {
@@ -422,26 +422,89 @@ class QuerySchemaResponse extends $pb.GeneratedMessage {
   static QuerySchemaResponse? _defaultInstance;
 
   @$pb.TagNumber(2)
-  $5.SchemaDefinition get definition => $_getN(0);
+  $6.SchemaDefinition get definition => $_getN(0);
   @$pb.TagNumber(2)
-  set definition($5.SchemaDefinition v) { setField(2, v); }
+  set definition($6.SchemaDefinition v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasDefinition() => $_has(0);
   @$pb.TagNumber(2)
   void clearDefinition() => clearField(2);
   @$pb.TagNumber(2)
-  $5.SchemaDefinition ensureDefinition() => $_ensure(0);
+  $6.SchemaDefinition ensureDefinition() => $_ensure(0);
+}
+
+class QueryWhatIsByDidRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsByDidRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOM<$2.PageRequest>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageRequest.create)
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhatIsByDidRequest._() : super();
+  factory QueryWhatIsByDidRequest({
+    $core.String? did,
+    $2.PageRequest? pagination,
+  }) {
+    final _result = create();
+    if (did != null) {
+      _result.did = did;
+    }
+    if (pagination != null) {
+      _result.pagination = pagination;
+    }
+    return _result;
+  }
+  factory QueryWhatIsByDidRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhatIsByDidRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsByDidRequest clone() => QueryWhatIsByDidRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsByDidRequest copyWith(void Function(QueryWhatIsByDidRequest) updates) => super.copyWith((message) => updates(message as QueryWhatIsByDidRequest)) as QueryWhatIsByDidRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsByDidRequest create() => QueryWhatIsByDidRequest._();
+  QueryWhatIsByDidRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryWhatIsByDidRequest> createRepeated() => $pb.PbList<QueryWhatIsByDidRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsByDidRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhatIsByDidRequest>(create);
+  static QueryWhatIsByDidRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get did => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set did($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $2.PageRequest get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($2.PageRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $2.PageRequest ensurePagination() => $_ensure(1);
 }
 
 class QueryWhatIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOM<$6.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $6.WhatIs.create)
+    ..aOM<$9.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $9.WhatIs.create)
     ..hasRequiredFields = false
   ;
 
   QueryWhatIsResponse._() : super();
   factory QueryWhatIsResponse({
-    $6.WhatIs? whatIs,
+    $9.WhatIs? whatIs,
   }) {
     final _result = create();
     if (whatIs != null) {
@@ -471,26 +534,26 @@ class QueryWhatIsResponse extends $pb.GeneratedMessage {
   static QueryWhatIsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $6.WhatIs get whatIs => $_getN(0);
+  $9.WhatIs get whatIs => $_getN(0);
   @$pb.TagNumber(1)
-  set whatIs($6.WhatIs v) { setField(1, v); }
+  set whatIs($9.WhatIs v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasWhatIs() => $_has(0);
   @$pb.TagNumber(1)
   void clearWhatIs() => clearField(1);
   @$pb.TagNumber(1)
-  $6.WhatIs ensureWhatIs() => $_ensure(0);
+  $9.WhatIs ensureWhatIs() => $_ensure(0);
 }
 
 class QueryWhatIsCreatorResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsCreatorResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..pc<$6.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', $pb.PbFieldType.PM, subBuilder: $6.WhatIs.create)
+    ..pc<$9.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', $pb.PbFieldType.PM, subBuilder: $9.WhatIs.create)
     ..hasRequiredFields = false
   ;
 
   QueryWhatIsCreatorResponse._() : super();
   factory QueryWhatIsCreatorResponse({
-    $core.Iterable<$6.WhatIs>? whatIs,
+    $core.Iterable<$9.WhatIs>? whatIs,
   }) {
     final _result = create();
     if (whatIs != null) {
@@ -520,7 +583,56 @@ class QueryWhatIsCreatorResponse extends $pb.GeneratedMessage {
   static QueryWhatIsCreatorResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$6.WhatIs> get whatIs => $_getList(0);
+  $core.List<$9.WhatIs> get whatIs => $_getList(0);
+}
+
+class QueryWhatIsByDidResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsByDidResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
+    ..aOM<$9.WhatIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $9.WhatIs.create)
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhatIsByDidResponse._() : super();
+  factory QueryWhatIsByDidResponse({
+    $9.WhatIs? whatIs,
+  }) {
+    final _result = create();
+    if (whatIs != null) {
+      _result.whatIs = whatIs;
+    }
+    return _result;
+  }
+  factory QueryWhatIsByDidResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhatIsByDidResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsByDidResponse clone() => QueryWhatIsByDidResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsByDidResponse copyWith(void Function(QueryWhatIsByDidResponse) updates) => super.copyWith((message) => updates(message as QueryWhatIsByDidResponse)) as QueryWhatIsByDidResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsByDidResponse create() => QueryWhatIsByDidResponse._();
+  QueryWhatIsByDidResponse createEmptyInstance() => create();
+  static $pb.PbList<QueryWhatIsByDidResponse> createRepeated() => $pb.PbList<QueryWhatIsByDidResponse>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsByDidResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhatIsByDidResponse>(create);
+  static QueryWhatIsByDidResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $9.WhatIs get whatIs => $_getN(0);
+  @$pb.TagNumber(1)
+  set whatIs($9.WhatIs v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasWhatIs() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearWhatIs() => clearField(1);
+  @$pb.TagNumber(1)
+  $9.WhatIs ensureWhatIs() => $_ensure(0);
 }
 
 class QueryApi {
@@ -542,6 +654,10 @@ class QueryApi {
   $async.Future<QueryWhatIsCreatorResponse> whatIsByCreator($pb.ClientContext? ctx, QueryWhatIsCreatorRequest request) {
     var emptyResponse = QueryWhatIsCreatorResponse();
     return _client.invoke<QueryWhatIsCreatorResponse>(ctx, 'Query', 'WhatIsByCreator', request, emptyResponse);
+  }
+  $async.Future<QueryWhatIsByDidResponse> whatIsByDid($pb.ClientContext? ctx, QueryWhatIsByDidRequest request) {
+    var emptyResponse = QueryWhatIsByDidResponse();
+    return _client.invoke<QueryWhatIsByDidResponse>(ctx, 'Query', 'WhatIsByDid', request, emptyResponse);
   }
   $async.Future<QueryAllWhatIsResponse> whatIsAll($pb.ClientContext? ctx, QueryAllWhatIsRequest request) {
     var emptyResponse = QueryAllWhatIsResponse();

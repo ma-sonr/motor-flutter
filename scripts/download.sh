@@ -15,13 +15,13 @@ rm -v ${ANDROID_LIB_DIR}/*
 mkdir -p ${TMP_DIR}
 
 echo "Downloading Release Asset (ios)..."
-gh release download --repo 'sonr-io/sonr' --pattern *_ios.tar.gz --dir ${TMP_DIR}
-tar -xvf ${TMP_DIR}/*_ios.tar.gz -C ${IOS_FRAMEWORK_DIR}
+gh release download --repo 'sonr-io/sonr' --pattern *-ios.tar.gz --dir ${TMP_DIR}
+tar -xf ${TMP_DIR}/*-ios.tar.gz -C ${IOS_FRAMEWORK_DIR}
 echo "\n"
 
 echo "Downloading Release Asset (android)..."
-gh release download --repo 'sonr-io/sonr' --pattern *_android.tar.gz --dir ${TMP_DIR}
-tar -xvf ${TMP_DIR}/*_android.tar.gz -C ${ANDROID_LIB_DIR}
+gh release download --repo 'sonr-io/sonr' --pattern *-android.tar.gz --dir ${TMP_DIR}
+tar -xf ${TMP_DIR}/*-android.tar.gz -C ${ANDROID_LIB_DIR}
 echo "\n"
 
 echo "Cleanup..."

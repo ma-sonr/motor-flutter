@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/clients/query.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:motor_flutter_example/pages/home_page.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
 import 'package:motor_flutter_example/clients/motor.dart';
@@ -19,6 +19,7 @@ Future<void> main() async {
   //   permanent: true,
   // );
   // Check Platform
+  await GetStorage.init("motor_example_auth");
   runApp(const InitialPage());
 }
 
@@ -34,9 +35,7 @@ class InitialPage extends StatelessWidget {
       navigatorObservers: [
         GetObserver(),
       ],
-      home: MotorService.to.authorized.value
-          ? const HomePage()
-          : const RegisterPage(),
+      home: MotorService.to.authorized.value ? const HomePage() : const RegisterPage(),
     );
   }
 

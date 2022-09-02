@@ -10,20 +10,20 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'schema.pb.dart' as $5;
-import 'what_is.pb.dart' as $6;
+import 'schema.pb.dart' as $6;
+import 'what_is.pb.dart' as $9;
 
 class MsgCreateSchema extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateSchema', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOM<$5.SchemaDefinition>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'definition', subBuilder: $5.SchemaDefinition.create)
-    ..pc<$5.MetadataDefintion>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', $pb.PbFieldType.PM, subBuilder: $5.MetadataDefintion.create)
+    ..aOM<$6.SchemaDefinition>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'definition', subBuilder: $6.SchemaDefinition.create)
+    ..pc<$6.MetadataDefintion>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', $pb.PbFieldType.PM, subBuilder: $6.MetadataDefintion.create)
     ..hasRequiredFields = false
   ;
 
   MsgCreateSchema._() : super();
   factory MsgCreateSchema({
-    $5.SchemaDefinition? definition,
-    $core.Iterable<$5.MetadataDefintion>? metadata,
+    $6.SchemaDefinition? definition,
+    $core.Iterable<$6.MetadataDefintion>? metadata,
   }) {
     final _result = create();
     if (definition != null) {
@@ -56,25 +56,25 @@ class MsgCreateSchema extends $pb.GeneratedMessage {
   static MsgCreateSchema? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $5.SchemaDefinition get definition => $_getN(0);
+  $6.SchemaDefinition get definition => $_getN(0);
   @$pb.TagNumber(1)
-  set definition($5.SchemaDefinition v) { setField(1, v); }
+  set definition($6.SchemaDefinition v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasDefinition() => $_has(0);
   @$pb.TagNumber(1)
   void clearDefinition() => clearField(1);
   @$pb.TagNumber(1)
-  $5.SchemaDefinition ensureDefinition() => $_ensure(0);
+  $6.SchemaDefinition ensureDefinition() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.List<$5.MetadataDefintion> get metadata => $_getList(1);
+  $core.List<$6.MetadataDefintion> get metadata => $_getList(1);
 }
 
 class MsgCreateSchemaResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateSchemaResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..aOM<$6.WhatIs>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $6.WhatIs.create)
+    ..aOM<$9.WhatIs>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $9.WhatIs.create)
     ..hasRequiredFields = false
   ;
 
@@ -82,7 +82,7 @@ class MsgCreateSchemaResponse extends $pb.GeneratedMessage {
   factory MsgCreateSchemaResponse({
     $core.int? code,
     $core.String? message,
-    $6.WhatIs? whatIs,
+    $9.WhatIs? whatIs,
   }) {
     final _result = create();
     if (code != null) {
@@ -136,15 +136,15 @@ class MsgCreateSchemaResponse extends $pb.GeneratedMessage {
   void clearMessage() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.WhatIs get whatIs => $_getN(2);
+  $9.WhatIs get whatIs => $_getN(2);
   @$pb.TagNumber(3)
-  set whatIs($6.WhatIs v) { setField(3, v); }
+  set whatIs($9.WhatIs v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasWhatIs() => $_has(2);
   @$pb.TagNumber(3)
   void clearWhatIs() => clearField(3);
   @$pb.TagNumber(3)
-  $6.WhatIs ensureWhatIs() => $_ensure(2);
+  $9.WhatIs ensureWhatIs() => $_ensure(2);
 }
 
 class MsgDeprecateSchema extends $pb.GeneratedMessage {

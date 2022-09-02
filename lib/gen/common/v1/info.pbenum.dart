@@ -9,48 +9,38 @@
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class Direction extends $pb.ProtobufEnum {
-  static const Direction DIRECTION_UNSPECIFIED = Direction._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DIRECTION_UNSPECIFIED');
-  static const Direction DIRECTION_INCOMING = Direction._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DIRECTION_INCOMING');
-  static const Direction DIRECTION_OUTGOING = Direction._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DIRECTION_OUTGOING');
+class EntityKind extends $pb.ProtobufEnum {
+  static const EntityKind ADDRESS = EntityKind._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ADDRESS');
+  static const EntityKind DID = EntityKind._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DID');
+  static const EntityKind CID = EntityKind._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CID');
 
-  static const $core.List<Direction> values = <Direction> [
-    DIRECTION_UNSPECIFIED,
-    DIRECTION_INCOMING,
-    DIRECTION_OUTGOING,
+  static const $core.List<EntityKind> values = <EntityKind> [
+    ADDRESS,
+    DID,
+    CID,
   ];
 
-  static final $core.Map<$core.int, Direction> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static Direction? valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, EntityKind> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static EntityKind? valueOf($core.int value) => _byValue[value];
 
-  const Direction._($core.int v, $core.String n) : super(v, n);
+  const EntityKind._($core.int v, $core.String n) : super(v, n);
 }
 
-class MIME_Type extends $pb.ProtobufEnum {
-  static const MIME_Type TYPE_UNSPECIFIED = MIME_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_UNSPECIFIED');
-  static const MIME_Type TYPE_AUDIO = MIME_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_AUDIO');
-  static const MIME_Type TYPE_DOCUMENT = MIME_Type._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_DOCUMENT');
-  static const MIME_Type TYPE_IMAGE = MIME_Type._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_IMAGE');
-  static const MIME_Type TYPE_TEXT = MIME_Type._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_TEXT');
-  static const MIME_Type TYPE_VIDEO = MIME_Type._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_VIDEO');
-  static const MIME_Type TYPE_URL = MIME_Type._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_URL');
-  static const MIME_Type TYPE_CRYPTO = MIME_Type._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TYPE_CRYPTO');
+class BlockchainModule extends $pb.ProtobufEnum {
+  static const BlockchainModule REGISTRY = BlockchainModule._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REGISTRY');
+  static const BlockchainModule SCHEMA = BlockchainModule._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SCHEMA');
+  static const BlockchainModule BUCKET = BlockchainModule._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'BUCKET');
 
-  static const $core.List<MIME_Type> values = <MIME_Type> [
-    TYPE_UNSPECIFIED,
-    TYPE_AUDIO,
-    TYPE_DOCUMENT,
-    TYPE_IMAGE,
-    TYPE_TEXT,
-    TYPE_VIDEO,
-    TYPE_URL,
-    TYPE_CRYPTO,
+  static const $core.List<BlockchainModule> values = <BlockchainModule> [
+    REGISTRY,
+    SCHEMA,
+    BUCKET,
   ];
 
-  static final $core.Map<$core.int, MIME_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static MIME_Type? valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, BlockchainModule> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static BlockchainModule? valueOf($core.int value) => _byValue[value];
 
-  const MIME_Type._($core.int v, $core.String n) : super(v, n);
+  const BlockchainModule._($core.int v, $core.String n) : super(v, n);
 }
 
 class Peer_Status extends $pb.ProtobufEnum {

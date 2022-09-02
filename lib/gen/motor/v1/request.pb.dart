@@ -10,7 +10,11 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../schema/v1/schema.pbenum.dart' as $5;
+import '../../bucket/where_is.pb.dart' as $0;
+
+import '../../common/v1/info.pbenum.dart' as $5;
+import '../../schema/v1/schema.pbenum.dart' as $6;
+import '../../bucket/where_is.pbenum.dart' as $0;
 
 class InitializeRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
@@ -20,9 +24,10 @@ class InitializeRequest extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tempDir')
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enableHost')
     ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enableDiscovery')
-    ..a<$core.double>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discoveryLatitude', $pb.PbFieldType.OD)
-    ..a<$core.double>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discoveryLongitude', $pb.PbFieldType.OD)
-    ..a<$core.List<$core.int>>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceKeyprintPub', $pb.PbFieldType.OY)
+    ..aOB(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enableQuery')
+    ..a<$core.double>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discoveryLatitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'discoveryLongitude', $pb.PbFieldType.OD)
+    ..a<$core.List<$core.int>>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceKeyprintPub', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
@@ -34,6 +39,7 @@ class InitializeRequest extends $pb.GeneratedMessage {
     $core.String? tempDir,
     $core.bool? enableHost,
     $core.bool? enableDiscovery,
+    $core.bool? enableQuery,
     $core.double? discoveryLatitude,
     $core.double? discoveryLongitude,
     $core.List<$core.int>? deviceKeyprintPub,
@@ -56,6 +62,9 @@ class InitializeRequest extends $pb.GeneratedMessage {
     }
     if (enableDiscovery != null) {
       _result.enableDiscovery = enableDiscovery;
+    }
+    if (enableQuery != null) {
+      _result.enableQuery = enableQuery;
     }
     if (discoveryLatitude != null) {
       _result.discoveryLatitude = discoveryLatitude;
@@ -144,31 +153,40 @@ class InitializeRequest extends $pb.GeneratedMessage {
   void clearEnableDiscovery() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.double get discoveryLatitude => $_getN(6);
+  $core.bool get enableQuery => $_getBF(6);
   @$pb.TagNumber(7)
-  set discoveryLatitude($core.double v) { $_setDouble(6, v); }
+  set enableQuery($core.bool v) { $_setBool(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasDiscoveryLatitude() => $_has(6);
+  $core.bool hasEnableQuery() => $_has(6);
   @$pb.TagNumber(7)
-  void clearDiscoveryLatitude() => clearField(7);
+  void clearEnableQuery() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.double get discoveryLongitude => $_getN(7);
+  $core.double get discoveryLatitude => $_getN(7);
   @$pb.TagNumber(8)
-  set discoveryLongitude($core.double v) { $_setDouble(7, v); }
+  set discoveryLatitude($core.double v) { $_setDouble(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasDiscoveryLongitude() => $_has(7);
+  $core.bool hasDiscoveryLatitude() => $_has(7);
   @$pb.TagNumber(8)
-  void clearDiscoveryLongitude() => clearField(8);
+  void clearDiscoveryLatitude() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.List<$core.int> get deviceKeyprintPub => $_getN(8);
+  $core.double get discoveryLongitude => $_getN(8);
   @$pb.TagNumber(9)
-  set deviceKeyprintPub($core.List<$core.int> v) { $_setBytes(8, v); }
+  set discoveryLongitude($core.double v) { $_setDouble(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasDeviceKeyprintPub() => $_has(8);
+  $core.bool hasDiscoveryLongitude() => $_has(8);
   @$pb.TagNumber(9)
-  void clearDeviceKeyprintPub() => clearField(9);
+  void clearDiscoveryLongitude() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.List<$core.int> get deviceKeyprintPub => $_getN(9);
+  @$pb.TagNumber(10)
+  set deviceKeyprintPub($core.List<$core.int> v) { $_setBytes(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasDeviceKeyprintPub() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearDeviceKeyprintPub() => clearField(10);
 }
 
 class CreateAccountRequest extends $pb.GeneratedMessage {
@@ -329,10 +347,221 @@ class LoginRequest extends $pb.GeneratedMessage {
   void clearAesPskKey() => clearField(4);
 }
 
+class QueryRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'query')
+    ..e<$5.EntityKind>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: $5.EntityKind.ADDRESS, valueOf: $5.EntityKind.valueOf, enumValues: $5.EntityKind.values)
+    ..e<$5.BlockchainModule>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'module', $pb.PbFieldType.OE, defaultOrMaker: $5.BlockchainModule.REGISTRY, valueOf: $5.BlockchainModule.valueOf, enumValues: $5.BlockchainModule.values)
+    ..hasRequiredFields = false
+  ;
+
+  QueryRequest._() : super();
+  factory QueryRequest({
+    $core.String? query,
+    $5.EntityKind? kind,
+    $5.BlockchainModule? module,
+  }) {
+    final _result = create();
+    if (query != null) {
+      _result.query = query;
+    }
+    if (kind != null) {
+      _result.kind = kind;
+    }
+    if (module != null) {
+      _result.module = module;
+    }
+    return _result;
+  }
+  factory QueryRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryRequest clone() => QueryRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryRequest copyWith(void Function(QueryRequest) updates) => super.copyWith((message) => updates(message as QueryRequest)) as QueryRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryRequest create() => QueryRequest._();
+  QueryRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryRequest> createRepeated() => $pb.PbList<QueryRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryRequest>(create);
+  static QueryRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get query => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set query($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasQuery() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearQuery() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $5.EntityKind get kind => $_getN(1);
+  @$pb.TagNumber(2)
+  set kind($5.EntityKind v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasKind() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearKind() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $5.BlockchainModule get module => $_getN(2);
+  @$pb.TagNumber(3)
+  set module($5.BlockchainModule v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasModule() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearModule() => clearField(3);
+}
+
+class PaymentRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PaymentRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memo')
+    ..hasRequiredFields = false
+  ;
+
+  PaymentRequest._() : super();
+  factory PaymentRequest({
+    $core.String? to,
+    $core.String? from,
+    $fixnum.Int64? amount,
+    $core.String? memo,
+  }) {
+    final _result = create();
+    if (to != null) {
+      _result.to = to;
+    }
+    if (from != null) {
+      _result.from = from;
+    }
+    if (amount != null) {
+      _result.amount = amount;
+    }
+    if (memo != null) {
+      _result.memo = memo;
+    }
+    return _result;
+  }
+  factory PaymentRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PaymentRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PaymentRequest clone() => PaymentRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PaymentRequest copyWith(void Function(PaymentRequest) updates) => super.copyWith((message) => updates(message as PaymentRequest)) as PaymentRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PaymentRequest create() => PaymentRequest._();
+  PaymentRequest createEmptyInstance() => create();
+  static $pb.PbList<PaymentRequest> createRepeated() => $pb.PbList<PaymentRequest>();
+  @$core.pragma('dart2js:noInline')
+  static PaymentRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PaymentRequest>(create);
+  static PaymentRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get to => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set to($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTo() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTo() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get from => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set from($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFrom() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFrom() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get amount => $_getI64(2);
+  @$pb.TagNumber(3)
+  set amount($fixnum.Int64 v) { $_setInt64(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAmount() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAmount() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get memo => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set memo($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMemo() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMemo() => clearField(4);
+}
+
+class QueryWhoIsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhoIsRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhoIsRequest._() : super();
+  factory QueryWhoIsRequest({
+    $core.String? did,
+  }) {
+    final _result = create();
+    if (did != null) {
+      _result.did = did;
+    }
+    return _result;
+  }
+  factory QueryWhoIsRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhoIsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhoIsRequest clone() => QueryWhoIsRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhoIsRequest copyWith(void Function(QueryWhoIsRequest) updates) => super.copyWith((message) => updates(message as QueryWhoIsRequest)) as QueryWhoIsRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhoIsRequest create() => QueryWhoIsRequest._();
+  QueryWhoIsRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryWhoIsRequest> createRepeated() => $pb.PbList<QueryWhoIsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhoIsRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhoIsRequest>(create);
+  static QueryWhoIsRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get did => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set did($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDid() => clearField(1);
+}
+
 class CreateSchemaRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateSchemaRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
-    ..m<$core.String, $5.SchemaKind>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fields', entryClassName: 'CreateSchemaRequest.FieldsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OE, valueOf: $5.SchemaKind.valueOf, enumValues: $5.SchemaKind.values, defaultEnumValue: $5.SchemaKind.LIST, packageName: const $pb.PackageName('sonrio.motor.api.v1'))
+    ..m<$core.String, $6.SchemaKind>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fields', entryClassName: 'CreateSchemaRequest.FieldsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OE, valueOf: $6.SchemaKind.valueOf, enumValues: $6.SchemaKind.values, defaultEnumValue: $6.SchemaKind.LIST, packageName: const $pb.PackageName('sonrio.motor.api.v1'))
     ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', entryClassName: 'CreateSchemaRequest.MetadataEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonrio.motor.api.v1'))
     ..hasRequiredFields = false
   ;
@@ -340,7 +569,7 @@ class CreateSchemaRequest extends $pb.GeneratedMessage {
   CreateSchemaRequest._() : super();
   factory CreateSchemaRequest({
     $core.String? label,
-    $core.Map<$core.String, $5.SchemaKind>? fields,
+    $core.Map<$core.String, $6.SchemaKind>? fields,
     $core.Map<$core.String, $core.String>? metadata,
   }) {
     final _result = create();
@@ -386,7 +615,7 @@ class CreateSchemaRequest extends $pb.GeneratedMessage {
   void clearLabel() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.Map<$core.String, $5.SchemaKind> get fields => $_getMap(1);
+  $core.Map<$core.String, $6.SchemaKind> get fields => $_getMap(1);
 
   @$pb.TagNumber(3)
   $core.Map<$core.String, $core.String> get metadata => $_getMap(2);
@@ -453,6 +682,53 @@ class QueryWhatIsRequest extends $pb.GeneratedMessage {
   void clearDid() => clearField(2);
 }
 
+class QueryWhatIsByCreatorRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhatIsByCreatorRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhatIsByCreatorRequest._() : super();
+  factory QueryWhatIsByCreatorRequest({
+    $core.String? creator,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    return _result;
+  }
+  factory QueryWhatIsByCreatorRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhatIsByCreatorRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsByCreatorRequest clone() => QueryWhatIsByCreatorRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhatIsByCreatorRequest copyWith(void Function(QueryWhatIsByCreatorRequest) updates) => super.copyWith((message) => updates(message as QueryWhatIsByCreatorRequest)) as QueryWhatIsByCreatorRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsByCreatorRequest create() => QueryWhatIsByCreatorRequest._();
+  QueryWhatIsByCreatorRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryWhatIsByCreatorRequest> createRepeated() => $pb.PbList<QueryWhatIsByCreatorRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhatIsByCreatorRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhatIsByCreatorRequest>(create);
+  static QueryWhatIsByCreatorRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+}
+
 class QuerySchemaRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QuerySchemaRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
@@ -514,92 +790,394 @@ class QuerySchemaRequest extends $pb.GeneratedMessage {
   void clearDid() => clearField(2);
 }
 
-class SendTokenRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendTokenRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from')
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'memo')
+class QueryWhereIsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhereIsRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
     ..hasRequiredFields = false
   ;
 
-  SendTokenRequest._() : super();
-  factory SendTokenRequest({
-    $core.String? to,
-    $core.String? from,
-    $fixnum.Int64? amount,
-    $core.String? memo,
+  QueryWhereIsRequest._() : super();
+  factory QueryWhereIsRequest({
+    $core.String? creator,
+    $core.String? did,
   }) {
     final _result = create();
-    if (to != null) {
-      _result.to = to;
+    if (creator != null) {
+      _result.creator = creator;
     }
-    if (from != null) {
-      _result.from = from;
-    }
-    if (amount != null) {
-      _result.amount = amount;
-    }
-    if (memo != null) {
-      _result.memo = memo;
+    if (did != null) {
+      _result.did = did;
     }
     return _result;
   }
-  factory SendTokenRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SendTokenRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory QueryWhereIsRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhereIsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  SendTokenRequest clone() => SendTokenRequest()..mergeFromMessage(this);
+  QueryWhereIsRequest clone() => QueryWhereIsRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SendTokenRequest copyWith(void Function(SendTokenRequest) updates) => super.copyWith((message) => updates(message as SendTokenRequest)) as SendTokenRequest; // ignore: deprecated_member_use
+  QueryWhereIsRequest copyWith(void Function(QueryWhereIsRequest) updates) => super.copyWith((message) => updates(message as QueryWhereIsRequest)) as QueryWhereIsRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static SendTokenRequest create() => SendTokenRequest._();
-  SendTokenRequest createEmptyInstance() => create();
-  static $pb.PbList<SendTokenRequest> createRepeated() => $pb.PbList<SendTokenRequest>();
+  static QueryWhereIsRequest create() => QueryWhereIsRequest._();
+  QueryWhereIsRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryWhereIsRequest> createRepeated() => $pb.PbList<QueryWhereIsRequest>();
   @$core.pragma('dart2js:noInline')
-  static SendTokenRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendTokenRequest>(create);
-  static SendTokenRequest? _defaultInstance;
+  static QueryWhereIsRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhereIsRequest>(create);
+  static QueryWhereIsRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get to => $_getSZ(0);
+  $core.String get creator => $_getSZ(0);
   @$pb.TagNumber(1)
-  set to($core.String v) { $_setString(0, v); }
+  set creator($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasTo() => $_has(0);
+  $core.bool hasCreator() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTo() => clearField(1);
+  void clearCreator() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get from => $_getSZ(1);
+  $core.String get did => $_getSZ(1);
   @$pb.TagNumber(2)
-  set from($core.String v) { $_setString(1, v); }
+  set did($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFrom() => $_has(1);
+  $core.bool hasDid() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFrom() => clearField(2);
+  void clearDid() => clearField(2);
+}
+
+class QueryWhereIsByCreatorRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhereIsByCreatorRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..hasRequiredFields = false
+  ;
+
+  QueryWhereIsByCreatorRequest._() : super();
+  factory QueryWhereIsByCreatorRequest({
+    $core.String? creator,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    return _result;
+  }
+  factory QueryWhereIsByCreatorRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory QueryWhereIsByCreatorRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  QueryWhereIsByCreatorRequest clone() => QueryWhereIsByCreatorRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  QueryWhereIsByCreatorRequest copyWith(void Function(QueryWhereIsByCreatorRequest) updates) => super.copyWith((message) => updates(message as QueryWhereIsByCreatorRequest)) as QueryWhereIsByCreatorRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static QueryWhereIsByCreatorRequest create() => QueryWhereIsByCreatorRequest._();
+  QueryWhereIsByCreatorRequest createEmptyInstance() => create();
+  static $pb.PbList<QueryWhereIsByCreatorRequest> createRepeated() => $pb.PbList<QueryWhereIsByCreatorRequest>();
+  @$core.pragma('dart2js:noInline')
+  static QueryWhereIsByCreatorRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryWhereIsByCreatorRequest>(create);
+  static QueryWhereIsByCreatorRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+}
+
+class CreateBucketRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateBucketRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
+    ..e<$0.BucketVisibility>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'visibility', $pb.PbFieldType.OE, defaultOrMaker: $0.BucketVisibility.UNSPECIFIED, valueOf: $0.BucketVisibility.valueOf, enumValues: $0.BucketVisibility.values)
+    ..e<$0.BucketRole>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: $0.BucketRole.NONE, valueOf: $0.BucketRole.valueOf, enumValues: $0.BucketRole.values)
+    ..pc<$0.BucketItem>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content', $pb.PbFieldType.PM, subBuilder: $0.BucketItem.create)
+    ..hasRequiredFields = false
+  ;
+
+  CreateBucketRequest._() : super();
+  factory CreateBucketRequest({
+    $core.String? creator,
+    $core.String? label,
+    $0.BucketVisibility? visibility,
+    $0.BucketRole? role,
+    $core.Iterable<$0.BucketItem>? content,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (label != null) {
+      _result.label = label;
+    }
+    if (visibility != null) {
+      _result.visibility = visibility;
+    }
+    if (role != null) {
+      _result.role = role;
+    }
+    if (content != null) {
+      _result.content.addAll(content);
+    }
+    return _result;
+  }
+  factory CreateBucketRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CreateBucketRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CreateBucketRequest clone() => CreateBucketRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CreateBucketRequest copyWith(void Function(CreateBucketRequest) updates) => super.copyWith((message) => updates(message as CreateBucketRequest)) as CreateBucketRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateBucketRequest create() => CreateBucketRequest._();
+  CreateBucketRequest createEmptyInstance() => create();
+  static $pb.PbList<CreateBucketRequest> createRepeated() => $pb.PbList<CreateBucketRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CreateBucketRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateBucketRequest>(create);
+  static CreateBucketRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get label => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set label($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLabel() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLabel() => clearField(2);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get amount => $_getI64(2);
+  $0.BucketVisibility get visibility => $_getN(2);
   @$pb.TagNumber(3)
-  set amount($fixnum.Int64 v) { $_setInt64(2, v); }
+  set visibility($0.BucketVisibility v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasAmount() => $_has(2);
+  $core.bool hasVisibility() => $_has(2);
   @$pb.TagNumber(3)
-  void clearAmount() => clearField(3);
+  void clearVisibility() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get memo => $_getSZ(3);
+  $0.BucketRole get role => $_getN(3);
   @$pb.TagNumber(4)
-  set memo($core.String v) { $_setString(3, v); }
+  set role($0.BucketRole v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasMemo() => $_has(3);
+  $core.bool hasRole() => $_has(3);
   @$pb.TagNumber(4)
-  void clearMemo() => clearField(4);
+  void clearRole() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$0.BucketItem> get content => $_getList(4);
+}
+
+class UpdateBucketRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UpdateBucketRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
+    ..e<$0.BucketVisibility>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'visibility', $pb.PbFieldType.OE, defaultOrMaker: $0.BucketVisibility.UNSPECIFIED, valueOf: $0.BucketVisibility.valueOf, enumValues: $0.BucketVisibility.values)
+    ..e<$0.BucketRole>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role', $pb.PbFieldType.OE, defaultOrMaker: $0.BucketRole.NONE, valueOf: $0.BucketRole.valueOf, enumValues: $0.BucketRole.values)
+    ..pc<$0.BucketItem>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content', $pb.PbFieldType.PM, subBuilder: $0.BucketItem.create)
+    ..hasRequiredFields = false
+  ;
+
+  UpdateBucketRequest._() : super();
+  factory UpdateBucketRequest({
+    $core.String? creator,
+    $core.String? did,
+    $core.String? label,
+    $0.BucketVisibility? visibility,
+    $0.BucketRole? role,
+    $core.Iterable<$0.BucketItem>? content,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (did != null) {
+      _result.did = did;
+    }
+    if (label != null) {
+      _result.label = label;
+    }
+    if (visibility != null) {
+      _result.visibility = visibility;
+    }
+    if (role != null) {
+      _result.role = role;
+    }
+    if (content != null) {
+      _result.content.addAll(content);
+    }
+    return _result;
+  }
+  factory UpdateBucketRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UpdateBucketRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UpdateBucketRequest clone() => UpdateBucketRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UpdateBucketRequest copyWith(void Function(UpdateBucketRequest) updates) => super.copyWith((message) => updates(message as UpdateBucketRequest)) as UpdateBucketRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateBucketRequest create() => UpdateBucketRequest._();
+  UpdateBucketRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdateBucketRequest> createRepeated() => $pb.PbList<UpdateBucketRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateBucketRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UpdateBucketRequest>(create);
+  static UpdateBucketRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get did => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set did($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get label => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set label($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLabel() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLabel() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $0.BucketVisibility get visibility => $_getN(3);
+  @$pb.TagNumber(4)
+  set visibility($0.BucketVisibility v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasVisibility() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearVisibility() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $0.BucketRole get role => $_getN(4);
+  @$pb.TagNumber(5)
+  set role($0.BucketRole v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasRole() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearRole() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<$0.BucketItem> get content => $_getList(5);
+}
+
+class SeachBucketContentBySchemaRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SeachBucketContentBySchemaRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bucketDid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'schemaDid')
+    ..hasRequiredFields = false
+  ;
+
+  SeachBucketContentBySchemaRequest._() : super();
+  factory SeachBucketContentBySchemaRequest({
+    $core.String? creator,
+    $core.String? bucketDid,
+    $core.String? schemaDid,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (bucketDid != null) {
+      _result.bucketDid = bucketDid;
+    }
+    if (schemaDid != null) {
+      _result.schemaDid = schemaDid;
+    }
+    return _result;
+  }
+  factory SeachBucketContentBySchemaRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SeachBucketContentBySchemaRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SeachBucketContentBySchemaRequest clone() => SeachBucketContentBySchemaRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SeachBucketContentBySchemaRequest copyWith(void Function(SeachBucketContentBySchemaRequest) updates) => super.copyWith((message) => updates(message as SeachBucketContentBySchemaRequest)) as SeachBucketContentBySchemaRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SeachBucketContentBySchemaRequest create() => SeachBucketContentBySchemaRequest._();
+  SeachBucketContentBySchemaRequest createEmptyInstance() => create();
+  static $pb.PbList<SeachBucketContentBySchemaRequest> createRepeated() => $pb.PbList<SeachBucketContentBySchemaRequest>();
+  @$core.pragma('dart2js:noInline')
+  static SeachBucketContentBySchemaRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SeachBucketContentBySchemaRequest>(create);
+  static SeachBucketContentBySchemaRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get bucketDid => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set bucketDid($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasBucketDid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBucketDid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get schemaDid => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set schemaDid($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSchemaDid() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSchemaDid() => clearField(3);
 }
 

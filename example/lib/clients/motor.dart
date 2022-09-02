@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:biometric_storage/biometric_storage.dart';
 import 'package:motor_flutter/motor_flutter.dart';
+import 'package:motor_flutter_example/models/auth_box.dart';
 import 'package:motor_flutter_example/models/query_response.dart';
 import 'package:motor_flutter_example/pages/home_page.dart';
 
@@ -55,48 +53,30 @@ class MotorService extends GetxService {
 
     // Wrap instance method with try catch
     try {
-      final result = await instance.createAccount(password);
-      final resp = result.item1;
-      final dscKey = result.item2;
-
-      // Create Auth Entry
-      final authEntry = AuthInfo(
-        address: resp?.address,
-        aesDscKey: dscKey,
-        aesPskKey: Uint8List.fromList(resp?.aesPsk ?? []),
-        password: password,
-      );
-      await _storeAuthInfo(authEntry);
-      _debugPrint(resp?.toDebugString());
-      callback(resp);
+      final resp = await instance.createAccount(password);
+      if (resp == null) {
+        _debugPrint("Create Account Failed");
+        return null;
+      }
+      final auth = AuthInfoExt.fromResponse(resp, password);
+      AuthInfoBox().saveAuthInfo(auth);
       authorized(true);
+      callback(resp);
     } catch (e) {
       _debugPrint(e.toString());
-      callback(null);
-      authorized(true); // This should be commented out when production
     }
   }
 
-  Future<void> login() async {
-    // Get Auth Info
-    final authEntry = await _getAuthInfo();
-    if (authEntry == null) {
-      _debugPrint("No Auth Info Found");
-      return;
+  Future<void> login({required void Function(LoginResponse?) callback}) async {
+    try {
+      final ai = AuthInfoBox().getAuthInfo();
+      final resp = await instance.login(ai.did, ai.password, ai.aesDscKey, ai.aesPskKey);
+      _debugPrint(resp?.toDebugString());
+      authorized(true);
+      callback(resp);
+    } catch (e) {
+      _debugPrint(e.toString());
     }
-    final result = await instance.login(
-      authEntry.did,
-      authEntry.password ?? "",
-      authEntry.aesDscKey,
-      authEntry.aesPskKey,
-    );
-    if (result == null) {
-      _debugPrint("Login Failed");
-      return;
-    }
-    _debugPrint(result.toDebugString());
-    authorized(true);
-    Get.offAll(const HomePage());
   }
 
   Future<QueryAccountsResponse> fetchAllAccounts() async {
@@ -139,80 +119,12 @@ class MotorService extends GetxService {
     _debugPrint(event.toDebugString());
   }
 
-  Future<bool> _storeAuthInfo(AuthInfo authInfo) async {
-    final response = await BiometricStorage().canAuthenticate();
-    if (response == CanAuthenticateResponse.success) {
-      final store = await BiometricStorage().getStorage('motorauth');
-      await store.write(authInfo.toString());
-      return true;
-    } else {
-      _debugPrint("User does not have biometric capabilities");
-      return false;
+  void _debugPrint(String? msg) {
+    if (msg == null) {
+      return;
     }
-  }
-
-  Future<AuthInfo?> _getAuthInfo() async {
-    final response = await BiometricStorage().canAuthenticate();
-    if (response == CanAuthenticateResponse.success) {
-      final store = await BiometricStorage().getStorage('motorauth');
-      final val = await store.read();
-      if (val != null) {
-        return AuthInfo.fromJsonString(val);
-      } else {
-        return null;
-      }
-    } else {
-      _debugPrint("User does not have biometric capabilities");
-      return null;
+    if (kDebugMode) {
+      print("[MotorService - Flutter]: $msg");
     }
-  }
-}
-
-void _debugPrint(String? msg) {
-  if (msg == null) {
-    return;
-  }
-  if (kDebugMode) {
-    print("[MotorService - Flutter]: $msg");
-  }
-}
-
-class AuthInfo {
-  Uint8List? aesPskKey;
-  Uint8List? aesDscKey;
-  String? password;
-  String? address;
-
-  AuthInfo({this.aesPskKey, this.aesDscKey, this.password, this.address});
-
-  String get did {
-    final adjAddr = address?.replaceFirst("snr", "");
-    return "did:snr:$adjAddr";
-  }
-
-  factory AuthInfo.fromJsonString(String json) {
-    final map = jsonDecode(json);
-    return AuthInfo.fromJson(map);
-  }
-
-  AuthInfo.fromJson(Map<String, dynamic> json) {
-    aesPskKey = base64Decode(json['aesPskKey']);
-    aesDscKey = base64Decode(json['aesDscKey']);
-    password = json['password'];
-    address = json['address'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['aes_psk_key'] = base64Encode(aesPskKey?.toList() ?? <int>[]);
-    data['aes_dsc_key'] = base64Encode(aesDscKey?.toList() ?? <int>[]);
-    data['password'] = password;
-    data['address'] = address;
-    return data;
-  }
-
-  @override
-  String toString() {
-    return jsonEncode(toJson());
   }
 }

@@ -10,14 +10,14 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../common/v1/info.pb.dart' as $16;
+import '../../common/v1/info.pb.dart' as $5;
 
 class MailboxMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MailboxMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body', $pb.PbFieldType.OY)
-    ..aOM<$16.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $16.Peer.create)
-    ..aOM<$16.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $16.Peer.create)
+    ..aOM<$5.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $5.Peer.create)
+    ..aOM<$5.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $5.Peer.create)
     ..a<$core.List<$core.int>>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
     ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt')
     ..hasRequiredFields = false
@@ -27,8 +27,8 @@ class MailboxMessage extends $pb.GeneratedMessage {
   factory MailboxMessage({
     $core.String? id,
     $core.List<$core.int>? body,
-    $16.Peer? from,
-    $16.Peer? to,
+    $5.Peer? from,
+    $5.Peer? to,
     $core.List<$core.int>? signature,
     $fixnum.Int64? createdAt,
   }) {
@@ -93,26 +93,26 @@ class MailboxMessage extends $pb.GeneratedMessage {
   void clearBody() => clearField(2);
 
   @$pb.TagNumber(3)
-  $16.Peer get from => $_getN(2);
+  $5.Peer get from => $_getN(2);
   @$pb.TagNumber(3)
-  set from($16.Peer v) { setField(3, v); }
+  set from($5.Peer v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasFrom() => $_has(2);
   @$pb.TagNumber(3)
   void clearFrom() => clearField(3);
   @$pb.TagNumber(3)
-  $16.Peer ensureFrom() => $_ensure(2);
+  $5.Peer ensureFrom() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $16.Peer get to => $_getN(3);
+  $5.Peer get to => $_getN(3);
   @$pb.TagNumber(4)
-  set to($16.Peer v) { setField(4, v); }
+  set to($5.Peer v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasTo() => $_has(3);
   @$pb.TagNumber(4)
   void clearTo() => clearField(4);
   @$pb.TagNumber(4)
-  $16.Peer ensureTo() => $_ensure(3);
+  $5.Peer ensureTo() => $_ensure(3);
 
   @$pb.TagNumber(5)
   $core.List<$core.int> get signature => $_getN(4);
@@ -137,8 +137,8 @@ class InviteRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InviteRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
-    ..aOM<$16.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $16.Peer.create)
-    ..aOM<$16.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $16.Peer.create)
+    ..aOM<$5.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $5.Peer.create)
+    ..aOM<$5.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $5.Peer.create)
     ..hasRequiredFields = false
   ;
 
@@ -146,8 +146,8 @@ class InviteRequest extends $pb.GeneratedMessage {
   factory InviteRequest({
     $core.List<$core.int>? body,
     $core.List<$core.int>? signature,
-    $16.Peer? from,
-    $16.Peer? to,
+    $5.Peer? from,
+    $5.Peer? to,
   }) {
     final _result = create();
     if (body != null) {
@@ -204,26 +204,26 @@ class InviteRequest extends $pb.GeneratedMessage {
   void clearSignature() => clearField(2);
 
   @$pb.TagNumber(3)
-  $16.Peer get from => $_getN(2);
+  $5.Peer get from => $_getN(2);
   @$pb.TagNumber(3)
-  set from($16.Peer v) { setField(3, v); }
+  set from($5.Peer v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasFrom() => $_has(2);
   @$pb.TagNumber(3)
   void clearFrom() => clearField(3);
   @$pb.TagNumber(3)
-  $16.Peer ensureFrom() => $_ensure(2);
+  $5.Peer ensureFrom() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $16.Peer get to => $_getN(3);
+  $5.Peer get to => $_getN(3);
   @$pb.TagNumber(4)
-  set to($16.Peer v) { setField(4, v); }
+  set to($5.Peer v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasTo() => $_has(3);
   @$pb.TagNumber(4)
   void clearTo() => clearField(4);
   @$pb.TagNumber(4)
-  $16.Peer ensureTo() => $_ensure(3);
+  $5.Peer ensureTo() => $_ensure(3);
 }
 
 class InviteResponse extends $pb.GeneratedMessage {
@@ -231,8 +231,8 @@ class InviteResponse extends $pb.GeneratedMessage {
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'decision')
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
-    ..aOM<$16.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $16.Peer.create)
-    ..aOM<$16.Peer>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $16.Peer.create)
+    ..aOM<$5.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $5.Peer.create)
+    ..aOM<$5.Peer>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $5.Peer.create)
     ..hasRequiredFields = false
   ;
 
@@ -241,8 +241,8 @@ class InviteResponse extends $pb.GeneratedMessage {
     $core.bool? decision,
     $core.List<$core.int>? body,
     $core.List<$core.int>? signature,
-    $16.Peer? from,
-    $16.Peer? to,
+    $5.Peer? from,
+    $5.Peer? to,
   }) {
     final _result = create();
     if (decision != null) {
@@ -311,25 +311,25 @@ class InviteResponse extends $pb.GeneratedMessage {
   void clearSignature() => clearField(3);
 
   @$pb.TagNumber(4)
-  $16.Peer get from => $_getN(3);
+  $5.Peer get from => $_getN(3);
   @$pb.TagNumber(4)
-  set from($16.Peer v) { setField(4, v); }
+  set from($5.Peer v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasFrom() => $_has(3);
   @$pb.TagNumber(4)
   void clearFrom() => clearField(4);
   @$pb.TagNumber(4)
-  $16.Peer ensureFrom() => $_ensure(3);
+  $5.Peer ensureFrom() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $16.Peer get to => $_getN(4);
+  $5.Peer get to => $_getN(4);
   @$pb.TagNumber(5)
-  set to($16.Peer v) { setField(5, v); }
+  set to($5.Peer v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasTo() => $_has(4);
   @$pb.TagNumber(5)
   void clearTo() => clearField(5);
   @$pb.TagNumber(5)
-  $16.Peer ensureTo() => $_ensure(4);
+  $5.Peer ensureTo() => $_ensure(4);
 }
 

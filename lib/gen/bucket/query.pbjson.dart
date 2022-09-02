@@ -8,8 +8,8 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'params.pbjson.dart' as $0;
-import 'where_is.pbjson.dart' as $1;
+import 'params.pbjson.dart' as $1;
+import 'where_is.pbjson.dart' as $0;
 import '../cosmos/base/query/v1beta1/pagination.pbjson.dart' as $2;
 
 @$core.Deprecated('Use queryParamsRequestDescriptor instead')
@@ -107,14 +107,14 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
   '.sonrio.sonr.bucket.QueryParamsRequest': QueryParamsRequest$json,
   '.sonrio.sonr.bucket.QueryParamsResponse': QueryParamsResponse$json,
-  '.sonrio.sonr.bucket.Params': $0.Params$json,
+  '.sonrio.sonr.bucket.Params': $1.Params$json,
   '.sonrio.sonr.bucket.QueryGetWhereIsRequest': QueryGetWhereIsRequest$json,
   '.sonrio.sonr.bucket.QueryGetWhereIsResponse': QueryGetWhereIsResponse$json,
-  '.sonrio.sonr.bucket.WhereIs': $1.WhereIs$json,
-  '.sonrio.sonr.bucket.BucketItem': $1.BucketItem$json,
-  '.sonrio.sonr.bucket.WhereIs.ContentAclEntry': $1.WhereIs_ContentAclEntry$json,
-  '.sonrio.sonr.bucket.AclJwks': $1.AclJwks$json,
-  '.sonrio.sonr.bucket.AclJwks.EncryptedJwksEntry': $1.AclJwks_EncryptedJwksEntry$json,
+  '.sonrio.sonr.bucket.WhereIs': $0.WhereIs$json,
+  '.sonrio.sonr.bucket.BucketItem': $0.BucketItem$json,
+  '.sonrio.sonr.bucket.WhereIs.ContentAclEntry': $0.WhereIs_ContentAclEntry$json,
+  '.sonrio.sonr.bucket.AclJwks': $0.AclJwks$json,
+  '.sonrio.sonr.bucket.AclJwks.EncryptedJwksEntry': $0.AclJwks_EncryptedJwksEntry$json,
   '.sonrio.sonr.bucket.QueryGetWhereIsByCreatorRequest': QueryGetWhereIsByCreatorRequest$json,
   '.cosmos.base.query.v1beta1.PageRequest': $2.PageRequest$json,
   '.sonrio.sonr.bucket.QueryGetWhereIsByCreatorResponse': QueryGetWhereIsByCreatorResponse$json,

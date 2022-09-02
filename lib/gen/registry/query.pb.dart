@@ -10,8 +10,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'params.pb.dart' as $8;
-import 'who_is.pb.dart' as $9;
+import 'params.pb.dart' as $11;
+import 'who_is.pb.dart' as $8;
 import '../cosmos/base/query/v1beta1/pagination.pb.dart' as $2;
 
 class QueryParamsRequest extends $pb.GeneratedMessage {
@@ -45,13 +45,13 @@ class QueryParamsRequest extends $pb.GeneratedMessage {
 
 class QueryParamsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
-    ..aOM<$8.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $8.Params.create)
+    ..aOM<$11.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $11.Params.create)
     ..hasRequiredFields = false
   ;
 
   QueryParamsResponse._() : super();
   factory QueryParamsResponse({
-    $8.Params? params,
+    $11.Params? params,
   }) {
     final _result = create();
     if (params != null) {
@@ -81,15 +81,15 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
   static QueryParamsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $8.Params get params => $_getN(0);
+  $11.Params get params => $_getN(0);
   @$pb.TagNumber(1)
-  set params($8.Params v) { setField(1, v); }
+  set params($11.Params v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasParams() => $_has(0);
   @$pb.TagNumber(1)
   void clearParams() => clearField(1);
   @$pb.TagNumber(1)
-  $8.Params ensureParams() => $_ensure(0);
+  $11.Params ensureParams() => $_ensure(0);
 }
 
 class QueryWhoIsRequest extends $pb.GeneratedMessage {
@@ -141,13 +141,13 @@ class QueryWhoIsRequest extends $pb.GeneratedMessage {
 
 class QueryWhoIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhoIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
-    ..aOM<$9.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', protoName: 'WhoIs', subBuilder: $9.WhoIs.create)
+    ..aOM<$8.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', protoName: 'WhoIs', subBuilder: $8.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   QueryWhoIsResponse._() : super();
   factory QueryWhoIsResponse({
-    $9.WhoIs? whoIs,
+    $8.WhoIs? whoIs,
   }) {
     final _result = create();
     if (whoIs != null) {
@@ -177,15 +177,15 @@ class QueryWhoIsResponse extends $pb.GeneratedMessage {
   static QueryWhoIsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $9.WhoIs get whoIs => $_getN(0);
+  $8.WhoIs get whoIs => $_getN(0);
   @$pb.TagNumber(1)
-  set whoIs($9.WhoIs v) { setField(1, v); }
+  set whoIs($8.WhoIs v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasWhoIs() => $_has(0);
   @$pb.TagNumber(1)
   void clearWhoIs() => clearField(1);
   @$pb.TagNumber(1)
-  $9.WhoIs ensureWhoIs() => $_ensure(0);
+  $8.WhoIs ensureWhoIs() => $_ensure(0);
 }
 
 class QueryAllWhoIsRequest extends $pb.GeneratedMessage {
@@ -239,14 +239,14 @@ class QueryAllWhoIsRequest extends $pb.GeneratedMessage {
 
 class QueryAllWhoIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAllWhoIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
-    ..pc<$9.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', $pb.PbFieldType.PM, protoName: 'WhoIs', subBuilder: $9.WhoIs.create)
+    ..pc<$8.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', $pb.PbFieldType.PM, protoName: 'WhoIs', subBuilder: $8.WhoIs.create)
     ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   QueryAllWhoIsResponse._() : super();
   factory QueryAllWhoIsResponse({
-    $core.Iterable<$9.WhoIs>? whoIs,
+    $core.Iterable<$8.WhoIs>? whoIs,
     $2.PageResponse? pagination,
   }) {
     final _result = create();
@@ -280,7 +280,7 @@ class QueryAllWhoIsResponse extends $pb.GeneratedMessage {
   static QueryAllWhoIsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$9.WhoIs> get whoIs => $_getList(0);
+  $core.List<$8.WhoIs> get whoIs => $_getList(0);
 
   @$pb.TagNumber(2)
   $2.PageResponse get pagination => $_getN(1);
@@ -343,13 +343,13 @@ class QueryWhoIsAliasRequest extends $pb.GeneratedMessage {
 
 class QueryWhoIsAliasResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhoIsAliasResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
-    ..aOM<$9.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', protoName: 'WhoIs', subBuilder: $9.WhoIs.create)
+    ..aOM<$8.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', protoName: 'WhoIs', subBuilder: $8.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   QueryWhoIsAliasResponse._() : super();
   factory QueryWhoIsAliasResponse({
-    $9.WhoIs? whoIs,
+    $8.WhoIs? whoIs,
   }) {
     final _result = create();
     if (whoIs != null) {
@@ -379,15 +379,15 @@ class QueryWhoIsAliasResponse extends $pb.GeneratedMessage {
   static QueryWhoIsAliasResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $9.WhoIs get whoIs => $_getN(0);
+  $8.WhoIs get whoIs => $_getN(0);
   @$pb.TagNumber(1)
-  set whoIs($9.WhoIs v) { setField(1, v); }
+  set whoIs($8.WhoIs v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasWhoIs() => $_has(0);
   @$pb.TagNumber(1)
   void clearWhoIs() => clearField(1);
   @$pb.TagNumber(1)
-  $9.WhoIs ensureWhoIs() => $_ensure(0);
+  $8.WhoIs ensureWhoIs() => $_ensure(0);
 }
 
 class QueryWhoIsControllerRequest extends $pb.GeneratedMessage {
@@ -439,13 +439,13 @@ class QueryWhoIsControllerRequest extends $pb.GeneratedMessage {
 
 class QueryWhoIsControllerResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryWhoIsControllerResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
-    ..aOM<$9.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', protoName: 'WhoIs', subBuilder: $9.WhoIs.create)
+    ..aOM<$8.WhoIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'WhoIs', protoName: 'WhoIs', subBuilder: $8.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   QueryWhoIsControllerResponse._() : super();
   factory QueryWhoIsControllerResponse({
-    $9.WhoIs? whoIs,
+    $8.WhoIs? whoIs,
   }) {
     final _result = create();
     if (whoIs != null) {
@@ -475,15 +475,15 @@ class QueryWhoIsControllerResponse extends $pb.GeneratedMessage {
   static QueryWhoIsControllerResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $9.WhoIs get whoIs => $_getN(0);
+  $8.WhoIs get whoIs => $_getN(0);
   @$pb.TagNumber(1)
-  set whoIs($9.WhoIs v) { setField(1, v); }
+  set whoIs($8.WhoIs v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasWhoIs() => $_has(0);
   @$pb.TagNumber(1)
   void clearWhoIs() => clearField(1);
   @$pb.TagNumber(1)
-  $9.WhoIs ensureWhoIs() => $_ensure(0);
+  $8.WhoIs ensureWhoIs() => $_ensure(0);
 }
 
 class QueryApi {

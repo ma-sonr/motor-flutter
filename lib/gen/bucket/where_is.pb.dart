@@ -208,6 +208,7 @@ class BucketItem extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uri')
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
     ..e<ResourceIdentifier>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: ResourceIdentifier.None, valueOf: ResourceIdentifier.valueOf, enumValues: ResourceIdentifier.values)
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'schemaDid')
     ..hasRequiredFields = false
   ;
 
@@ -217,6 +218,7 @@ class BucketItem extends $pb.GeneratedMessage {
     $core.String? uri,
     $fixnum.Int64? timestamp,
     ResourceIdentifier? type,
+    $core.String? schemaDid,
   }) {
     final _result = create();
     if (name != null) {
@@ -230,6 +232,9 @@ class BucketItem extends $pb.GeneratedMessage {
     }
     if (type != null) {
       _result.type = type;
+    }
+    if (schemaDid != null) {
+      _result.schemaDid = schemaDid;
     }
     return _result;
   }
@@ -289,5 +294,14 @@ class BucketItem extends $pb.GeneratedMessage {
   $core.bool hasType() => $_has(3);
   @$pb.TagNumber(4)
   void clearType() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get schemaDid => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set schemaDid($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSchemaDid() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSchemaDid() => clearField(5);
 }
 

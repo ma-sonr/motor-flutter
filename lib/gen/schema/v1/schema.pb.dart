@@ -240,19 +240,24 @@ class SchemaReference extends $pb.GeneratedMessage {
 
 class SchemaDefinition extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SchemaDefinition', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
-    ..pc<SchemaKindDefinition>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fields', $pb.PbFieldType.PM, subBuilder: SchemaKindDefinition.create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
+    ..pc<SchemaKindDefinition>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fields', $pb.PbFieldType.PM, subBuilder: SchemaKindDefinition.create)
     ..hasRequiredFields = false
   ;
 
   SchemaDefinition._() : super();
   factory SchemaDefinition({
+    $core.String? did,
     $core.String? creator,
     $core.String? label,
     $core.Iterable<SchemaKindDefinition>? fields,
   }) {
     final _result = create();
+    if (did != null) {
+      _result.did = did;
+    }
     if (creator != null) {
       _result.creator = creator;
     }
@@ -286,24 +291,33 @@ class SchemaDefinition extends $pb.GeneratedMessage {
   static SchemaDefinition? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get creator => $_getSZ(0);
+  $core.String get did => $_getSZ(0);
   @$pb.TagNumber(1)
-  set creator($core.String v) { $_setString(0, v); }
+  set did($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasCreator() => $_has(0);
+  $core.bool hasDid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCreator() => clearField(1);
+  void clearDid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get label => $_getSZ(1);
+  $core.String get creator => $_getSZ(1);
   @$pb.TagNumber(2)
-  set label($core.String v) { $_setString(1, v); }
+  set creator($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasLabel() => $_has(1);
+  $core.bool hasCreator() => $_has(1);
   @$pb.TagNumber(2)
-  void clearLabel() => clearField(2);
+  void clearCreator() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<SchemaKindDefinition> get fields => $_getList(2);
+  $core.String get label => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set label($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLabel() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLabel() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<SchemaKindDefinition> get fields => $_getList(3);
 }
 

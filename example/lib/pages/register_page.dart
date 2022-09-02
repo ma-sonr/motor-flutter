@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:motor_flutter_example/clients/motor.dart';
-import 'package:video_player/video_player.dart';
+import 'package:motor_flutter_example/models/auth_box.dart';
 
 import 'home_page.dart';
 
@@ -20,50 +20,16 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    // Pointing the video controller to our local asset.
-    _controller = VideoPlayerController.asset("assets/bg-loop.mp4")
-      ..initialize().then((_) {
-        // Once the video has been loaded we play the video and set looping to true.
-        _controller.setLooping(true);
-        _controller.play();
-        // Ensure the first frame is shown after the video is initialized.
-        setState(() {});
-      });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            SizedBox.expand(
-              child: FittedBox(
-                // If your background video doesn't look right, try changing the BoxFit property.
-                // BoxFit.fill created the look I was going for.
-                fit: BoxFit.cover,
-                child: SizedBox(
-                  width: _controller.value.size.width,
-                  height: _controller.value.size.height,
-                  child: VideoPlayer(_controller),
-                ),
-              ),
-            ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              color: Colors.black26,
+              color: Colors.black,
             ),
             Container(
               margin: const EdgeInsets.only(top: 72, bottom: 32),
@@ -145,8 +111,8 @@ class LoginWidget extends StatelessWidget {
                       'Already have an account? Login',
                       style: TextStyle(color: Colors.grey.shade800, fontSize: 12),
                     ),
-                    onPressed: () {
-                      Get.to(const AccountLoginPage());
+                    onPressed: () async {
+                      Get.to(const AccountLoadingPage(password: "", title: "Logging in..."));
                     },
                   ),
                 ),
@@ -203,10 +169,10 @@ class AccountCreationPage extends StatelessWidget {
                 UppercaseValidationRule(),
                 // LowercaseValidationRule(),
                 SpecialCharacterValidationRule(),
-                MinCharactersValidationRule(12),
+                MinCharactersValidationRule(8),
               },
               onFieldSubmitted: (String value) {
-                Get.off(RegisterLoadingPage(password: value));
+                Get.off(AccountLoadingPage(title: "Registering...", password: value));
               },
             ),
           ),
@@ -216,15 +182,16 @@ class AccountCreationPage extends StatelessWidget {
   }
 }
 
-class RegisterLoadingPage extends StatefulWidget {
+class AccountLoadingPage extends StatefulWidget {
+  final String title;
   final String password;
-  const RegisterLoadingPage({Key? key, required this.password}) : super(key: key);
+  const AccountLoadingPage({Key? key, required this.password, required this.title}) : super(key: key);
 
   @override
-  State<RegisterLoadingPage> createState() => _RegisterLoadingPageState();
+  State<AccountLoadingPage> createState() => _AccountLoadingPageState();
 }
 
-class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
+class _AccountLoadingPageState extends State<AccountLoadingPage> {
   final loadingQuotes = [
     "Generating MPC Wallet",
     "Building your DID Document",
@@ -244,7 +211,11 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
   @override
   void initState() {
     super.initState();
-    _createAccount();
+    if (widget.password == "") {
+      _loginAccount();
+    } else {
+      _createAccount();
+    }
   }
 
   @override
@@ -300,12 +271,38 @@ class _RegisterLoadingPageState extends State<RegisterLoadingPage> {
     MotorService.to.createAccount(widget.password, callback: (res) {
       setState(() {
         if (kDebugMode) {
-          print("Account generation is finished!");
+          print("Account generation is finished - took ${(_stopwatch.elapsedMilliseconds / 1000).toString()}s");
+          print("Response:${res.toString()}");
         }
         _isFinished = true;
       });
     });
-    Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    Timer.periodic(const Duration(milliseconds: 125), (timer) {
+      if (_isFinished) {
+        timer.cancel();
+        _redirect();
+      } else {
+        setState(() {
+          double elapsed = _stopwatch.elapsedMilliseconds / 1000;
+          _progress = (elapsed).toStringAsFixed(1);
+          _quote = loadingQuotes[elapsed.floor() % loadingQuotes.length];
+        });
+      }
+    });
+  }
+
+  Future<void> _loginAccount() async {
+    _stopwatch.start();
+    MotorService.to.login(callback: (res) {
+      setState(() {
+        if (kDebugMode) {
+          print("Account generation is finished - took ${(_stopwatch.elapsedMilliseconds / 1000).toString()}s");
+          print("Response:${res.toString()}");
+        }
+        _isFinished = true;
+      });
+    });
+    Timer.periodic(const Duration(milliseconds: 125), (timer) {
       if (_isFinished) {
         timer.cancel();
         _redirect();

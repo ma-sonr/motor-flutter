@@ -6,6 +6,7 @@ Flutter bindings for the Sonr Motor Node.
 
 ```sh
 flutter pub get motor_flutter
+pub global activate derry
 ```
 
 ## Usage

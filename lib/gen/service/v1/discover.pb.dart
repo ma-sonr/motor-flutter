@@ -10,11 +10,11 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../common/v1/info.pb.dart' as $16;
+import '../../common/v1/info.pb.dart' as $5;
 
 class LobbyMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LobbyMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
-    ..aOM<$16.Peer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $16.Peer.create)
+    ..aOM<$5.Peer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $5.Peer.create)
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt')
@@ -23,7 +23,7 @@ class LobbyMessage extends $pb.GeneratedMessage {
 
   LobbyMessage._() : super();
   factory LobbyMessage({
-    $16.Peer? from,
+    $5.Peer? from,
     $core.List<$core.int>? body,
     $core.List<$core.int>? signature,
     $fixnum.Int64? createdAt,
@@ -65,15 +65,15 @@ class LobbyMessage extends $pb.GeneratedMessage {
   static LobbyMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $16.Peer get from => $_getN(0);
+  $5.Peer get from => $_getN(0);
   @$pb.TagNumber(1)
-  set from($16.Peer v) { setField(1, v); }
+  set from($5.Peer v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasFrom() => $_has(0);
   @$pb.TagNumber(1)
   void clearFrom() => clearField(1);
   @$pb.TagNumber(1)
-  $16.Peer ensureFrom() => $_ensure(0);
+  $5.Peer ensureFrom() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<$core.int> get body => $_getN(1);
@@ -106,7 +106,7 @@ class LobbyMessage extends $pb.GeneratedMessage {
 class RefreshEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RefreshEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'topicName')
-    ..pc<$16.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peers', $pb.PbFieldType.PM, subBuilder: $16.Peer.create)
+    ..pc<$5.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peers', $pb.PbFieldType.PM, subBuilder: $5.Peer.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receivedAt')
     ..hasRequiredFields = false
   ;
@@ -114,7 +114,7 @@ class RefreshEvent extends $pb.GeneratedMessage {
   RefreshEvent._() : super();
   factory RefreshEvent({
     $core.String? topicName,
-    $core.Iterable<$16.Peer>? peers,
+    $core.Iterable<$5.Peer>? peers,
     $fixnum.Int64? receivedAt,
   }) {
     final _result = create();
@@ -160,7 +160,7 @@ class RefreshEvent extends $pb.GeneratedMessage {
   void clearTopicName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$16.Peer> get peers => $_getList(1);
+  $core.List<$5.Peer> get peers => $_getList(1);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get receivedAt => $_getI64(2);

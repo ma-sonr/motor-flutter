@@ -102,8 +102,9 @@ const BucketItem$json = const {
     const {'1': 'uri', '3': 2, '4': 1, '5': 9, '10': 'uri'},
     const {'1': 'timestamp', '3': 3, '4': 1, '5': 3, '10': 'timestamp'},
     const {'1': 'type', '3': 4, '4': 1, '5': 14, '6': '.sonrio.sonr.bucket.ResourceIdentifier', '10': 'type'},
+    const {'1': 'schema_did', '3': 5, '4': 1, '5': 9, '10': 'schemaDid'},
   ],
 };
 
 /// Descriptor for `BucketItem`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List bucketItemDescriptor = $convert.base64Decode('CgpCdWNrZXRJdGVtEhIKBG5hbWUYASABKAlSBG5hbWUSEAoDdXJpGAIgASgJUgN1cmkSHAoJdGltZXN0YW1wGAMgASgDUgl0aW1lc3RhbXASOgoEdHlwZRgEIAEoDjImLnNvbnJpby5zb25yLmJ1Y2tldC5SZXNvdXJjZUlkZW50aWZpZXJSBHR5cGU=');
+final $typed_data.Uint8List bucketItemDescriptor = $convert.base64Decode('CgpCdWNrZXRJdGVtEhIKBG5hbWUYASABKAlSBG5hbWUSEAoDdXJpGAIgASgJUgN1cmkSHAoJdGltZXN0YW1wGAMgASgDUgl0aW1lc3RhbXASOgoEdHlwZRgEIAEoDjImLnNvbnJpby5zb25yLmJ1Y2tldC5SZXNvdXJjZUlkZW50aWZpZXJSBHR5cGUSHQoKc2NoZW1hX2RpZBgFIAEoCVIJc2NoZW1hRGlk');

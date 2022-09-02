@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:motor_flutter/gen/generated.dart';
@@ -10,7 +8,6 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('io.sonr.motor/MethodChannel');
-
 
   @override
   Future<InitializeResponse?> initialize(InitializeRequest req) async {
@@ -89,6 +86,4 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
-
-
 }

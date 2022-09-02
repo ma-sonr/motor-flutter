@@ -10,27 +10,27 @@ import 'dart:async' as $async;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'dart:core' as $core;
-import 'tx.pb.dart' as $15;
+import 'tx.pb.dart' as $17;
 import 'tx.pbjson.dart';
 
 export 'tx.pb.dart';
 
 abstract class MsgServiceBase extends $pb.GeneratedService {
-  $async.Future<$15.MsgCreateSchemaResponse> createSchema($pb.ServerContext ctx, $15.MsgCreateSchema request);
-  $async.Future<$15.MsgDeprecateSchemaResponse> deprecateSchema($pb.ServerContext ctx, $15.MsgDeprecateSchema request);
+  $async.Future<$17.MsgCreateSchemaResponse> createSchema($pb.ServerContext ctx, $17.MsgCreateSchema request);
+  $async.Future<$17.MsgDeprecateSchemaResponse> deprecateSchema($pb.ServerContext ctx, $17.MsgDeprecateSchema request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
-      case 'CreateSchema': return $15.MsgCreateSchema();
-      case 'DeprecateSchema': return $15.MsgDeprecateSchema();
+      case 'CreateSchema': return $17.MsgCreateSchema();
+      case 'DeprecateSchema': return $17.MsgDeprecateSchema();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
 
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
-      case 'CreateSchema': return this.createSchema(ctx, request as $15.MsgCreateSchema);
-      case 'DeprecateSchema': return this.deprecateSchema(ctx, request as $15.MsgDeprecateSchema);
+      case 'CreateSchema': return this.createSchema(ctx, request as $17.MsgCreateSchema);
+      case 'DeprecateSchema': return this.deprecateSchema(ctx, request as $17.MsgDeprecateSchema);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

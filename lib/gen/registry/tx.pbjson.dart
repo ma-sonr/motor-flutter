@@ -8,8 +8,8 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import '../cosmos/crypto/secp256k1/keys.pbjson.dart' as $11;
-import 'who_is.pbjson.dart' as $9;
+import '../cosmos/crypto/secp256k1/keys.pbjson.dart' as $13;
+import 'who_is.pbjson.dart' as $8;
 import 'did.pbjson.dart' as $7;
 
 @$core.Deprecated('Use msgCreateWhoIsDescriptor instead')
@@ -175,15 +175,15 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.sonrio.sonr.registry.MsgCreateWhoIs': MsgCreateWhoIs$json,
-  '.cosmos.crypto.secp256k1.PubKey': $11.PubKey$json,
+  '.cosmos.crypto.secp256k1.PubKey': $13.PubKey$json,
   '.sonrio.sonr.registry.MsgCreateWhoIsResponse': MsgCreateWhoIsResponse$json,
-  '.sonrio.sonr.registry.WhoIs': $9.WhoIs$json,
-  '.sonrio.sonr.registry.Alias': $9.Alias$json,
+  '.sonrio.sonr.registry.WhoIs': $8.WhoIs$json,
+  '.sonrio.sonr.registry.Alias': $8.Alias$json,
   '.sonrio.sonr.registry.DIDDocument': $7.DIDDocument$json,
   '.sonrio.sonr.registry.VerificationMethod': $7.VerificationMethod$json,
   '.sonrio.sonr.registry.KeyValuePair': $7.KeyValuePair$json,
   '.sonrio.sonr.registry.Service': $7.Service$json,
-  '.sonrio.sonr.registry.WhoIs.MetadataEntry': $9.WhoIs_MetadataEntry$json,
+  '.sonrio.sonr.registry.WhoIs.MetadataEntry': $8.WhoIs_MetadataEntry$json,
   '.sonrio.sonr.registry.MsgUpdateWhoIs': MsgUpdateWhoIs$json,
   '.sonrio.sonr.registry.MsgUpdateWhoIs.MetadataEntry': MsgUpdateWhoIs_MetadataEntry$json,
   '.sonrio.sonr.registry.MsgUpdateWhoIsResponse': MsgUpdateWhoIsResponse$json,

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter_example/clients/motor.dart';
+import 'package:motor_flutter_example/pages/register_page.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -28,15 +29,31 @@ class UserPage extends StatelessWidget {
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Colors.white70,
-                    minRadius: 60.0,
-                    child: CircleAvatar(
-                      radius: 50.0,
-                      child: Text(
-                        "MT",
-                        style: TextStyle(fontSize: 32),
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () => Get.bottomSheet(
+                      Container(
+                        color: Colors.white,
+                        height: 200,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: const Text('Logout'),
+                              onTap: () => Get.to(const RegisterPage()),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.white70,
+                      minRadius: 60.0,
+                      child: CircleAvatar(
+                        radius: 50.0,
+                        child: Text(
+                          "MT",
+                          style: TextStyle(fontSize: 32),
+                        ),
                       ),
                     ),
                   ),

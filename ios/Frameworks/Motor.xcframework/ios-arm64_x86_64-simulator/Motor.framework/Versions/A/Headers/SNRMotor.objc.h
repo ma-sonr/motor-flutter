@@ -16,30 +16,93 @@
 
 @protocol SNRMotorMotorCallback <NSObject>
 - (void)onDiscover:(NSData* _Nullable)data;
+- (void)onWalletCreated:(BOOL)ok;
 @end
+
+/**
+ * TODO: refactor this such that it accepts a CID
+ */
+FOUNDATION_EXPORT BOOL SNRMotorAddBucketObject(NSString* _Nullable bucketDid, NSData* _Nullable obj, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorAddListBool(NSString* _Nullable name, NSString* _Nullable fieldName, BOOL value, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorAddListBytes(NSString* _Nullable name, NSString* _Nullable fieldName, NSData* _Nullable value, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorAddListFloat(NSString* _Nullable name, NSString* _Nullable fieldName, float value, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorAddListInt(NSString* _Nullable name, NSString* _Nullable fieldName, long value, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorAddListString(NSString* _Nullable name, NSString* _Nullable fieldName, NSString* _Nullable value, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorBuildObject(NSString* _Nullable name, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorConnect(NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorCreateAccount(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorCreateSchema(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorGetBucketObject(NSString* _Nullable bucketDid, NSString* _Nullable cid, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorGetBucketObjects(NSString* _Nullable bucketDid, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorGetObject(NSString* _Nullable cid, NSError* _Nullable* _Nullable error);
+
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorInit(NSData* _Nullable buf, id<SNRMotorMotorCallback> _Nullable cb, NSError* _Nullable* _Nullable error);
+
+/**
+ * IssuePayment creates a send/receive token request to the specified address.
+ */
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorIssuePayment(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorLogin(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
-/**
- * QueryWhatIs returns the Document of the specified Schema.
- */
-FOUNDATION_EXPORT NSData* _Nullable SNRMotorQueryWhatIs(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+FOUNDATION_EXPORT BOOL SNRMotorNewObjectBuilder(NSString* _Nullable name, NSString* _Nullable schemaDid, NSError* _Nullable* _Nullable error);
 
-/**
- * SendTokens sends tokens to the specified address.
- */
-FOUNDATION_EXPORT NSData* _Nullable SNRMotorSendTokens(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorQueryBucket(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorQueryBucketByCreator(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorQuerySchema(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorQuerySchemaByCreator(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorQuerySchemaByDid(NSString* _Nullable did, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorRemoveBucketObject(NSString* _Nullable bucketDid, NSString* _Nullable cid, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorRemoveListItem(NSString* _Nullable name, NSString* _Nullable fieldName, long index, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorRemoveObjectField(NSString* _Nullable name, NSString* _Nullable fieldName, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorResolveBucket(NSString* _Nullable did, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorResolveSubBucket(NSString* _Nullable bucketDid, NSString* _Nullable subBucketDid, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetBool(NSString* _Nullable name, NSString* _Nullable fieldName, long v, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetBytes(NSString* _Nullable name, NSString* _Nullable fieldName, NSData* _Nullable v, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetFloat(NSString* _Nullable name, NSString* _Nullable fieldName, float v, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetInt(NSString* _Nullable name, NSString* _Nullable fieldName, long v, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetLink(NSString* _Nullable name, NSString* _Nullable fieldName, NSString* _Nullable value, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetObjectLabel(NSString* _Nullable name, NSString* _Nullable label, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorSetString(NSString* _Nullable name, NSString* _Nullable fieldName, NSString* _Nullable value, NSError* _Nullable* _Nullable error);
 
 /**
  * Stat returns general information about the Motor node its wallet and accompanying Account.
  */
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorStat(NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorUpdateBucketLabel(NSString* _Nullable bucketDid, NSString* _Nullable label, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT BOOL SNRMotorUpdateBucketVisibility(NSString* _Nullable bucketDid, long vis, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable SNRMotorUploadObject(NSString* _Nullable name, NSError* _Nullable* _Nullable error);
 
 @class SNRMotorMotorCallback;
 
@@ -49,6 +112,7 @@ FOUNDATION_EXPORT NSData* _Nullable SNRMotorStat(NSError* _Nullable* _Nullable e
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (void)onDiscover:(NSData* _Nullable)data;
+- (void)onWalletCreated:(BOOL)ok;
 @end
 
 #endif

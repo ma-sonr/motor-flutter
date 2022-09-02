@@ -111,6 +111,26 @@ const MsgUpdateParamsResponse$json = const {
 
 /// Descriptor for `MsgUpdateParamsResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgUpdateParamsResponseDescriptor = $convert.base64Decode('ChdNc2dVcGRhdGVQYXJhbXNSZXNwb25zZQ==');
+@$core.Deprecated('Use msgCommunityPoolSpendDescriptor instead')
+const MsgCommunityPoolSpend$json = const {
+  '1': 'MsgCommunityPoolSpend',
+  '2': const [
+    const {'1': 'authority', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'authority'},
+    const {'1': 'recipient', '3': 2, '4': 1, '5': 9, '10': 'recipient'},
+    const {'1': 'amount', '3': 3, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'amount'},
+  ],
+  '7': const {},
+};
+
+/// Descriptor for `MsgCommunityPoolSpend`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgCommunityPoolSpendDescriptor = $convert.base64Decode('ChVNc2dDb21tdW5pdHlQb29sU3BlbmQSNgoJYXV0aG9yaXR5GAEgASgJQhjStC0UY29zbW9zLkFkZHJlc3NTdHJpbmdSCWF1dGhvcml0eRIcCglyZWNpcGllbnQYAiABKAlSCXJlY2lwaWVudBJjCgZhbW91bnQYAyADKAsyGS5jb3Ntb3MuYmFzZS52MWJldGExLkNvaW5CMMjeHwCq3x8oZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90eXBlcy5Db2luc1IGYW1vdW50Og6C57AqCWF1dGhvcml0eQ==');
+@$core.Deprecated('Use msgCommunityPoolSpendResponseDescriptor instead')
+const MsgCommunityPoolSpendResponse$json = const {
+  '1': 'MsgCommunityPoolSpendResponse',
+};
+
+/// Descriptor for `MsgCommunityPoolSpendResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgCommunityPoolSpendResponseDescriptor = $convert.base64Decode('Ch1Nc2dDb21tdW5pdHlQb29sU3BlbmRSZXNwb25zZQ==');
 const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
   '1': 'Msg',
   '2': const [
@@ -119,6 +139,7 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
     const {'1': 'WithdrawValidatorCommission', '2': '.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission', '3': '.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommissionResponse'},
     const {'1': 'FundCommunityPool', '2': '.cosmos.distribution.v1beta1.MsgFundCommunityPool', '3': '.cosmos.distribution.v1beta1.MsgFundCommunityPoolResponse'},
     const {'1': 'UpdateParams', '2': '.cosmos.distribution.v1beta1.MsgUpdateParams', '3': '.cosmos.distribution.v1beta1.MsgUpdateParamsResponse'},
+    const {'1': 'CommunityPoolSpend', '2': '.cosmos.distribution.v1beta1.MsgCommunityPoolSpend', '3': '.cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse'},
   ],
 };
 
@@ -136,7 +157,9 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgService
   '.cosmos.distribution.v1beta1.MsgUpdateParams': MsgUpdateParams$json,
   '.cosmos.distribution.v1beta1.Params': $33.Params$json,
   '.cosmos.distribution.v1beta1.MsgUpdateParamsResponse': MsgUpdateParamsResponse$json,
+  '.cosmos.distribution.v1beta1.MsgCommunityPoolSpend': MsgCommunityPoolSpend$json,
+  '.cosmos.distribution.v1beta1.MsgCommunityPoolSpendResponse': MsgCommunityPoolSpendResponse$json,
 };
 
 /// Descriptor for `Msg`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('CgNNc2cShAEKElNldFdpdGhkcmF3QWRkcmVzcxIyLmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dTZXRXaXRoZHJhd0FkZHJlc3MaOi5jb3Ntb3MuZGlzdHJpYnV0aW9uLnYxYmV0YTEuTXNnU2V0V2l0aGRyYXdBZGRyZXNzUmVzcG9uc2USkwEKF1dpdGhkcmF3RGVsZWdhdG9yUmV3YXJkEjcuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ1dpdGhkcmF3RGVsZWdhdG9yUmV3YXJkGj8uY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ1dpdGhkcmF3RGVsZWdhdG9yUmV3YXJkUmVzcG9uc2USnwEKG1dpdGhkcmF3VmFsaWRhdG9yQ29tbWlzc2lvbhI7LmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dXaXRoZHJhd1ZhbGlkYXRvckNvbW1pc3Npb24aQy5jb3Ntb3MuZGlzdHJpYnV0aW9uLnYxYmV0YTEuTXNnV2l0aGRyYXdWYWxpZGF0b3JDb21taXNzaW9uUmVzcG9uc2USgQEKEUZ1bmRDb21tdW5pdHlQb29sEjEuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ0Z1bmRDb21tdW5pdHlQb29sGjkuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ0Z1bmRDb21tdW5pdHlQb29sUmVzcG9uc2UScgoMVXBkYXRlUGFyYW1zEiwuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ1VwZGF0ZVBhcmFtcxo0LmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dVcGRhdGVQYXJhbXNSZXNwb25zZQ==');
+final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('CgNNc2cShAEKElNldFdpdGhkcmF3QWRkcmVzcxIyLmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dTZXRXaXRoZHJhd0FkZHJlc3MaOi5jb3Ntb3MuZGlzdHJpYnV0aW9uLnYxYmV0YTEuTXNnU2V0V2l0aGRyYXdBZGRyZXNzUmVzcG9uc2USkwEKF1dpdGhkcmF3RGVsZWdhdG9yUmV3YXJkEjcuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ1dpdGhkcmF3RGVsZWdhdG9yUmV3YXJkGj8uY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ1dpdGhkcmF3RGVsZWdhdG9yUmV3YXJkUmVzcG9uc2USnwEKG1dpdGhkcmF3VmFsaWRhdG9yQ29tbWlzc2lvbhI7LmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dXaXRoZHJhd1ZhbGlkYXRvckNvbW1pc3Npb24aQy5jb3Ntb3MuZGlzdHJpYnV0aW9uLnYxYmV0YTEuTXNnV2l0aGRyYXdWYWxpZGF0b3JDb21taXNzaW9uUmVzcG9uc2USgQEKEUZ1bmRDb21tdW5pdHlQb29sEjEuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ0Z1bmRDb21tdW5pdHlQb29sGjkuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ0Z1bmRDb21tdW5pdHlQb29sUmVzcG9uc2UScgoMVXBkYXRlUGFyYW1zEiwuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ1VwZGF0ZVBhcmFtcxo0LmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dVcGRhdGVQYXJhbXNSZXNwb25zZRKEAQoSQ29tbXVuaXR5UG9vbFNwZW5kEjIuY29zbW9zLmRpc3RyaWJ1dGlvbi52MWJldGExLk1zZ0NvbW11bml0eVBvb2xTcGVuZBo6LmNvc21vcy5kaXN0cmlidXRpb24udjFiZXRhMS5Nc2dDb21tdW5pdHlQb29sU3BlbmRSZXNwb25zZQ==');

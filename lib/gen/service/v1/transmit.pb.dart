@@ -10,13 +10,90 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../common/v1/info.pb.dart' as $16;
+import '../../common/v1/info.pb.dart' as $5;
 
-import '../../common/v1/info.pbenum.dart' as $16;
+import 'transmit.pbenum.dart';
+
+export 'transmit.pbenum.dart';
+
+class MIME extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MIME', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
+    ..e<MIME_Type>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: MIME_Type.TYPE_UNSPECIFIED, valueOf: MIME_Type.valueOf, enumValues: MIME_Type.values)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subtype')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value')
+    ..hasRequiredFields = false
+  ;
+
+  MIME._() : super();
+  factory MIME({
+    MIME_Type? type,
+    $core.String? subtype,
+    $core.String? value,
+  }) {
+    final _result = create();
+    if (type != null) {
+      _result.type = type;
+    }
+    if (subtype != null) {
+      _result.subtype = subtype;
+    }
+    if (value != null) {
+      _result.value = value;
+    }
+    return _result;
+  }
+  factory MIME.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MIME.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MIME clone() => MIME()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MIME copyWith(void Function(MIME) updates) => super.copyWith((message) => updates(message as MIME)) as MIME; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MIME create() => MIME._();
+  MIME createEmptyInstance() => create();
+  static $pb.PbList<MIME> createRepeated() => $pb.PbList<MIME>();
+  @$core.pragma('dart2js:noInline')
+  static MIME getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MIME>(create);
+  static MIME? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  MIME_Type get type => $_getN(0);
+  @$pb.TagNumber(1)
+  set type(MIME_Type v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get subtype => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set subtype($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSubtype() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSubtype() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get value => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set value($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasValue() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearValue() => clearField(3);
+}
 
 class FileItem extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FileItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
-    ..aOM<$16.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $16.MIME.create)
+    ..aOM<MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: MIME.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
@@ -27,7 +104,7 @@ class FileItem extends $pb.GeneratedMessage {
 
   FileItem._() : super();
   factory FileItem({
-    $16.MIME? mime,
+    MIME? mime,
     $core.String? name,
     $core.String? path,
     $fixnum.Int64? size,
@@ -77,15 +154,15 @@ class FileItem extends $pb.GeneratedMessage {
   static FileItem? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $16.MIME get mime => $_getN(0);
+  MIME get mime => $_getN(0);
   @$pb.TagNumber(1)
-  set mime($16.MIME v) { setField(1, v); }
+  set mime(MIME v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMime() => $_has(0);
   @$pb.TagNumber(1)
   void clearMime() => clearField(1);
   @$pb.TagNumber(1)
-  $16.MIME ensureMime() => $_ensure(0);
+  MIME ensureMime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
@@ -151,7 +228,7 @@ class Payload_Item extends $pb.GeneratedMessage {
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Payload.Item', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..oo(0, [3, 4, 5])
-    ..aOM<$16.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $16.MIME.create)
+    ..aOM<MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: MIME.create)
     ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
     ..aOM<FileItem>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'file', subBuilder: FileItem.create)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'url')
@@ -162,7 +239,7 @@ class Payload_Item extends $pb.GeneratedMessage {
 
   Payload_Item._() : super();
   factory Payload_Item({
-    $16.MIME? mime,
+    MIME? mime,
     $fixnum.Int64? size,
     FileItem? file,
     $core.String? url,
@@ -215,15 +292,15 @@ class Payload_Item extends $pb.GeneratedMessage {
   void clearData() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  $16.MIME get mime => $_getN(0);
+  MIME get mime => $_getN(0);
   @$pb.TagNumber(1)
-  set mime($16.MIME v) { setField(1, v); }
+  set mime(MIME v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMime() => $_has(0);
   @$pb.TagNumber(1)
   void clearMime() => clearField(1);
   @$pb.TagNumber(1)
-  $16.MIME ensureMime() => $_ensure(0);
+  MIME ensureMime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $fixnum.Int64 get size => $_getI64(1);
@@ -278,7 +355,7 @@ class Payload_Item extends $pb.GeneratedMessage {
 class Payload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Payload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..pc<Payload_Item>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payload_Item.create)
-    ..aOM<$16.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner', subBuilder: $16.Peer.create)
+    ..aOM<$5.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner', subBuilder: $5.Peer.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt')
     ..hasRequiredFields = false
@@ -287,7 +364,7 @@ class Payload extends $pb.GeneratedMessage {
   Payload._() : super();
   factory Payload({
     $core.Iterable<Payload_Item>? items,
-    $16.Peer? owner,
+    $5.Peer? owner,
     $fixnum.Int64? size,
     $fixnum.Int64? createdAt,
   }) {
@@ -331,15 +408,15 @@ class Payload extends $pb.GeneratedMessage {
   $core.List<Payload_Item> get items => $_getList(0);
 
   @$pb.TagNumber(2)
-  $16.Peer get owner => $_getN(1);
+  $5.Peer get owner => $_getN(1);
   @$pb.TagNumber(2)
-  set owner($16.Peer v) { setField(2, v); }
+  set owner($5.Peer v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasOwner() => $_has(1);
   @$pb.TagNumber(2)
   void clearOwner() => clearField(2);
   @$pb.TagNumber(2)
-  $16.Peer ensureOwner() => $_ensure(1);
+  $5.Peer ensureOwner() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get size => $_getI64(2);
@@ -424,14 +501,14 @@ class SupplyItem extends $pb.GeneratedMessage {
 class Thumbnail extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Thumbnail', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
-    ..aOM<$16.MIME>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $16.MIME.create)
+    ..aOM<MIME>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: MIME.create)
     ..hasRequiredFields = false
   ;
 
   Thumbnail._() : super();
   factory Thumbnail({
     $core.List<$core.int>? buffer,
-    $16.MIME? mime,
+    MIME? mime,
   }) {
     final _result = create();
     if (buffer != null) {
@@ -473,22 +550,22 @@ class Thumbnail extends $pb.GeneratedMessage {
   void clearBuffer() => clearField(1);
 
   @$pb.TagNumber(2)
-  $16.MIME get mime => $_getN(1);
+  MIME get mime => $_getN(1);
   @$pb.TagNumber(2)
-  set mime($16.MIME v) { setField(2, v); }
+  set mime(MIME v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasMime() => $_has(1);
   @$pb.TagNumber(2)
   void clearMime() => clearField(2);
   @$pb.TagNumber(2)
-  $16.MIME ensureMime() => $_ensure(1);
+  MIME ensureMime() => $_ensure(1);
 }
 
 class Session extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Session', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
-    ..e<$16.Direction>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $16.Direction.DIRECTION_UNSPECIFIED, valueOf: $16.Direction.valueOf, enumValues: $16.Direction.values)
-    ..aOM<$16.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $16.Peer.create)
-    ..aOM<$16.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $16.Peer.create)
+    ..e<Direction>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: Direction.DIRECTION_UNSPECIFIED, valueOf: Direction.valueOf, enumValues: Direction.values)
+    ..aOM<$5.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $5.Peer.create)
+    ..aOM<$5.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $5.Peer.create)
     ..aOM<Payload>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', subBuilder: Payload.create)
     ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastUpdated')
     ..pc<SessionItem>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: SessionItem.create)
@@ -499,9 +576,9 @@ class Session extends $pb.GeneratedMessage {
 
   Session._() : super();
   factory Session({
-    $16.Direction? direction,
-    $16.Peer? from,
-    $16.Peer? to,
+    Direction? direction,
+    $5.Peer? from,
+    $5.Peer? to,
     Payload? payload,
     $fixnum.Int64? lastUpdated,
     $core.Iterable<SessionItem>? items,
@@ -557,35 +634,35 @@ class Session extends $pb.GeneratedMessage {
   static Session? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $16.Direction get direction => $_getN(0);
+  Direction get direction => $_getN(0);
   @$pb.TagNumber(1)
-  set direction($16.Direction v) { setField(1, v); }
+  set direction(Direction v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasDirection() => $_has(0);
   @$pb.TagNumber(1)
   void clearDirection() => clearField(1);
 
   @$pb.TagNumber(2)
-  $16.Peer get from => $_getN(1);
+  $5.Peer get from => $_getN(1);
   @$pb.TagNumber(2)
-  set from($16.Peer v) { setField(2, v); }
+  set from($5.Peer v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasFrom() => $_has(1);
   @$pb.TagNumber(2)
   void clearFrom() => clearField(2);
   @$pb.TagNumber(2)
-  $16.Peer ensureFrom() => $_ensure(1);
+  $5.Peer ensureFrom() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $16.Peer get to => $_getN(2);
+  $5.Peer get to => $_getN(2);
   @$pb.TagNumber(3)
-  set to($16.Peer v) { setField(3, v); }
+  set to($5.Peer v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasTo() => $_has(2);
   @$pb.TagNumber(3)
   void clearTo() => clearField(3);
   @$pb.TagNumber(3)
-  $16.Peer ensureTo() => $_ensure(2);
+  $5.Peer ensureTo() => $_ensure(2);
 
   @$pb.TagNumber(4)
   Payload get payload => $_getN(3);
@@ -631,7 +708,7 @@ class SessionItem extends $pb.GeneratedMessage {
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'written')
     ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
     ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalSize')
-    ..e<$16.Direction>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $16.Direction.DIRECTION_UNSPECIFIED, valueOf: $16.Direction.valueOf, enumValues: $16.Direction.values)
+    ..e<Direction>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: Direction.DIRECTION_UNSPECIFIED, valueOf: Direction.valueOf, enumValues: Direction.values)
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
     ..hasRequiredFields = false
   ;
@@ -644,7 +721,7 @@ class SessionItem extends $pb.GeneratedMessage {
     $fixnum.Int64? written,
     $fixnum.Int64? size,
     $fixnum.Int64? totalSize,
-    $16.Direction? direction,
+    Direction? direction,
     $core.String? path,
   }) {
     final _result = create();
@@ -752,9 +829,9 @@ class SessionItem extends $pb.GeneratedMessage {
   void clearTotalSize() => clearField(6);
 
   @$pb.TagNumber(7)
-  $16.Direction get direction => $_getN(6);
+  Direction get direction => $_getN(6);
   @$pb.TagNumber(7)
-  set direction($16.Direction v) { setField(7, v); }
+  set direction(Direction v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasDirection() => $_has(6);
   @$pb.TagNumber(7)
@@ -773,14 +850,14 @@ class SessionItem extends $pb.GeneratedMessage {
 class SessionPayload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SessionPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..aOM<Payload>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', subBuilder: Payload.create)
-    ..e<$16.Direction>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $16.Direction.DIRECTION_UNSPECIFIED, valueOf: $16.Direction.valueOf, enumValues: $16.Direction.values)
+    ..e<Direction>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: Direction.DIRECTION_UNSPECIFIED, valueOf: Direction.valueOf, enumValues: Direction.values)
     ..hasRequiredFields = false
   ;
 
   SessionPayload._() : super();
   factory SessionPayload({
     Payload? payload,
-    $16.Direction? direction,
+    Direction? direction,
   }) {
     final _result = create();
     if (payload != null) {
@@ -824,9 +901,9 @@ class SessionPayload extends $pb.GeneratedMessage {
   Payload ensurePayload() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $16.Direction get direction => $_getN(1);
+  Direction get direction => $_getN(1);
   @$pb.TagNumber(2)
-  set direction($16.Direction v) { setField(2, v); }
+  set direction(Direction v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasDirection() => $_has(1);
   @$pb.TagNumber(2)

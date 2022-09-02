@@ -119,11 +119,11 @@ const CommunityPoolSpendProposal$json = const {
     const {'1': 'recipient', '3': 3, '4': 1, '5': 9, '10': 'recipient'},
     const {'1': 'amount', '3': 4, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'amount'},
   ],
-  '7': const {},
+  '7': const {'3': true},
 };
 
 /// Descriptor for `CommunityPoolSpendProposal`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List communityPoolSpendProposalDescriptor = $convert.base64Decode('ChpDb21tdW5pdHlQb29sU3BlbmRQcm9wb3NhbBIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSIAoLZGVzY3JpcHRpb24YAiABKAlSC2Rlc2NyaXB0aW9uEhwKCXJlY2lwaWVudBgDIAEoCVIJcmVjaXBpZW50EmMKBmFtb3VudBgEIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUgZhbW91bnQ6KoigHwCYoB8A6KAfAMq0LRpjb3Ntb3MuZ292LnYxYmV0YTEuQ29udGVudA==');
+final $typed_data.Uint8List communityPoolSpendProposalDescriptor = $convert.base64Decode('ChpDb21tdW5pdHlQb29sU3BlbmRQcm9wb3NhbBIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSIAoLZGVzY3JpcHRpb24YAiABKAlSC2Rlc2NyaXB0aW9uEhwKCXJlY2lwaWVudBgDIAEoCVIJcmVjaXBpZW50EmMKBmFtb3VudBgEIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUgZhbW91bnQ6LBgBiKAfAJigHwDooB8AyrQtGmNvc21vcy5nb3YudjFiZXRhMS5Db250ZW50');
 @$core.Deprecated('Use delegatorStartingInfoDescriptor instead')
 const DelegatorStartingInfo$json = const {
   '1': 'DelegatorStartingInfo',

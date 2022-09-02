@@ -78,11 +78,12 @@ final $typed_data.Uint8List schemaReferenceDescriptor = $convert.base64Decode('C
 const SchemaDefinition$json = const {
   '1': 'SchemaDefinition',
   '2': const [
-    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
-    const {'1': 'label', '3': 2, '4': 1, '5': 9, '10': 'label'},
-    const {'1': 'fields', '3': 3, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.SchemaKindDefinition', '10': 'fields'},
+    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'creator', '3': 2, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'label', '3': 3, '4': 1, '5': 9, '10': 'label'},
+    const {'1': 'fields', '3': 4, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.SchemaKindDefinition', '10': 'fields'},
   ],
 };
 
 /// Descriptor for `SchemaDefinition`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List schemaDefinitionDescriptor = $convert.base64Decode('ChBTY2hlbWFEZWZpbml0aW9uEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISFAoFbGFiZWwYAiABKAlSBWxhYmVsEkAKBmZpZWxkcxgDIAMoCzIoLnNvbnJpby5zb25yLnNjaGVtYS5TY2hlbWFLaW5kRGVmaW5pdGlvblIGZmllbGRz');
+final $typed_data.Uint8List schemaDefinitionDescriptor = $convert.base64Decode('ChBTY2hlbWFEZWZpbml0aW9uEhAKA2RpZBgBIAEoCVIDZGlkEhgKB2NyZWF0b3IYAiABKAlSB2NyZWF0b3ISFAoFbGFiZWwYAyABKAlSBWxhYmVsEkAKBmZpZWxkcxgEIAMoCzIoLnNvbnJpby5zb25yLnNjaGVtYS5TY2hlbWFLaW5kRGVmaW5pdGlvblIGZmllbGRz');

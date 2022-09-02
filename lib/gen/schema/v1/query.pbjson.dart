@@ -8,9 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'params.pbjson.dart' as $13;
-import 'schema.pbjson.dart' as $5;
-import 'what_is.pbjson.dart' as $6;
+import 'params.pbjson.dart' as $15;
+import 'schema.pbjson.dart' as $6;
+import 'what_is.pbjson.dart' as $9;
 import '../../cosmos/base/query/v1beta1/pagination.pbjson.dart' as $2;
 
 @$core.Deprecated('Use queryParamsRequestDescriptor instead')
@@ -94,6 +94,17 @@ const QuerySchemaResponse$json = const {
 
 /// Descriptor for `QuerySchemaResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List querySchemaResponseDescriptor = $convert.base64Decode('ChNRdWVyeVNjaGVtYVJlc3BvbnNlEkQKCmRlZmluaXRpb24YAiABKAsyJC5zb25yaW8uc29uci5zY2hlbWEuU2NoZW1hRGVmaW5pdGlvblIKZGVmaW5pdGlvbg==');
+@$core.Deprecated('Use queryWhatIsByDidRequestDescriptor instead')
+const QueryWhatIsByDidRequest$json = const {
+  '1': 'QueryWhatIsByDidRequest',
+  '2': const [
+    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+  ],
+};
+
+/// Descriptor for `QueryWhatIsByDidRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List queryWhatIsByDidRequestDescriptor = $convert.base64Decode('ChdRdWVyeVdoYXRJc0J5RGlkUmVxdWVzdBIQCgNkaWQYASABKAlSA2RpZBJGCgpwYWdpbmF0aW9uGAIgASgLMiYuY29zbW9zLmJhc2UucXVlcnkudjFiZXRhMS5QYWdlUmVxdWVzdFIKcGFnaW5hdGlvbg==');
 @$core.Deprecated('Use queryWhatIsResponseDescriptor instead')
 const QueryWhatIsResponse$json = const {
   '1': 'QueryWhatIsResponse',
@@ -114,6 +125,16 @@ const QueryWhatIsCreatorResponse$json = const {
 
 /// Descriptor for `QueryWhatIsCreatorResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List queryWhatIsCreatorResponseDescriptor = $convert.base64Decode('ChpRdWVyeVdoYXRJc0NyZWF0b3JSZXNwb25zZRIzCgd3aGF0X2lzGAEgAygLMhouc29ucmlvLnNvbnIuc2NoZW1hLldoYXRJc1IGd2hhdElz');
+@$core.Deprecated('Use queryWhatIsByDidResponseDescriptor instead')
+const QueryWhatIsByDidResponse$json = const {
+  '1': 'QueryWhatIsByDidResponse',
+  '2': const [
+    const {'1': 'what_is', '3': 1, '4': 1, '5': 11, '6': '.sonrio.sonr.schema.WhatIs', '10': 'whatIs'},
+  ],
+};
+
+/// Descriptor for `QueryWhatIsByDidResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List queryWhatIsByDidResponseDescriptor = $convert.base64Decode('ChhRdWVyeVdoYXRJc0J5RGlkUmVzcG9uc2USMwoHd2hhdF9pcxgBIAEoCzIaLnNvbnJpby5zb25yLnNjaGVtYS5XaGF0SXNSBndoYXRJcw==');
 const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
   '1': 'Query',
   '2': const [
@@ -121,6 +142,7 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
     const {'1': 'Schema', '2': '.sonrio.sonr.schema.QuerySchemaRequest', '3': '.sonrio.sonr.schema.QuerySchemaResponse', '4': const {}},
     const {'1': 'WhatIs', '2': '.sonrio.sonr.schema.QueryWhatIsRequest', '3': '.sonrio.sonr.schema.QueryWhatIsResponse', '4': const {}},
     const {'1': 'WhatIsByCreator', '2': '.sonrio.sonr.schema.QueryWhatIsCreatorRequest', '3': '.sonrio.sonr.schema.QueryWhatIsCreatorResponse', '4': const {}},
+    const {'1': 'WhatIsByDid', '2': '.sonrio.sonr.schema.QueryWhatIsByDidRequest', '3': '.sonrio.sonr.schema.QueryWhatIsByDidResponse', '4': const {}},
     const {'1': 'WhatIsAll', '2': '.sonrio.sonr.schema.QueryAllWhatIsRequest', '3': '.sonrio.sonr.schema.QueryAllWhatIsResponse', '4': const {}},
   ],
 };
@@ -129,23 +151,25 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
   '.sonrio.sonr.schema.QueryParamsRequest': QueryParamsRequest$json,
   '.sonrio.sonr.schema.QueryParamsResponse': QueryParamsResponse$json,
-  '.sonrio.sonr.schema.Params': $13.Params$json,
+  '.sonrio.sonr.schema.Params': $15.Params$json,
   '.sonrio.sonr.schema.QuerySchemaRequest': QuerySchemaRequest$json,
   '.sonrio.sonr.schema.QuerySchemaResponse': QuerySchemaResponse$json,
-  '.sonrio.sonr.schema.SchemaDefinition': $5.SchemaDefinition$json,
-  '.sonrio.sonr.schema.SchemaKindDefinition': $5.SchemaKindDefinition$json,
+  '.sonrio.sonr.schema.SchemaDefinition': $6.SchemaDefinition$json,
+  '.sonrio.sonr.schema.SchemaKindDefinition': $6.SchemaKindDefinition$json,
   '.sonrio.sonr.schema.QueryWhatIsRequest': QueryWhatIsRequest$json,
   '.sonrio.sonr.schema.QueryWhatIsResponse': QueryWhatIsResponse$json,
-  '.sonrio.sonr.schema.WhatIs': $6.WhatIs$json,
-  '.sonrio.sonr.schema.SchemaReference': $5.SchemaReference$json,
-  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $6.WhatIs_MetadataEntry$json,
+  '.sonrio.sonr.schema.WhatIs': $9.WhatIs$json,
+  '.sonrio.sonr.schema.SchemaReference': $6.SchemaReference$json,
+  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $9.WhatIs_MetadataEntry$json,
   '.sonrio.sonr.schema.QueryWhatIsCreatorRequest': QueryWhatIsCreatorRequest$json,
   '.cosmos.base.query.v1beta1.PageRequest': $2.PageRequest$json,
   '.sonrio.sonr.schema.QueryWhatIsCreatorResponse': QueryWhatIsCreatorResponse$json,
+  '.sonrio.sonr.schema.QueryWhatIsByDidRequest': QueryWhatIsByDidRequest$json,
+  '.sonrio.sonr.schema.QueryWhatIsByDidResponse': QueryWhatIsByDidResponse$json,
   '.sonrio.sonr.schema.QueryAllWhatIsRequest': QueryAllWhatIsRequest$json,
   '.sonrio.sonr.schema.QueryAllWhatIsResponse': QueryAllWhatIsResponse$json,
   '.cosmos.base.query.v1beta1.PageResponse': $2.PageResponse$json,
 };
 
 /// Descriptor for `Query`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List queryServiceDescriptor = $convert.base64Decode('CgVRdWVyeRJ+CgZQYXJhbXMSJi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlQYXJhbXNSZXF1ZXN0Gicuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5UGFyYW1zUmVzcG9uc2UiI4LT5JMCHRIbL3NvbnItaW8vc29uci9zY2hlbWEvcGFyYW1zEoQBCgZTY2hlbWESJi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlTY2hlbWFSZXF1ZXN0Gicuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5U2NoZW1hUmVzcG9uc2UiKYLT5JMCIxIhL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvc2NoZW1hEoUBCgZXaGF0SXMSJi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlXaGF0SXNSZXF1ZXN0Gicuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5V2hhdElzUmVzcG9uc2UiKoLT5JMCJBIiL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvd2hhdF9pcxKmAQoPV2hhdElzQnlDcmVhdG9yEi0uc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5V2hhdElzQ3JlYXRvclJlcXVlc3QaLi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlXaGF0SXNDcmVhdG9yUmVzcG9uc2UiNILT5JMCLhIsL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvd2hhdF9pcy97Y3JlYXRvcn0SkgEKCVdoYXRJc0FsbBIpLnNvbnJpby5zb25yLnNjaGVtYS5RdWVyeUFsbFdoYXRJc1JlcXVlc3QaKi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlBbGxXaGF0SXNSZXNwb25zZSIugtPkkwIoEiYvc29uci1pby9zb25yL3NjaGVtYS9xdWVyeS9hbGxfc2NoZW1hcw==');
+final $typed_data.Uint8List queryServiceDescriptor = $convert.base64Decode('CgVRdWVyeRJ+CgZQYXJhbXMSJi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlQYXJhbXNSZXF1ZXN0Gicuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5UGFyYW1zUmVzcG9uc2UiI4LT5JMCHRIbL3NvbnItaW8vc29uci9zY2hlbWEvcGFyYW1zEoQBCgZTY2hlbWESJi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlTY2hlbWFSZXF1ZXN0Gicuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5U2NoZW1hUmVzcG9uc2UiKYLT5JMCIxIhL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvc2NoZW1hEoUBCgZXaGF0SXMSJi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlXaGF0SXNSZXF1ZXN0Gicuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5V2hhdElzUmVzcG9uc2UiKoLT5JMCJBIiL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvd2hhdF9pcxKmAQoPV2hhdElzQnlDcmVhdG9yEi0uc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5V2hhdElzQ3JlYXRvclJlcXVlc3QaLi5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlXaGF0SXNDcmVhdG9yUmVzcG9uc2UiNILT5JMCLhIsL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvd2hhdF9pcy97Y3JlYXRvcn0SmgEKC1doYXRJc0J5RGlkEisuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5V2hhdElzQnlEaWRSZXF1ZXN0Giwuc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5V2hhdElzQnlEaWRSZXNwb25zZSIwgtPkkwIqEigvc29uci1pby9zb25yL3NjaGVtYS9xdWVyeS93aGF0X2lzL3tkaWR9EpIBCglXaGF0SXNBbGwSKS5zb25yaW8uc29uci5zY2hlbWEuUXVlcnlBbGxXaGF0SXNSZXF1ZXN0Giouc29ucmlvLnNvbnIuc2NoZW1hLlF1ZXJ5QWxsV2hhdElzUmVzcG9uc2UiLoLT5JMCKBImL3NvbnItaW8vc29uci9zY2hlbWEvcXVlcnkvYWxsX3NjaGVtYXM=');

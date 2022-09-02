@@ -469,6 +469,104 @@ class MsgUpdateParamsResponse extends $pb.GeneratedMessage {
   static MsgUpdateParamsResponse? _defaultInstance;
 }
 
+class MsgCommunityPoolSpend extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCommunityPoolSpend', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.distribution.v1beta1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authority')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recipient')
+    ..pc<$11.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', $pb.PbFieldType.PM, subBuilder: $11.Coin.create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgCommunityPoolSpend._() : super();
+  factory MsgCommunityPoolSpend({
+    $core.String? authority,
+    $core.String? recipient,
+    $core.Iterable<$11.Coin>? amount,
+  }) {
+    final _result = create();
+    if (authority != null) {
+      _result.authority = authority;
+    }
+    if (recipient != null) {
+      _result.recipient = recipient;
+    }
+    if (amount != null) {
+      _result.amount.addAll(amount);
+    }
+    return _result;
+  }
+  factory MsgCommunityPoolSpend.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgCommunityPoolSpend.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgCommunityPoolSpend clone() => MsgCommunityPoolSpend()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgCommunityPoolSpend copyWith(void Function(MsgCommunityPoolSpend) updates) => super.copyWith((message) => updates(message as MsgCommunityPoolSpend)) as MsgCommunityPoolSpend; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgCommunityPoolSpend create() => MsgCommunityPoolSpend._();
+  MsgCommunityPoolSpend createEmptyInstance() => create();
+  static $pb.PbList<MsgCommunityPoolSpend> createRepeated() => $pb.PbList<MsgCommunityPoolSpend>();
+  @$core.pragma('dart2js:noInline')
+  static MsgCommunityPoolSpend getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCommunityPoolSpend>(create);
+  static MsgCommunityPoolSpend? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get authority => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set authority($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAuthority() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAuthority() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get recipient => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set recipient($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRecipient() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRecipient() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$11.Coin> get amount => $_getList(2);
+}
+
+class MsgCommunityPoolSpendResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCommunityPoolSpendResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.distribution.v1beta1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgCommunityPoolSpendResponse._() : super();
+  factory MsgCommunityPoolSpendResponse() => create();
+  factory MsgCommunityPoolSpendResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgCommunityPoolSpendResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgCommunityPoolSpendResponse clone() => MsgCommunityPoolSpendResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgCommunityPoolSpendResponse copyWith(void Function(MsgCommunityPoolSpendResponse) updates) => super.copyWith((message) => updates(message as MsgCommunityPoolSpendResponse)) as MsgCommunityPoolSpendResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgCommunityPoolSpendResponse create() => MsgCommunityPoolSpendResponse._();
+  MsgCommunityPoolSpendResponse createEmptyInstance() => create();
+  static $pb.PbList<MsgCommunityPoolSpendResponse> createRepeated() => $pb.PbList<MsgCommunityPoolSpendResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MsgCommunityPoolSpendResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCommunityPoolSpendResponse>(create);
+  static MsgCommunityPoolSpendResponse? _defaultInstance;
+}
+
 class MsgApi {
   $pb.RpcClient _client;
   MsgApi(this._client);
@@ -492,6 +590,10 @@ class MsgApi {
   $async.Future<MsgUpdateParamsResponse> updateParams($pb.ClientContext? ctx, MsgUpdateParams request) {
     var emptyResponse = MsgUpdateParamsResponse();
     return _client.invoke<MsgUpdateParamsResponse>(ctx, 'Msg', 'UpdateParams', request, emptyResponse);
+  }
+  $async.Future<MsgCommunityPoolSpendResponse> communityPoolSpend($pb.ClientContext? ctx, MsgCommunityPoolSpend request) {
+    var emptyResponse = MsgCommunityPoolSpendResponse();
+    return _client.invoke<MsgCommunityPoolSpendResponse>(ctx, 'Msg', 'CommunityPoolSpend', request, emptyResponse);
   }
 }
 

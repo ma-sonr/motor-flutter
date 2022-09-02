@@ -8,8 +8,8 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'schema.pbjson.dart' as $5;
-import 'what_is.pbjson.dart' as $6;
+import 'schema.pbjson.dart' as $6;
+import 'what_is.pbjson.dart' as $9;
 
 @$core.Deprecated('Use msgCreateSchemaDescriptor instead')
 const MsgCreateSchema$json = const {
@@ -67,13 +67,13 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.sonrio.sonr.schema.MsgCreateSchema': MsgCreateSchema$json,
-  '.sonrio.sonr.schema.SchemaDefinition': $5.SchemaDefinition$json,
-  '.sonrio.sonr.schema.SchemaKindDefinition': $5.SchemaKindDefinition$json,
-  '.sonrio.sonr.schema.MetadataDefintion': $5.MetadataDefintion$json,
+  '.sonrio.sonr.schema.SchemaDefinition': $6.SchemaDefinition$json,
+  '.sonrio.sonr.schema.SchemaKindDefinition': $6.SchemaKindDefinition$json,
+  '.sonrio.sonr.schema.MetadataDefintion': $6.MetadataDefintion$json,
   '.sonrio.sonr.schema.MsgCreateSchemaResponse': MsgCreateSchemaResponse$json,
-  '.sonrio.sonr.schema.WhatIs': $6.WhatIs$json,
-  '.sonrio.sonr.schema.SchemaReference': $5.SchemaReference$json,
-  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $6.WhatIs_MetadataEntry$json,
+  '.sonrio.sonr.schema.WhatIs': $9.WhatIs$json,
+  '.sonrio.sonr.schema.SchemaReference': $6.SchemaReference$json,
+  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $9.WhatIs_MetadataEntry$json,
   '.sonrio.sonr.schema.MsgDeprecateSchema': MsgDeprecateSchema$json,
   '.sonrio.sonr.schema.MsgDeprecateSchemaResponse': MsgDeprecateSchemaResponse$json,
 };

@@ -21,6 +21,7 @@ abstract class MsgServiceBase extends $pb.GeneratedService {
   $async.Future<$35.MsgWithdrawValidatorCommissionResponse> withdrawValidatorCommission($pb.ServerContext ctx, $35.MsgWithdrawValidatorCommission request);
   $async.Future<$35.MsgFundCommunityPoolResponse> fundCommunityPool($pb.ServerContext ctx, $35.MsgFundCommunityPool request);
   $async.Future<$35.MsgUpdateParamsResponse> updateParams($pb.ServerContext ctx, $35.MsgUpdateParams request);
+  $async.Future<$35.MsgCommunityPoolSpendResponse> communityPoolSpend($pb.ServerContext ctx, $35.MsgCommunityPoolSpend request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -29,6 +30,7 @@ abstract class MsgServiceBase extends $pb.GeneratedService {
       case 'WithdrawValidatorCommission': return $35.MsgWithdrawValidatorCommission();
       case 'FundCommunityPool': return $35.MsgFundCommunityPool();
       case 'UpdateParams': return $35.MsgUpdateParams();
+      case 'CommunityPoolSpend': return $35.MsgCommunityPoolSpend();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -40,6 +42,7 @@ abstract class MsgServiceBase extends $pb.GeneratedService {
       case 'WithdrawValidatorCommission': return this.withdrawValidatorCommission(ctx, request as $35.MsgWithdrawValidatorCommission);
       case 'FundCommunityPool': return this.fundCommunityPool(ctx, request as $35.MsgFundCommunityPool);
       case 'UpdateParams': return this.updateParams(ctx, request as $35.MsgUpdateParams);
+      case 'CommunityPoolSpend': return this.communityPoolSpend(ctx, request as $35.MsgCommunityPoolSpend);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

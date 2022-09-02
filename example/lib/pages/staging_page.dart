@@ -181,6 +181,26 @@ class ConfirmPageController extends GetxController {
     recipientController.text = accountsList[index].address ?? "";
   }
 
+  Future<bool> confirmPayment() async {
+    if (recipient.value.isEmpty) {
+      return false;
+    }
+    if (operation == PaymentOperation.send) {
+      //final result = await MotorService.to.instance
+      // if (result) {
+      //Get.back();
+      // }
+      // return result;
+    } else {
+      // final result = await MotorClient.instance.receivePayment(recipient.value, amount, forNote.value);
+      // if (result) {
+      // Get.back();
+      // }
+      // return result;
+    }
+    return false;
+  }
+
   void refreshAccounts() async {
     final result = await MotorService.to.fetchAllAccounts();
     if (result.accounts == null) {

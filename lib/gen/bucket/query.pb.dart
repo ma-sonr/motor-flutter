@@ -10,8 +10,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'params.pb.dart' as $0;
-import 'where_is.pb.dart' as $1;
+import 'params.pb.dart' as $1;
+import 'where_is.pb.dart' as $0;
 import '../cosmos/base/query/v1beta1/pagination.pb.dart' as $2;
 
 class QueryParamsRequest extends $pb.GeneratedMessage {
@@ -45,13 +45,13 @@ class QueryParamsRequest extends $pb.GeneratedMessage {
 
 class QueryParamsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
-    ..aOM<$0.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $0.Params.create)
+    ..aOM<$1.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $1.Params.create)
     ..hasRequiredFields = false
   ;
 
   QueryParamsResponse._() : super();
   factory QueryParamsResponse({
-    $0.Params? params,
+    $1.Params? params,
   }) {
     final _result = create();
     if (params != null) {
@@ -81,15 +81,15 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
   static QueryParamsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.Params get params => $_getN(0);
+  $1.Params get params => $_getN(0);
   @$pb.TagNumber(1)
-  set params($0.Params v) { setField(1, v); }
+  set params($1.Params v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasParams() => $_has(0);
   @$pb.TagNumber(1)
   void clearParams() => clearField(1);
   @$pb.TagNumber(1)
-  $0.Params ensureParams() => $_ensure(0);
+  $1.Params ensureParams() => $_ensure(0);
 }
 
 class QueryGetWhereIsRequest extends $pb.GeneratedMessage {
@@ -155,13 +155,13 @@ class QueryGetWhereIsRequest extends $pb.GeneratedMessage {
 
 class QueryGetWhereIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGetWhereIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
-    ..aOM<$1.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', subBuilder: $1.WhereIs.create)
+    ..aOM<$0.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', subBuilder: $0.WhereIs.create)
     ..hasRequiredFields = false
   ;
 
   QueryGetWhereIsResponse._() : super();
   factory QueryGetWhereIsResponse({
-    $1.WhereIs? whereIs,
+    $0.WhereIs? whereIs,
   }) {
     final _result = create();
     if (whereIs != null) {
@@ -191,15 +191,15 @@ class QueryGetWhereIsResponse extends $pb.GeneratedMessage {
   static QueryGetWhereIsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.WhereIs get whereIs => $_getN(0);
+  $0.WhereIs get whereIs => $_getN(0);
   @$pb.TagNumber(1)
-  set whereIs($1.WhereIs v) { setField(1, v); }
+  set whereIs($0.WhereIs v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasWhereIs() => $_has(0);
   @$pb.TagNumber(1)
   void clearWhereIs() => clearField(1);
   @$pb.TagNumber(1)
-  $1.WhereIs ensureWhereIs() => $_ensure(0);
+  $0.WhereIs ensureWhereIs() => $_ensure(0);
 }
 
 class QueryGetWhereIsByCreatorRequest extends $pb.GeneratedMessage {
@@ -267,14 +267,14 @@ class QueryGetWhereIsByCreatorRequest extends $pb.GeneratedMessage {
 
 class QueryGetWhereIsByCreatorResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGetWhereIsByCreatorResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
-    ..pc<$1.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', $pb.PbFieldType.PM, subBuilder: $1.WhereIs.create)
+    ..pc<$0.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', $pb.PbFieldType.PM, subBuilder: $0.WhereIs.create)
     ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   QueryGetWhereIsByCreatorResponse._() : super();
   factory QueryGetWhereIsByCreatorResponse({
-    $core.Iterable<$1.WhereIs>? whereIs,
+    $core.Iterable<$0.WhereIs>? whereIs,
     $2.PageResponse? pagination,
   }) {
     final _result = create();
@@ -308,7 +308,7 @@ class QueryGetWhereIsByCreatorResponse extends $pb.GeneratedMessage {
   static QueryGetWhereIsByCreatorResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$1.WhereIs> get whereIs => $_getList(0);
+  $core.List<$0.WhereIs> get whereIs => $_getList(0);
 
   @$pb.TagNumber(2)
   $2.PageResponse get pagination => $_getN(1);
@@ -373,14 +373,14 @@ class QueryAllWhereIsRequest extends $pb.GeneratedMessage {
 
 class QueryAllWhereIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAllWhereIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.bucket'), createEmptyInstance: create)
-    ..pc<$1.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', $pb.PbFieldType.PM, subBuilder: $1.WhereIs.create)
+    ..pc<$0.WhereIs>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', $pb.PbFieldType.PM, subBuilder: $0.WhereIs.create)
     ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $2.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   QueryAllWhereIsResponse._() : super();
   factory QueryAllWhereIsResponse({
-    $core.Iterable<$1.WhereIs>? whereIs,
+    $core.Iterable<$0.WhereIs>? whereIs,
     $2.PageResponse? pagination,
   }) {
     final _result = create();
@@ -414,7 +414,7 @@ class QueryAllWhereIsResponse extends $pb.GeneratedMessage {
   static QueryAllWhereIsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$1.WhereIs> get whereIs => $_getList(0);
+  $core.List<$0.WhereIs> get whereIs => $_getList(0);
 
   @$pb.TagNumber(2)
   $2.PageResponse get pagination => $_getN(1);

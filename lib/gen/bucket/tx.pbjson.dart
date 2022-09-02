@@ -8,7 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'where_is.pbjson.dart' as $1;
+import 'where_is.pbjson.dart' as $0;
 
 @$core.Deprecated('Use msgCreateWhereIsDescriptor instead')
 const MsgCreateWhereIs$json = const {
@@ -40,12 +40,13 @@ final $typed_data.Uint8List msgCreateWhereIsDescriptor = $convert.base64Decode('
 const MsgCreateWhereIsResponse$json = const {
   '1': 'MsgCreateWhereIsResponse',
   '2': const [
-    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'status', '3': 1, '4': 1, '5': 5, '10': 'status'},
+    const {'1': 'where_is', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.bucket.WhereIs', '10': 'whereIs'},
   ],
 };
 
 /// Descriptor for `MsgCreateWhereIsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgCreateWhereIsResponseDescriptor = $convert.base64Decode('ChhNc2dDcmVhdGVXaGVyZUlzUmVzcG9uc2USEAoDZGlkGAEgASgJUgNkaWQ=');
+final $typed_data.Uint8List msgCreateWhereIsResponseDescriptor = $convert.base64Decode('ChhNc2dDcmVhdGVXaGVyZUlzUmVzcG9uc2USFgoGc3RhdHVzGAEgASgFUgZzdGF0dXMSNgoId2hlcmVfaXMYAiABKAsyGy5zb25yaW8uc29uci5idWNrZXQuV2hlcmVJc1IHd2hlcmVJcw==');
 @$core.Deprecated('Use msgUpdateWhereIsDescriptor instead')
 const MsgUpdateWhereIs$json = const {
   '1': 'MsgUpdateWhereIs',
@@ -76,10 +77,14 @@ final $typed_data.Uint8List msgUpdateWhereIsDescriptor = $convert.base64Decode('
 @$core.Deprecated('Use msgUpdateWhereIsResponseDescriptor instead')
 const MsgUpdateWhereIsResponse$json = const {
   '1': 'MsgUpdateWhereIsResponse',
+  '2': const [
+    const {'1': 'status', '3': 1, '4': 1, '5': 5, '10': 'status'},
+    const {'1': 'where_is', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.bucket.WhereIs', '10': 'whereIs'},
+  ],
 };
 
 /// Descriptor for `MsgUpdateWhereIsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgUpdateWhereIsResponseDescriptor = $convert.base64Decode('ChhNc2dVcGRhdGVXaGVyZUlzUmVzcG9uc2U=');
+final $typed_data.Uint8List msgUpdateWhereIsResponseDescriptor = $convert.base64Decode('ChhNc2dVcGRhdGVXaGVyZUlzUmVzcG9uc2USFgoGc3RhdHVzGAEgASgFUgZzdGF0dXMSNgoId2hlcmVfaXMYAiABKAsyGy5zb25yaW8uc29uci5idWNrZXQuV2hlcmVJc1IHd2hlcmVJcw==');
 @$core.Deprecated('Use msgDeleteWhereIsDescriptor instead')
 const MsgDeleteWhereIs$json = const {
   '1': 'MsgDeleteWhereIs',
@@ -94,10 +99,13 @@ final $typed_data.Uint8List msgDeleteWhereIsDescriptor = $convert.base64Decode('
 @$core.Deprecated('Use msgDeleteWhereIsResponseDescriptor instead')
 const MsgDeleteWhereIsResponse$json = const {
   '1': 'MsgDeleteWhereIsResponse',
+  '2': const [
+    const {'1': 'status', '3': 1, '4': 1, '5': 5, '10': 'status'},
+  ],
 };
 
 /// Descriptor for `MsgDeleteWhereIsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgDeleteWhereIsResponseDescriptor = $convert.base64Decode('ChhNc2dEZWxldGVXaGVyZUlzUmVzcG9uc2U=');
+final $typed_data.Uint8List msgDeleteWhereIsResponseDescriptor = $convert.base64Decode('ChhNc2dEZWxldGVXaGVyZUlzUmVzcG9uc2USFgoGc3RhdHVzGAEgASgFUgZzdGF0dXM=');
 const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
   '1': 'Msg',
   '2': const [
@@ -110,11 +118,13 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.sonrio.sonr.bucket.MsgCreateWhereIs': MsgCreateWhereIs$json,
-  '.sonrio.sonr.bucket.BucketItem': $1.BucketItem$json,
+  '.sonrio.sonr.bucket.BucketItem': $0.BucketItem$json,
   '.sonrio.sonr.bucket.MsgCreateWhereIs.ContentAclEntry': MsgCreateWhereIs_ContentAclEntry$json,
-  '.sonrio.sonr.bucket.AclJwks': $1.AclJwks$json,
-  '.sonrio.sonr.bucket.AclJwks.EncryptedJwksEntry': $1.AclJwks_EncryptedJwksEntry$json,
+  '.sonrio.sonr.bucket.AclJwks': $0.AclJwks$json,
+  '.sonrio.sonr.bucket.AclJwks.EncryptedJwksEntry': $0.AclJwks_EncryptedJwksEntry$json,
   '.sonrio.sonr.bucket.MsgCreateWhereIsResponse': MsgCreateWhereIsResponse$json,
+  '.sonrio.sonr.bucket.WhereIs': $0.WhereIs$json,
+  '.sonrio.sonr.bucket.WhereIs.ContentAclEntry': $0.WhereIs_ContentAclEntry$json,
   '.sonrio.sonr.bucket.MsgUpdateWhereIs': MsgUpdateWhereIs$json,
   '.sonrio.sonr.bucket.MsgUpdateWhereIs.ContentAclEntry': MsgUpdateWhereIs_ContentAclEntry$json,
   '.sonrio.sonr.bucket.MsgUpdateWhereIsResponse': MsgUpdateWhereIsResponse$json,

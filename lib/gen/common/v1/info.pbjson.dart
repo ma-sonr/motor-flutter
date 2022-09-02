@@ -8,46 +8,30 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use directionDescriptor instead')
-const Direction$json = const {
-  '1': 'Direction',
+@$core.Deprecated('Use entityKindDescriptor instead')
+const EntityKind$json = const {
+  '1': 'EntityKind',
   '2': const [
-    const {'1': 'DIRECTION_UNSPECIFIED', '2': 0},
-    const {'1': 'DIRECTION_INCOMING', '2': 1},
-    const {'1': 'DIRECTION_OUTGOING', '2': 2},
+    const {'1': 'ADDRESS', '2': 0},
+    const {'1': 'DID', '2': 1},
+    const {'1': 'CID', '2': 2},
   ],
 };
 
-/// Descriptor for `Direction`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List directionDescriptor = $convert.base64Decode('CglEaXJlY3Rpb24SGQoVRElSRUNUSU9OX1VOU1BFQ0lGSUVEEAASFgoSRElSRUNUSU9OX0lOQ09NSU5HEAESFgoSRElSRUNUSU9OX09VVEdPSU5HEAI=');
-@$core.Deprecated('Use mIMEDescriptor instead')
-const MIME$json = const {
-  '1': 'MIME',
+/// Descriptor for `EntityKind`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List entityKindDescriptor = $convert.base64Decode('CgpFbnRpdHlLaW5kEgsKB0FERFJFU1MQABIHCgNESUQQARIHCgNDSUQQAg==');
+@$core.Deprecated('Use blockchainModuleDescriptor instead')
+const BlockchainModule$json = const {
+  '1': 'BlockchainModule',
   '2': const [
-    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.sonrio.common.v1.MIME.Type', '10': 'type'},
-    const {'1': 'subtype', '3': 2, '4': 1, '5': 9, '10': 'subtype'},
-    const {'1': 'value', '3': 3, '4': 1, '5': 9, '10': 'value'},
-  ],
-  '4': const [MIME_Type$json],
-};
-
-@$core.Deprecated('Use mIMEDescriptor instead')
-const MIME_Type$json = const {
-  '1': 'Type',
-  '2': const [
-    const {'1': 'TYPE_UNSPECIFIED', '2': 0},
-    const {'1': 'TYPE_AUDIO', '2': 1},
-    const {'1': 'TYPE_DOCUMENT', '2': 2},
-    const {'1': 'TYPE_IMAGE', '2': 3},
-    const {'1': 'TYPE_TEXT', '2': 4},
-    const {'1': 'TYPE_VIDEO', '2': 5},
-    const {'1': 'TYPE_URL', '2': 6},
-    const {'1': 'TYPE_CRYPTO', '2': 7},
+    const {'1': 'REGISTRY', '2': 0},
+    const {'1': 'SCHEMA', '2': 1},
+    const {'1': 'BUCKET', '2': 2},
   ],
 };
 
-/// Descriptor for `MIME`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List mIMEDescriptor = $convert.base64Decode('CgRNSU1FEi8KBHR5cGUYASABKA4yGy5zb25yaW8uY29tbW9uLnYxLk1JTUUuVHlwZVIEdHlwZRIYCgdzdWJ0eXBlGAIgASgJUgdzdWJ0eXBlEhQKBXZhbHVlGAMgASgJUgV2YWx1ZSKNAQoEVHlwZRIUChBUWVBFX1VOU1BFQ0lGSUVEEAASDgoKVFlQRV9BVURJTxABEhEKDVRZUEVfRE9DVU1FTlQQAhIOCgpUWVBFX0lNQUdFEAMSDQoJVFlQRV9URVhUEAQSDgoKVFlQRV9WSURFTxAFEgwKCFRZUEVfVVJMEAYSDwoLVFlQRV9DUllQVE8QBw==');
+/// Descriptor for `BlockchainModule`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List blockchainModuleDescriptor = $convert.base64Decode('ChBCbG9ja2NoYWluTW9kdWxlEgwKCFJFR0lTVFJZEAASCgoGU0NIRU1BEAESCgoGQlVDS0VUEAI=');
 @$core.Deprecated('Use peerDescriptor instead')
 const Peer$json = const {
   '1': 'Peer',
@@ -72,3 +56,18 @@ const Peer_Status$json = const {
 
 /// Descriptor for `Peer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List peerDescriptor = $convert.base64Decode('CgRQZWVyEhcKB3BlZXJfaWQYASABKAlSBnBlZXJJZBIQCgNkaWQYAiABKAlSA2RpZBI1CgZzdGF0dXMYAyABKA4yHS5zb25yaW8uY29tbW9uLnYxLlBlZXIuU3RhdHVzUgZzdGF0dXMiVQoGU3RhdHVzEhYKElNUQVRVU19VTlNQRUNJRklFRBAAEhEKDVNUQVRVU19PTkxJTkUQARIPCgtTVEFUVVNfQVdBWRACEg8KC1NUQVRVU19CVVNZEAM=');
+@$core.Deprecated('Use authInfoDescriptor instead')
+const AuthInfo$json = const {
+  '1': 'AuthInfo',
+  '2': const [
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'did', '3': 2, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'aes_dsc_key', '3': 3, '4': 1, '5': 12, '10': 'aesDscKey'},
+    const {'1': 'aes_psk_key', '3': 4, '4': 1, '5': 12, '10': 'aesPskKey'},
+    const {'1': 'password', '3': 5, '4': 1, '5': 9, '10': 'password'},
+    const {'1': 'timestamp', '3': 6, '4': 1, '5': 3, '10': 'timestamp'},
+  ],
+};
+
+/// Descriptor for `AuthInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authInfoDescriptor = $convert.base64Decode('CghBdXRoSW5mbxIYCgdhZGRyZXNzGAEgASgJUgdhZGRyZXNzEhAKA2RpZBgCIAEoCVIDZGlkEh4KC2Flc19kc2Nfa2V5GAMgASgMUglhZXNEc2NLZXkSHgoLYWVzX3Bza19rZXkYBCABKAxSCWFlc1Bza0tleRIaCghwYXNzd29yZBgFIAEoCVIIcGFzc3dvcmQSHAoJdGltZXN0YW1wGAYgASgDUgl0aW1lc3RhbXA=');
