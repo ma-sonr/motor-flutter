@@ -33,3 +33,4 @@ purge.sh
 build/
 node_modules/
 ios/Frameworks/
+ios/Frameworks/
