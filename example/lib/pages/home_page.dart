@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/clients/motor.dart';
 import 'package:motor_flutter_example/pages/nearby_page.dart';
 import 'package:motor_flutter_example/pages/pay_page.dart';
 import 'package:motor_flutter_example/pages/user_page.dart';

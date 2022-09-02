@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter_example/models/auth_box.dart';
 import 'package:motor_flutter_example/models/query_response.dart';
-import 'package:motor_flutter_example/pages/home_page.dart';
 
 class MotorService extends GetxService {
   // Accessor Method

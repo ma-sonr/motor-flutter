@@ -9,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:motor_flutter_example/clients/motor.dart';
-import 'package:motor_flutter_example/models/auth_box.dart';
 
 import 'home_page.dart';
 
