@@ -31,3 +31,4 @@ android/libs
 .dart_tool/
 .packages
 build/
+node_modules/
