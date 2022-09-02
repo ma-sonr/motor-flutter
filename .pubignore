@@ -1,2 +1,3 @@
 ios/Frameworks
 android/libs
+purge.sh
