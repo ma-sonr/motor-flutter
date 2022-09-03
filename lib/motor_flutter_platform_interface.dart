@@ -31,7 +31,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
-  Future<void> connect() {
+  Future<bool> connect() {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 

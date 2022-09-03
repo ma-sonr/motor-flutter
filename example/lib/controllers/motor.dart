@@ -36,12 +36,13 @@ class MotorService extends GetxService {
     return this;
   }
 
-  void connect() async {
+  Future<bool> connect() async {
     try {
-      await instance.connect();
+      return await instance.connect();
     } catch (e) {
       _debugPrint(e.toString());
     }
+    return false;
   }
 
   @override

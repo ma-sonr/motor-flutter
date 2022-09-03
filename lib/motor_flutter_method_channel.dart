@@ -46,8 +46,8 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<void> connect() async {
-    await methodChannel.invokeMethod<Uint8List>('connect');
+  Future<bool> connect() async {
+    return await methodChannel.invokeMethod<bool>('connect') ?? false;
   }
 
   @override

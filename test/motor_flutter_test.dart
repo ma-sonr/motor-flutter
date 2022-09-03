@@ -39,7 +39,7 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   }
 
   @override
-  Future<void> connect() {
+  Future<bool> connect() {
     // TODO: implement connect
     throw UnimplementedError();
   }

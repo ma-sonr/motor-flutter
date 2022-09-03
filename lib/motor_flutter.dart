@@ -6,6 +6,7 @@ import 'package:motor_flutter/utilities/information.dart';
 import 'motor_flutter_platform_interface.dart';
 export 'package:motor_flutter/gen/generated.dart';
 export 'package:motor_flutter/extensions/extensions.dart';
+import 'dart:math';
 
 class MotorFlutter {
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
@@ -17,14 +18,16 @@ class MotorFlutter {
 
   Future<InitializeResponse?> initialize() async {
     final peerInfo = await PeerInformation.fetch();
-    final req = peerInfo.toInitializeRequest(enableLibp2p: false);
+    final req = peerInfo.toInitializeRequest(enableLibp2p: true);
     return await MotorFlutterPlatform.instance.init(req);
   }
 
   Future<CreateAccountResponse?> createAccount(String password, {Map<String, String>? metadata}) async {
+    final dscKey = List<int>.generate(32, (i) => Random().nextInt(256));
     final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
       metadata: metadata,
+      aesDscKey: dscKey,
     ));
     return resp;
   }
@@ -38,14 +41,15 @@ class MotorFlutter {
     ));
   }
 
-  Future<void> connect() async {
+  Future<bool> connect() async {
     try {
-      await MotorFlutterPlatform.instance.connect();
+      return await MotorFlutterPlatform.instance.connect();
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
     }
+    return false;
   }
 
   Future<CreateSchemaResponse?> createSchema({

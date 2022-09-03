@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/clients/motor.dart';
+import 'package:motor_flutter_example/controllers/motor.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
 
 class UserPage extends StatelessWidget {

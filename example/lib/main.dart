@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:motor_flutter_example/pages/home_page.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
-import 'package:motor_flutter_example/clients/motor.dart';
+import 'package:motor_flutter_example/controllers/motor.dart';
 
 Future<void> main() async {
   // Init Services

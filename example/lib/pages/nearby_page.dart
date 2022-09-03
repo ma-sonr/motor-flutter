@@ -5,13 +5,24 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter_example/pages/pay_page.dart';
-import 'package:motor_flutter_example/clients/motor.dart';
+import 'package:motor_flutter_example/controllers/motor.dart';
 
-class NearbyPage extends StatelessWidget {
+class NearbyPage extends StatefulWidget {
   const NearbyPage({Key? key}) : super(key: key);
+
+  @override
+  State<NearbyPage> createState() => _NearbyPageState();
+}
+
+class _NearbyPageState extends State<NearbyPage> {
+  @override
+  void initState() {
+    super.initState();
+    _startHost();
+  }
+
   @override
   Widget build(BuildContext context) {
-    MotorService.to.connect();
     return Scaffold(
       body: StreamBuilder<List<Peer>>(
         stream: MotorService.to.nearbyPeers.stream,
@@ -50,5 +61,29 @@ class NearbyPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  _startHost() async {
+    MotorService.to.connect().then((ok) {
+      if (ok) {
+        Get.snackbar(
+          "Connected",
+          "Your device is now securely connected to the Sonr Network",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.greenAccent,
+          colorText: Colors.white,
+          duration: const Duration(seconds: 3),
+        );
+      } else {
+        Get.snackbar(
+          "Error",
+          "Failed to connect to the Sonr Network",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent,
+          colorText: Colors.white,
+          duration: const Duration(seconds: 2),
+        );
+      }
+    });
   }
 }
