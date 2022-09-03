@@ -33,7 +33,5 @@ purge.sh
 build/
 node_modules/
 ios/Frameworks/
-ios/Frameworks/
-ios/Frameworks/
-ios/Frameworks/
-android/libs/
+ios/Frameworks/Motor.xcframework
+android/libs/io.sonr.motor.aar
