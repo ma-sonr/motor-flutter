@@ -11,6 +11,7 @@ class NearbyPage extends StatelessWidget {
   const NearbyPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    MotorService.to.connect();
     return Scaffold(
       body: StreamBuilder<List<Peer>>(
         stream: MotorService.to.nearbyPeers.stream,

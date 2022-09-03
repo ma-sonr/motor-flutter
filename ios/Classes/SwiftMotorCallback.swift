@@ -18,10 +18,6 @@ class SwiftMotorCallback: NSObject, SNRMotorMotorCallbackProtocol {
     self.methodChannel.invokeMethod("onDiscover", arguments: data)
   }
 
-  func onLog(_ msg: String?) {
-    self.methodChannel.invokeMethod("onLog", arguments: msg)
-  }
-
   func onWalletCreated(_ data: Bool) {
     self.methodChannel.invokeMethod("onWalletCreated", arguments: data)
   }

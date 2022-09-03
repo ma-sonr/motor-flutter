@@ -1,4 +1,3 @@
-
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:motor_flutter/gen/generated.dart';
 import 'motor_flutter_method_channel.dart';
@@ -24,11 +23,15 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<InitializeResponse?> initialize(InitializeRequest req) {
+  Future<InitializeResponse?> init(InitializeRequest req) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
   Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<void> connect() {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
@@ -40,7 +43,27 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
-  Future<QueryWhatIsResponse?> queryWhatIs(QueryWhatIsRequest req) {
+  Future<QueryWhatIsResponse?> querySchema(QueryWhatIsRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<QueryWhatIsByCreatorResponse?> querySchemaByCreator(QueryWhatIsByCreatorRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<QueryWhatIsResponse?> querySchemaByDid(String did) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<QueryWhereIsResponse?> queryBucket(QueryWhereIsRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<QueryWhereIsByCreatorResponse?> queryBucketByCreator(QueryWhereIsByCreatorRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<PaymentResponse?> issuePayment(PaymentRequest req) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 

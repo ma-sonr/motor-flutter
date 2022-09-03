@@ -36,6 +36,14 @@ class MotorService extends GetxService {
     return this;
   }
 
+  void connect() async {
+    try {
+      await instance.connect();
+    } catch (e) {
+      _debugPrint(e.toString());
+    }
+  }
+
   @override
   void onClose() {
     _nearbySubscription.cancel();

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:motor_flutter/gen/generated.dart';
 import 'package:motor_flutter/utilities/information.dart';
@@ -17,7 +18,7 @@ class MotorFlutter {
   Future<InitializeResponse?> initialize() async {
     final peerInfo = await PeerInformation.fetch();
     final req = peerInfo.toInitializeRequest(enableLibp2p: false);
-    return await MotorFlutterPlatform.instance.initialize(req);
+    return await MotorFlutterPlatform.instance.init(req);
   }
 
   Future<CreateAccountResponse?> createAccount(String password, {Map<String, String>? metadata}) async {
@@ -37,6 +38,16 @@ class MotorFlutter {
     ));
   }
 
+  Future<void> connect() async {
+    try {
+      await MotorFlutterPlatform.instance.connect();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
   Future<CreateSchemaResponse?> createSchema({
     required String label,
     required Map<String, SchemaKind> fields,
@@ -49,13 +60,30 @@ class MotorFlutter {
     ));
   }
 
+  // querySchema takes in a single string value which can be either a DID URL or a creator address.
+  Future<QueryWhatIsResponse?> querySchema(String q) async {
+    return await MotorFlutterPlatform.instance.querySchema(QueryWhatIsRequest(did: q));
+  }
+
+  Future<QueryWhatIsByCreatorResponse?> querySchemaByCreator(String creator) async {
+    return await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator));
+  }
+
+  Future<QueryWhatIsResponse?> querySchemaByDid(String did) async {
+    return await MotorFlutterPlatform.instance.querySchemaByDid(did);
+  }
+
   // QueryWhatIs takes in a single string value which can be either a DID URL or a creator address.
-  Future<QueryWhatIsResponse?> queryWhatIs(String q) async {
-    if (q.contains("did:snr")) {
-      return await MotorFlutterPlatform.instance.queryWhatIs(QueryWhatIsRequest(did: q));
-    } else {
-      return await MotorFlutterPlatform.instance.queryWhatIs(QueryWhatIsRequest(creator: q));
-    }
+  Future<QueryWhereIsResponse?> queryBucket(String q) async {
+    return await MotorFlutterPlatform.instance.queryBucket(QueryWhereIsRequest(did: q));
+  }
+
+  Future<QueryWhereIsByCreatorResponse?> queryBucketByCreator(String creator) async {
+    return await MotorFlutterPlatform.instance.queryBucketByCreator(QueryWhereIsByCreatorRequest(creator: creator));
+  }
+
+  Future<PaymentResponse?> issueTokens(String to, String from, int amount, {String? memo}) async {
+    return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: amount, memo: memo));
   }
 
   Future<StatResponse?> stat() async {

@@ -81,13 +81,13 @@ const PaymentRequest$json = const {
   '2': const [
     const {'1': 'to', '3': 1, '4': 1, '5': 9, '10': 'to'},
     const {'1': 'from', '3': 2, '4': 1, '5': 9, '10': 'from'},
-    const {'1': 'amount', '3': 3, '4': 1, '5': 3, '10': 'amount'},
+    const {'1': 'amount', '3': 3, '4': 1, '5': 5, '10': 'amount'},
     const {'1': 'memo', '3': 4, '4': 1, '5': 9, '10': 'memo'},
   ],
 };
 
 /// Descriptor for `PaymentRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List paymentRequestDescriptor = $convert.base64Decode('Cg5QYXltZW50UmVxdWVzdBIOCgJ0bxgBIAEoCVICdG8SEgoEZnJvbRgCIAEoCVIEZnJvbRIWCgZhbW91bnQYAyABKANSBmFtb3VudBISCgRtZW1vGAQgASgJUgRtZW1v');
+final $typed_data.Uint8List paymentRequestDescriptor = $convert.base64Decode('Cg5QYXltZW50UmVxdWVzdBIOCgJ0bxgBIAEoCVICdG8SEgoEZnJvbRgCIAEoCVIEZnJvbRIWCgZhbW91bnQYAyABKAVSBmFtb3VudBISCgRtZW1vGAQgASgJUgRtZW1v');
 @$core.Deprecated('Use queryWhoIsRequestDescriptor instead')
 const QueryWhoIsRequest$json = const {
   '1': 'QueryWhoIsRequest',

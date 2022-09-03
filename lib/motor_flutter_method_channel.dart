@@ -10,8 +10,8 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   final methodChannel = const MethodChannel('io.sonr.motor/MethodChannel');
 
   @override
-  Future<InitializeResponse?> initialize(InitializeRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('initialize', req.writeToBuffer());
+  Future<InitializeResponse?> init(InitializeRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('init', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
@@ -46,6 +46,11 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
+  Future<void> connect() async {
+    await methodChannel.invokeMethod<Uint8List>('connect');
+  }
+
+  @override
   Future<CreateSchemaResponse?> createSchema(CreateSchemaRequest req) async {
     final buf = await methodChannel.invokeMethod<Uint8List>('createSchema', req.writeToBuffer());
     if (buf == null) {
@@ -58,8 +63,8 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<QueryWhatIsResponse?> queryWhatIs(QueryWhatIsRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('queryWhatIs', req.writeToBuffer());
+  Future<QueryWhatIsResponse?> querySchema(QueryWhatIsRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('querySchema', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {
         print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
@@ -67,6 +72,66 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
       return null;
     }
     return QueryWhatIsResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<QueryWhatIsByCreatorResponse?> querySchemaByCreator(QueryWhatIsByCreatorRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('querySchemaByCreator', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return QueryWhatIsByCreatorResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<QueryWhatIsResponse?> querySchemaByDid(String did) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('querySchemaByDid', did);
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return QueryWhatIsResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<QueryWhereIsResponse?> queryBucket(QueryWhereIsRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('queryBucket', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return QueryWhereIsResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<QueryWhereIsByCreatorResponse?> queryBucketByCreator(QueryWhereIsByCreatorRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('queryBucketByCreator', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return QueryWhereIsByCreatorResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<PaymentResponse?> issuePayment(PaymentRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('issuePayment', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return PaymentResponse.fromBuffer(buf.toList());
   }
 
   @override

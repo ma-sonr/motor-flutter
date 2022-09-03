@@ -11,12 +11,59 @@
 #include "Universe.objc.h"
 
 
+@class SNRMotorBucketObjectItem;
+@class SNRMotorBucketResolver;
+@class SNRMotorObjectResolver;
 @protocol SNRMotorMotorCallback;
 @class SNRMotorMotorCallback;
 
 @protocol SNRMotorMotorCallback <NSObject>
 - (void)onDiscover:(NSData* _Nullable)data;
 - (void)onWalletCreated:(BOOL)ok;
+@end
+
+@interface SNRMotorBucketObjectItem : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+@property (nonatomic) NSString* _Nonnull uri;
+@property (nonatomic) NSString* _Nonnull name;
+@property (nonatomic) NSString* _Nonnull bucketDid;
+@property (nonatomic) NSData* _Nullable objectData;
+@property (nonatomic) NSString* _Nonnull schemaDid;
+@end
+
+@interface SNRMotorBucketResolver : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nullable instancetype)init:(NSString* _Nullable)did;
+@property (nonatomic) BOOL initialized;
+@property (nonatomic) int64_t lastSync;
+// skipped method BucketResolver.ListObjects with unsupported parameter or return types
+
+@end
+
+@interface SNRMotorObjectResolver : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nullable instancetype)init:(NSString* _Nullable)name schemaDid:(NSString* _Nullable)schemaDid;
+@property (nonatomic) int64_t lastSync;
+- (NSData* _Nullable)publish:(NSError* _Nullable* _Nullable)error;
+- (BOOL)removeField:(NSString* _Nullable)fieldName error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setBool:(NSString* _Nullable)fieldName v:(long)v error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setBytes:(NSString* _Nullable)fieldName v:(NSData* _Nullable)v error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setFloat:(NSString* _Nullable)name fieldName:(NSString* _Nullable)fieldName v:(float)v error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setInt:(NSString* _Nullable)fieldName v:(long)v error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setLabel:(NSString* _Nullable)label error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setLink:(NSString* _Nullable)fieldName did:(NSString* _Nullable)did error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)setString:(NSString* _Nullable)fieldName v:(NSString* _Nullable)v error:(NSError* _Nullable* _Nullable)error;
+- (NSData* _Nullable)validate:(NSError* _Nullable* _Nullable)error;
 @end
 
 /**
@@ -57,7 +104,11 @@ FOUNDATION_EXPORT NSData* _Nullable SNRMotorIssuePayment(NSData* _Nullable buf, 
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorLogin(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 
+FOUNDATION_EXPORT SNRMotorBucketResolver* _Nullable SNRMotorNewBucketResolver(NSString* _Nullable did, NSError* _Nullable* _Nullable error);
+
 FOUNDATION_EXPORT BOOL SNRMotorNewObjectBuilder(NSString* _Nullable name, NSString* _Nullable schemaDid, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT SNRMotorObjectResolver* _Nullable SNRMotorNewObjectResolver(NSString* _Nullable name, NSString* _Nullable schemaDid, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT NSData* _Nullable SNRMotorQueryBucket(NSData* _Nullable buf, NSError* _Nullable* _Nullable error);
 

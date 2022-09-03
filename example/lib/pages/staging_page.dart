@@ -135,7 +135,20 @@ class _StagingPageState extends State<StagingPage> {
           label,
           style: const TextStyle(color: Colors.white, fontSize: 18),
         ),
-        onPressed: () => Get.back(),
+        onPressed: () => Get.defaultDialog(
+          title: "Confirm",
+          content: const Text("Are you sure you want to proceed?"),
+          actions: [
+            TextButton(
+              onPressed: () => Get.back(),
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () => Get.find<ConfirmPageController>().confirmPayment(),
+              child: const Text("Confirm"),
+            ),
+          ],
+        ),
       )
     ];
   }
@@ -186,19 +199,30 @@ class ConfirmPageController extends GetxController {
       return false;
     }
     if (operation == PaymentOperation.send) {
-      //final result = await MotorService.to.instance
-      // if (result) {
-      //Get.back();
-      // }
-      // return result;
+      final result = await MotorService.to.instance.issueTokens(
+        recipient.value,
+        MotorService.to.address.value,
+        amount.toInt(),
+        memo: forNote.value,
+      );
+      if (result != null) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      // final result = await MotorClient.instance.receivePayment(recipient.value, amount, forNote.value);
-      // if (result) {
-      // Get.back();
-      // }
-      // return result;
+      final result = await MotorService.to.instance.issueTokens(
+        MotorService.to.address.value,
+        recipient.value,
+        amount.toInt(),
+        memo: forNote.value,
+      );
+      if (result != null) {
+        return true;
+      } else {
+        return false;
+      }
     }
-    return false;
   }
 
   void refreshAccounts() async {

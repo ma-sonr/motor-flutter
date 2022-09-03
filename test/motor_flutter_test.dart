@@ -19,7 +19,7 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   }
 
   @override
-  Future<InitializeResponse?> initialize(InitializeRequest req) {
+  Future<InitializeResponse?> init(InitializeRequest req) {
     throw UnimplementedError();
   }
 
@@ -35,6 +35,48 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
 
   @override
   Future<StatResponse?> stat() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> connect() {
+    // TODO: implement connect
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PaymentResponse?> issuePayment(PaymentRequest req) {
+    // TODO: implement issuePayment
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<QueryWhereIsResponse?> queryBucket(QueryWhereIsRequest req) {
+    // TODO: implement queryBucket
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<QueryWhereIsByCreatorResponse?> queryBucketByCreator(QueryWhereIsByCreatorRequest req) {
+    // TODO: implement queryBucketByCreator
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<QueryWhatIsResponse?> querySchema(QueryWhatIsRequest req) {
+    // TODO: implement querySchema
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<QueryWhatIsByCreatorResponse?> querySchemaByCreator(QueryWhatIsByCreatorRequest req) {
+    // TODO: implement querySchemaByCreator
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<QueryWhatIsResponse?> querySchemaByDid(String did) {
+    // TODO: implement querySchemaByDid
     throw UnimplementedError();
   }
 }

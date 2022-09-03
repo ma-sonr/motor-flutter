@@ -17,7 +17,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
     // Switch by Call Method
     switch call.method {
     // Starts the Node
-    case "initialize":
+    case "init":
       var error: NSError?
       let args = call.arguments as! FlutterStandardTypedData
 
@@ -26,7 +26,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         print("Error: " + errorMessage)
         result(
           FlutterError.init(
-            code: "NATIVE_ERR",
+            code: "[SWIFT]",
             message: "Error: " + errorMessage,
             details: nil))
       } else {
@@ -36,31 +36,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         } else {
           result(
             FlutterError.init(
-              code: "NATIVE_ERR",
-              message: "Error: " + "Failed to Marshal result",
-              details: nil))
-        }
-      }
-
-    // Starts the Node
-    case "stat":
-      var error: NSError?
-      let rawBuf = Motor.SNRMotorStat(&error)
-      if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
-        result(
-          FlutterError.init(
-            code: "NATIVE_ERR",
-            message: "Error: " + errorMessage,
-            details: nil))
-      } else {
-        if let buf = rawBuf {
-          let resp = FlutterStandardTypedData.init(bytes: buf)
-          result(resp)
-        } else {
-          result(
-            FlutterError.init(
-              code: "NATIVE_ERR",
+              code: "[SWIFT]",
               message: "Error: " + "Failed to Marshal result",
               details: nil))
         }
@@ -75,7 +51,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         print("Error: " + errorMessage)
         result(
           FlutterError.init(
-            code: "NATIVE_ERR",
+            code: "[SWIFT]",
             message: "Error: " + errorMessage,
             details: nil))
       } else {
@@ -85,7 +61,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         } else {
           result(
             FlutterError.init(
-              code: "NATIVE_ERR",
+              code: "[SWIFT]",
               message: "Error: " + "Failed to Marshal result",
               details: nil))
         }
@@ -100,7 +76,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         print("Error: " + errorMessage)
         result(
           FlutterError.init(
-            code: "NATIVE_ERR",
+            code: "[SWIFT]",
             message: "Error: " + errorMessage,
             details: nil))
       } else {
@@ -110,10 +86,25 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         } else {
           result(
             FlutterError.init(
-              code: "NATIVE_ERR",
+              code: "[SWIFT]",
               message: "Error: " + "Failed to Marshal result",
               details: nil))
         }
+      }
+
+    // Resumes the Node
+    case "connect":
+      var error: NSError?
+      Motor.SNRMotorConnect(&error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        result(true)
       }
 
     // Resumes the Node
@@ -127,7 +118,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         print("Error: " + errorMessage)
         result(
           FlutterError.init(
-            code: "NATIVE_ERR",
+            code: "[SWIFT]",
             message: "Error: " + errorMessage,
             details: nil))
       } else {
@@ -137,40 +128,192 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         } else {
           result(
             FlutterError.init(
-              code: "NATIVE_ERR",
+              code: "[SWIFT]",
               message: "Error: " + "Failed to Marshal result",
               details: nil))
         }
       }
 
-    // // Resumes the Node
-    // case "queryWhatIs":
-    //   var error: NSError?
-    //   let args = call.arguments as! FlutterStandardTypedData
-    //   DispatchQueue.global(qos: .userInitiated).async {
-    //     let rawBuf = Motor.SNRMotorQueryWhatIs(args.data, &error)
-    //     DispatchQueue.main.async {
-    //       if let errorMessage = error?.userInfo.description {
-    //         print("Error: " + errorMessage)
-    //         result(
-    //           FlutterError.init(
-    //             code: "NATIVE_ERR",
-    //             message: "Error: " + errorMessage,
-    //             details: nil))
-    //       } else {
-    //         if let buf = rawBuf {
-    //           let resp = FlutterStandardTypedData.init(bytes: buf)
-    //           result(resp)
-    //         } else {
-    //           result(
-    //             FlutterError.init(
-    //               code: "NATIVE_ERR",
-    //               message: "Error: " + "Failed to Marshal result",
-    //               details: nil))
-    //         }
-    //       }
-    //     }
-    //   }
+    // Resumes the Node
+    case "querySchema":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+
+      let rawBuf = Motor.SNRMotorQuerySchema(args.data, &error)
+
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "querySchemaByCreator":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+
+      let rawBuf = Motor.SNRMotorQuerySchemaByCreator(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "querySchemaByDid":
+      var error: NSError?
+      let args = call.arguments as! String
+
+      let rawBuf = Motor.SNRMotorQuerySchemaByDid(args, &error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "queryBucket":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+
+      let rawBuf = Motor.SNRMotorQueryBucket(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "queryBucketByCreator":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+
+      let rawBuf = Motor.SNRMotorQueryBucket(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "issuePayment":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+
+      let rawBuf = Motor.SNRMotorIssuePayment(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Starts the Node
+    case "stat":
+      var error: NSError?
+      let rawBuf = Motor.SNRMotorStat(&error)
+      if let errorMessage = error?.userInfo.description {
+        print("Error: " + errorMessage)
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
     // ! Method not found
     default:
       result("iOS " + UIDevice.current.systemVersion)
