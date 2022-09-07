@@ -19,6 +19,8 @@ sh scripts/proto.sh
 
 ## Usage
 
+Learn more at the [Sonr docs](https://docs.sonr.io)
+
 ```dart
 import 'package:motor_flutter/motor_flutter.dart';
 
