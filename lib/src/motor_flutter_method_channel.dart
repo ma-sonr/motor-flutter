@@ -1,11 +1,9 @@
 import 'dart:core';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:protobuf/protobuf.dart';
 import '../motor_flutter.dart';
 import 'gen/registry/tx.pb.dart';
 import 'motor_flutter_platform_interface.dart';
-import 'utilities/information.dart';
 
 /// An implementation of [MotorFlutterPlatform] that uses method channels.
 class MethodChannelMotorFlutter extends MotorFlutterPlatform {
