@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter_example/pages/pay_page.dart';
-import 'package:motor_flutter_example/controllers/motor.dart';
 
 class NearbyPage extends StatefulWidget {
   const NearbyPage({Key? key}) : super(key: key);
@@ -25,7 +24,7 @@ class _NearbyPageState extends State<NearbyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder<List<Peer>>(
-        stream: MotorService.to.nearbyPeers.stream,
+        stream: MotorFlutter.to.nearbyPeers.stream,
         builder: (BuildContext context, AsyncSnapshot<List<Peer>> snapshot) {
           if (snapshot.hasError) {
             return const Text("Error");
@@ -64,8 +63,8 @@ class _NearbyPageState extends State<NearbyPage> {
   }
 
   _startHost() async {
-    MotorService.to.connect().then((ok) {
-      if (ok) {
+    MotorFlutter.to.connect(((ok) {
+      if (ok ?? false) {
         Get.snackbar(
           "Connected",
           "Your device is now securely connected to the Sonr Network",
@@ -84,6 +83,6 @@ class _NearbyPageState extends State<NearbyPage> {
           duration: const Duration(seconds: 2),
         );
       }
-    });
+    }));
   }
 }

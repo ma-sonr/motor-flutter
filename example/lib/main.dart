@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:motor_flutter_example/pages/home_page.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
-import 'package:motor_flutter_example/controllers/motor.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 
 Future<void> main() async {
   // Init Services
   WidgetsFlutterBinding.ensureInitialized();
   await Get.putAsync(
-    () => MotorService().init(),
+    () => MotorFlutter().init(),
     permanent: true,
   );
   // await Get.putAsync(
@@ -35,7 +35,7 @@ class InitialPage extends StatelessWidget {
       navigatorObservers: [
         GetObserver(),
       ],
-      home: MotorService.to.authorized.value ? const HomePage() : const RegisterPage(),
+      home: MotorFlutter.to.authorized.value ? const HomePage() : const RegisterPage(),
     );
   }
 

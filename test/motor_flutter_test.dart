@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:motor_flutter/motor_flutter.dart';
+import 'package:motor_flutter/src/gen/registry/tx.pb.dart';
 import 'package:motor_flutter/src/motor_flutter_platform_interface.dart';
 import 'package:motor_flutter/src/motor_flutter_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
@@ -72,6 +73,24 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   @override
   Future<QueryWhatIsResponse?> querySchemaByDid(String did) {
     // TODO: implement querySchemaByDid
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<MsgBuyAliasResponse?> buyAlias(MsgBuyAlias req) {
+    // TODO: implement buyAlias
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<MsgSellAliasResponse?> sellAlias(MsgSellAlias req) {
+    // TODO: implement sellAlias
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<MsgTransferAliasResponse?> transferAlias(MsgTransferAlias req) {
+    // TODO: implement transferAlias
     throw UnimplementedError();
   }
 }

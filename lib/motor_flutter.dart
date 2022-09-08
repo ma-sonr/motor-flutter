@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'src/gen/generated.dart';
+import 'src/gen/registry/tx.pb.dart';
 import 'src/utilities/information.dart';
 import 'src/extensions/extensions.dart';
 import 'src/motor_flutter_platform_interface.dart';
@@ -77,6 +78,48 @@ class MotorFlutter extends GetxService {
       didUrl.value = resp.whoIs.didDocument.id;
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
+    }
+  }
+
+  void buyAlias(String alias, [ResponseCallback<MsgBuyAliasResponse>? callback]) async {
+    final resp = await MotorFlutterPlatform.instance.buyAlias(MsgBuyAlias(
+      name: alias,
+      creator: address.value,
+    ));
+    if (callback != null) {
+      callback(resp);
+    }
+    if (resp != null) {
+      domain.value = alias;
+    }
+  }
+
+  void sellAlias(String alias, int amount, [ResponseCallback<MsgSellAliasResponse>? callback]) async {
+    final resp = await MotorFlutterPlatform.instance.sellAlias(MsgSellAlias(
+      alias: alias,
+      creator: address.value,
+      amount: amount,
+    ));
+    if (callback != null) {
+      callback(resp);
+    }
+    if (resp != null) {
+      domain.value = alias;
+    }
+  }
+
+  void transferAlias(String alias, String recipient, int amount, [ResponseCallback<MsgTransferAliasResponse>? callback]) async {
+    final resp = await MotorFlutterPlatform.instance.transferAlias(MsgTransferAlias(
+      alias: alias,
+      amount: amount,
+      recipient: recipient,
+      creator: address.value,
+    ));
+    if (callback != null) {
+      callback(resp);
+    }
+    if (resp != null) {
+      domain.value = alias;
     }
   }
 

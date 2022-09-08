@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/controllers/motor.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter_example/models/query_response.dart';
 
 enum PaymentOperation {
@@ -199,9 +199,9 @@ class ConfirmPageController extends GetxController {
       return false;
     }
     if (operation == PaymentOperation.send) {
-      final result = await MotorService.to.instance.issueTokens(
+      final result = await MotorFlutter.to.issueTokens(
         recipient.value,
-        MotorService.to.address.value,
+        MotorFlutter.to.address.value,
         amount.toInt(),
         memo: forNote.value,
       );
@@ -211,8 +211,8 @@ class ConfirmPageController extends GetxController {
         return false;
       }
     } else {
-      final result = await MotorService.to.instance.issueTokens(
-        MotorService.to.address.value,
+      final result = await MotorFlutter.to.issueTokens(
+        MotorFlutter.to.address.value,
         recipient.value,
         amount.toInt(),
         memo: forNote.value,
@@ -226,16 +226,16 @@ class ConfirmPageController extends GetxController {
   }
 
   void refreshAccounts() async {
-    final result = await MotorService.to.fetchAllAccounts();
-    if (result.accounts == null) {
-      return;
-    }
-    for (var a in result.accounts!) {
-      if (a.address != null) {
-        accountsList.add(a);
-      }
-    }
-    accountsList.refresh();
+    // final result = await MotorFlutter.to.fetchAllAccounts();
+    // if (result.accounts == null) {
+    //   return;
+    // }
+    // for (var a in result.accounts!) {
+    //   if (a.address != null) {
+    //     accountsList.add(a);
+    //   }
+    // }
+    // accountsList.refresh();
   }
 
   void _handleSearchQueryChanged(String query) {

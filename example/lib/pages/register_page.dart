@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:motor_flutter_example/controllers/motor.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 
 import 'home_page.dart';
 
@@ -267,7 +267,7 @@ class _AccountLoadingPageState extends State<AccountLoadingPage> {
 
   Future<void> _createAccount() async {
     _stopwatch.start();
-    MotorService.to.createAccount(widget.password, callback: (res) {
+    MotorFlutter.to.createAccount(widget.password, (res) {
       setState(() {
         if (kDebugMode) {
           print("Account generation is finished - took ${(_stopwatch.elapsedMilliseconds / 1000).toString()}s");
@@ -292,7 +292,7 @@ class _AccountLoadingPageState extends State<AccountLoadingPage> {
 
   Future<void> _loginAccount() async {
     _stopwatch.start();
-    MotorService.to.login(callback: (res) {
+    MotorFlutter.to.login(AuthInfo(), (res) {
       setState(() {
         if (kDebugMode) {
           print("Account generation is finished - took ${(_stopwatch.elapsedMilliseconds / 1000).toString()}s");

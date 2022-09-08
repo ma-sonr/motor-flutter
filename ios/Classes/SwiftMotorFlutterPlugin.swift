@@ -91,6 +91,81 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       }
 
     // Resumes the Node
+    case "buyAlias":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = Motor.SNRMotorBuyAlias(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "sellAlias":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = Motor.SNRMotorSellAlias(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "transferAlias":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = Motor.SNRMotorTransferAlias(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
     case "connect":
       var error: NSError?
       Motor.SNRMotorConnect(&error)

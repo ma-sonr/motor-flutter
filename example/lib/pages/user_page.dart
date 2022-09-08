@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/controllers/motor.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 import 'package:motor_flutter_example/pages/register_page.dart';
 
 class UserPage extends StatelessWidget {
@@ -10,7 +10,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MotorService.to.refresh();
+    MotorFlutter.to.refresh();
     return ListView(
       children: <Widget>[
         Container(
@@ -63,7 +63,7 @@ class UserPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16),
                   child: Obx(
                     () => Text(
-                      MotorService.to.domain.value,
+                      MotorFlutter.to.domain.value,
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class UserPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 8),
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Obx(() => Text(
-                      MotorService.to.address.value,
+                      MotorFlutter.to.address.value,
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 16,
@@ -93,7 +93,7 @@ class UserPage extends StatelessWidget {
                 color: Colors.lightGreenAccent.shade700,
                 child: ListTile(
                   title: Obx(
-                    () => Text(MotorService.to.balance.value.toString(),
+                    () => Text(MotorFlutter.to.balance.value.toString(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -117,7 +117,7 @@ class UserPage extends StatelessWidget {
                 color: Colors.lightBlueAccent,
                 child: ListTile(
                   title: Obx(
-                    () => Text(MotorService.to.staked.value,
+                    () => Text(MotorFlutter.to.staked.value,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -151,7 +151,7 @@ class UserPage extends StatelessWidget {
               ),
               subtitle: Obx(
                 () => Text(
-                  MotorService.to.didUrl.value,
+                  MotorFlutter.to.didUrl.value,
                   style: const TextStyle(
                     fontSize: 18,
                   ),

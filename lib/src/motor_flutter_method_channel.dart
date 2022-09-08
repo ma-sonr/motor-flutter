@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:protobuf/protobuf.dart';
 import '../motor_flutter.dart';
+import 'gen/registry/tx.pb.dart';
 import 'motor_flutter_platform_interface.dart';
 import 'utilities/information.dart';
 
@@ -46,12 +47,47 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
       return null;
     }
     return LoginResponse.fromBuffer(buf.toList());
-    
   }
 
   @override
   Future<bool> connect() async {
     return await methodChannel.invokeMethod<bool>('connect') ?? false;
+  }
+
+  @override
+  Future<MsgBuyAliasResponse?> buyAlias(MsgBuyAlias req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('buyAlias', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return MsgBuyAliasResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<MsgSellAliasResponse?> sellAlias(MsgSellAlias req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('sellAlias', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return MsgSellAliasResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<MsgTransferAliasResponse?> transferAlias(MsgTransferAlias req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('transferAlias', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return MsgTransferAliasResponse.fromBuffer(buf.toList());
   }
 
   @override

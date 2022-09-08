@@ -1,5 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:motor_flutter/src/gen/generated.dart';
+import 'gen/registry/tx.pb.dart';
 import 'motor_flutter_method_channel.dart';
 
 abstract class MotorFlutterPlatform extends PlatformInterface {
@@ -36,6 +37,18 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   }
 
   Future<LoginResponse?> login(LoginRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<MsgBuyAliasResponse?> buyAlias(MsgBuyAlias req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+    Future<MsgSellAliasResponse?> sellAlias(MsgSellAlias req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+    Future<MsgTransferAliasResponse?> transferAlias(MsgTransferAlias req) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
