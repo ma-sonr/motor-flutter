@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		7CC21EBF28C9AC6D007573B6 /* Motor in Frameworks */ = {isa = PBXBuildFile; productRef = 7CC21EBE28C9AC6D007573B6 /* Motor */; };
 		7CFAC03528B2E7F700D17500 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A159AB7AC9A37126B55466C6 /* Pods_Runner.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CC21EBF28C9AC6D007573B6 /* Motor in Frameworks */,
 				7CFAC03528B2E7F700D17500 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,8 +131,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				7CC21EBD28C9ABD7007573B6 /* PBXTargetDependency */,
 			);
 			name = Runner;
+			packageProductDependencies = (
+				7CC21EBE28C9AC6D007573B6 /* Motor */,
+			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
+			packageReferences = (
+				7CC21EB928C9ABC8007573B6 /* XCRemoteSwiftPackageReference "MotorKit" */,
+			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +272,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CC21EBD28C9ABD7007573B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7CC21EBC28C9ABD7007573B6 /* MotorKit */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
@@ -538,6 +554,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7CC21EB928C9ABC8007573B6 /* XCRemoteSwiftPackageReference "MotorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sonr-io/MotorKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CC21EBC28C9ABD7007573B6 /* MotorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CC21EB928C9ABC8007573B6 /* XCRemoteSwiftPackageReference "MotorKit" */;
+			productName = MotorKit;
+		};
+		7CC21EBE28C9AC6D007573B6 /* Motor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CC21EB928C9ABC8007573B6 /* XCRemoteSwiftPackageReference "MotorKit" */;
+			productName = Motor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }
