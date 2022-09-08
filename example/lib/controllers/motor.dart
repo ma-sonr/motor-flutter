@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
-import 'package:motor_flutter_example/models/auth_box.dart';
+import 'package:motor_flutter/src/controllers/auth_box.dart';
 import 'package:motor_flutter_example/models/query_response.dart';
 
 class MotorService extends GetxService {
@@ -28,7 +28,7 @@ class MotorService extends GetxService {
   Future<MotorService> init() async {
     _nearbySubscription = instance.discoverEvents.stream.listen(_handleRefreshStream);
     try {
-      final resp = await instance.initialize();
+      final resp = await instance.init();
       _debugPrint(resp?.toDebugString());
     } catch (e) {
       _debugPrint(e.toString());
@@ -77,10 +77,9 @@ class MotorService extends GetxService {
   Future<void> login({required void Function(LoginResponse?) callback}) async {
     try {
       final ai = AuthInfoBox().getAuthInfo();
-      final resp = await instance.login(ai.did, ai.password, ai.aesDscKey, ai.aesPskKey);
+      final resp = await instance.login(ai, callback);
       _debugPrint(resp?.toDebugString());
       authorized(true);
-      callback(resp);
     } catch (e) {
       _debugPrint(e.toString());
     }

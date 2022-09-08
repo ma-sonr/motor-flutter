@@ -20,10 +20,8 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
     case "init":
       var error: NSError?
       let args = call.arguments as! FlutterStandardTypedData
-
       let rawBuf = Motor.SNRMotorInit(args.data, self.callback, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -48,7 +46,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       let args = call.arguments as! FlutterStandardTypedData
       let rawBuf = Motor.SNRMotorCreateAccount(args.data, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -73,7 +71,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       let args = call.arguments as! FlutterStandardTypedData
       let rawBuf = Motor.SNRMotorLogin(args.data, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -97,7 +95,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       var error: NSError?
       Motor.SNRMotorConnect(&error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -115,7 +113,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       let rawBuf = Motor.SNRMotorCreateSchema(args.data, &error)
 
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -142,7 +140,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       let rawBuf = Motor.SNRMotorQuerySchema(args.data, &error)
 
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -168,7 +166,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
 
       let rawBuf = Motor.SNRMotorQuerySchemaByCreator(args.data, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -194,7 +192,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
 
       let rawBuf = Motor.SNRMotorQuerySchemaByDid(args, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -220,7 +218,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
 
       let rawBuf = Motor.SNRMotorQueryBucket(args.data, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -246,7 +244,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
 
       let rawBuf = Motor.SNRMotorQueryBucket(args.data, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -272,7 +270,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
 
       let rawBuf = Motor.SNRMotorIssuePayment(args.data, &error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",
@@ -296,7 +294,7 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       var error: NSError?
       let rawBuf = Motor.SNRMotorStat(&error)
       if let errorMessage = error?.userInfo.description {
-        print("Error: " + errorMessage)
+
         result(
           FlutterError.init(
             code: "[SWIFT]",

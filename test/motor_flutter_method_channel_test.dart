@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:motor_flutter/motor_flutter_method_channel.dart';
+import 'package:motor_flutter/src/motor_flutter_method_channel.dart';
 
 void main() {
   MethodChannelMotorFlutter platform = MethodChannelMotorFlutter();

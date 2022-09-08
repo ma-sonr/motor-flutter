@@ -1,67 +1,106 @@
-import 'dart:async';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:motor_flutter/gen/generated.dart';
-import 'package:motor_flutter/utilities/information.dart';
-import 'motor_flutter_platform_interface.dart';
-export 'package:motor_flutter/gen/generated.dart';
-export 'package:motor_flutter/extensions/extensions.dart';
 import 'dart:math';
+import 'dart:async';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'src/gen/generated.dart';
+import 'src/utilities/information.dart';
+import 'src/extensions/extensions.dart';
+import 'src/motor_flutter_platform_interface.dart';
+import 'src/utilities/logger.dart';
+export 'src/gen/generated.dart';
+export 'src/extensions/extensions.dart';
+export 'src/utilities/logger.dart';
 
-class MotorFlutter {
+class MotorFlutter extends GetxService {
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
   final methodChannel = const MethodChannel('io.sonr.motor/MethodChannel');
+
+  // Reactive variables
+  final address = 'snr123abc'.obs;
+  final domain = 'test.snr/'.obs;
+  final balance = 0.obs;
+  final didUrl = 'did:snr:abc123'.obs;
+  final staked = '0'.obs;
+  final didDocument = DIDDocument().obs;
+  final authorized = false.obs;
+  final connected = false.obs;
+  final nearbyPeers = <Peer>[].obs;
+  final schemaHistory = <SchemaDefinition>[].obs;
+  final objectHistory = <ObjectReference>[].obs;
+
+  // Accessor Method
+  static MotorFlutter get to => Get.find<MotorFlutter>();
 
   MotorFlutter() {
     methodChannel.setMethodCallHandler(_handleMethodCall);
   }
 
-  Future<InitializeResponse?> initialize() async {
+  Future<MotorFlutter> init([ResponseCallback<InitializeResponse>? callback]) async {
     final peerInfo = await PeerInformation.fetch();
     final req = peerInfo.toInitializeRequest(enableLibp2p: true);
-    return await MotorFlutterPlatform.instance.init(req);
+    final resp = await MotorFlutterPlatform.instance.init(req);
+    if (callback != null) {
+      callback(resp);
+    }
+    return this;
   }
 
-  Future<CreateAccountResponse?> createAccount(String password, {Map<String, String>? metadata}) async {
+  void createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
     final dscKey = List<int>.generate(32, (i) => Random().nextInt(256));
     final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
-      metadata: metadata,
       aesDscKey: dscKey,
     ));
-    return resp;
-  }
-
-  Future<LoginResponse?> login(String did, String password, List<int> aesDscKey, List<int> aesPskKey) async {
-    return await MotorFlutterPlatform.instance.login(LoginRequest(
-      password: password,
-      did: did,
-      aesDscKey: aesDscKey,
-      aesPskKey: aesPskKey,
-    ));
-  }
-
-  Future<bool> connect() async {
-    try {
-      return await MotorFlutterPlatform.instance.connect();
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+    if (callback != null) {
+      callback(resp);
     }
-    return false;
+    if (resp != null) {
+      address.value = resp.address;
+      didUrl.value = resp.whoIs.didDocument.id;
+      didDocument.value = resp.whoIs.didDocument;
+      authorized.value = true;
+    }
   }
 
-  Future<CreateSchemaResponse?> createSchema({
-    required String label,
-    required Map<String, SchemaKind> fields,
-    Map<String, String>? metadata,
-  }) async {
-    return await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
+  void login(AuthInfo info, [ResponseCallback<LoginResponse>? callback]) async {
+    final resp = await MotorFlutterPlatform.instance.login(LoginRequest(
+      password: info.password,
+      did: info.did,
+      aesDscKey: info.aesDscKey,
+      aesPskKey: info.aesPskKey,
+    ));
+    if (callback != null) {
+      callback(resp);
+    }
+    if (resp != null) {
+      address.value = info.address;
+      didUrl.value = resp.whoIs.didDocument.id;
+      didDocument.value = resp.whoIs.didDocument;
+      authorized.value = true;
+    }
+  }
+
+  void connect([ResponseCallback<bool>? callback]) async {
+    final resp = await MotorFlutterPlatform.instance.connect();
+    if (callback != null) {
+      callback(resp);
+    }
+    connected.value = resp;
+  }
+
+  void createSchema(String label, Map<String, SchemaKind> fields, Map<String, String>? metadata,
+      [ResponseCallback<CreateSchemaResponse>? callback]) async {
+    final resp = await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
       label: label,
       fields: fields,
       metadata: metadata,
     ));
+    if (callback != null) {
+      callback(resp);
+    }
+    if (resp != null) {
+      schemaHistory.add(resp.schemaDefinition);
+    }
   }
 
   // querySchema takes in a single string value which can be either a DID URL or a creator address.
@@ -90,8 +129,25 @@ class MotorFlutter {
     return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: amount, memo: memo));
   }
 
-  Future<StatResponse?> stat() async {
-    return await MotorFlutterPlatform.instance.stat();
+  void refresh([ResponseCallback<StatResponse>? callback]) async {
+    if (!authorized.value) {
+      Log.printFlutterWarn("User is not yet authorized");
+    }
+
+    // Wrap instance method with try catch
+    try {
+      final resp = await MotorFlutterPlatform.instance.stat();
+      if (resp != null) {
+        didDocument(resp.didDocument);
+        address(resp.address);
+        domain(resp.didDocument.alsoKnownAs.isNotEmpty ? resp.didDocument.alsoKnownAs[0] : "test.snr/");
+        balance(resp.balance);
+        didUrl(resp.didDocument.id);
+        staked(resp.stake.toString());
+      }
+    } catch (e) {
+      Log.printMotorException(e.toString());
+    }
   }
 
   Future<String?> getPlatformVersion() async {
@@ -112,5 +168,11 @@ class MotorFlutter {
           details: "The method '${call.method}' is not implemented",
         );
     }
+  }
+
+  @override
+  void onClose() {
+    discoverEvents.close();
+    super.onClose();
   }
 }
