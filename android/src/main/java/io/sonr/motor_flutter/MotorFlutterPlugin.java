@@ -84,7 +84,7 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
           System.out.println(e.toString());
           result.error(e.getMessage(), e.getMessage(), null);
         }
-        break;
+        break;  
 
       // Starts the Node
       case "queryWhatIs":

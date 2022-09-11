@@ -38,7 +38,7 @@ SPEC CHECKSUMS:
   biometric_storage: 1400f1382af3a4cc2bf05340e13c3d8de873ceb9
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  motor_flutter: 7a6d5faa6590e1498e32799e2d870fd431bfb5ae
+  motor_flutter: 56b3a4007cc95cd9af0f29c334191755122efb25
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
