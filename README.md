@@ -10,7 +10,7 @@ dependencies:
   motor_flutter: ^0.0.1
 ```
 
-Cloing the Plugin
+Cloning the Plugin
 ```sh
 git clone git@github.com:sonr-io/motor-flutter.git
 sh scripts/download.sh

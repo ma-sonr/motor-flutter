@@ -16,11 +16,13 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private MethodChannel channel;
+  private JavaMotorCallback callback;
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "io.sonr.motor/MethodChannel");
     channel.setMethodCallHandler(this);
+    callback = new JavaMotorCallback(channel);
   }
 
   @Override
@@ -28,22 +30,11 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
     // Switch by Call Method
     switch (call.method) {
       // Starts the Node
-      case "initialize":
+      case "init":
         try {
           final byte[] initArgs = call.arguments();
-          final byte[] initResp = Motor.init(initArgs);
+          final byte[] initResp = Motor.init(initArgs, callback);
           result.success(initResp);
-        }catch (Exception e) {
-          System.out.println(e.toString());
-          result.error(e.getMessage(), e.getMessage(), null);
-        }
-        break;
-
-      // Starts the Node
-      case "stat":
-        try {
-          final byte[] statResp = Motor.init();
-          result.success(statResp);
         }catch (Exception e) {
           System.out.println(e.toString());
           result.error(e.getMessage(), e.getMessage(), null);
@@ -75,6 +66,52 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
         break;
 
       // Starts the Node
+      case "buyAlias":
+        try {
+          final byte[] buyAliasArgs = call.arguments();
+          final byte[] buyAliasResp = Motor.buyAlias(buyAliasArgs);
+          result.success(buyAliasResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "sellAlias":
+        try {
+          final byte[] sellAliasArgs = call.arguments();
+          final byte[] sellAliasResp = Motor.sellAlias(sellAliasArgs);
+          result.success(sellAliasResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "transferAlias":
+        try {
+          final byte[] transferAliasArgs = call.arguments();
+          final byte[] transferAliasResp = Motor.transferAlias(transferAliasArgs);
+          result.success(transferAliasResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "connect":
+        try {
+          Motor.connect();
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
       case "createSchema":
         try {
           final byte[] createSchemaArgs = call.arguments();
@@ -84,13 +121,25 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
           System.out.println(e.toString());
           result.error(e.getMessage(), e.getMessage(), null);
         }
-        break;  
+        break;
+
+      // Starts the Node
+      case "issuePayment":
+        try {
+          final byte[] issuePaymentArgs = call.arguments();
+          final byte[] issuePaymentResp = Motor.issuePayment(issuePaymentArgs);
+          result.success(issuePaymentResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
 
       // Starts the Node
       case "queryWhatIs":
         try {
           final byte[] queryWhatIsArgs = call.arguments();
-          final byte[] queryWhatIsResp = Motor.queryWhatIs(queryWhatIsArgs);
+          final byte[] queryWhatIsResp = Motor.querySchema(queryWhatIsArgs);
           result.success(queryWhatIsResp);
         }catch (Exception e) {
           System.out.println(e.toString());
@@ -101,6 +150,17 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
       // Stops the Node
       case "getPlatformVersion":
         result.success("Android " + android.os.Build.VERSION.RELEASE);
+        break;
+
+      // Starts the Node
+      case "stat":
+        try {
+          final byte[] statResp = Motor.stat();
+          result.success(statResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
         break;
 
       // ! Method not found

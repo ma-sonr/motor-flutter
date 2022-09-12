@@ -1,4 +1,4 @@
-# motor_flutter_example
+# motor_flutter_example - Eureka Pay
 
 Demonstrates how to use the motor_flutter plugin.
 
