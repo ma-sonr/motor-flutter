@@ -13,8 +13,8 @@ dependencies:
 Cloning the Plugin
 ```sh
 git clone git@github.com:sonr-io/motor-flutter.git
-sh scripts/download.sh
-sh scripts/proto.sh
+sh tool/download.sh
+sh tool/proto.sh
 ```
 
 ## Usage
