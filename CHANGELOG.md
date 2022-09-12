@@ -1,3 +1,7 @@
+## 0.1.0
+* Added Cocoapods for XCFrameworks
+* Made Android SDK Feature Parity with iOS SDK
+
 ## 0.0.3
 
 * Added Getx to plugin
