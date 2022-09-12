@@ -5,53 +5,45 @@ Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io).
 ## Installation
 
 Integrating into your existing Flutter project
-```yaml
-dependencies:
-  motor_flutter: ^0.0.1
+```sh
+flutter pub add motor_flutter
 ```
 
-Cloning the Plugin
-```sh
-git clone git@github.com:sonr-io/motor-flutter.git
-sh tool/download.sh
-sh tool/proto.sh
+or
+
+```yaml
+dependencies:
+  motor_flutter: ^0.1.0
 ```
 
 ## Usage
 
-Learn more at the [Sonr docs](https://docs.sonr.io)
+Here is a simple example of using the `Motor` class to control a motor.
 
 ```dart
 import 'package:motor_flutter/motor_flutter.dart';
 
-// ...
-final _motorFlutterPlugin = MotorFlutter();
-final hasWallet = await _motorFlutterPlugin.newWallet() ?? false;
-```
+// Initialize the Sonr Motor Node
+final instance = await MotorFlutter();
 
-## To Do
-- [ ] Implement ExportWallet in Swift/Java/Dart
-- [ ] Implement LoadWallet in Swift/Java/Dart
-- [ ] Implement Address in Swift/Java/Dart
-- [ ] Implement DidDoc in Swift/Java/Dart
-- [ ] Implement ImportCredential in Swift/Java/Dart
-- [ ] Implement Sign in Swift/Java/Dart
-- [ ] Implement Verify in Swift/Java/Dart
+// Create a new account
+instance.createAccount("secure-password-123", _handleResponse);
+
+// Helper function to handle response
+void _handleResponse(CreateAccountResponse? resp) {
+  if (resp != null) {
+    // Login to an existing account
+    final authInfo = resp.authInfo;
+    instance.login(authInfo, (response) {
+      print(response);
+    });
+  }
+}
+```
 
 ## API Reference
 
-These methods are subject to change, as the library is being actively developed.
-
-| **Method**         | **Description**                                                              |        **Params**        | **Returns** |
-|--------------------|------------------------------------------------------------------------------|:------------------------:|:-----------:|
-| `newWallet`        | Create a new mpc wallet                                                      |      Threshold:`int`     |    ERROR    |
-| `exportWallet`     | Marshals wallet to json and returns - TESTING ONLY                           |                          |    BYTES    |
-| `loadWallet`       | Unmarshals the buffer into a wallet                                          |       Buf: `bytes`       |    ERROR    |
-| `address`          | Get wallet address                                                           |                          |    STRING   |
-| `didDoc`           | Get DidDocument of account                                                   |                          |    STRING   |
-| `importCredential` | Import a webauthn/biometric credential proto bytes into wallet did document  |       Cred:`bytes`       |    ERROR    |
-| `sign`             | Sign a buffer with MPC wallet, completes entire process and returns a tx raw |        Msg:`bytes`       |    BYTES    |
-| `verify`           | Verify a signature of a buffer                                               | Msg:`bytes`, Sig:`bytes` |     BOOL    |
+These methods are subject to change, as the library is being actively developed. For extended documentation, learn more at the [Sonr docs](https://docs.sonr.io).
 
 ## Contributing
 

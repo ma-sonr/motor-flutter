@@ -11,7 +11,6 @@
 migrate_working_dir/
 tmp
 ios/Frameworks
-android/libs
 purge.sh
 # IntelliJ related
 *.iml
@@ -33,3 +32,4 @@ purge.sh
 build/
 node_modules/
 ios/Frameworks/Motor.framework
+!android/libs/io.sonr.motor.aar

@@ -1,3 +1,7 @@
+## 0.1.1
+* Added Android AAR into the Flutter package
+* Update README.md
+
 ## 0.1.0
 * Added Cocoapods for XCFrameworks
 * Made Android SDK Feature Parity with iOS SDK
