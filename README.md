@@ -13,7 +13,7 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.1.0
+  motor_flutter: ^0.1.1
 ```
 
 ## Usage
