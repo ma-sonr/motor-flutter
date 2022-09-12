@@ -32,4 +32,3 @@ purge.sh
 .packages
 build/
 node_modules/
-!**/Frameworks/Motor.framework
