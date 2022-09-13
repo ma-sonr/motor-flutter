@@ -1,6 +1,6 @@
 # motor_flutter
 
-Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io).
+Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io). **See [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html) for more information.**
 
 ## Installation
 
@@ -56,7 +56,7 @@ void _handleResponse(CreateAccountResponse? resp) {
 
 ## API Reference
 
-These methods are subject to change, as the library is being actively developed. For extended documentation, learn more at the [Sonr docs](https://docs.sonr.io).
+For full usage documentation on the Motor Flutter class, please see the [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html).
 
 ## Contributing
 
