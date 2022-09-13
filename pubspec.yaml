@@ -1,18 +1,16 @@
 name: motor_flutter
 description: >-
-  Have you been turned into a newt?  Would you like to be?
-  This package can help. It has all of the
-  newt-transmogrification functionality you have been looking
-  for.
-version: 0.2.1
+  The Official Implementation of the Sonr Motor Node in Flutter.
+  This package provides methods for Authentication, Data Management, and
+  Wallet interactions for the Sonr Network.
+version: 0.2.2
 homepage: https://sonr.dev
 repository: https://github.com/sonr-io/motor-flutter
 issue_tracker: https://sonr.fyi/motor-requests
-documentation: https://motor.sonr.dev
+documentation: https://motor.build
 environment:
   sdk: ">=2.12.0 <3.0.0"
   flutter: ">=2.5.0"
-
 dependencies:
   device_info_plus: ^4.1.2
   flutter:

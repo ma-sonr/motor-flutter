@@ -1,3 +1,5 @@
+## 0.2.2
+* Update pubspec.yaml
 ## 0.2.1
 * Added documentation to MotorFlutter
 
