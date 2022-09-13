@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/LoginResponse-class.html">LoginResponse</a>?</span>&gt;</span></span>
 <span class="name ">login</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="login-param-info"><span class="type-annotation"><a href="../../motor_flutter/AuthInfo-class.html">AuthInfo</a></span> <span class="parameter-name">info</span>, </span></li>
 <li><span class="parameter" id="login-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/LoginResponse-class.html">LoginResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
 </ol>)
@@ -73,7 +73,7 @@ request is complete.</loginresponse></p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void login(AuthInfo info, [ResponseCallback&lt;LoginResponse&gt;? callback]) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;LoginResponse?&gt; login(AuthInfo info, [ResponseCallback&lt;LoginResponse&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.login(LoginRequest(
     password: info.password,
     did: info.did,
@@ -89,6 +89,7 @@ request is complete.</loginresponse></p>
     didDocument.value = resp.whoIs.didDocument;
     authorized.value = true;
   }
+  return resp;
 }</code></pre>
 </section>
 
@@ -184,7 +185,7 @@ request is complete.</loginresponse></p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.0
+      0.2.1
   </span>
 
   

@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse?</span>&gt;</span></span>
 <span class="name ">sellAlias</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="sellAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span></li>
 <li><span class="parameter" id="sellAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span></li>
 <li><span class="parameter" id="sellAlias-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
@@ -75,7 +75,7 @@ response is received.</msgsellaliasresponse></p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void sellAlias(String alias, int amount, [ResponseCallback&lt;MsgSellAliasResponse&gt;? callback]) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;MsgSellAliasResponse?&gt; sellAlias(String alias, int amount, [ResponseCallback&lt;MsgSellAliasResponse&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.sellAlias(MsgSellAlias(
     alias: alias,
     creator: address.value,
@@ -87,6 +87,7 @@ response is received.</msgsellaliasresponse></p>
   if (resp != null) {
     domain.value = alias;
   }
+  return resp;
 }</code></pre>
 </section>
 
@@ -182,7 +183,7 @@ response is received.</msgsellaliasresponse></p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.0
+      0.2.1
   </span>
 
   

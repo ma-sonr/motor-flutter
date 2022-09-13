@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/CreateAccountResponse-class.html">CreateAccountResponse</a>?</span>&gt;</span></span>
 <span class="name ">createAccount</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createAccount-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
 <li><span class="parameter" id="createAccount-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/CreateAccountResponse-class.html">CreateAccountResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
 </ol>)
@@ -74,7 +74,7 @@ CreateAccountResponse as a parameter.</createaccountresponse></p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void createAccount(String password, [ResponseCallback&lt;CreateAccountResponse&gt;? callback]) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; createAccount(String password, [ResponseCallback&lt;CreateAccountResponse&gt;? callback]) async {
   final dscKey = List&lt;int&gt;.generate(32, (i) =&gt; Random().nextInt(256));
   final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
     password: password,
@@ -89,6 +89,7 @@ CreateAccountResponse as a parameter.</createaccountresponse></p>
     didDocument.value = resp.whoIs.didDocument;
     authorized.value = true;
   }
+  return resp;
 }</code></pre>
 </section>
 
@@ -184,7 +185,7 @@ CreateAccountResponse as a parameter.</createaccountresponse></p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.0
+      0.2.1
   </span>
 
   

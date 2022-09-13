@@ -1,3 +1,6 @@
+## 0.2.1
+* Added documentation to MotorFlutter
+
 ## 0.2.0
 * Updated Podfile to use Remote Motor framework
 * Update README.md

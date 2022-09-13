@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
 <span class="name ">connect</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="connect-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
 </ol>)
 
@@ -70,12 +70,13 @@ is established.</bool></p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void connect([ResponseCallback&lt;bool&gt;? callback]) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; connect([ResponseCallback&lt;bool&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.connect();
   if (callback != null) {
     callback(resp);
   }
   connected.value = resp;
+  return resp;
 }</code></pre>
 </section>
 
@@ -171,7 +172,7 @@ is established.</bool></p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.0
+      0.2.1
   </span>
 
   

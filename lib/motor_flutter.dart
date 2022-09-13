@@ -90,7 +90,7 @@ class MotorFlutter extends GetxService {
   ///   password (String): The password to use for the account.
   ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
   /// CreateAccountResponse as a parameter.
-  void createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
+  Future<CreateAccountResponse?> createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
     final dscKey = List<int>.generate(32, (i) => Random().nextInt(256));
     final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
@@ -105,6 +105,7 @@ class MotorFlutter extends GetxService {
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
     }
+    return resp;
   }
 
   /// This function takes an AuthInfo object and an optional ResponseCallback function, and returns a
@@ -114,7 +115,7 @@ class MotorFlutter extends GetxService {
   ///   info (AuthInfo): The AuthInfo object that contains the login information.
   ///   callback (ResponseCallback<LoginResponse>): The callback function that will be called when the
   /// request is complete.
-  void login(AuthInfo info, [ResponseCallback<LoginResponse>? callback]) async {
+  Future<LoginResponse?> login(AuthInfo info, [ResponseCallback<LoginResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.login(LoginRequest(
       password: info.password,
       did: info.did,
@@ -130,6 +131,7 @@ class MotorFlutter extends GetxService {
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
     }
+    return resp;
   }
 
   /// `buyAlias` is a function that takes a `String` and an optional
@@ -139,8 +141,7 @@ class MotorFlutter extends GetxService {
   ///   alias (String): The alias to buy.
   ///   callback (ResponseCallback<MsgBuyAliasResponse>): A function that will be called when the
   /// request is complete.
-
-  void buyAlias(String alias, [ResponseCallback<MsgBuyAliasResponse>? callback]) async {
+  Future<MsgBuyAliasResponse?> buyAlias(String alias, [ResponseCallback<MsgBuyAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.buyAlias(MsgBuyAlias(
       name: alias,
       creator: address.value,
@@ -151,6 +152,7 @@ class MotorFlutter extends GetxService {
     if (resp != null) {
       domain.value = alias;
     }
+    return resp;
   }
 
   /// `sellAlias` is a function that takes a `String` and an `int` and returns a
@@ -161,7 +163,7 @@ class MotorFlutter extends GetxService {
   ///   amount (int): The amount of coins to sell the alias for.
   ///   callback (ResponseCallback<MsgSellAliasResponse>): A function that will be called when the
   /// response is received.
-  void sellAlias(String alias, int amount, [ResponseCallback<MsgSellAliasResponse>? callback]) async {
+  Future<MsgSellAliasResponse?> sellAlias(String alias, int amount, [ResponseCallback<MsgSellAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.sellAlias(MsgSellAlias(
       alias: alias,
       creator: address.value,
@@ -173,6 +175,7 @@ class MotorFlutter extends GetxService {
     if (resp != null) {
       domain.value = alias;
     }
+    return resp;
   }
 
   /// `transferAlias` is a function that takes a `String` called `alias`, a `String` called `recipient`,
@@ -185,7 +188,8 @@ class MotorFlutter extends GetxService {
   ///   amount (int): The amount of coins to transfer.
   ///   callback (ResponseCallback<MsgTransferAliasResponse>): A callback function that will be called
   /// when the response is received.
-  void transferAlias(String alias, String recipient, int amount, [ResponseCallback<MsgTransferAliasResponse>? callback]) async {
+  Future<MsgTransferAliasResponse?> transferAlias(String alias, String recipient, int amount,
+      [ResponseCallback<MsgTransferAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.transferAlias(MsgTransferAlias(
       alias: alias,
       amount: amount,
@@ -198,6 +202,7 @@ class MotorFlutter extends GetxService {
     if (resp != null) {
       domain.value = alias;
     }
+    return resp;
   }
 
   /// Connect to the device, and call the callback with the result.
@@ -205,12 +210,13 @@ class MotorFlutter extends GetxService {
   /// Args:
   ///   callback (ResponseCallback<bool>): A callback function that will be called when the connection
   /// is established.
-  void connect([ResponseCallback<bool>? callback]) async {
+  Future<bool> connect([ResponseCallback<bool>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.connect();
     if (callback != null) {
       callback(resp);
     }
     connected.value = resp;
+    return resp;
   }
 
   /// `createSchema` creates a schema
@@ -221,7 +227,7 @@ class MotorFlutter extends GetxService {
   ///   metadata (Map<String, String>): A map of metadata to be associated with the schema.
   ///   callback (ResponseCallback<CreateSchemaResponse>): A callback function that will be called when
   /// the request is complete.
-  void createSchema(String label, Map<String, SchemaKind> fields, Map<String, String>? metadata,
+  Future<CreateSchemaResponse?> createSchema(String label, Map<String, SchemaKind> fields, Map<String, String>? metadata,
       [ResponseCallback<CreateSchemaResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
       label: label,
@@ -234,6 +240,7 @@ class MotorFlutter extends GetxService {
     if (resp != null) {
       schemaHistory.add(resp.schemaDefinition);
     }
+    return resp;
   }
 
   // querySchema takes in a single string value which can be either a DID URL or a creator address.
@@ -296,7 +303,7 @@ class MotorFlutter extends GetxService {
   /// Args:
   ///   callback (ResponseCallback<StatResponse>): A callback function that will be called when the
   /// response is received.
-  void refresh([ResponseCallback<StatResponse>? callback]) async {
+  Future<StatResponse?> refresh([ResponseCallback<StatResponse>? callback]) async {
     if (!authorized.value) {
       Log.printFlutterWarn("User is not yet authorized");
     }
@@ -312,9 +319,14 @@ class MotorFlutter extends GetxService {
         didUrl(resp.didDocument.id);
         staked(resp.stake.toString());
       }
+      if (callback != null) {
+        callback(resp);
+      }
+      return resp;
     } catch (e) {
       Log.printMotorException(e.toString());
     }
+    return null;
   }
 
   /// This function returns a Future that resolves to a String that may be null.
