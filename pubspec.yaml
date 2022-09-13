@@ -1,15 +1,13 @@
 name: motor_flutter
 description: The Sonr Motor Plugin for Flutter
-version: 0.2.0
-homepage: https://sonr.io
+version: 0.2.1
+homepage: https://sonr.dev
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
-  alan: ^0.40.2+1
-  cryptography: ^2.0.5
   device_info_plus: ^4.1.2
   flutter:
     sdk: flutter
