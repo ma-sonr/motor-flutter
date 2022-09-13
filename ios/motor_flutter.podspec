@@ -16,7 +16,6 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'motor_pod'
-  s.xcconfig = { 'ENABLE_BITCODE' => 'NO', }
   # s.dependency 'Motor'
   s.platform = :ios, '13.0'
 

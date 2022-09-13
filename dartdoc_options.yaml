@@ -1,0 +1,10 @@
+dartdoc:
+  nodoc: ["lib/src/gen/*.dart"]
+  linkTo:
+    url: "https:/docs.sonr.io"
+  ignore:
+    - ambiguous-doc-reference
+  errors:
+    - unresolved-doc-reference
+  warnings:
+    - tool-error

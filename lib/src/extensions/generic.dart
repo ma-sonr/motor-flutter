@@ -2,6 +2,10 @@ import 'dart:typed_data';
 import 'package:motor_flutter/motor_flutter.dart';
 
 class Generic {
+  /// It takes a buffer of bytes, and returns a Dart object
+  ///
+  /// Args:
+  ///   buffer (Uint8List): The buffer to be parsed.
   static T responseFromBuffer<T>(Uint8List buffer) {
     if (T == InitializeResponse) {
       return InitializeRequest.fromBuffer(buffer.toList()) as T;

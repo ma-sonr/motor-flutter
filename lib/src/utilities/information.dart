@@ -4,10 +4,18 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:motor_flutter/src/gen/generated.dart';
 import 'package:path_provider/path_provider.dart';
 
+/// A class that stores information about a peer.
 class PeerInformation {
+  /// The home directory of the app.
   final String homeDir;
+
+  /// This is the directory where the app can store files that are not user-facing.
   final String supportDir;
+
+  /// The directory where the app can store files that are not user-facing and temporary.
   final String tempDir;
+
+  /// The unique identifier of the device.
   final String deviceId;
   PeerInformation(
     this.homeDir,
@@ -16,6 +24,7 @@ class PeerInformation {
     this.deviceId,
   );
 
+  /// It fetches the peer information from the server.
   static Future<PeerInformation> fetch() async {
     final tempDir = await getTemporaryDirectory();
     final appDocDir = await getApplicationDocumentsDirectory();
@@ -29,6 +38,10 @@ class PeerInformation {
     );
   }
 
+  /// This function takes a boolean and returns a map.
+  ///
+  /// Args:
+  ///   enableLibp2p (bool): Whether to enable libp2p. Defaults to true
   InitializeRequest toInitializeRequest({bool enableLibp2p = true}) {
     return InitializeRequest(
       homeDir: homeDir,
@@ -41,11 +54,21 @@ class PeerInformation {
   }
 }
 
+/// A class that stores information about a device.
 class DeviceInformation {
+  /// A unique identifier for the device.
   final String deviceId;
+
+  /// The version of the operating system.
   final String platformVersion;
+
+  /// Used to determine the platform.
   final String platform;
+
+  /// Used to determine the platform.
   final String manufacturer;
+
+  /// Used to determine the platform.
   final String model;
   DeviceInformation({
     this.deviceId = '',
@@ -55,6 +78,7 @@ class DeviceInformation {
     this.model = '',
   });
 
+  /// It returns a Future object that will eventually contain a DeviceInformation object.
   static Future<DeviceInformation> get() async {
     // Get Device Info
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
@@ -81,6 +105,7 @@ class DeviceInformation {
     }
   }
 
+  /// A getter that returns the name of the framework.
   static String get frameworkName {
     switch (Platform.operatingSystem) {
       case 'android':
