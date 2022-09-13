@@ -1,6 +1,6 @@
 name: motor_flutter
 description: The Sonr Motor Plugin for Flutter
-version: 0.1.1
+version: 0.2.0
 homepage: https://sonr.io
 
 environment:

@@ -13,7 +13,20 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.1.1
+  motor_flutter: ^0.2.0
+```
+
+#### iOS
+
+Add the following to your Podfile:
+
+```ruby
+platform :ios, '13.0'
+```
+
+Then **remove** this line from your Podfile:
+```ruby
+use_frameworks!
 ```
 
 ## Usage

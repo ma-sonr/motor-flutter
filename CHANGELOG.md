@@ -1,3 +1,7 @@
+## 0.2.0
+* Updated Podfile to use Remote Motor framework
+* Update README.md
+
 ## 0.1.1
 * Added Android AAR into the Flutter package
 * Update README.md
