@@ -1,5 +1,7 @@
 # motor_flutter
 
+[![Pub](https://img.shields.io/pub/v/motor_flutter.svg)](https://pub.dev/packages/motor_flutter)
+
 Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io). **See [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html) for more information.**
 
 ## Installation
