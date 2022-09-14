@@ -2,5 +2,11 @@
     "cSpell.enableFiletypes": [
         "!dart",
         "!yaml"
+    ],
+    "cSpell.words": [
+        "Cocoapods",
+        "Getx",
+        "Keychain",
+        "pubspec"
     ]
 }

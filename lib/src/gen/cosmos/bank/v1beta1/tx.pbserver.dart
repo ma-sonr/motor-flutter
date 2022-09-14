@@ -19,12 +19,14 @@ abstract class MsgServiceBase extends $pb.GeneratedService {
   $async.Future<$14.MsgSendResponse> send($pb.ServerContext ctx, $14.MsgSend request);
   $async.Future<$14.MsgMultiSendResponse> multiSend($pb.ServerContext ctx, $14.MsgMultiSend request);
   $async.Future<$14.MsgUpdateParamsResponse> updateParams($pb.ServerContext ctx, $14.MsgUpdateParams request);
+  $async.Future<$14.MsgSetSendEnabledResponse> setSendEnabled($pb.ServerContext ctx, $14.MsgSetSendEnabled request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
       case 'Send': return $14.MsgSend();
       case 'MultiSend': return $14.MsgMultiSend();
       case 'UpdateParams': return $14.MsgUpdateParams();
+      case 'SetSendEnabled': return $14.MsgSetSendEnabled();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }
@@ -34,6 +36,7 @@ abstract class MsgServiceBase extends $pb.GeneratedService {
       case 'Send': return this.send(ctx, request as $14.MsgSend);
       case 'MultiSend': return this.multiSend(ctx, request as $14.MsgMultiSend);
       case 'UpdateParams': return this.updateParams(ctx, request as $14.MsgUpdateParams);
+      case 'SetSendEnabled': return this.setSendEnabled(ctx, request as $14.MsgSetSendEnabled);
       default: throw $core.ArgumentError('Unknown method: $method');
     }
   }

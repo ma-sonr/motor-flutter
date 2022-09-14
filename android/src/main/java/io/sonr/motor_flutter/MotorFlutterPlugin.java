@@ -136,6 +136,30 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
         break;
 
       // Starts the Node
+      case "getDocument":
+        try {
+          final byte[] getDocumentArgs = call.arguments();
+          final byte[] getDocumentResp = Motor.getDocument(getDocumentArgs);
+          result.success(getDocumentResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "uploadDocument":
+        try {
+          final byte[] uploadDocumentArgs = call.arguments();
+          final byte[] uploadDocumentResp = Motor.uploadDocument(uploadDocumentArgs);
+          result.success(uploadDocumentResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
       case "queryWhatIs":
         try {
           final byte[] queryWhatIsArgs = call.arguments();

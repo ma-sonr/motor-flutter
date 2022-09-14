@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:async';
+import 'package:fixnum/fixnum.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'src/gen/generated.dart';
@@ -91,10 +92,8 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
   /// CreateAccountResponse as a parameter.
   Future<CreateAccountResponse?> createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
-    final dscKey = List<int>.generate(32, (i) => Random().nextInt(256));
     final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
       password: password,
-      aesDscKey: dscKey,
     ));
     if (callback != null) {
       callback(resp);
@@ -119,8 +118,6 @@ class MotorFlutter extends GetxService {
     final resp = await MotorFlutterPlatform.instance.login(LoginRequest(
       password: info.password,
       did: info.did,
-      aesDscKey: info.aesDscKey,
-      aesPskKey: info.aesPskKey,
     ));
     if (callback != null) {
       callback(resp);
@@ -294,7 +291,7 @@ class MotorFlutter extends GetxService {
   ///   amount (int): The amount of tokens to issue.
   ///   memo (String): A memo to send with the transaction.
   Future<PaymentResponse?> issueTokens(String to, String from, int amount, {String? memo}) async {
-    return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: amount, memo: memo));
+    return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: Int64(amount), memo: memo));
   }
 
   /// This function will refresh the stats for the current user, and if a callback is provided, it will

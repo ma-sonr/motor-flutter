@@ -13,24 +13,23 @@ const InitializeResponse$json = const {
   '1': 'InitializeResponse',
   '2': const [
     const {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+    const {'1': 'definitions', '3': 2, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.SchemaDefinition', '10': 'definitions'},
   ],
 };
 
 /// Descriptor for `InitializeResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode('ChJJbml0aWFsaXplUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2Vzcw==');
+final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode('ChJJbml0aWFsaXplUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2VzcxJGCgtkZWZpbml0aW9ucxgCIAMoCzIkLnNvbnJpby5zb25yLnNjaGVtYS5TY2hlbWFEZWZpbml0aW9uUgtkZWZpbml0aW9ucw==');
 @$core.Deprecated('Use createAccountResponseDescriptor instead')
 const CreateAccountResponse$json = const {
   '1': 'CreateAccountResponse',
   '2': const [
-    const {'1': 'aes_psk', '3': 1, '4': 1, '5': 12, '10': 'aesPsk'},
-    const {'1': 'aes_dsc', '3': 2, '4': 1, '5': 12, '10': 'aesDsc'},
-    const {'1': 'address', '3': 3, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'who_is', '3': 4, '4': 1, '5': 11, '6': '.sonrio.sonr.registry.WhoIs', '10': 'whoIs'},
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'who_is', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.registry.WhoIs', '10': 'whoIs'},
   ],
 };
 
 /// Descriptor for `CreateAccountResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createAccountResponseDescriptor = $convert.base64Decode('ChVDcmVhdGVBY2NvdW50UmVzcG9uc2USFwoHYWVzX3BzaxgBIAEoDFIGYWVzUHNrEhcKB2Flc19kc2MYAiABKAxSBmFlc0RzYxIYCgdhZGRyZXNzGAMgASgJUgdhZGRyZXNzEjIKBndob19pcxgEIAEoCzIbLnNvbnJpby5zb25yLnJlZ2lzdHJ5Lldob0lzUgV3aG9Jcw==');
+final $typed_data.Uint8List createAccountResponseDescriptor = $convert.base64Decode('ChVDcmVhdGVBY2NvdW50UmVzcG9uc2USGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIyCgZ3aG9faXMYAiABKAsyGy5zb25yaW8uc29uci5yZWdpc3RyeS5XaG9Jc1IFd2hvSXM=');
 @$core.Deprecated('Use loginResponseDescriptor instead')
 const LoginResponse$json = const {
   '1': 'LoginResponse',
@@ -113,6 +112,7 @@ const QueryWhatIsByCreatorResponse$json = const {
     const {'1': 'code', '3': 1, '4': 1, '5': 5, '10': 'code'},
     const {'1': 'what_is', '3': 2, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.WhatIs', '10': 'whatIs'},
     const {'1': 'schemas', '3': 3, '4': 3, '5': 11, '6': '.sonrio.motor.api.v1.QueryWhatIsByCreatorResponse.SchemasEntry', '10': 'schemas'},
+    const {'1': 'pagination', '3': 4, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
   ],
   '3': const [QueryWhatIsByCreatorResponse_SchemasEntry$json],
 };
@@ -128,18 +128,19 @@ const QueryWhatIsByCreatorResponse_SchemasEntry$json = const {
 };
 
 /// Descriptor for `QueryWhatIsByCreatorResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List queryWhatIsByCreatorResponseDescriptor = $convert.base64Decode('ChxRdWVyeVdoYXRJc0J5Q3JlYXRvclJlc3BvbnNlEhIKBGNvZGUYASABKAVSBGNvZGUSMwoHd2hhdF9pcxgCIAMoCzIaLnNvbnJpby5zb25yLnNjaGVtYS5XaGF0SXNSBndoYXRJcxJYCgdzY2hlbWFzGAMgAygLMj4uc29ucmlvLm1vdG9yLmFwaS52MS5RdWVyeVdoYXRJc0J5Q3JlYXRvclJlc3BvbnNlLlNjaGVtYXNFbnRyeVIHc2NoZW1hcxpgCgxTY2hlbWFzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSOgoFdmFsdWUYAiABKAsyJC5zb25yaW8uc29uci5zY2hlbWEuU2NoZW1hRGVmaW5pdGlvblIFdmFsdWU6AjgB');
+final $typed_data.Uint8List queryWhatIsByCreatorResponseDescriptor = $convert.base64Decode('ChxRdWVyeVdoYXRJc0J5Q3JlYXRvclJlc3BvbnNlEhIKBGNvZGUYASABKAVSBGNvZGUSMwoHd2hhdF9pcxgCIAMoCzIaLnNvbnJpby5zb25yLnNjaGVtYS5XaGF0SXNSBndoYXRJcxJYCgdzY2hlbWFzGAMgAygLMj4uc29ucmlvLm1vdG9yLmFwaS52MS5RdWVyeVdoYXRJc0J5Q3JlYXRvclJlc3BvbnNlLlNjaGVtYXNFbnRyeVIHc2NoZW1hcxJHCgpwYWdpbmF0aW9uGAQgASgLMicuY29zbW9zLmJhc2UucXVlcnkudjFiZXRhMS5QYWdlUmVzcG9uc2VSCnBhZ2luYXRpb24aYAoMU2NoZW1hc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjoKBXZhbHVlGAIgASgLMiQuc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYURlZmluaXRpb25SBXZhbHVlOgI4AQ==');
 @$core.Deprecated('Use queryWhereIsByCreatorResponseDescriptor instead')
 const QueryWhereIsByCreatorResponse$json = const {
   '1': 'QueryWhereIsByCreatorResponse',
   '2': const [
     const {'1': 'code', '3': 1, '4': 1, '5': 5, '10': 'code'},
     const {'1': 'where_is', '3': 2, '4': 3, '5': 11, '6': '.sonrio.sonr.bucket.WhereIs', '10': 'whereIs'},
+    const {'1': 'pagination', '3': 3, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
   ],
 };
 
 /// Descriptor for `QueryWhereIsByCreatorResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List queryWhereIsByCreatorResponseDescriptor = $convert.base64Decode('Ch1RdWVyeVdoZXJlSXNCeUNyZWF0b3JSZXNwb25zZRISCgRjb2RlGAEgASgFUgRjb2RlEjYKCHdoZXJlX2lzGAIgAygLMhsuc29ucmlvLnNvbnIuYnVja2V0LldoZXJlSXNSB3doZXJlSXM=');
+final $typed_data.Uint8List queryWhereIsByCreatorResponseDescriptor = $convert.base64Decode('Ch1RdWVyeVdoZXJlSXNCeUNyZWF0b3JSZXNwb25zZRISCgRjb2RlGAEgASgFUgRjb2RlEjYKCHdoZXJlX2lzGAIgAygLMhsuc29ucmlvLnNvbnIuYnVja2V0LldoZXJlSXNSB3doZXJlSXMSRwoKcGFnaW5hdGlvbhgDIAEoCzInLmNvc21vcy5iYXNlLnF1ZXJ5LnYxYmV0YTEuUGFnZVJlc3BvbnNlUgpwYWdpbmF0aW9u');
 @$core.Deprecated('Use objectReferenceDescriptor instead')
 const ObjectReference$json = const {
   '1': 'ObjectReference',
@@ -258,3 +259,29 @@ const SearchResponse$json = const {
 
 /// Descriptor for `SearchResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchResponseDescriptor = $convert.base64Decode('Cg5TZWFyY2hSZXNwb25zZRIWCgZzdGF0dXMYASABKAVSBnN0YXR1cxIhCgxyZXNvdXJjZV9kaWQYAiABKAlSC3Jlc291cmNlRGlkEh8KC2NvbnRlbnRfZGlkGAMgASgJUgpjb250ZW50RGlkEhgKB2NvbnRlbnQYBCADKAxSB2NvbnRlbnQ=');
+@$core.Deprecated('Use uploadDocumentResponseDescriptor instead')
+const UploadDocumentResponse$json = const {
+  '1': 'UploadDocumentResponse',
+  '2': const [
+    const {'1': 'status', '3': 1, '4': 1, '5': 5, '10': 'status'},
+    const {'1': 'did', '3': 2, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'cid', '3': 3, '4': 1, '5': 9, '10': 'cid'},
+    const {'1': 'document', '3': 4, '4': 1, '5': 11, '6': '.sonrio.sonr.schema.SchemaDocument', '10': 'document'},
+  ],
+};
+
+/// Descriptor for `UploadDocumentResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List uploadDocumentResponseDescriptor = $convert.base64Decode('ChZVcGxvYWREb2N1bWVudFJlc3BvbnNlEhYKBnN0YXR1cxgBIAEoBVIGc3RhdHVzEhAKA2RpZBgCIAEoCVIDZGlkEhAKA2NpZBgDIAEoCVIDY2lkEj4KCGRvY3VtZW50GAQgASgLMiIuc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYURvY3VtZW50Ughkb2N1bWVudA==');
+@$core.Deprecated('Use getDocumentResponseDescriptor instead')
+const GetDocumentResponse$json = const {
+  '1': 'GetDocumentResponse',
+  '2': const [
+    const {'1': 'status', '3': 1, '4': 1, '5': 5, '10': 'status'},
+    const {'1': 'did', '3': 2, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'cid', '3': 3, '4': 1, '5': 9, '10': 'cid'},
+    const {'1': 'document', '3': 4, '4': 1, '5': 11, '6': '.sonrio.sonr.schema.SchemaDocument', '10': 'document'},
+  ],
+};
+
+/// Descriptor for `GetDocumentResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getDocumentResponseDescriptor = $convert.base64Decode('ChNHZXREb2N1bWVudFJlc3BvbnNlEhYKBnN0YXR1cxgBIAEoBVIGc3RhdHVzEhAKA2RpZBgCIAEoCVIDZGlkEhAKA2NpZBgDIAEoCVIDY2lkEj4KCGRvY3VtZW50GAQgASgLMiIuc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYURvY3VtZW50Ughkb2N1bWVudA==');

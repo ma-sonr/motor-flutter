@@ -10,24 +10,34 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'schema.pb.dart' as $6;
-import 'what_is.pb.dart' as $9;
+import 'schema.pb.dart' as $5;
+import 'what_is.pb.dart' as $10;
 
 class MsgCreateSchema extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateSchema', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
-    ..aOM<$6.SchemaDefinition>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'definition', subBuilder: $6.SchemaDefinition.create)
-    ..pc<$6.MetadataDefintion>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', $pb.PbFieldType.PM, subBuilder: $6.MetadataDefintion.create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'label')
+    ..pc<$5.SchemaKindDefinition>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fields', $pb.PbFieldType.PM, subBuilder: $5.SchemaKindDefinition.create)
+    ..pc<$5.MetadataDefintion>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', $pb.PbFieldType.PM, subBuilder: $5.MetadataDefintion.create)
     ..hasRequiredFields = false
   ;
 
   MsgCreateSchema._() : super();
   factory MsgCreateSchema({
-    $6.SchemaDefinition? definition,
-    $core.Iterable<$6.MetadataDefintion>? metadata,
+    $core.String? creator,
+    $core.String? label,
+    $core.Iterable<$5.SchemaKindDefinition>? fields,
+    $core.Iterable<$5.MetadataDefintion>? metadata,
   }) {
     final _result = create();
-    if (definition != null) {
-      _result.definition = definition;
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (label != null) {
+      _result.label = label;
+    }
+    if (fields != null) {
+      _result.fields.addAll(fields);
     }
     if (metadata != null) {
       _result.metadata.addAll(metadata);
@@ -56,25 +66,35 @@ class MsgCreateSchema extends $pb.GeneratedMessage {
   static MsgCreateSchema? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $6.SchemaDefinition get definition => $_getN(0);
+  $core.String get creator => $_getSZ(0);
   @$pb.TagNumber(1)
-  set definition($6.SchemaDefinition v) { setField(1, v); }
+  set creator($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDefinition() => $_has(0);
+  $core.bool hasCreator() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDefinition() => clearField(1);
-  @$pb.TagNumber(1)
-  $6.SchemaDefinition ensureDefinition() => $_ensure(0);
+  void clearCreator() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$6.MetadataDefintion> get metadata => $_getList(1);
+  $core.String get label => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set label($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLabel() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLabel() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$5.SchemaKindDefinition> get fields => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.List<$5.MetadataDefintion> get metadata => $_getList(3);
 }
 
 class MsgCreateSchemaResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateSchemaResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..aOM<$9.WhatIs>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $9.WhatIs.create)
+    ..aOM<$10.WhatIs>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whatIs', subBuilder: $10.WhatIs.create)
     ..hasRequiredFields = false
   ;
 
@@ -82,7 +102,7 @@ class MsgCreateSchemaResponse extends $pb.GeneratedMessage {
   factory MsgCreateSchemaResponse({
     $core.int? code,
     $core.String? message,
-    $9.WhatIs? whatIs,
+    $10.WhatIs? whatIs,
   }) {
     final _result = create();
     if (code != null) {
@@ -136,15 +156,15 @@ class MsgCreateSchemaResponse extends $pb.GeneratedMessage {
   void clearMessage() => clearField(2);
 
   @$pb.TagNumber(3)
-  $9.WhatIs get whatIs => $_getN(2);
+  $10.WhatIs get whatIs => $_getN(2);
   @$pb.TagNumber(3)
-  set whatIs($9.WhatIs v) { setField(3, v); }
+  set whatIs($10.WhatIs v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasWhatIs() => $_has(2);
   @$pb.TagNumber(3)
   void clearWhatIs() => clearField(3);
   @$pb.TagNumber(3)
-  $9.WhatIs ensureWhatIs() => $_ensure(2);
+  $10.WhatIs ensureWhatIs() => $_ensure(2);
 }
 
 class MsgDeprecateSchema extends $pb.GeneratedMessage {

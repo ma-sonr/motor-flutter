@@ -1,4 +1,4 @@
-# motor_flutter
+![Motor Flutter Banner](./docs/static-assets/gh-motor-banner.png)
 
 [![Pub](https://img.shields.io/pub/v/motor_flutter.svg)](https://pub.dev/packages/motor_flutter)
 
@@ -15,7 +15,7 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.2.2
+  motor_flutter: ^0.3.1
 ```
 
 #### iOS

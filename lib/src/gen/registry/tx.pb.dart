@@ -10,26 +10,26 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../cosmos/crypto/secp256k1/keys.pb.dart' as $13;
-import 'who_is.pb.dart' as $8;
+import '../cosmos/crypto/secp256k1/keys.pb.dart' as $14;
+import 'who_is.pb.dart' as $9;
 
-import 'who_is.pbenum.dart' as $8;
+import 'who_is.pbenum.dart' as $9;
 
 class MsgCreateWhoIs extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateWhoIs', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOM<$13.PubKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubkey', subBuilder: $13.PubKey.create)
+    ..aOM<$14.PubKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubkey', subBuilder: $14.PubKey.create)
     ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'didDocument', $pb.PbFieldType.OY)
-    ..e<$8.WhoIsType>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoisType', $pb.PbFieldType.OE, defaultOrMaker: $8.WhoIsType.USER, valueOf: $8.WhoIsType.valueOf, enumValues: $8.WhoIsType.values)
+    ..e<$9.WhoIsType>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoisType', $pb.PbFieldType.OE, defaultOrMaker: $9.WhoIsType.USER, valueOf: $9.WhoIsType.valueOf, enumValues: $9.WhoIsType.values)
     ..hasRequiredFields = false
   ;
 
   MsgCreateWhoIs._() : super();
   factory MsgCreateWhoIs({
     $core.String? creator,
-    $13.PubKey? pubkey,
+    $14.PubKey? pubkey,
     $core.List<$core.int>? didDocument,
-    $8.WhoIsType? whoisType,
+    $9.WhoIsType? whoisType,
   }) {
     final _result = create();
     if (creator != null) {
@@ -77,15 +77,15 @@ class MsgCreateWhoIs extends $pb.GeneratedMessage {
   void clearCreator() => clearField(1);
 
   @$pb.TagNumber(2)
-  $13.PubKey get pubkey => $_getN(1);
+  $14.PubKey get pubkey => $_getN(1);
   @$pb.TagNumber(2)
-  set pubkey($13.PubKey v) { setField(2, v); }
+  set pubkey($14.PubKey v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPubkey() => $_has(1);
   @$pb.TagNumber(2)
   void clearPubkey() => clearField(2);
   @$pb.TagNumber(2)
-  $13.PubKey ensurePubkey() => $_ensure(1);
+  $14.PubKey ensurePubkey() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.List<$core.int> get didDocument => $_getN(2);
@@ -97,9 +97,9 @@ class MsgCreateWhoIs extends $pb.GeneratedMessage {
   void clearDidDocument() => clearField(3);
 
   @$pb.TagNumber(4)
-  $8.WhoIsType get whoisType => $_getN(3);
+  $9.WhoIsType get whoisType => $_getN(3);
   @$pb.TagNumber(4)
-  set whoisType($8.WhoIsType v) { setField(4, v); }
+  set whoisType($9.WhoIsType v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasWhoisType() => $_has(3);
   @$pb.TagNumber(4)
@@ -109,14 +109,14 @@ class MsgCreateWhoIs extends $pb.GeneratedMessage {
 class MsgCreateWhoIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateWhoIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOM<$8.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $8.WhoIs.create)
+    ..aOM<$9.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $9.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   MsgCreateWhoIsResponse._() : super();
   factory MsgCreateWhoIsResponse({
     $core.bool? success,
-    $8.WhoIs? whoIs,
+    $9.WhoIs? whoIs,
   }) {
     final _result = create();
     if (success != null) {
@@ -158,15 +158,15 @@ class MsgCreateWhoIsResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $8.WhoIs get whoIs => $_getN(1);
+  $9.WhoIs get whoIs => $_getN(1);
   @$pb.TagNumber(2)
-  set whoIs($8.WhoIs v) { setField(2, v); }
+  set whoIs($9.WhoIs v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasWhoIs() => $_has(1);
   @$pb.TagNumber(2)
   void clearWhoIs() => clearField(2);
   @$pb.TagNumber(2)
-  $8.WhoIs ensureWhoIs() => $_ensure(1);
+  $9.WhoIs ensureWhoIs() => $_ensure(1);
 }
 
 class MsgUpdateWhoIs extends $pb.GeneratedMessage {
@@ -241,14 +241,14 @@ class MsgUpdateWhoIs extends $pb.GeneratedMessage {
 class MsgUpdateWhoIsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateWhoIsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOM<$8.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $8.WhoIs.create)
+    ..aOM<$9.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $9.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   MsgUpdateWhoIsResponse._() : super();
   factory MsgUpdateWhoIsResponse({
     $core.bool? success,
-    $8.WhoIs? whoIs,
+    $9.WhoIs? whoIs,
   }) {
     final _result = create();
     if (success != null) {
@@ -290,15 +290,15 @@ class MsgUpdateWhoIsResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $8.WhoIs get whoIs => $_getN(1);
+  $9.WhoIs get whoIs => $_getN(1);
   @$pb.TagNumber(2)
-  set whoIs($8.WhoIs v) { setField(2, v); }
+  set whoIs($9.WhoIs v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasWhoIs() => $_has(1);
   @$pb.TagNumber(2)
   void clearWhoIs() => clearField(2);
   @$pb.TagNumber(2)
-  $8.WhoIs ensureWhoIs() => $_ensure(1);
+  $9.WhoIs ensureWhoIs() => $_ensure(1);
 }
 
 class MsgDeactivateWhoIs extends $pb.GeneratedMessage {
@@ -473,14 +473,14 @@ class MsgBuyAlias extends $pb.GeneratedMessage {
 class MsgBuyAliasResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgBuyAliasResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOM<$8.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $8.WhoIs.create)
+    ..aOM<$9.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $9.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   MsgBuyAliasResponse._() : super();
   factory MsgBuyAliasResponse({
     $core.bool? success,
-    $8.WhoIs? whoIs,
+    $9.WhoIs? whoIs,
   }) {
     final _result = create();
     if (success != null) {
@@ -522,15 +522,15 @@ class MsgBuyAliasResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $8.WhoIs get whoIs => $_getN(1);
+  $9.WhoIs get whoIs => $_getN(1);
   @$pb.TagNumber(2)
-  set whoIs($8.WhoIs v) { setField(2, v); }
+  set whoIs($9.WhoIs v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasWhoIs() => $_has(1);
   @$pb.TagNumber(2)
   void clearWhoIs() => clearField(2);
   @$pb.TagNumber(2)
-  $8.WhoIs ensureWhoIs() => $_ensure(1);
+  $9.WhoIs ensureWhoIs() => $_ensure(1);
 }
 
 class MsgTransferAlias extends $pb.GeneratedMessage {
@@ -625,14 +625,14 @@ class MsgTransferAlias extends $pb.GeneratedMessage {
 class MsgTransferAliasResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgTransferAliasResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOM<$8.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $8.WhoIs.create)
+    ..aOM<$9.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $9.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   MsgTransferAliasResponse._() : super();
   factory MsgTransferAliasResponse({
     $core.bool? success,
-    $8.WhoIs? whoIs,
+    $9.WhoIs? whoIs,
   }) {
     final _result = create();
     if (success != null) {
@@ -674,15 +674,15 @@ class MsgTransferAliasResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $8.WhoIs get whoIs => $_getN(1);
+  $9.WhoIs get whoIs => $_getN(1);
   @$pb.TagNumber(2)
-  set whoIs($8.WhoIs v) { setField(2, v); }
+  set whoIs($9.WhoIs v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasWhoIs() => $_has(1);
   @$pb.TagNumber(2)
   void clearWhoIs() => clearField(2);
   @$pb.TagNumber(2)
-  $8.WhoIs ensureWhoIs() => $_ensure(1);
+  $9.WhoIs ensureWhoIs() => $_ensure(1);
 }
 
 class MsgSellAlias extends $pb.GeneratedMessage {
@@ -763,14 +763,14 @@ class MsgSellAlias extends $pb.GeneratedMessage {
 class MsgSellAliasResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSellAliasResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.registry'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOM<$8.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $8.WhoIs.create)
+    ..aOM<$9.WhoIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $9.WhoIs.create)
     ..hasRequiredFields = false
   ;
 
   MsgSellAliasResponse._() : super();
   factory MsgSellAliasResponse({
     $core.bool? success,
-    $8.WhoIs? whoIs,
+    $9.WhoIs? whoIs,
   }) {
     final _result = create();
     if (success != null) {
@@ -812,15 +812,15 @@ class MsgSellAliasResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 
   @$pb.TagNumber(2)
-  $8.WhoIs get whoIs => $_getN(1);
+  $9.WhoIs get whoIs => $_getN(1);
   @$pb.TagNumber(2)
-  set whoIs($8.WhoIs v) { setField(2, v); }
+  set whoIs($9.WhoIs v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasWhoIs() => $_has(1);
   @$pb.TagNumber(2)
   void clearWhoIs() => clearField(2);
   @$pb.TagNumber(2)
-  $8.WhoIs ensureWhoIs() => $_ensure(1);
+  $9.WhoIs ensureWhoIs() => $_ensure(1);
 }
 
 class MsgApi {

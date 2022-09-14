@@ -8,7 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import '../../../tendermint/types/params.pbjson.dart' as $21;
+import '../../../tendermint/types/params.pbjson.dart' as $20;
 import '../../../google/protobuf/duration.pbjson.dart' as $19;
 
 @$core.Deprecated('Use queryParamsRequestDescriptor instead')
@@ -39,12 +39,12 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
   '.cosmos.consensus.v1.QueryParamsRequest': QueryParamsRequest$json,
   '.cosmos.consensus.v1.QueryParamsResponse': QueryParamsResponse$json,
-  '.tendermint.types.ConsensusParams': $21.ConsensusParams$json,
-  '.tendermint.types.BlockParams': $21.BlockParams$json,
-  '.tendermint.types.EvidenceParams': $21.EvidenceParams$json,
+  '.tendermint.types.ConsensusParams': $20.ConsensusParams$json,
+  '.tendermint.types.BlockParams': $20.BlockParams$json,
+  '.tendermint.types.EvidenceParams': $20.EvidenceParams$json,
   '.google.protobuf.Duration': $19.Duration$json,
-  '.tendermint.types.ValidatorParams': $21.ValidatorParams$json,
-  '.tendermint.types.VersionParams': $21.VersionParams$json,
+  '.tendermint.types.ValidatorParams': $20.ValidatorParams$json,
+  '.tendermint.types.VersionParams': $20.VersionParams$json,
 };
 
 /// Descriptor for `Query`. Decode as a `google.protobuf.ServiceDescriptorProto`.

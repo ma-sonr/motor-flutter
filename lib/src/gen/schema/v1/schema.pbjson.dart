@@ -62,18 +62,6 @@ const SchemaKindDefinition$json = const {
 
 /// Descriptor for `SchemaKindDefinition`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List schemaKindDefinitionDescriptor = $convert.base64Decode('ChRTY2hlbWFLaW5kRGVmaW5pdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEjQKBWZpZWxkGAIgASgOMh4uc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYUtpbmRSBWZpZWxkEjkKCWxpbmtfa2luZBgDIAEoDjIcLnNvbnJpby5zb25yLnNjaGVtYS5MaW5rS2luZFIIbGlua0tpbmQSEgoEbGluaxgEIAEoCVIEbGluaw==');
-@$core.Deprecated('Use schemaReferenceDescriptor instead')
-const SchemaReference$json = const {
-  '1': 'SchemaReference',
-  '2': const [
-    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
-    const {'1': 'label', '3': 2, '4': 1, '5': 9, '10': 'label'},
-    const {'1': 'cid', '3': 3, '4': 1, '5': 9, '10': 'cid'},
-  ],
-};
-
-/// Descriptor for `SchemaReference`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List schemaReferenceDescriptor = $convert.base64Decode('Cg9TY2hlbWFSZWZlcmVuY2USEAoDZGlkGAEgASgJUgNkaWQSFAoFbGFiZWwYAiABKAlSBWxhYmVsEhAKA2NpZBgDIAEoCVIDY2lk');
 @$core.Deprecated('Use schemaDefinitionDescriptor instead')
 const SchemaDefinition$json = const {
   '1': 'SchemaDefinition',

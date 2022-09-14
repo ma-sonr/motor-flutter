@@ -10,12 +10,12 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'schema.pb.dart' as $6;
+import 'schema.pb.dart' as $5;
 
 class WhatIs extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WhatIs', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
-    ..aOM<$6.SchemaReference>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'schema', subBuilder: $6.SchemaReference.create)
+    ..aOM<$5.SchemaDefinition>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'schema', subBuilder: $5.SchemaDefinition.create)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isActive')
@@ -26,7 +26,7 @@ class WhatIs extends $pb.GeneratedMessage {
   WhatIs._() : super();
   factory WhatIs({
     $core.String? did,
-    $6.SchemaReference? schema,
+    $5.SchemaDefinition? schema,
     $core.String? creator,
     $fixnum.Int64? timestamp,
     $core.bool? isActive,
@@ -84,15 +84,15 @@ class WhatIs extends $pb.GeneratedMessage {
   void clearDid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $6.SchemaReference get schema => $_getN(1);
+  $5.SchemaDefinition get schema => $_getN(1);
   @$pb.TagNumber(2)
-  set schema($6.SchemaReference v) { setField(2, v); }
+  set schema($5.SchemaDefinition v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasSchema() => $_has(1);
   @$pb.TagNumber(2)
   void clearSchema() => clearField(2);
   @$pb.TagNumber(2)
-  $6.SchemaReference ensureSchema() => $_ensure(1);
+  $5.SchemaDefinition ensureSchema() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.String get creator => $_getSZ(2);

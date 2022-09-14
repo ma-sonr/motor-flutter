@@ -10,7 +10,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../tendermint/types/params.pb.dart' as $21;
+import '../../../tendermint/types/params.pb.dart' as $20;
 
 class QueryParamsRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.consensus.v1'), createEmptyInstance: create)
@@ -43,13 +43,13 @@ class QueryParamsRequest extends $pb.GeneratedMessage {
 
 class QueryParamsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.consensus.v1'), createEmptyInstance: create)
-    ..aOM<$21.ConsensusParams>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $21.ConsensusParams.create)
+    ..aOM<$20.ConsensusParams>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params', subBuilder: $20.ConsensusParams.create)
     ..hasRequiredFields = false
   ;
 
   QueryParamsResponse._() : super();
   factory QueryParamsResponse({
-    $21.ConsensusParams? params,
+    $20.ConsensusParams? params,
   }) {
     final _result = create();
     if (params != null) {
@@ -79,15 +79,15 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
   static QueryParamsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $21.ConsensusParams get params => $_getN(0);
+  $20.ConsensusParams get params => $_getN(0);
   @$pb.TagNumber(1)
-  set params($21.ConsensusParams v) { setField(1, v); }
+  set params($20.ConsensusParams v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasParams() => $_has(0);
   @$pb.TagNumber(1)
   void clearParams() => clearField(1);
   @$pb.TagNumber(1)
-  $21.ConsensusParams ensureParams() => $_ensure(0);
+  $20.ConsensusParams ensureParams() => $_ensure(0);
 }
 
 class QueryApi {

@@ -32,6 +32,21 @@ const BlockchainModule$json = const {
 
 /// Descriptor for `BlockchainModule`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List blockchainModuleDescriptor = $convert.base64Decode('ChBCbG9ja2NoYWluTW9kdWxlEgwKCFJFR0lTVFJZEAASCgoGU0NIRU1BEAESCgoGQlVDS0VUEAI=');
+@$core.Deprecated('Use motorCallbackMessageDescriptor instead')
+const MotorCallbackMessage$json = const {
+  '1': 'MotorCallbackMessage',
+  '2': const [
+    const {'1': 'MTR_INIT', '2': 0},
+    const {'1': 'MTR_FAUCET_RECEIVED', '2': 1},
+    const {'1': 'MTR_SHARDS_CREATED', '2': 2},
+    const {'1': 'MTR_VAULT_CREATED', '2': 3},
+    const {'1': 'MTR_ACCOUNT_CREATED', '2': 4},
+    const {'1': 'MTR_LOGGED_IN', '2': 5},
+  ],
+};
+
+/// Descriptor for `MotorCallbackMessage`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List motorCallbackMessageDescriptor = $convert.base64Decode('ChRNb3RvckNhbGxiYWNrTWVzc2FnZRIMCghNVFJfSU5JVBAAEhcKE01UUl9GQVVDRVRfUkVDRUlWRUQQARIWChJNVFJfU0hBUkRTX0NSRUFURUQQAhIVChFNVFJfVkFVTFRfQ1JFQVRFRBADEhcKE01UUl9BQ0NPVU5UX0NSRUFURUQQBBIRCg1NVFJfTE9HR0VEX0lOEAU=');
 @$core.Deprecated('Use peerDescriptor instead')
 const Peer$json = const {
   '1': 'Peer',

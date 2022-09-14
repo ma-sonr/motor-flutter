@@ -281,6 +281,98 @@ class MsgUpdateParamsResponse extends $pb.GeneratedMessage {
   static MsgUpdateParamsResponse? _defaultInstance;
 }
 
+class MsgSetSendEnabled extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSetSendEnabled', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.bank.v1beta1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authority')
+    ..pc<$12.SendEnabled>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sendEnabled', $pb.PbFieldType.PM, subBuilder: $12.SendEnabled.create)
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'useDefaultFor')
+    ..hasRequiredFields = false
+  ;
+
+  MsgSetSendEnabled._() : super();
+  factory MsgSetSendEnabled({
+    $core.String? authority,
+    $core.Iterable<$12.SendEnabled>? sendEnabled,
+    $core.Iterable<$core.String>? useDefaultFor,
+  }) {
+    final _result = create();
+    if (authority != null) {
+      _result.authority = authority;
+    }
+    if (sendEnabled != null) {
+      _result.sendEnabled.addAll(sendEnabled);
+    }
+    if (useDefaultFor != null) {
+      _result.useDefaultFor.addAll(useDefaultFor);
+    }
+    return _result;
+  }
+  factory MsgSetSendEnabled.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgSetSendEnabled.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgSetSendEnabled clone() => MsgSetSendEnabled()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgSetSendEnabled copyWith(void Function(MsgSetSendEnabled) updates) => super.copyWith((message) => updates(message as MsgSetSendEnabled)) as MsgSetSendEnabled; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgSetSendEnabled create() => MsgSetSendEnabled._();
+  MsgSetSendEnabled createEmptyInstance() => create();
+  static $pb.PbList<MsgSetSendEnabled> createRepeated() => $pb.PbList<MsgSetSendEnabled>();
+  @$core.pragma('dart2js:noInline')
+  static MsgSetSendEnabled getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgSetSendEnabled>(create);
+  static MsgSetSendEnabled? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get authority => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set authority($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAuthority() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAuthority() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$12.SendEnabled> get sendEnabled => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get useDefaultFor => $_getList(2);
+}
+
+class MsgSetSendEnabledResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSetSendEnabledResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.bank.v1beta1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgSetSendEnabledResponse._() : super();
+  factory MsgSetSendEnabledResponse() => create();
+  factory MsgSetSendEnabledResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgSetSendEnabledResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgSetSendEnabledResponse clone() => MsgSetSendEnabledResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgSetSendEnabledResponse copyWith(void Function(MsgSetSendEnabledResponse) updates) => super.copyWith((message) => updates(message as MsgSetSendEnabledResponse)) as MsgSetSendEnabledResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgSetSendEnabledResponse create() => MsgSetSendEnabledResponse._();
+  MsgSetSendEnabledResponse createEmptyInstance() => create();
+  static $pb.PbList<MsgSetSendEnabledResponse> createRepeated() => $pb.PbList<MsgSetSendEnabledResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MsgSetSendEnabledResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgSetSendEnabledResponse>(create);
+  static MsgSetSendEnabledResponse? _defaultInstance;
+}
+
 class MsgApi {
   $pb.RpcClient _client;
   MsgApi(this._client);
@@ -296,6 +388,10 @@ class MsgApi {
   $async.Future<MsgUpdateParamsResponse> updateParams($pb.ClientContext? ctx, MsgUpdateParams request) {
     var emptyResponse = MsgUpdateParamsResponse();
     return _client.invoke<MsgUpdateParamsResponse>(ctx, 'Msg', 'UpdateParams', request, emptyResponse);
+  }
+  $async.Future<MsgSetSendEnabledResponse> setSendEnabled($pb.ClientContext? ctx, MsgSetSendEnabled request) {
+    var emptyResponse = MsgSetSendEnabledResponse();
+    return _client.invoke<MsgSetSendEnabledResponse>(ctx, 'Msg', 'SetSendEnabled', request, emptyResponse);
   }
 }
 

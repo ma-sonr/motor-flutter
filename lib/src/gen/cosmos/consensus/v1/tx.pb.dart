@@ -10,23 +10,23 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../tendermint/types/params.pb.dart' as $21;
+import '../../../tendermint/types/params.pb.dart' as $20;
 
 class MsgUpdateParams extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateParams', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.consensus.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authority')
-    ..aOM<$21.BlockParams>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'block', subBuilder: $21.BlockParams.create)
-    ..aOM<$21.EvidenceParams>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'evidence', subBuilder: $21.EvidenceParams.create)
-    ..aOM<$21.ValidatorParams>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validator', subBuilder: $21.ValidatorParams.create)
+    ..aOM<$20.BlockParams>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'block', subBuilder: $20.BlockParams.create)
+    ..aOM<$20.EvidenceParams>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'evidence', subBuilder: $20.EvidenceParams.create)
+    ..aOM<$20.ValidatorParams>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validator', subBuilder: $20.ValidatorParams.create)
     ..hasRequiredFields = false
   ;
 
   MsgUpdateParams._() : super();
   factory MsgUpdateParams({
     $core.String? authority,
-    $21.BlockParams? block,
-    $21.EvidenceParams? evidence,
-    $21.ValidatorParams? validator,
+    $20.BlockParams? block,
+    $20.EvidenceParams? evidence,
+    $20.ValidatorParams? validator,
   }) {
     final _result = create();
     if (authority != null) {
@@ -74,37 +74,37 @@ class MsgUpdateParams extends $pb.GeneratedMessage {
   void clearAuthority() => clearField(1);
 
   @$pb.TagNumber(2)
-  $21.BlockParams get block => $_getN(1);
+  $20.BlockParams get block => $_getN(1);
   @$pb.TagNumber(2)
-  set block($21.BlockParams v) { setField(2, v); }
+  set block($20.BlockParams v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasBlock() => $_has(1);
   @$pb.TagNumber(2)
   void clearBlock() => clearField(2);
   @$pb.TagNumber(2)
-  $21.BlockParams ensureBlock() => $_ensure(1);
+  $20.BlockParams ensureBlock() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $21.EvidenceParams get evidence => $_getN(2);
+  $20.EvidenceParams get evidence => $_getN(2);
   @$pb.TagNumber(3)
-  set evidence($21.EvidenceParams v) { setField(3, v); }
+  set evidence($20.EvidenceParams v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasEvidence() => $_has(2);
   @$pb.TagNumber(3)
   void clearEvidence() => clearField(3);
   @$pb.TagNumber(3)
-  $21.EvidenceParams ensureEvidence() => $_ensure(2);
+  $20.EvidenceParams ensureEvidence() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $21.ValidatorParams get validator => $_getN(3);
+  $20.ValidatorParams get validator => $_getN(3);
   @$pb.TagNumber(4)
-  set validator($21.ValidatorParams v) { setField(4, v); }
+  set validator($20.ValidatorParams v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasValidator() => $_has(3);
   @$pb.TagNumber(4)
   void clearValidator() => clearField(4);
   @$pb.TagNumber(4)
-  $21.ValidatorParams ensureValidator() => $_ensure(3);
+  $20.ValidatorParams ensureValidator() => $_ensure(3);
 }
 
 class MsgUpdateParamsResponse extends $pb.GeneratedMessage {

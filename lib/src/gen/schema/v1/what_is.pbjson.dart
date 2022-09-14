@@ -13,7 +13,7 @@ const WhatIs$json = const {
   '1': 'WhatIs',
   '2': const [
     const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
-    const {'1': 'schema', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.schema.SchemaReference', '10': 'schema'},
+    const {'1': 'schema', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.schema.SchemaDefinition', '10': 'schema'},
     const {'1': 'creator', '3': 3, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'timestamp', '3': 4, '4': 1, '5': 3, '10': 'timestamp'},
     const {'1': 'is_active', '3': 5, '4': 1, '5': 8, '10': 'isActive'},
@@ -33,4 +33,4 @@ const WhatIs_MetadataEntry$json = const {
 };
 
 /// Descriptor for `WhatIs`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List whatIsDescriptor = $convert.base64Decode('CgZXaGF0SXMSEAoDZGlkGAEgASgJUgNkaWQSOwoGc2NoZW1hGAIgASgLMiMuc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYVJlZmVyZW5jZVIGc2NoZW1hEhgKB2NyZWF0b3IYAyABKAlSB2NyZWF0b3ISHAoJdGltZXN0YW1wGAQgASgDUgl0aW1lc3RhbXASGwoJaXNfYWN0aXZlGAUgASgIUghpc0FjdGl2ZRJECghtZXRhZGF0YRgGIAMoCzIoLnNvbnJpby5zb25yLnNjaGVtYS5XaGF0SXMuTWV0YWRhdGFFbnRyeVIIbWV0YWRhdGEaOwoNTWV0YWRhdGFFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+final $typed_data.Uint8List whatIsDescriptor = $convert.base64Decode('CgZXaGF0SXMSEAoDZGlkGAEgASgJUgNkaWQSPAoGc2NoZW1hGAIgASgLMiQuc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYURlZmluaXRpb25SBnNjaGVtYRIYCgdjcmVhdG9yGAMgASgJUgdjcmVhdG9yEhwKCXRpbWVzdGFtcBgEIAEoA1IJdGltZXN0YW1wEhsKCWlzX2FjdGl2ZRgFIAEoCFIIaXNBY3RpdmUSRAoIbWV0YWRhdGEYBiADKAsyKC5zb25yaW8uc29uci5zY2hlbWEuV2hhdElzLk1ldGFkYXRhRW50cnlSCG1ldGFkYXRhGjsKDU1ldGFkYXRhRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');

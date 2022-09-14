@@ -16,8 +16,6 @@ extension AuthInfoExt on AuthInfo {
       address: response.address,
       did: response.whoIs.didDocument.id,
       password: pwd,
-      aesDscKey: response.aesDsc,
-      aesPskKey: response.aesPsk,
     );
   }
 
@@ -25,8 +23,6 @@ extension AuthInfoExt on AuthInfo {
     return LoginRequest(
       did: did,
       password: password,
-      aesDscKey: aesDscKey,
-      aesPskKey: aesPskKey,
     );
   }
 }

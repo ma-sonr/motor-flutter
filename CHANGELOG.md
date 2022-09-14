@@ -1,3 +1,10 @@
+## 0.3.0
+* Refactor Documentation
+* Handling of Keychain moved to Framework
+* SchemaDocument is now a intractable class
+* GetDocument method added to Motor
+* UploadDocument method added to Motor
+
 ## 0.2.2
 * Update pubspec.yaml
 ## 0.2.1

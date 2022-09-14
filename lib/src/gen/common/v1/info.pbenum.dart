@@ -43,6 +43,29 @@ class BlockchainModule extends $pb.ProtobufEnum {
   const BlockchainModule._($core.int v, $core.String n) : super(v, n);
 }
 
+class MotorCallbackMessage extends $pb.ProtobufEnum {
+  static const MotorCallbackMessage MTR_INIT = MotorCallbackMessage._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MTR_INIT');
+  static const MotorCallbackMessage MTR_FAUCET_RECEIVED = MotorCallbackMessage._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MTR_FAUCET_RECEIVED');
+  static const MotorCallbackMessage MTR_SHARDS_CREATED = MotorCallbackMessage._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MTR_SHARDS_CREATED');
+  static const MotorCallbackMessage MTR_VAULT_CREATED = MotorCallbackMessage._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MTR_VAULT_CREATED');
+  static const MotorCallbackMessage MTR_ACCOUNT_CREATED = MotorCallbackMessage._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MTR_ACCOUNT_CREATED');
+  static const MotorCallbackMessage MTR_LOGGED_IN = MotorCallbackMessage._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MTR_LOGGED_IN');
+
+  static const $core.List<MotorCallbackMessage> values = <MotorCallbackMessage> [
+    MTR_INIT,
+    MTR_FAUCET_RECEIVED,
+    MTR_SHARDS_CREATED,
+    MTR_VAULT_CREATED,
+    MTR_ACCOUNT_CREATED,
+    MTR_LOGGED_IN,
+  ];
+
+  static final $core.Map<$core.int, MotorCallbackMessage> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static MotorCallbackMessage? valueOf($core.int value) => _byValue[value];
+
+  const MotorCallbackMessage._($core.int v, $core.String n) : super(v, n);
+}
+
 class Peer_Status extends $pb.ProtobufEnum {
   static const Peer_Status STATUS_UNSPECIFIED = Peer_Status._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'STATUS_UNSPECIFIED');
   static const Peer_Status STATUS_ONLINE = Peer_Status._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'STATUS_ONLINE');

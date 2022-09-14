@@ -10,7 +10,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../common/v1/info.pb.dart' as $5;
+import '../../common/v1/info.pb.dart' as $6;
 
 import 'transmit.pbenum.dart';
 
@@ -355,7 +355,7 @@ class Payload_Item extends $pb.GeneratedMessage {
 class Payload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Payload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..pc<Payload_Item>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payload_Item.create)
-    ..aOM<$5.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner', subBuilder: $5.Peer.create)
+    ..aOM<$6.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner', subBuilder: $6.Peer.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt')
     ..hasRequiredFields = false
@@ -364,7 +364,7 @@ class Payload extends $pb.GeneratedMessage {
   Payload._() : super();
   factory Payload({
     $core.Iterable<Payload_Item>? items,
-    $5.Peer? owner,
+    $6.Peer? owner,
     $fixnum.Int64? size,
     $fixnum.Int64? createdAt,
   }) {
@@ -408,15 +408,15 @@ class Payload extends $pb.GeneratedMessage {
   $core.List<Payload_Item> get items => $_getList(0);
 
   @$pb.TagNumber(2)
-  $5.Peer get owner => $_getN(1);
+  $6.Peer get owner => $_getN(1);
   @$pb.TagNumber(2)
-  set owner($5.Peer v) { setField(2, v); }
+  set owner($6.Peer v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasOwner() => $_has(1);
   @$pb.TagNumber(2)
   void clearOwner() => clearField(2);
   @$pb.TagNumber(2)
-  $5.Peer ensureOwner() => $_ensure(1);
+  $6.Peer ensureOwner() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get size => $_getI64(2);
@@ -564,8 +564,8 @@ class Thumbnail extends $pb.GeneratedMessage {
 class Session extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Session', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.service.v1'), createEmptyInstance: create)
     ..e<Direction>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: Direction.DIRECTION_UNSPECIFIED, valueOf: Direction.valueOf, enumValues: Direction.values)
-    ..aOM<$5.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $5.Peer.create)
-    ..aOM<$5.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $5.Peer.create)
+    ..aOM<$6.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $6.Peer.create)
+    ..aOM<$6.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $6.Peer.create)
     ..aOM<Payload>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', subBuilder: Payload.create)
     ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastUpdated')
     ..pc<SessionItem>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: SessionItem.create)
@@ -577,8 +577,8 @@ class Session extends $pb.GeneratedMessage {
   Session._() : super();
   factory Session({
     Direction? direction,
-    $5.Peer? from,
-    $5.Peer? to,
+    $6.Peer? from,
+    $6.Peer? to,
     Payload? payload,
     $fixnum.Int64? lastUpdated,
     $core.Iterable<SessionItem>? items,
@@ -643,26 +643,26 @@ class Session extends $pb.GeneratedMessage {
   void clearDirection() => clearField(1);
 
   @$pb.TagNumber(2)
-  $5.Peer get from => $_getN(1);
+  $6.Peer get from => $_getN(1);
   @$pb.TagNumber(2)
-  set from($5.Peer v) { setField(2, v); }
+  set from($6.Peer v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasFrom() => $_has(1);
   @$pb.TagNumber(2)
   void clearFrom() => clearField(2);
   @$pb.TagNumber(2)
-  $5.Peer ensureFrom() => $_ensure(1);
+  $6.Peer ensureFrom() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $5.Peer get to => $_getN(2);
+  $6.Peer get to => $_getN(2);
   @$pb.TagNumber(3)
-  set to($5.Peer v) { setField(3, v); }
+  set to($6.Peer v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasTo() => $_has(2);
   @$pb.TagNumber(3)
   void clearTo() => clearField(3);
   @$pb.TagNumber(3)
-  $5.Peer ensureTo() => $_ensure(2);
+  $6.Peer ensureTo() => $_ensure(2);
 
   @$pb.TagNumber(4)
   Payload get payload => $_getN(3);

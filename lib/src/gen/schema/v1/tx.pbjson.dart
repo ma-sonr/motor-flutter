@@ -8,20 +8,22 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'schema.pbjson.dart' as $6;
-import 'what_is.pbjson.dart' as $9;
+import 'schema.pbjson.dart' as $5;
+import 'what_is.pbjson.dart' as $10;
 
 @$core.Deprecated('Use msgCreateSchemaDescriptor instead')
 const MsgCreateSchema$json = const {
   '1': 'MsgCreateSchema',
   '2': const [
-    const {'1': 'definition', '3': 1, '4': 1, '5': 11, '6': '.sonrio.sonr.schema.SchemaDefinition', '10': 'definition'},
-    const {'1': 'metadata', '3': 2, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.MetadataDefintion', '10': 'metadata'},
+    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'label', '3': 2, '4': 1, '5': 9, '10': 'label'},
+    const {'1': 'fields', '3': 3, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.SchemaKindDefinition', '10': 'fields'},
+    const {'1': 'metadata', '3': 4, '4': 3, '5': 11, '6': '.sonrio.sonr.schema.MetadataDefintion', '10': 'metadata'},
   ],
 };
 
 /// Descriptor for `MsgCreateSchema`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgCreateSchemaDescriptor = $convert.base64Decode('Cg9Nc2dDcmVhdGVTY2hlbWESRAoKZGVmaW5pdGlvbhgBIAEoCzIkLnNvbnJpby5zb25yLnNjaGVtYS5TY2hlbWFEZWZpbml0aW9uUgpkZWZpbml0aW9uEkEKCG1ldGFkYXRhGAIgAygLMiUuc29ucmlvLnNvbnIuc2NoZW1hLk1ldGFkYXRhRGVmaW50aW9uUghtZXRhZGF0YQ==');
+final $typed_data.Uint8List msgCreateSchemaDescriptor = $convert.base64Decode('Cg9Nc2dDcmVhdGVTY2hlbWESGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIUCgVsYWJlbBgCIAEoCVIFbGFiZWwSQAoGZmllbGRzGAMgAygLMiguc29ucmlvLnNvbnIuc2NoZW1hLlNjaGVtYUtpbmREZWZpbml0aW9uUgZmaWVsZHMSQQoIbWV0YWRhdGEYBCADKAsyJS5zb25yaW8uc29uci5zY2hlbWEuTWV0YWRhdGFEZWZpbnRpb25SCG1ldGFkYXRh');
 @$core.Deprecated('Use msgCreateSchemaResponseDescriptor instead')
 const MsgCreateSchemaResponse$json = const {
   '1': 'MsgCreateSchemaResponse',
@@ -67,13 +69,12 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.sonrio.sonr.schema.MsgCreateSchema': MsgCreateSchema$json,
-  '.sonrio.sonr.schema.SchemaDefinition': $6.SchemaDefinition$json,
-  '.sonrio.sonr.schema.SchemaKindDefinition': $6.SchemaKindDefinition$json,
-  '.sonrio.sonr.schema.MetadataDefintion': $6.MetadataDefintion$json,
+  '.sonrio.sonr.schema.SchemaKindDefinition': $5.SchemaKindDefinition$json,
+  '.sonrio.sonr.schema.MetadataDefintion': $5.MetadataDefintion$json,
   '.sonrio.sonr.schema.MsgCreateSchemaResponse': MsgCreateSchemaResponse$json,
-  '.sonrio.sonr.schema.WhatIs': $9.WhatIs$json,
-  '.sonrio.sonr.schema.SchemaReference': $6.SchemaReference$json,
-  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $9.WhatIs_MetadataEntry$json,
+  '.sonrio.sonr.schema.WhatIs': $10.WhatIs$json,
+  '.sonrio.sonr.schema.SchemaDefinition': $5.SchemaDefinition$json,
+  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $10.WhatIs_MetadataEntry$json,
   '.sonrio.sonr.schema.MsgDeprecateSchema': MsgDeprecateSchema$json,
   '.sonrio.sonr.schema.MsgDeprecateSchemaResponse': MsgDeprecateSchemaResponse$json,
 };

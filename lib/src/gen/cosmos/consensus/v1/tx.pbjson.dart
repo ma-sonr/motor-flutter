@@ -8,7 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import '../../../tendermint/types/params.pbjson.dart' as $21;
+import '../../../tendermint/types/params.pbjson.dart' as $20;
 import '../../../google/protobuf/duration.pbjson.dart' as $19;
 
 @$core.Deprecated('Use msgUpdateParamsDescriptor instead')
@@ -42,10 +42,10 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.cosmos.consensus.v1.MsgUpdateParams': MsgUpdateParams$json,
-  '.tendermint.types.BlockParams': $21.BlockParams$json,
-  '.tendermint.types.EvidenceParams': $21.EvidenceParams$json,
+  '.tendermint.types.BlockParams': $20.BlockParams$json,
+  '.tendermint.types.EvidenceParams': $20.EvidenceParams$json,
   '.google.protobuf.Duration': $19.Duration$json,
-  '.tendermint.types.ValidatorParams': $21.ValidatorParams$json,
+  '.tendermint.types.ValidatorParams': $20.ValidatorParams$json,
   '.cosmos.consensus.v1.MsgUpdateParamsResponse': MsgUpdateParamsResponse$json,
 };
 

@@ -8,9 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'params.pbjson.dart' as $11;
-import 'who_is.pbjson.dart' as $8;
-import 'did.pbjson.dart' as $7;
+import 'params.pbjson.dart' as $12;
+import 'who_is.pbjson.dart' as $9;
+import 'did.pbjson.dart' as $8;
 import '../cosmos/base/query/v1beta1/pagination.pbjson.dart' as $2;
 
 @$core.Deprecated('Use queryParamsRequestDescriptor instead')
@@ -126,16 +126,16 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
   '.sonrio.sonr.registry.QueryParamsRequest': QueryParamsRequest$json,
   '.sonrio.sonr.registry.QueryParamsResponse': QueryParamsResponse$json,
-  '.sonrio.sonr.registry.Params': $11.Params$json,
+  '.sonrio.sonr.registry.Params': $12.Params$json,
   '.sonrio.sonr.registry.QueryWhoIsRequest': QueryWhoIsRequest$json,
   '.sonrio.sonr.registry.QueryWhoIsResponse': QueryWhoIsResponse$json,
-  '.sonrio.sonr.registry.WhoIs': $8.WhoIs$json,
-  '.sonrio.sonr.registry.Alias': $8.Alias$json,
-  '.sonrio.sonr.registry.DIDDocument': $7.DIDDocument$json,
-  '.sonrio.sonr.registry.VerificationMethod': $7.VerificationMethod$json,
-  '.sonrio.sonr.registry.KeyValuePair': $7.KeyValuePair$json,
-  '.sonrio.sonr.registry.Service': $7.Service$json,
-  '.sonrio.sonr.registry.WhoIs.MetadataEntry': $8.WhoIs_MetadataEntry$json,
+  '.sonrio.sonr.registry.WhoIs': $9.WhoIs$json,
+  '.sonrio.sonr.registry.Alias': $9.Alias$json,
+  '.sonrio.sonr.registry.DIDDocument': $8.DIDDocument$json,
+  '.sonrio.sonr.registry.VerificationMethod': $8.VerificationMethod$json,
+  '.sonrio.sonr.registry.KeyValuePair': $8.KeyValuePair$json,
+  '.sonrio.sonr.registry.Service': $8.Service$json,
+  '.sonrio.sonr.registry.WhoIs.MetadataEntry': $9.WhoIs_MetadataEntry$json,
   '.sonrio.sonr.registry.QueryAllWhoIsRequest': QueryAllWhoIsRequest$json,
   '.cosmos.base.query.v1beta1.PageRequest': $2.PageRequest$json,
   '.sonrio.sonr.registry.QueryAllWhoIsResponse': QueryAllWhoIsResponse$json,

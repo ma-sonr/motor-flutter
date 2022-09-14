@@ -8,9 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'params.pbjson.dart' as $15;
-import 'schema.pbjson.dart' as $6;
-import 'what_is.pbjson.dart' as $9;
+import 'params.pbjson.dart' as $16;
+import 'schema.pbjson.dart' as $5;
+import 'what_is.pbjson.dart' as $10;
 import '../../cosmos/base/query/v1beta1/pagination.pbjson.dart' as $2;
 
 @$core.Deprecated('Use queryParamsRequestDescriptor instead')
@@ -151,16 +151,15 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
   '.sonrio.sonr.schema.QueryParamsRequest': QueryParamsRequest$json,
   '.sonrio.sonr.schema.QueryParamsResponse': QueryParamsResponse$json,
-  '.sonrio.sonr.schema.Params': $15.Params$json,
+  '.sonrio.sonr.schema.Params': $16.Params$json,
   '.sonrio.sonr.schema.QuerySchemaRequest': QuerySchemaRequest$json,
   '.sonrio.sonr.schema.QuerySchemaResponse': QuerySchemaResponse$json,
-  '.sonrio.sonr.schema.SchemaDefinition': $6.SchemaDefinition$json,
-  '.sonrio.sonr.schema.SchemaKindDefinition': $6.SchemaKindDefinition$json,
+  '.sonrio.sonr.schema.SchemaDefinition': $5.SchemaDefinition$json,
+  '.sonrio.sonr.schema.SchemaKindDefinition': $5.SchemaKindDefinition$json,
   '.sonrio.sonr.schema.QueryWhatIsRequest': QueryWhatIsRequest$json,
   '.sonrio.sonr.schema.QueryWhatIsResponse': QueryWhatIsResponse$json,
-  '.sonrio.sonr.schema.WhatIs': $9.WhatIs$json,
-  '.sonrio.sonr.schema.SchemaReference': $6.SchemaReference$json,
-  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $9.WhatIs_MetadataEntry$json,
+  '.sonrio.sonr.schema.WhatIs': $10.WhatIs$json,
+  '.sonrio.sonr.schema.WhatIs.MetadataEntry': $10.WhatIs_MetadataEntry$json,
   '.sonrio.sonr.schema.QueryWhatIsCreatorRequest': QueryWhatIsCreatorRequest$json,
   '.cosmos.base.query.v1beta1.PageRequest': $2.PageRequest$json,
   '.sonrio.sonr.schema.QueryWhatIsCreatorResponse': QueryWhatIsCreatorResponse$json,
