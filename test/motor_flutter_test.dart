@@ -85,13 +85,25 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   }
 
   @override
-  Future<CreateAccountWithKeysResponse?> createAccount(CreateAccountWithKeysRequest req) {
+  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
     // TODO: implement createAccount
     throw UnimplementedError();
   }
 
   @override
-  Future<LoginResponse?> login(LoginWithKeysRequest req) {
+  Future<CreateAccountWithKeysResponse?> createAccountWithKeys(CreateAccountWithKeysRequest req) {
+    // TODO: implement createAccount
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<LoginResponse?> login(LoginRequest req) {
+    // TODO: implement login
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<LoginResponse?> loginWithKeys(LoginWithKeysRequest req) {
     // TODO: implement login
     throw UnimplementedError();
   }

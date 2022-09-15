@@ -27,13 +27,13 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<CreateAccountWithKeysResponse?> createAccount(CreateAccountWithKeysRequest req) async {
+  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) async {
     try {
-      final buf = await methodChannel.invokeMethod<Uint8List>('createAccountWithKeys', req.writeToBuffer());
+      final buf = await methodChannel.invokeMethod<Uint8List>('createAccount', req.writeToBuffer());
       if (buf == null) {
         return null;
       }
-      return CreateAccountWithKeysResponse.fromBuffer(buf.toList());
+      return CreateAccountResponse.fromBuffer(buf.toList());
     } catch (e) {
       Log.printMotorException(e.toString());
       return null;
@@ -41,7 +41,16 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<LoginResponse?> login(LoginWithKeysRequest req) async {
+  Future<CreateAccountWithKeysResponse?> createAccountWithKeys(CreateAccountWithKeysRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('createAccountWithKeys', req.writeToBuffer());
+    if (buf == null) {
+      return null;
+    }
+    return CreateAccountWithKeysResponse.fromBuffer(buf.toList());
+  }
+
+  @override
+  Future<LoginResponse?> login(LoginRequest req) async {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('login', req.writeToBuffer());
       if (buf == null) {
@@ -55,6 +64,18 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
       Log.printMotorException(e.toString());
       return null;
     }
+  }
+
+  @override
+  Future<LoginResponse?> loginWithKeys(LoginWithKeysRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('loginWithKeys', req.writeToBuffer());
+    if (buf == null) {
+      if (kDebugMode) {
+        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+      }
+      return null;
+    }
+    return LoginResponse.fromBuffer(buf.toList());
   }
 
   @override

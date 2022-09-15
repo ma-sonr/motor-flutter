@@ -52,12 +52,36 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
           result.error(e.getMessage(), e.getMessage(), null);
         }
         break;
+      
+      // Starts the Node
+      case "createAccountWithKeys":
+        try {
+          final byte[] createAccountArgs = call.arguments();
+          final byte[] createAccountResp = Motor.createAccountWithKeys(createAccountArgs);
+          result.success(createAccountResp);
+        } catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
 
       // Starts the Node
       case "login":
         try {
           final byte[] loginArgs = call.arguments();
           final byte[] loginResp = Motor.login(loginArgs);
+          result.success(loginResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "loginWithKeys":
+        try {
+          final byte[] loginArgs = call.arguments();
+          final byte[] loginResp = Motor.loginWithKeys(loginArgs);
           result.success(loginResp);
         }catch (Exception e) {
           System.out.println(e.toString());

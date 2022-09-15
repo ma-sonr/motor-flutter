@@ -36,7 +36,15 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   ///
   /// Args:
   ///   req (CreateAccountRequest): The request object that will be sent to the server.
-  Future<CreateAccountWithKeysResponse?> createAccount(CreateAccountWithKeysRequest req) {
+  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  /// Create an account with specific DSC and PSK keys.
+  ///
+  /// Args:
+  ///   req (CreateAccountWithKeysRequest): The request object that will be sent to the server.
+  Future<CreateAccountWithKeysResponse?> createAccountWithKeys(CreateAccountWithKeysRequest req) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
@@ -49,7 +57,15 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   ///
   /// Args:
   ///   req (LoginRequest): The request object that will be sent to the server.
-  Future<LoginResponse?> login(LoginWithKeysRequest req) {
+  Future<LoginResponse?> login(LoginRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  /// This function returns a Future that resolves to a LoginResponse or null.
+  ///
+  /// Args:
+  ///   req (LoginWithKeysRequest): The request object that will be sent to the server.
+  Future<LoginResponse?> loginWithKeys(LoginWithKeysRequest req) {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 

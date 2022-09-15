@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:async';
 import 'package:fixnum/fixnum.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_keychain/flutter_keychain.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'src/controllers/register_controller.dart';
@@ -11,8 +14,9 @@ import 'src/extensions/extensions.dart';
 import 'src/extensions/request.dart';
 import 'src/motor_flutter_platform_interface.dart';
 import 'src/utilities/logger.dart';
+import 'package:encrypt/encrypt.dart' as encrypt;
+
 export 'src/gen/generated.dart';
-import 'package:encrypt/encrypt.dart';
 export 'src/extensions/extensions.dart';
 export 'src/utilities/logger.dart';
 export 'src/controllers/register_controller.dart';
@@ -20,6 +24,10 @@ export 'src/controllers/register_controller.dart';
 /// > This class is a GetxService that has a `String` property called `name` and a `Stream` property
 /// called `stream` that emits a `String` every second
 class MotorFlutter extends GetxService {
+  /// Constants for accessing auth keys when necessary
+  static const String dscKey = "DSC_KEY";
+  static const String pskKey = "PSK_KEY";
+
   /// This is a stream controller that is used to emit events from the native side of the application.
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
 
@@ -89,7 +97,7 @@ class MotorFlutter extends GetxService {
   }
 
   static genKey() {
-    final key = Key.fromSecureRandom(32);
+    final key = encrypt.Key.fromSecureRandom(32);
     print(key.bytes.lengthInBytes);
   }
 
@@ -102,15 +110,35 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
   /// CreateAccountResponse as a parameter.
   Future<CreateAccountResponse?> createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
-    final dscKey = Key.fromLength(32);
-    final pskKey = Key.fromLength(32);
-    final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountWithKeysRequest(
-      password: password,
-      aesDscKey: dscKey.bytes,
-      aesPskKey: pskKey.bytes,
-    ));
+    CreateAccountResponse? resp;
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      var dscBytes = encrypt.Key.fromLength(32).bytes;
+      var pskBytes = encrypt.Key.fromLength(32).bytes;
+
+      var createWithKeysResp = await MotorFlutterPlatform.instance.createAccountWithKeys(CreateAccountWithKeysRequest(
+        password: password,
+        aesDscKey: dscBytes,
+        aesPskKey: pskBytes,
+      ));
+      resp = CreateAccountResponse(
+        address: createWithKeysResp?.address,
+        whoIs: createWithKeysResp?.whoIs,
+      );
+
+      // store the two keys in keychain
+      var keychainPuts = [
+        FlutterKeychain.put(key: dscKey, value: _encodeHexString(dscBytes)),
+        FlutterKeychain.put(key: pskKey, value: _encodeHexString(pskBytes)),
+      ];
+      await Future.wait(keychainPuts);
+    } else {
+      resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
+        password: password,
+      ));
+    }
+    
     if (callback != null) {
-      callback(resp?.toNormalResponse());
+      callback(resp);
     }
     if (resp != null) {
       address.value = resp.address;
@@ -118,7 +146,7 @@ class MotorFlutter extends GetxService {
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
     }
-    return resp?.toNormalResponse();
+    return resp;
   }
 
   /// This function takes an AuthInfo object and an optional ResponseCallback function, and returns a
@@ -129,12 +157,30 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<LoginResponse>): The callback function that will be called when the
   /// request is complete.
   Future<LoginResponse?> login(AuthInfo info, [ResponseCallback<LoginResponse>? callback]) async {
-    final resp = await MotorFlutterPlatform.instance.login(LoginWithKeysRequest(
-      password: info.password,
-      did: info.did,
-      aesDscKey: info.aesDscKey,
-      aesPskKey: info.aesPskKey,
-    ));
+    LoginResponse? resp;
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      var dscStr = await FlutterKeychain.get(key: dscKey);
+      if (dscStr == null) {
+        throw("DSC not found");
+      }
+
+      var pskStr = await FlutterKeychain.get(key: pskKey);
+      if (pskStr == null) {
+        throw("PSK not found");
+      }
+
+      resp = await MotorFlutterPlatform.instance.loginWithKeys(LoginWithKeysRequest(
+        did: info.did,
+        password: info.password,
+        aesDscKey: _decodeHexString(dscStr),
+        aesPskKey: _decodeHexString(pskStr),
+      ));
+    } else {
+      resp = await MotorFlutterPlatform.instance.login(LoginRequest(
+        password: info.password,
+        did: info.did,
+      ));
+    }
     if (callback != null) {
       callback(resp);
     }
@@ -367,5 +413,22 @@ class MotorFlutter extends GetxService {
   void onClose() {
     discoverEvents.close();
     super.onClose();
+  }
+
+  List<int> _decodeHexString(String hex) {
+    List<int> result = [];
+    if (hex.length % 2 != 0) {
+      return result;
+    }
+
+    for (var i = 0; i < hex.length; i += 2) {
+      result.add(int.parse(hex.substring(i, i + 2), radix: 16));
+    }
+
+    return result;
+  }
+
+  String _encodeHexString(List<int> bytes) {
+    return bytes.map((e) => e.toRadixString(16).padLeft(2, '0')).join();
   }
 }

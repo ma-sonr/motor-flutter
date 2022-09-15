@@ -17,4 +17,9 @@ public class JavaMotorCallback implements MotorCallback {
     public void onDiscover(byte[] data){
 
     }
+
+    @Override
+    public void onMotorEvent(String msg, boolean done) {
+        
+    }
 }

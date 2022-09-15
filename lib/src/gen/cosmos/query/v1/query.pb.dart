@@ -10,9 +10,9 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class Query {
-  static final deterministic = $pb.Extension<$core.bool>(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'google.protobuf.MethodOptions', const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deterministic', 11110001, $pb.PbFieldType.OB);
+  static final moduleQuerySafe = $pb.Extension<$core.bool>(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'google.protobuf.MethodOptions', const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'moduleQuerySafe', 11110001, $pb.PbFieldType.OB);
   static void registerAllExtensions($pb.ExtensionRegistry registry) {
-    registry.add(deterministic);
+    registry.add(moduleQuerySafe);
   }
 }
 
