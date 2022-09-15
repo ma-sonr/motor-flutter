@@ -6,7 +6,14 @@ Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io). **See [API Ref
 
 ## Installation
 
-Integrating into your existing Flutter project
+Here's how to install the motor_flutter package in your Flutter project:
+
+#### Prerequisites
+* [Flutter](https://flutter.dev/docs/get-started/install)
+* [GetX](https://pub.dev/packages/get)
+
+Using the Flutter CLI
+
 ```sh
 flutter pub add motor_flutter
 ```
@@ -30,6 +37,7 @@ Then **remove** this line from your Podfile:
 ```ruby
 use_frameworks!
 ```
+
 
 ## Usage
 
