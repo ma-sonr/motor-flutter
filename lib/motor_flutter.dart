@@ -7,6 +7,7 @@ import 'src/gen/generated.dart';
 import 'src/gen/registry/tx.pb.dart';
 import 'src/utilities/information.dart';
 import 'src/extensions/extensions.dart';
+import 'src/extensions/request.dart';
 import 'src/motor_flutter_platform_interface.dart';
 import 'src/utilities/logger.dart';
 export 'src/gen/generated.dart';
@@ -92,11 +93,13 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
   /// CreateAccountResponse as a parameter.
   Future<CreateAccountResponse?> createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
-    final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountRequest(
+    final dscKey = List<int>.generate(32, (i) => Random().nextInt(256));
+    final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountWithKeysRequest(
       password: password,
+      aesDscKey: dscKey,
     ));
     if (callback != null) {
-      callback(resp);
+      callback(resp?.toNormalResponse());
     }
     if (resp != null) {
       address.value = resp.address;
@@ -104,7 +107,7 @@ class MotorFlutter extends GetxService {
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
     }
-    return resp;
+    return resp?.toNormalResponse();
   }
 
   /// This function takes an AuthInfo object and an optional ResponseCallback function, and returns a
@@ -115,9 +118,11 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<LoginResponse>): The callback function that will be called when the
   /// request is complete.
   Future<LoginResponse?> login(AuthInfo info, [ResponseCallback<LoginResponse>? callback]) async {
-    final resp = await MotorFlutterPlatform.instance.login(LoginRequest(
+    final resp = await MotorFlutterPlatform.instance.login(LoginWithKeysRequest(
       password: info.password,
       did: info.did,
+      aesDscKey: info.aesDscKey,
+      aesPskKey: info.aesPskKey,
     ));
     if (callback != null) {
       callback(resp);

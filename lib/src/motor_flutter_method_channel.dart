@@ -27,16 +27,16 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('createAccount', req.writeToBuffer());
+  Future<CreateAccountWithKeysResponse?> createAccount(CreateAccountWithKeysRequest req) async {
+    final buf = await methodChannel.invokeMethod<Uint8List>('createAccountWithKeys', req.writeToBuffer());
     if (buf == null) {
       return null;
     }
-    return CreateAccountResponse.fromBuffer(buf.toList());
+    return CreateAccountWithKeysResponse.fromBuffer(buf.toList());
   }
 
   @override
-  Future<LoginResponse?> login(LoginRequest req) async {
+  Future<LoginResponse?> login(LoginWithKeysRequest req) async {
     final buf = await methodChannel.invokeMethod<Uint8List>('login', req.writeToBuffer());
     if (buf == null) {
       if (kDebugMode) {

@@ -264,6 +264,89 @@ class CreateAccountRequest extends $pb.GeneratedMessage {
   $core.Map<$core.String, $core.String> get metadata => $_getMap(1);
 }
 
+class CreateAccountWithKeysRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateAccountWithKeysRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesDscKey', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesPskKey', $pb.PbFieldType.OY)
+    ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', entryClassName: 'CreateAccountWithKeysRequest.MetadataEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonrio.motor.api.v1'))
+    ..hasRequiredFields = false
+  ;
+
+  CreateAccountWithKeysRequest._() : super();
+  factory CreateAccountWithKeysRequest({
+    $core.String? password,
+    $core.List<$core.int>? aesDscKey,
+    $core.List<$core.int>? aesPskKey,
+    $core.Map<$core.String, $core.String>? metadata,
+  }) {
+    final _result = create();
+    if (password != null) {
+      _result.password = password;
+    }
+    if (aesDscKey != null) {
+      _result.aesDscKey = aesDscKey;
+    }
+    if (aesPskKey != null) {
+      _result.aesPskKey = aesPskKey;
+    }
+    if (metadata != null) {
+      _result.metadata.addAll(metadata);
+    }
+    return _result;
+  }
+  factory CreateAccountWithKeysRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CreateAccountWithKeysRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CreateAccountWithKeysRequest clone() => CreateAccountWithKeysRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CreateAccountWithKeysRequest copyWith(void Function(CreateAccountWithKeysRequest) updates) => super.copyWith((message) => updates(message as CreateAccountWithKeysRequest)) as CreateAccountWithKeysRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateAccountWithKeysRequest create() => CreateAccountWithKeysRequest._();
+  CreateAccountWithKeysRequest createEmptyInstance() => create();
+  static $pb.PbList<CreateAccountWithKeysRequest> createRepeated() => $pb.PbList<CreateAccountWithKeysRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CreateAccountWithKeysRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateAccountWithKeysRequest>(create);
+  static CreateAccountWithKeysRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get password => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set password($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPassword() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPassword() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get aesDscKey => $_getN(1);
+  @$pb.TagNumber(2)
+  set aesDscKey($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAesDscKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAesDscKey() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get aesPskKey => $_getN(2);
+  @$pb.TagNumber(3)
+  set aesPskKey($core.List<$core.int> v) { $_setBytes(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAesPskKey() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAesPskKey() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, $core.String> get metadata => $_getMap(3);
+}
+
 class LoginRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoginRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
@@ -323,6 +406,95 @@ class LoginRequest extends $pb.GeneratedMessage {
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
   void clearPassword() => clearField(2);
+}
+
+class LoginWithKeysRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoginWithKeysRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
+    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesDscKey', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesPskKey', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false
+  ;
+
+  LoginWithKeysRequest._() : super();
+  factory LoginWithKeysRequest({
+    $core.String? did,
+    $core.String? password,
+    $core.List<$core.int>? aesDscKey,
+    $core.List<$core.int>? aesPskKey,
+  }) {
+    final _result = create();
+    if (did != null) {
+      _result.did = did;
+    }
+    if (password != null) {
+      _result.password = password;
+    }
+    if (aesDscKey != null) {
+      _result.aesDscKey = aesDscKey;
+    }
+    if (aesPskKey != null) {
+      _result.aesPskKey = aesPskKey;
+    }
+    return _result;
+  }
+  factory LoginWithKeysRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginWithKeysRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoginWithKeysRequest clone() => LoginWithKeysRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginWithKeysRequest copyWith(void Function(LoginWithKeysRequest) updates) => super.copyWith((message) => updates(message as LoginWithKeysRequest)) as LoginWithKeysRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LoginWithKeysRequest create() => LoginWithKeysRequest._();
+  LoginWithKeysRequest createEmptyInstance() => create();
+  static $pb.PbList<LoginWithKeysRequest> createRepeated() => $pb.PbList<LoginWithKeysRequest>();
+  @$core.pragma('dart2js:noInline')
+  static LoginWithKeysRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginWithKeysRequest>(create);
+  static LoginWithKeysRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get did => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set did($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get password => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set password($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPassword() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPassword() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get aesDscKey => $_getN(2);
+  @$pb.TagNumber(3)
+  set aesDscKey($core.List<$core.int> v) { $_setBytes(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAesDscKey() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAesDscKey() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get aesPskKey => $_getN(3);
+  @$pb.TagNumber(4)
+  set aesPskKey($core.List<$core.int> v) { $_setBytes(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasAesPskKey() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAesPskKey() => clearField(4);
 }
 
 class QueryRequest extends $pb.GeneratedMessage {

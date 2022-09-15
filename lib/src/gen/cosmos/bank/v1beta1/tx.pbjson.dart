@@ -97,6 +97,7 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
     const {'1': 'UpdateParams', '2': '.cosmos.bank.v1beta1.MsgUpdateParams', '3': '.cosmos.bank.v1beta1.MsgUpdateParamsResponse'},
     const {'1': 'SetSendEnabled', '2': '.cosmos.bank.v1beta1.MsgSetSendEnabled', '3': '.cosmos.bank.v1beta1.MsgSetSendEnabledResponse'},
   ],
+  '3': const {},
 };
 
 @$core.Deprecated('Use msgServiceDescriptor instead')
@@ -117,4 +118,4 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgService
 };
 
 /// Descriptor for `Msg`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('CgNNc2cSSgoEU2VuZBIcLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnU2VuZBokLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnU2VuZFJlc3BvbnNlElkKCU11bHRpU2VuZBIhLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnTXVsdGlTZW5kGikuY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dNdWx0aVNlbmRSZXNwb25zZRJiCgxVcGRhdGVQYXJhbXMSJC5jb3Ntb3MuYmFuay52MWJldGExLk1zZ1VwZGF0ZVBhcmFtcxosLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnVXBkYXRlUGFyYW1zUmVzcG9uc2USaAoOU2V0U2VuZEVuYWJsZWQSJi5jb3Ntb3MuYmFuay52MWJldGExLk1zZ1NldFNlbmRFbmFibGVkGi4uY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZXRTZW5kRW5hYmxlZFJlc3BvbnNl');
+final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('CgNNc2cSSgoEU2VuZBIcLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnU2VuZBokLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnU2VuZFJlc3BvbnNlElkKCU11bHRpU2VuZBIhLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnTXVsdGlTZW5kGikuY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dNdWx0aVNlbmRSZXNwb25zZRJiCgxVcGRhdGVQYXJhbXMSJC5jb3Ntb3MuYmFuay52MWJldGExLk1zZ1VwZGF0ZVBhcmFtcxosLmNvc21vcy5iYW5rLnYxYmV0YTEuTXNnVXBkYXRlUGFyYW1zUmVzcG9uc2USaAoOU2V0U2VuZEVuYWJsZWQSJi5jb3Ntb3MuYmFuay52MWJldGExLk1zZ1NldFNlbmRFbmFibGVkGi4uY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZXRTZW5kRW5hYmxlZFJlc3BvbnNlGgWA57AqAQ==');

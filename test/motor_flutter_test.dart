@@ -10,22 +10,12 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<CreateSchemaResponse?> createSchema(CreateSchemaRequest req) {
     throw UnimplementedError();
   }
 
   @override
   Future<InitializeResponse?> init(InitializeRequest req) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<LoginResponse?> login(LoginRequest req) {
     throw UnimplementedError();
   }
 
@@ -91,6 +81,18 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
   @override
   Future<MsgTransferAliasResponse?> transferAlias(MsgTransferAlias req) {
     // TODO: implement transferAlias
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CreateAccountWithKeysResponse?> createAccount(CreateAccountWithKeysRequest req) {
+    // TODO: implement createAccount
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<LoginResponse?> login(LoginWithKeysRequest req) {
+    // TODO: implement login
     throw UnimplementedError();
   }
 }

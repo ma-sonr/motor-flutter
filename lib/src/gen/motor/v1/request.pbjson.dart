@@ -50,6 +50,30 @@ const CreateAccountRequest_MetadataEntry$json = const {
 
 /// Descriptor for `CreateAccountRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createAccountRequestDescriptor = $convert.base64Decode('ChRDcmVhdGVBY2NvdW50UmVxdWVzdBIaCghwYXNzd29yZBgBIAEoCVIIcGFzc3dvcmQSUwoIbWV0YWRhdGEYAiADKAsyNy5zb25yaW8ubW90b3IuYXBpLnYxLkNyZWF0ZUFjY291bnRSZXF1ZXN0Lk1ldGFkYXRhRW50cnlSCG1ldGFkYXRhGjsKDU1ldGFkYXRhRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use createAccountWithKeysRequestDescriptor instead')
+const CreateAccountWithKeysRequest$json = const {
+  '1': 'CreateAccountWithKeysRequest',
+  '2': const [
+    const {'1': 'password', '3': 1, '4': 1, '5': 9, '10': 'password'},
+    const {'1': 'aes_dsc_key', '3': 2, '4': 1, '5': 12, '10': 'aesDscKey'},
+    const {'1': 'aes_psk_key', '3': 3, '4': 1, '5': 12, '10': 'aesPskKey'},
+    const {'1': 'metadata', '3': 4, '4': 3, '5': 11, '6': '.sonrio.motor.api.v1.CreateAccountWithKeysRequest.MetadataEntry', '10': 'metadata'},
+  ],
+  '3': const [CreateAccountWithKeysRequest_MetadataEntry$json],
+};
+
+@$core.Deprecated('Use createAccountWithKeysRequestDescriptor instead')
+const CreateAccountWithKeysRequest_MetadataEntry$json = const {
+  '1': 'MetadataEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `CreateAccountWithKeysRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createAccountWithKeysRequestDescriptor = $convert.base64Decode('ChxDcmVhdGVBY2NvdW50V2l0aEtleXNSZXF1ZXN0EhoKCHBhc3N3b3JkGAEgASgJUghwYXNzd29yZBIeCgthZXNfZHNjX2tleRgCIAEoDFIJYWVzRHNjS2V5Eh4KC2Flc19wc2tfa2V5GAMgASgMUglhZXNQc2tLZXkSWwoIbWV0YWRhdGEYBCADKAsyPy5zb25yaW8ubW90b3IuYXBpLnYxLkNyZWF0ZUFjY291bnRXaXRoS2V5c1JlcXVlc3QuTWV0YWRhdGFFbnRyeVIIbWV0YWRhdGEaOwoNTWV0YWRhdGFFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
 @$core.Deprecated('Use loginRequestDescriptor instead')
 const LoginRequest$json = const {
   '1': 'LoginRequest',
@@ -61,6 +85,19 @@ const LoginRequest$json = const {
 
 /// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode('CgxMb2dpblJlcXVlc3QSEAoDZGlkGAEgASgJUgNkaWQSGgoIcGFzc3dvcmQYAiABKAlSCHBhc3N3b3Jk');
+@$core.Deprecated('Use loginWithKeysRequestDescriptor instead')
+const LoginWithKeysRequest$json = const {
+  '1': 'LoginWithKeysRequest',
+  '2': const [
+    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
+    const {'1': 'aes_dsc_key', '3': 3, '4': 1, '5': 12, '10': 'aesDscKey'},
+    const {'1': 'aes_psk_key', '3': 4, '4': 1, '5': 12, '10': 'aesPskKey'},
+  ],
+};
+
+/// Descriptor for `LoginWithKeysRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginWithKeysRequestDescriptor = $convert.base64Decode('ChRMb2dpbldpdGhLZXlzUmVxdWVzdBIQCgNkaWQYASABKAlSA2RpZBIaCghwYXNzd29yZBgCIAEoCVIIcGFzc3dvcmQSHgoLYWVzX2RzY19rZXkYAyABKAxSCWFlc0RzY0tleRIeCgthZXNfcHNrX2tleRgEIAEoDFIJYWVzUHNrS2V5');
 @$core.Deprecated('Use queryRequestDescriptor instead')
 const QueryRequest$json = const {
   '1': 'QueryRequest',

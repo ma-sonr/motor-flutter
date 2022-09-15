@@ -6,6 +6,8 @@ PODS:
   - Flutter (1.0.0)
   - motor_flutter (0.3.0):
     - Flutter
+    - motor_pod
+  - motor_pod (4.2.0)
   - path_provider_ios (0.0.1):
     - Flutter
 
@@ -15,6 +17,10 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - motor_flutter (from `.symlinks/plugins/motor_flutter/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+
+SPEC REPOS:
+  trunk:
+    - motor_pod
 
 EXTERNAL SOURCES:
   alert:
@@ -32,9 +38,10 @@ SPEC CHECKSUMS:
   alert: fa3137f80aa8ff29c8efbee8df29648605f622f7
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  motor_flutter: 97fc784060873d39d83193c1ca830cc10f89b9b9
+  motor_flutter: 430b593eb635949cf52ba0037bc4079433fa57d1
+  motor_pod: ea41cf62a089cf51b61f54d96b1d8a99dfcc1de6
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
 
-PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+PODFILE CHECKSUM: 51cd7d2091d6dc883f681595edce8ca1119fada0
 
 COCOAPODS: 1.11.3

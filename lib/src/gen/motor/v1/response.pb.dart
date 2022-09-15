@@ -138,6 +138,83 @@ class CreateAccountResponse extends $pb.GeneratedMessage {
   $9.WhoIs ensureWhoIs() => $_ensure(1);
 }
 
+class CreateAccountWithKeysResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateAccountWithKeysResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'aesPskKey', $pb.PbFieldType.OY)
+    ..aOM<$9.WhoIs>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whoIs', subBuilder: $9.WhoIs.create)
+    ..hasRequiredFields = false
+  ;
+
+  CreateAccountWithKeysResponse._() : super();
+  factory CreateAccountWithKeysResponse({
+    $core.String? address,
+    $core.List<$core.int>? aesPskKey,
+    $9.WhoIs? whoIs,
+  }) {
+    final _result = create();
+    if (address != null) {
+      _result.address = address;
+    }
+    if (aesPskKey != null) {
+      _result.aesPskKey = aesPskKey;
+    }
+    if (whoIs != null) {
+      _result.whoIs = whoIs;
+    }
+    return _result;
+  }
+  factory CreateAccountWithKeysResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CreateAccountWithKeysResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CreateAccountWithKeysResponse clone() => CreateAccountWithKeysResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CreateAccountWithKeysResponse copyWith(void Function(CreateAccountWithKeysResponse) updates) => super.copyWith((message) => updates(message as CreateAccountWithKeysResponse)) as CreateAccountWithKeysResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateAccountWithKeysResponse create() => CreateAccountWithKeysResponse._();
+  CreateAccountWithKeysResponse createEmptyInstance() => create();
+  static $pb.PbList<CreateAccountWithKeysResponse> createRepeated() => $pb.PbList<CreateAccountWithKeysResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CreateAccountWithKeysResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateAccountWithKeysResponse>(create);
+  static CreateAccountWithKeysResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get address => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set address($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAddress() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get aesPskKey => $_getN(1);
+  @$pb.TagNumber(2)
+  set aesPskKey($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAesPskKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAesPskKey() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $9.WhoIs get whoIs => $_getN(2);
+  @$pb.TagNumber(3)
+  set whoIs($9.WhoIs v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasWhoIs() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearWhoIs() => clearField(3);
+  @$pb.TagNumber(3)
+  $9.WhoIs ensureWhoIs() => $_ensure(2);
+}
+
 class LoginResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoginResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')

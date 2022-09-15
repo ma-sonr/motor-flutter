@@ -30,6 +30,18 @@ const CreateAccountResponse$json = const {
 
 /// Descriptor for `CreateAccountResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createAccountResponseDescriptor = $convert.base64Decode('ChVDcmVhdGVBY2NvdW50UmVzcG9uc2USGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIyCgZ3aG9faXMYAiABKAsyGy5zb25yaW8uc29uci5yZWdpc3RyeS5XaG9Jc1IFd2hvSXM=');
+@$core.Deprecated('Use createAccountWithKeysResponseDescriptor instead')
+const CreateAccountWithKeysResponse$json = const {
+  '1': 'CreateAccountWithKeysResponse',
+  '2': const [
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'aes_psk_key', '3': 2, '4': 1, '5': 12, '10': 'aesPskKey'},
+    const {'1': 'who_is', '3': 3, '4': 1, '5': 11, '6': '.sonrio.sonr.registry.WhoIs', '10': 'whoIs'},
+  ],
+};
+
+/// Descriptor for `CreateAccountWithKeysResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createAccountWithKeysResponseDescriptor = $convert.base64Decode('Ch1DcmVhdGVBY2NvdW50V2l0aEtleXNSZXNwb25zZRIYCgdhZGRyZXNzGAEgASgJUgdhZGRyZXNzEh4KC2Flc19wc2tfa2V5GAIgASgMUglhZXNQc2tLZXkSMgoGd2hvX2lzGAMgASgLMhsuc29ucmlvLnNvbnIucmVnaXN0cnkuV2hvSXNSBXdob0lz');
 @$core.Deprecated('Use loginResponseDescriptor instead')
 const LoginResponse$json = const {
   '1': 'LoginResponse',

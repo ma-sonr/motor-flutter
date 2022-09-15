@@ -39,6 +39,59 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
               details: nil))
         }
       }
+        
+        // Resumes the Node
+       case "createAccountWithKeys":
+         var error: NSError?
+         let args = call.arguments as! FlutterStandardTypedData
+
+         let rawBuf = Motor.SNRMotorCreateAccountWithKeys(args.data, &error)
+         if let errorMessage = error?.userInfo.description {
+
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         } else {
+           if let buf = rawBuf {
+             let resp = FlutterStandardTypedData.init(bytes: buf)
+             result(resp)
+           } else {
+             result(
+               FlutterError.init(
+                 code: "[SWIFT]",
+                 message: "Error: " + "Failed to Marshal result",
+                 details: nil))
+           }
+         }
+
+
+        // Resumes the Node
+       case "loginWithKeys":
+         var error: NSError?
+         let args = call.arguments as! FlutterStandardTypedData
+
+        let rawBuf = Motor.SNRMotorLoginWithKeys(args.data, &error)
+         if let errorMessage = error?.userInfo.description {
+
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         } else {
+           if let buf = rawBuf {
+             let resp = FlutterStandardTypedData.init(bytes: buf)
+             result(resp)
+           } else {
+             result(
+               FlutterError.init(
+                 code: "[SWIFT]",
+                 message: "Error: " + "Failed to Marshal result",
+                 details: nil))
+           }
+         }
 
     // Resumes the Node
     case "createAccount":
@@ -364,58 +417,58 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
         }
       }
 
-    //  // Resumes the Node
-    // case "getDocument":
-    //   var error: NSError?
-    //   let args = call.arguments as! FlutterStandardTypedData
+     // Resumes the Node
+    case "getDocument":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
 
-    //   let rawBuf = Motor.SNRMotorGetDocument(args.data, &error)
-    //   if let errorMessage = error?.userInfo.description {
+      let rawBuf = Motor.SNRMotorGetDocument(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
 
-    //     result(
-    //       FlutterError.init(
-    //         code: "[SWIFT]",
-    //         message: "Error: " + errorMessage,
-    //         details: nil))
-    //   } else {
-    //     if let buf = rawBuf {
-    //       let resp = FlutterStandardTypedData.init(bytes: buf)
-    //       result(resp)
-    //     } else {
-    //       result(
-    //         FlutterError.init(
-    //           code: "[SWIFT]",
-    //           message: "Error: " + "Failed to Marshal result",
-    //           details: nil))
-    //     }
-    //   }
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
 
 
-    //  // Resumes the Node
-    // case "uploadDocument":
-    //   var error: NSError?
-    //   let args = call.arguments as! FlutterStandardTypedData
+     // Resumes the Node
+    case "uploadDocument":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
 
-    //   let rawBuf = Motor.SNRMotorUploadDocument(args.data, &error)
-    //   if let errorMessage = error?.userInfo.description {
+      let rawBuf = Motor.SNRMotorUploadDocument(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
 
-    //     result(
-    //       FlutterError.init(
-    //         code: "[SWIFT]",
-    //         message: "Error: " + errorMessage,
-    //         details: nil))
-    //   } else {
-    //     if let buf = rawBuf {
-    //       let resp = FlutterStandardTypedData.init(bytes: buf)
-    //       result(resp)
-    //     } else {
-    //       result(
-    //         FlutterError.init(
-    //           code: "[SWIFT]",
-    //           message: "Error: " + "Failed to Marshal result",
-    //           details: nil))
-    //     }
-    //   }
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
 
     // Starts the Node
     case "stat":
