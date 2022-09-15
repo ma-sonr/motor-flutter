@@ -11,6 +11,7 @@ import 'src/extensions/request.dart';
 import 'src/motor_flutter_platform_interface.dart';
 import 'src/utilities/logger.dart';
 export 'src/gen/generated.dart';
+import 'package:encrypt/encrypt.dart';
 export 'src/extensions/extensions.dart';
 export 'src/utilities/logger.dart';
 
@@ -93,10 +94,10 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
   /// CreateAccountResponse as a parameter.
   Future<CreateAccountResponse?> createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
-    final dscKey = List<int>.generate(32, (i) => Random().nextInt(256));
+    final key = Key.fromSecureRandom(32);
     final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountWithKeysRequest(
       password: password,
-      aesDscKey: dscKey,
+      aesDscKey: key.bytes.toList(),
     ));
     if (callback != null) {
       callback(resp?.toNormalResponse());
