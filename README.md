@@ -15,7 +15,7 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.3.1
+  motor_flutter: ^0.3.2
 ```
 
 #### iOS
