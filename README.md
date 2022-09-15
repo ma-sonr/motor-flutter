@@ -1,4 +1,4 @@
-![Motor Flutter Banner](./docs/static-assets/gh-motor-banner.png)
+![Motor Flutter Banner](./doc/static-assets/gh-motor-banner.png)
 
 [![Pub](https://img.shields.io/pub/v/motor_flutter.svg)](https://pub.dev/packages/motor_flutter)
 
