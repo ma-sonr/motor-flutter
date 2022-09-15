@@ -15,10 +15,10 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  #s.dependency 'motor_pod'
-  # s.dependency 'Motor'
+  s.dependency 'motor_pod'
   s.platform = :ios, '13.0'
-  s.vendored_frameworks = 'Motor.xcframework'
+  s.xcconfig = { 'ENABLE_BITCODE' => 'NO', }
+
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
