@@ -21,6 +21,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
+    MotorFlutter.genKey();
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -181,6 +182,57 @@ class AccountCreationPage extends StatelessWidget {
   }
 }
 
+class AccountCreationView extends GetView<RegisterController> {
+  const AccountCreationView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    // controller from GetView
+    return controller.obx(
+      (state) {
+        return Scaffold(
+            appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
+            body: Padding(
+              padding: const EdgeInsets.only(bottom: 200),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Center(
+                      child: Text(
+                    "Setting Up...",
+                    style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+                    child: Lottie.asset(
+                      'assets/loader.json',
+                      width: MediaQuery.of(context).size.width * 0.8,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                    child: Text(
+                      "${controller.phrase} (${controller.timeElapsed.value}s)",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ));
+      },
+      onLoading: CircularProgressIndicator(),
+    );
+  }
+}
+
 class AccountLoadingPage extends StatefulWidget {
   final String title;
   final String password;
@@ -191,17 +243,6 @@ class AccountLoadingPage extends StatefulWidget {
 }
 
 class _AccountLoadingPageState extends State<AccountLoadingPage> {
-  final loadingQuotes = [
-    "Generating MPC Wallet",
-    "Building your DID Document",
-    "Airdropping you some funds",
-    "Watering plastic office plants",
-    "Questioning interns about Radar",
-    "Found out solana is down again",
-    "Registering your account",
-    "Finishing up small details",
-  ];
-
   final Stopwatch _stopwatch = Stopwatch();
   String _progress = "0.0";
   String _quote = "";
@@ -267,7 +308,11 @@ class _AccountLoadingPageState extends State<AccountLoadingPage> {
 
   Future<void> _createAccount() async {
     _stopwatch.start();
-    MotorFlutter.to.createAccount(widget.password, (res) {
+    final res = await MotorFlutter.to.createAccount(widget.password);
+    if (res == null) {
+      Get.snackbar("Error!", "Failed to create account");
+      Get.off(const RegisterPage());
+    } else {
       setState(() {
         if (kDebugMode) {
           print("Account generation is finished - took ${(_stopwatch.elapsedMilliseconds / 1000).toString()}s");
@@ -275,7 +320,7 @@ class _AccountLoadingPageState extends State<AccountLoadingPage> {
         }
         _isFinished = true;
       });
-    });
+    }
     Timer.periodic(const Duration(milliseconds: 125), (timer) {
       if (_isFinished) {
         timer.cancel();
