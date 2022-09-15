@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fixnum/fixnum.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'src/controllers/register_controller.dart';
 import 'src/gen/generated.dart';
 import 'src/gen/registry/tx.pb.dart';
 import 'src/utilities/information.dart';
@@ -14,6 +15,7 @@ export 'src/gen/generated.dart';
 import 'package:encrypt/encrypt.dart';
 export 'src/extensions/extensions.dart';
 export 'src/utilities/logger.dart';
+export 'src/controllers/register_controller.dart';
 
 /// > This class is a GetxService that has a `String` property called `name` and a `Stream` property
 /// called `stream` that emits a `String` every second
@@ -82,7 +84,13 @@ class MotorFlutter extends GetxService {
     if (callback != null) {
       callback(resp);
     }
+    Get.lazyPut(() => RegisterController());
     return this;
+  }
+
+  static genKey() {
+    final key = Key.fromSecureRandom(32);
+    print(key.bytes.lengthInBytes);
   }
 
   /// Create a new account with the given password. If the password is correct, the account will be
@@ -94,10 +102,12 @@ class MotorFlutter extends GetxService {
   ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
   /// CreateAccountResponse as a parameter.
   Future<CreateAccountResponse?> createAccount(String password, [ResponseCallback<CreateAccountResponse>? callback]) async {
-    final key = Key.fromSecureRandom(32);
+    final dscKey = Key.fromLength(32);
+    final pskKey = Key.fromLength(32);
     final resp = await MotorFlutterPlatform.instance.createAccount(CreateAccountWithKeysRequest(
       password: password,
-      aesDscKey: key.bytes.toList(),
+      aesDscKey: dscKey.bytes,
+      aesPskKey: pskKey.bytes,
     ));
     if (callback != null) {
       callback(resp?.toNormalResponse());

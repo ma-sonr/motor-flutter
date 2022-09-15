@@ -1,3 +1,12 @@
+## 0.3.2
+* Introduce RegistryController
+* Add support for CreateAccount and CreateAccountWithKeys
+* Add support for Login and LoginWithKeys
+
+## 0.3.1
+* Introduce initial Keychain support
+* Upgrade motor_pod
+
 ## 0.3.0
 * Refactor Documentation
 * Handling of Keychain moved to Framework
