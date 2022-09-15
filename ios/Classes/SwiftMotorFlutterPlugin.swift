@@ -39,8 +39,58 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
               details: nil))
         }
       }
-        
-        // Resumes the Node
+
+    // Resumes the Node
+    case "createAccount":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = Motor.SNRMotorCreateAccount(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
+    case "login":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = Motor.SNRMotorLogin(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+      // Resumes the Node
        case "createAccountWithKeys":
          var error: NSError?
          let args = call.arguments as! FlutterStandardTypedData
@@ -93,55 +143,6 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
            }
          }
 
-    // Resumes the Node
-    case "createAccount":
-      var error: NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = Motor.SNRMotorCreateAccount(args.data, &error)
-      if let errorMessage = error?.userInfo.description {
-
-        result(
-          FlutterError.init(
-            code: "[SWIFT]",
-            message: "Error: " + errorMessage,
-            details: nil))
-      } else {
-        if let buf = rawBuf {
-          let resp = FlutterStandardTypedData.init(bytes: buf)
-          result(resp)
-        } else {
-          result(
-            FlutterError.init(
-              code: "[SWIFT]",
-              message: "Error: " + "Failed to Marshal result",
-              details: nil))
-        }
-      }
-
-    // Resumes the Node
-    case "login":
-      var error: NSError?
-      let args = call.arguments as! FlutterStandardTypedData
-      let rawBuf = Motor.SNRMotorLogin(args.data, &error)
-      if let errorMessage = error?.userInfo.description {
-
-        result(
-          FlutterError.init(
-            code: "[SWIFT]",
-            message: "Error: " + errorMessage,
-            details: nil))
-      } else {
-        if let buf = rawBuf {
-          let resp = FlutterStandardTypedData.init(bytes: buf)
-          result(resp)
-        } else {
-          result(
-            FlutterError.init(
-              code: "[SWIFT]",
-              message: "Error: " + "Failed to Marshal result",
-              details: nil))
-        }
-      }
 
     // Resumes the Node
     case "buyAlias":

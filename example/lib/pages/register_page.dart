@@ -21,7 +21,6 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
-    MotorFlutter.genKey();
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -90,19 +89,25 @@ class LoginWidget extends StatelessWidget {
                 ButtonTheme(
                   minWidth: 300.0,
                   child: MaterialButton(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    color: Colors.black,
-                    child: const Text(
-                      'Register Account',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    onPressed: () {
-                      Get.to(const AccountCreationPage());
-                    },
-                  ),
+                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      color: Colors.black,
+                      child: const Text(
+                        'Register Account',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      onPressed: () async {
+                        final res = await MotorFlutter.to.showRegisterModal(
+                          onError: (err) {
+                            Get.snackbar("Error", err.toString());
+                          },
+                        );
+                        if (res != null) {
+                          Get.offAll(() => const HomePage());
+                        }
+                      }),
                 ),
                 ButtonTheme(
                   minWidth: 300.0,
@@ -112,7 +117,7 @@ class LoginWidget extends StatelessWidget {
                       style: TextStyle(color: Colors.grey.shade800, fontSize: 12),
                     ),
                     onPressed: () async {
-                      Get.to(const AccountLoadingPage(password: "", title: "Logging in..."));
+                      Get.snackbar("Uh-Oh!", "Unimplemented in the Example App - Eureka");
                     },
                   ),
                 ),
@@ -228,7 +233,7 @@ class AccountCreationView extends GetView<RegisterController> {
               ),
             ));
       },
-      onLoading: CircularProgressIndicator(),
+      onLoading: const CircularProgressIndicator(),
     );
   }
 }
@@ -252,7 +257,7 @@ class _AccountLoadingPageState extends State<AccountLoadingPage> {
   void initState() {
     super.initState();
     if (widget.password == "") {
-      _loginAccount();
+      // _loginAccount();
     } else {
       _createAccount();
     }
@@ -321,31 +326,6 @@ class _AccountLoadingPageState extends State<AccountLoadingPage> {
         _isFinished = true;
       });
     }
-    Timer.periodic(const Duration(milliseconds: 125), (timer) {
-      if (_isFinished) {
-        timer.cancel();
-        _redirect();
-      } else {
-        setState(() {
-          double elapsed = _stopwatch.elapsedMilliseconds / 1000;
-          _progress = (elapsed).toStringAsFixed(1);
-          _quote = loadingQuotes[elapsed.floor() % loadingQuotes.length];
-        });
-      }
-    });
-  }
-
-  Future<void> _loginAccount() async {
-    _stopwatch.start();
-    MotorFlutter.to.login(AuthInfo(), (res) {
-      setState(() {
-        if (kDebugMode) {
-          print("Account generation is finished - took ${(_stopwatch.elapsedMilliseconds / 1000).toString()}s");
-          print("Response:${res.toString()}");
-        }
-        _isFinished = true;
-      });
-    });
     Timer.periodic(const Duration(milliseconds: 125), (timer) {
       if (_isFinished) {
         timer.cancel();

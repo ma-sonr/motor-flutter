@@ -9,7 +9,7 @@ TMP_DIR=${PROJECT_DIR}/tmp
 BIN_DIR=${TMP_DIR}/bin
 BUF_CMD="${BIN_DIR}/buf"
 BUF_VERSION="1.7.0"
-GEN_DIR=${LIB_DIR}/gen
+GEN_DIR=${LIB_DIR}/types/gen
 mkdir -p ${BIN_DIR}
 
 echo "Installing dependencies..."

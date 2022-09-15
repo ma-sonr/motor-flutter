@@ -48,3 +48,7 @@ class Generic {
 }
 
 typedef ResponseCallback<T> = void Function(T?);
+typedef VoidCallback = void Function();
+typedef BoolCallback = void Function(bool);
+typedef ExceptionCallback = void Function(Exception);
+typedef ErrorCallback = void Function(String);

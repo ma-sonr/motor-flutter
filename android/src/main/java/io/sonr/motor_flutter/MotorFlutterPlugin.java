@@ -45,7 +45,7 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
       case "createAccount":
         try {
           final byte[] createAccountArgs = call.arguments();
-          final byte[] createAccountResp = Motor.createAccount(createAccountArgs);
+          final byte[] createAccountResp = Motor.createAccountWithKeys(createAccountArgs);
           result.success(createAccountResp);
         }catch (Exception e) {
           System.out.println(e.toString());
@@ -69,7 +69,7 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
       case "login":
         try {
           final byte[] loginArgs = call.arguments();
-          final byte[] loginResp = Motor.login(loginArgs);
+          final byte[] loginResp = Motor.loginWithKeys(loginArgs);
           result.success(loginResp);
         }catch (Exception e) {
           System.out.println(e.toString());

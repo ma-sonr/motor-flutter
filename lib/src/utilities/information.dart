@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:motor_flutter/src/gen/generated.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 /// A class that stores information about a peer.

@@ -1,3 +1,8 @@
+## 0.3.3
+* Introduce Keychain storage for AES Keys in Release mode
+* Introduce RegisterAccount Modal widget
+* Refactor plugin class structure`
+
 ## 0.3.2
 * Introduce RegistryController
 * Add support for CreateAccount and CreateAccountWithKeys

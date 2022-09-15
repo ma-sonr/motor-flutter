@@ -1,6 +1,5 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:motor_flutter/src/gen/generated.dart';
-import 'gen/registry/tx.pb.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 import 'motor_flutter_method_channel.dart';
 
 abstract class MotorFlutterPlatform extends PlatformInterface {
