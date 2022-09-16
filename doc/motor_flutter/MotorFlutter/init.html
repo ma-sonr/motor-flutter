@@ -82,11 +82,11 @@ void main() async {
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init() async {
+  await GetStorage.init(kMotorTempStorageName);
   await Get.putAsync(
     () =&gt; MotorFlutter()._init(),
     permanent: true,
   );
-  await GetStorage.init(kMotorTempStorageName);
 }</code></pre>
 </section>
 
@@ -178,7 +178,7 @@ void main() async {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.1
+      0.4.3
   </span>
 
   
