@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// This class is used to define [Color] properties for the nebula theme.
 class NebulaColors {
   static const brandPrimary = Color(0xff1792ff);
 

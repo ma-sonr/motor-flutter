@@ -22,7 +22,7 @@ class RegisterModalPage extends GetView<RegisterController> {
       appBar: AppBar(
         title: const Text(
           'Register',
-          style: TextStyle(color: NebulaColors.brandSecondary),
+          style: NebulaTextStyles.h4,
         ),
         backgroundColor: NebulaColors.brandTertiary,
       ),
@@ -111,7 +111,7 @@ class RegisterModalPage extends GetView<RegisterController> {
                 children: [
                   Text(
                     error.toString(),
-                    style: const TextStyle(color: Colors.red),
+                    style: NebulaTextStyles.subtitle2.copyWith(color: NebulaColors.semanticLightThemeTextDefault),
                   ),
                   ElevatedButton.icon(onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back), label: const Text('Return'))
                 ]);

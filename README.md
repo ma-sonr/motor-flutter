@@ -1,4 +1,6 @@
-![Motor Flutter Banner](/doc/static-assets/gh-motor-banner.png)
+<!-- markdownlint-disable MD033 -->
+<img src="https://github.com/sonr-io/motor-flutter/blob/main/doc/static-assets/gh-motor-banner.png?raw=true" width="650px" alt="Sonr motor_flutter banner image for github and pub.dev">
+<!-- markdownlint-enable MD033 -->
 
 <div align="center">
 
@@ -11,10 +13,6 @@
 [![GitHub Issues](https://img.shields.io/github/issues/sonr-io/motor-flutter.svg)](https://github.com/sonr-io/motor-flutter/issues)
 
 </div>
-
-
-
-
 
 Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io). **See [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html) for more information.**
 

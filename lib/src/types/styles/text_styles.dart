@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// This class is used to define [TextStyle] properties for the nebula theme.
 class NebulaTextStyles {
   static const display1 = TextStyle(
     fontFamily: "Manrope",

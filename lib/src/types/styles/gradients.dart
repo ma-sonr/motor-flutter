@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// This class is used to define [LinearGradient] properties for the nebula theme.
 class NebulaGradients {
   static const semanticLightThemeSurfaceButtonPrimaryHovered = LinearGradient(
     begin: Alignment(-0.4746835281797983, -1),
@@ -9,8 +10,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff1792ff),
-    Color(0xff0053b5),
+      Color(0xff1792ff),
+      Color(0xff0053b5),
     ],
   );
 
@@ -22,8 +23,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff1792ff),
-    Color(0xff0053b5),
+      Color(0xff1792ff),
+      Color(0xff0053b5),
     ],
   );
 
@@ -36,9 +37,9 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xffff2866),
-    Color(0xffcc154a),
-    Color(0xff990831),
+      Color(0xffff2866),
+      Color(0xffcc154a),
+      Color(0xff990831),
     ],
   );
 
@@ -50,8 +51,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff1792ff),
-    Color(0xff0053b5),
+      Color(0xff1792ff),
+      Color(0xff0053b5),
     ],
   );
 
@@ -64,9 +65,9 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff4f4a60),
-    Color(0xff37324a),
-    Color(0xff1d1a27),
+      Color(0xff4f4a60),
+      Color(0xff37324a),
+      Color(0xff1d1a27),
     ],
   );
 
@@ -79,9 +80,9 @@ class NebulaGradients {
       0.9941198825836182,
     ],
     colors: [
-    Color(0xff14b69a),
-    Color(0xff0b9b83),
-    Color(0xff05816c),
+      Color(0xff14b69a),
+      Color(0xff0b9b83),
+      Color(0xff05816c),
     ],
   );
 
@@ -93,8 +94,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xffff5c28),
-    Color(0xff993908),
+      Color(0xffff5c28),
+      Color(0xff993908),
     ],
   );
 
@@ -107,9 +108,9 @@ class NebulaGradients {
       0.9940999746322632,
     ],
     colors: [
-    Color(0xff19deeb),
-    Color(0xff0bcbd8),
-    Color(0xff00b7c4),
+      Color(0xff19deeb),
+      Color(0xff0bcbd8),
+      Color(0xff00b7c4),
     ],
   );
 
@@ -122,9 +123,9 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff4f4a60),
-    Color(0xff37324a),
-    Color(0xff1d1a27),
+      Color(0xff4f4a60),
+      Color(0xff37324a),
+      Color(0xff1d1a27),
     ],
   );
 
@@ -136,8 +137,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff1792ff),
-    Color(0xff0053b5),
+      Color(0xff1792ff),
+      Color(0xff0053b5),
     ],
   );
 
@@ -151,10 +152,10 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xfffcfcfd),
-    Color(0xffffffff),
-    Color(0xffffffff),
-    Color(0xb2ffffff),
+      Color(0xfffcfcfd),
+      Color(0xffffffff),
+      Color(0xffffffff),
+      Color(0xb2ffffff),
     ],
   );
 
@@ -168,9 +169,9 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff4f4a60),
-    Color(0xff37324a),
-    Color(0xff1d1a27),
+      Color(0xff4f4a60),
+      Color(0xff37324a),
+      Color(0xff1d1a27),
     ],
   );
 
@@ -182,8 +183,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff1792ff),
-    Color(0xff0053b5),
+      Color(0xff1792ff),
+      Color(0xff0053b5),
     ],
   );
 
@@ -196,9 +197,9 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xffff2866),
-    Color(0xffcc154a),
-    Color(0xff990831),
+      Color(0xffff2866),
+      Color(0xffcc154a),
+      Color(0xff990831),
     ],
   );
 
@@ -210,8 +211,8 @@ class NebulaGradients {
       1,
     ],
     colors: [
-    Color(0xff9665fd),
-    Color(0xff5123b2),
+      Color(0xff9665fd),
+      Color(0xff5123b2),
     ],
   );
 
@@ -224,9 +225,9 @@ class NebulaGradients {
       0.9940999746322632,
     ],
     colors: [
-    Color(0xff19deeb),
-    Color(0xff0bcbd8),
-    Color(0xff00b7c4),
+      Color(0xff19deeb),
+      Color(0xff0bcbd8),
+      Color(0xff00b7c4),
     ],
   );
 

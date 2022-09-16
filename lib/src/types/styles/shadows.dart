@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// This class is used to define [BoxShadow] properties for the nebula theme.
 class NebulaShadows {
   static const shadowXs = BoxShadow(
     color: Color(0x1f162233),
