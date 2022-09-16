@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppRadii {
+class NebulaRadii {
   static const extraSmall = BorderRadius.all(Radius.circular(2));
 
   static const small = BorderRadius.all(Radius.circular(6));
@@ -13,5 +13,5 @@ class AppRadii {
 
   static const none = BorderRadius.all(Radius.circular(0));
 
-  AppRadii._();
+  NebulaRadii._();
 }

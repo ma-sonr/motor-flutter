@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTextStyles {
+class NebulaTextStyles {
   static const display1 = TextStyle(
     fontFamily: "Manrope",
     fontWeight: FontWeight.w800,
@@ -262,5 +262,5 @@ class AppTextStyles {
     letterSpacing: -0.3331999969482422,
   );
 
-  AppTextStyles._();
+  NebulaTextStyles._();
 }

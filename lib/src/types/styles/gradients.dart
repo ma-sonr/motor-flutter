@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppGradients {
+class NebulaGradients {
   static const semanticLightThemeSurfaceButtonPrimaryHovered = LinearGradient(
     begin: Alignment(-0.4746835281797983, -1),
     end: Alignment(0.8607595829344479, 1),
@@ -230,5 +230,5 @@ class AppGradients {
     ],
   );
 
-  AppGradients._();
+  NebulaGradients._();
 }

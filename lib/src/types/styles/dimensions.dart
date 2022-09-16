@@ -1,3 +1,3 @@
-class AppDimensions {
-  AppDimensions._();
+class NebulaDimensions {
+  NebulaDimensions._();
 }

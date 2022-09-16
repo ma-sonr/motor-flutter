@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'motor_flutter'
-  s.version          = '0.4.3'
+  s.version          = '0.5.0'
   s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC
 A new Flutter plugin project.
@@ -15,7 +15,7 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'motor_pod', '~> 5.0.0'
+  s.dependency 'motor_pod', '~> 6.0.0'
   s.platform = :ios, '13.0'
   s.xcconfig = { 'ENABLE_BITCODE' => 'NO', }
 

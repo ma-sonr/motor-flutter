@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppShadows {
+class NebulaShadows {
   static const shadowXs = BoxShadow(
     color: Color(0x1f162233),
     offset: Offset(0, 4),
@@ -57,5 +57,5 @@ class AppShadows {
     spreadRadius: 0,
   );
 
-  AppShadows._();
+  NebulaShadows._();
 }

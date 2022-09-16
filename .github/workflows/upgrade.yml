@@ -1,139 +1,19 @@
-name: Framework Workflow
+name: Releases
 
 on:
   push:
     tags:
-      - v*
-  pull_request:
-    types:
-      - closed
+      - "*"
 
 jobs:
-  ## ------------------------------------------------------------
-  ## [MOTOR] Build and release for iOS
-  ## ------------------------------------------------------------
-  update-native:
-    name: ⤴️ Update AAR and xcframework
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      # ---
-      # 1. Setup Environment
-      # ---
-      - name: Setup Environment
-        uses: actions/checkout@v3
-
-      # ---
-      # 2. Build Motor xcFramework and Upload to GitHub Release
-      # ---
-      - name: Build iOS XCFramework for Motor
-        run: |
-          go install golang.org/x/mobile/cmd/gomobile@latest
-          gomobile init
-          sh scripts/bind.sh -i
-          gh release upload ${{ steps.tag.outputs.tag }} build/*.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     # - name: motor-ios Repository Dispatch
-  #     #   uses: peter-evans/repository-dispatch@v2
-  #     #   with:
-  #     #     token: ${{ secrets.ACTIONS_GH_TOKEN }}
-  #     #     repository: sonr-io/motor-ios
-  #     #     event-type: new-ios-framework
-  #     #     client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-
-  ## ------------------------------------------------------------
-  ## [MOTOR] Build and release for Android
-  ## ------------------------------------------------------------
-  bind-motor-android:
-    name: 🤖 Bind Motor for Android
-    runs-on: ubuntu-latest
-    needs:
-      - prepare-release
-    steps:
-      # ---
-      # 1. Setup Environment
-      # ---
-      - name: Setup Environment
-        uses: actions/checkout@v3
-      - run: mkdir -p build
-        working-directory: ${{ github.workspace }}
-      - id: tag
-        uses: dawidd6/action-get-tag@v1
-      - id: setup-ndk
-        uses: nttld/setup-ndk@v1
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
         with:
-          ndk-version: r23c
-      - uses: actions/setup-java@v3
-        with:
-          distribution: "temurin" # See 'Supported distributions' for available options
-          java-version: "17"
-      - uses: actions/setup-go@v3
-        with:
-          go-version: ~1.18
-
-      # ---
-      # 2. Build Motor AAR Library and Upload to GitHub Release
-      # ---
-      - name: Build Motor AAR Library
-        run: |
-          go install golang.org/x/mobile/cmd/gomobile@latest
-          gomobile init
-          sh scripts/bind.sh -a
-          gh release upload ${{ steps.tag.outputs.tag }} build/*.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-  #     # - name: motor-android Repository Dispatch
-  #     #   uses: peter-evans/repository-dispatch@v2
-  #     #   with:
-  #     #     token: ${{ secrets.ACTIONS_GH_TOKEN }}
-  #     #     repository: sonr-io/motor-android
-  #     #     event-type: new-android-framework
-  #     #     client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-
-  ## ------------------------------------------------------------
-  ## [MOTOR] Build and release for Wasm
-  ## ------------------------------------------------------------
-  bind-motor-wasm:
-    name: 🌏 Bind Motor for Web
-    runs-on: ubuntu-latest
-    needs:
-      - prepare-release
-    steps:
-      # ---
-      # 1. Setup Environment
-      # ---
-      - name: Setup Environment
-        uses: actions/checkout@v3
-      - run: mkdir -p build
-        working-directory: ${{ github.workspace }}
-      - id: tag
-        uses: dawidd6/action-get-tag@v1
-      - id: setup-ndk
-        uses: nttld/setup-ndk@v1
-        with:
-          ndk-version: r23c
-      - uses: actions/setup-java@v3
-        with:
-          distribution: "temurin" # See 'Supported distributions' for available options
-          java-version: "17"
-      - uses: actions/setup-go@v3
-        with:
-          go-version: ~1.18
-
-      # ---
-      # 2. Build Motor JS Library and Upload to GitHub Release
-      # ---
-      - name: Build Motor JS Library
-        run: |
-          sh scripts/bind.sh -w
-          gh release upload ${{ steps.tag.outputs.tag }} build/*.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     # - name: motor-android Repository Dispatch
-  #     #   uses: peter-evans/repository-dispatch@v2
-  #     #   with:
-  #     #     token: ${{ secrets.ACTIONS_GH_TOKEN }}
-  #     #     repository: sonr-io/motor-android
-  #     #     event-type: new-android-framework
-  #     #     client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          generateReleaseNotes: true
+          token: ${{ secrets.ACTIONS_GH_TOKEN }}
+          artifacts: "CHANGELOG.md"

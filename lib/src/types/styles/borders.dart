@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AppBorders {
+class NebulaBorders {
   static const errorBorder = Border.fromBorderSide(BorderSide(
     color: Color(0xffff2866),
     width: 1,
   ));
 
-  AppBorders._();
+  NebulaBorders._();
 }

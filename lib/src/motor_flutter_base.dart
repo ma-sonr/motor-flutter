@@ -194,7 +194,7 @@ class MotorFlutter extends GetxService {
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
   /// storage during development. Returns [CreateAccountResponse] if the account is created successfully.
   ///
-  /// ### Parameters:
+  /// ### Parameters
   /// - [password] - The password used to encrypt the keys in the keychain.
   /// - [onKeysGenerated] - A callback function that is triggered when the keys are generated. This is useful for storing the keys in a secure location. _(optional)_
   ///
@@ -238,6 +238,12 @@ class MotorFlutter extends GetxService {
   /// Logs in to an existing account with the given [password]. During production, this method retrieves the keys from the keychain using [address]. Both of these params are required in order
   /// to return a successful [LoginResponse].
   ///
+  /// ### Parameters
+  /// - [address] - The address of the account to login to.
+  /// - [password] - The password used to encrypt the wallet shards with AES.
+  /// - [pskKey] - The pre-shared key used to encrypt the wallet shards with AES. _(optional)_
+  /// - [dscKey] - The data signing key used to encrypt the wallet shards with AES. _(optional)_
+  ///
   /// ### Example
   ///
   /// ```dart
@@ -252,7 +258,7 @@ class MotorFlutter extends GetxService {
   /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
   /// - Connect to the p2p network and enable secure device-to-devce communication with [connect]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
-  Future<LoginResponse?> login({required String password, required String address}) async {
+  Future<LoginResponse?> login({required String password, required String address, List<int>? pskKey, List<int>? dscKey}) async {
     final auth = await readKeysForAddr(address);
     if (auth == null) {
       throw Exception('No keys found for did: $address');

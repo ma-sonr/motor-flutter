@@ -18,13 +18,13 @@ class RegisterModalPage extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: NebulaColors.brandSecondary,
       appBar: AppBar(
         title: const Text(
           'Register',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: NebulaColors.brandSecondary),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: NebulaColors.brandTertiary,
       ),
       body: controller.obx(
           (state) {
@@ -36,7 +36,7 @@ class RegisterModalPage extends GetView<RegisterController> {
                   Icon(Icons.check_circle, color: Colors.green, size: 100),
                   Text(
                     "Success! Your account has been created.",
-                    style: TextStyle(fontSize: 20),
+                    style: NebulaTextStyles.h2,
                   ),
                 ],
               ),
@@ -49,11 +49,7 @@ class RegisterModalPage extends GetView<RegisterController> {
               const Center(
                 child: Text(
                   "Setting Up...",
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: NebulaTextStyles.display2,
                 ),
               ),
               Padding(
@@ -79,21 +75,18 @@ class RegisterModalPage extends GetView<RegisterController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Center(
-                child: Text("Create Account",
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    )),
+                child: Text(
+                  "Create Account",
+                  style: NebulaTextStyles.display2,
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-                child: Text("Input a secure password in order to register a new Sonr user",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.black,
-                    )),
+                child: Text(
+                  "Input a secure password in order to register a new Sonr user",
+                  textAlign: TextAlign.center,
+                  style: NebulaTextStyles.subtitle1,
+                ),
               ),
               const SizedBox(height: 100.0),
               Padding(

@@ -12,13 +12,13 @@ class SonrRegisterButton extends StatelessWidget {
       minWidth: 300.0,
       child: MaterialButton(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
+          shape: const RoundedRectangleBorder(
+            borderRadius: NebulaRadii.medium,
           ),
-          color: Colors.black,
-          child: const Text(
+          color: NebulaColors.brandTertiary,
+          child: Text(
             'Register Account',
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: NebulaTextStyles.button1.copyWith(color: NebulaColors.brandSecondary),
           ),
           onPressed: () async {
             final res = await MotorFlutter.to.showRegisterModal(

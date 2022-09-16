@@ -1,3 +1,10 @@
+## 0.5.0
+* Upgrade to `motor_pod ~> 6.0.0` which fixes SchemaDocument construction
+* Add GH Actions CI to announce releases
+* Simplify `motor_flutter_example` to use `MotorFlutter` directly
+* Move Eureka app to [examples](https://github.com/sonr-io/examples) repository
+* Fix Login method not having aesKey and dscKey parameters
+
 ## 0.4.4
 * Placed GetStorage write methods into try/catch blocks to prevent crashes when the storage is unavailable.
 * Introduce HandleKeysCallback for allowing developers to store DSC and PSK keys in a secure location.

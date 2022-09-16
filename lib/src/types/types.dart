@@ -12,6 +12,13 @@ export 'gen/bucket/where_is.pb.dart';
 export 'gen/registry/tx.pb.dart';
 export 'gen/common/v1/info.pb.dart';
 export 'gen/registry/who_is.pb.dart';
+export 'styles/borders.dart';
+export 'styles/colors.dart';
+export 'styles/dimensions.dart';
+export 'styles/gradients.dart';
+export 'styles/radii.dart';
+export 'styles/shadows.dart';
+export 'styles/text_styles.dart';
 
 typedef ResponseCallback<T> = void Function(T?);
 typedef VoidCallback = void Function();

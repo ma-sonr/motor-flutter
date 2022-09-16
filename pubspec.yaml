@@ -3,7 +3,7 @@ description: >-
   The Official Implementation of the Sonr Motor Node in Flutter.
   This package provides methods for Authentication, Data Management, and
   Wallet interactions for the Sonr Network.
-version: 0.4.4
+version: 0.5.0
 homepage: https://sonr.dev
 repository: https://github.com/sonr-io/motor-flutter
 issue_tracker: https://sonr.fyi/motor-requests
@@ -39,3 +39,12 @@ flutter:
         pluginClass: MotorFlutterPlugin
       ios:
         pluginClass: MotorFlutterPlugin
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/Manrope-Regular.ttf
+          weight: 400
+        - asset: assets/Manrope-SemiBold.ttf
+          weight: 600
+        - asset: assets/Manrope-ExtraBold.ttf
+          weight: 800
