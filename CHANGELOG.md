@@ -1,3 +1,6 @@
+## 0.4.3
+* Fix GetStorage execution order issue
+
 ## 0.4.2
 * Fix formatting issues with DartDoc
 

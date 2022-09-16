@@ -178,11 +178,11 @@ class MotorFlutter extends GetxService {
   /// - Login with an existing account using [login]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   static Future<void> init() async {
+    await GetStorage.init(kMotorTempStorageName);
     await Get.putAsync(
       () => MotorFlutter()._init(),
       permanent: true,
     );
-    await GetStorage.init(kMotorTempStorageName);
   }
 
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
