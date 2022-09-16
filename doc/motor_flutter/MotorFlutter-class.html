@@ -50,8 +50,15 @@
 
     
 <section class="desc markdown">
-  <h2 id="motorflutter">MotorFlutter</h2>
-<p>This is the main class for the <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> package. For more information on how to use this package, see the <a href="https://motor.build">API documentation</a>.</p>
+  <h1 id="motorflutter">MotorFlutter</h1>
+<p>This is the main class for the <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> package. Create a new <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance by calling the <a href="../motor_flutter/MotorFlutter/init.html">MotorFlutter.init</a> method in your main method.</p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://motor.build/motor_flutter/MotorFlutter-class.html">Flutter API Reference</a></li>
+<li><a href="https://docs.sonr.io">Technical Docs</a></li>
+<li><a href="https://sonr.io/discord">Discord</a></li>
+<li><a href="https://sonr.io">Website</a></li>
+</ul>
 </section>
 
 
@@ -107,7 +114,7 @@
 
 </dt>
 <dd>
-  Reactive variable that holds the current active <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> wallet address.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -118,8 +125,7 @@
 
 </dt>
 <dd>
-  Sets itself to true when the <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> account is created with <a href="../motor_flutter/MotorFlutter/createAccount.html">createAccount</a>, or <a href="../motor_flutter/MotorFlutter/login.html">login</a>. This is used to
-determine if the user is ready to be active on the <a href="https://sonr.io">Sonr Network</a> or not.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -130,7 +136,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  Returns the current active account's liquid SNR balance. This variable is triggered to refresh on the <a href="../motor_flutter/MotorFlutter/stat.html">stat</a> method.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -141,7 +147,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  Sets itself to true when the <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> account is finished bootstrapping to the Sonr Network. The <a href="../motor_flutter/MotorFlutter/connect.html">connect</a> method triggers the refresh of this variable.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -152,7 +158,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  Returns the curret active account's <code>DIDDocument</code>. This value is set on account authorization, and can be refreshed with the <a href="../motor_flutter/MotorFlutter/stat.html">stat</a> method.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -163,7 +169,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  This getter method returns the current version of the underlying accounts <a href="../motor_flutter/DIDDocument-class.html">DIDDocument</a> id. This is NOT a reactive variable.
+  Description
   <div class="features">read-only</div>
 
 </dd>
@@ -174,7 +180,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  A Stream of all <code>RefreshEvent</code> that are transmitted in the Local Discovery <a href="https://en.wikipedia.org/wiki/Open_Location_Code">OLC</a>
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -185,7 +191,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  A list of .snr/ domains each mapped to <code>Alias</code> objects. These can be used to resolve associated aliases with a given Sonr account.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -229,7 +235,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  List of all neerby Motor powered devices. This is updated every time a <a href="../motor_flutter/RefreshEvent-class.html">RefreshEvent</a> is received on the <a href="https://api.flutter.dev/flutter/services/MethodChannel-class.html">MethodChannel</a>. All nodes are referenced with the <code>Peer</code> object.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -272,11 +278,11 @@ lifetime cycle of the subclass.
 
         <dt id="schemaMap" class="property">
   <span class="name"><a href="../motor_flutter/MotorFlutter/schemaMap.html">schemaMap</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxMap-class.html">RxMap</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a></span>, <span class="type-parameter"><a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxMap-class.html">RxMap</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a></span>&gt;</span></span> 
 
 </dt>
 <dd>
-  A Reference Map for all recently queried <code>SchemaDefinition</code>s, and all created <code>SchemaDocument</code>s.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -287,7 +293,7 @@ lifetime cycle of the subclass.
 
 </dt>
 <dd>
-  Returns the current accounts staked SNR balance. This variable is triggered to refresh on the <a href="../motor_flutter/MotorFlutter/stat.html">stat</a> method.
+  Description
   <div class="features">final</div>
 
 </dd>
@@ -322,7 +328,7 @@ lifetime cycle of the subclass.
 
 </dt>
 <dd>
-  Purchases a new .snr/ domain for the current account if the <code>alias</code> is available. A succesful transaction will return a <code>MsgBuyAliasResponse</code>.
+  Description
   
 
 </dd>
@@ -335,8 +341,7 @@ lifetime cycle of the subclass.
 
 </dt>
 <dd>
-  Establishes the Motor libp2p node, bootstraps the node to known DHT peers, and begins listening for incoming connections. An optional <code>callback</code> can be provided to be notified
-when the node is ready to accept connections.
+  Description
   
 
 </dd>
@@ -349,8 +354,7 @@ when the node is ready to accept connections.
 
 </dt>
 <dd>
-  Creates a new Account with the given <code>password</code>. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
-storage during development. Returns <code>CreateAccountResponse</code> if the account is created successfully.
+  Description
   
 
 </dd>
@@ -363,8 +367,7 @@ storage during development. Returns <code>CreateAccountResponse</code> if the ac
 
 </dt>
 <dd>
-  Builds a request for recording a <a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> on the blockchain. <code>metadata</code> is for any additional information that should be stored with the schema. <code>callback</code> is an optional
-function that will be called when the transaction is complete. Returns a <code>CreateSchemaResponse</code> if the transaction is successful.
+  Description
   
 
 </dd>
@@ -377,8 +380,7 @@ function that will be called when the transaction is complete. Returns a <code>C
 
 </dt>
 <dd>
-  Queries the Sonr blockchain for the associated <a href="../motor_flutter/WhereIs-class.html">WhereIs</a> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
-Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if no bucket is found, or if neither <code>did</code> nor <code>creator</code> were provided.
+  Description
   
 
 </dd>
@@ -391,22 +393,20 @@ Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if
 
 </dt>
 <dd>
-  Searches for a schema by either its <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value map is returned, and the <code>creator</code> argument will be ignored. Returns a map of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> to <a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> if definition(s) are found. Returns
-null if no definition is found, or if neither <code>did</code> nor <code>creator</code> were provided.
+  Description
   
 
 </dd>
 
         <dt id="login" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/login.html">login</a></span><span class="signature">(<wbr><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="login-param-did"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">did</span>}</span>)
+  <span class="name"><a href="../motor_flutter/MotorFlutter/login.html">login</a></span><span class="signature">(<wbr><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/LoginResponse-class.html">LoginResponse</a>?</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>did</code>. Both of these params are required in order
-to return a successful <code>LoginResponse</code>.
+  Description
   
 
 </dd>
@@ -479,7 +479,7 @@ async request.
 
 </dt>
 <dd>
-  Lists an existing <code>alias</code> owned by the current account for sale at the given <code>amount</code>. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a <code>MsgSellAliasResponse</code>.
+  Description
   
 
 </dd>
@@ -492,7 +492,7 @@ async request.
 
 </dt>
 <dd>
-  Creates a TX in order to deposit the <code>amount</code> of SNR into the <code>recipient</code> account. A succesful transaction will return a <code>PaymentResponse</code> and will return null if the transaction fails.
+  Description
   
 
 </dd>
@@ -505,8 +505,7 @@ async request.
 
 </dt>
 <dd>
-  Refreshes the current instances values of <a href="../motor_flutter/MotorFlutter/address.html">address</a>, <code>domain</code>, <a href="../motor_flutter/MotorFlutter/didDocument.html">didDocument</a>, <a href="../motor_flutter/MotorFlutter/balance.html">balance</a>, <a href="../motor_flutter/MotorFlutter/didUrl.html">didUrl</a>, and <a href="../motor_flutter/MotorFlutter/staked.html">staked</a> with the latest values from the blockchain. An
-optional <code>callback</code> can be provided to be notified when the refresh is complete.
+  Description
   
 
 </dd>
@@ -532,8 +531,7 @@ optional <code>callback</code> can be provided to be notified when the refresh i
 
 </dt>
 <dd>
-  Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
-an error if the provided <code>amount</code> is less than the listed price, or if the <code>alias</code> is not listed for sale by the <code>currentOwner</code>.
+  Description
   
 
 </dd>
@@ -572,7 +570,7 @@ an error if the provided <code>amount</code> is less than the listed price, or i
 
 </dt>
 <dd>
-  Returns true if the <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> service has been injected into the GetX State Management system.
+  Description
   <div class="features">read-only</div>
 
 </dd>
@@ -583,7 +581,7 @@ an error if the provided <code>amount</code> is less than the listed price, or i
 
 </dt>
 <dd>
-  Use the static <a href="../motor_flutter/MotorFlutter/to.html">to</a> getter method allows access to <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance anywhere in the application.
+  Description
   <div class="features">read-only</div>
 
 </dd>
@@ -602,7 +600,7 @@ an error if the provided <code>amount</code> is less than the listed price, or i
 
 </dt>
 <dd>
-  This static method initializes a <a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance and Injects it into <a href="https://pub.dev/documentation/get/4.6.5/get_core_src_get_main/Get.html">Get</a> state management.
+  Description
   
 
 </dd>
@@ -745,10 +743,9 @@ an error if the provided <code>amount</code> is less than the listed price, or i
   <li><a href="../motor_flutter/kMotorTempStorageName-constant.html">kMotorTempStorageName</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#properties">Properties</a></li>
+  <li><a href="../motor_flutter/isDebugMode.html">isDebugMode</a></li>
   <li><a href="../motor_flutter/loadingQuotes.html">loadingQuotes</a></li>
 
-  <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#functions">Functions</a></li>
-  <li><a href="../motor_flutter/copyDocumentFromSchema.html">copyDocumentFromSchema</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#enums">Enums</a></li>
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
@@ -758,6 +755,7 @@ an error if the provided <code>amount</code> is less than the listed price, or i
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
   <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
+  <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
 
 </ol>

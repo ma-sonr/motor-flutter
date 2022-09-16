@@ -61,8 +61,10 @@
     </section>
     
 <section class="desc markdown">
-  <p>Searches for a schema by either its <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value map is returned, and the <code>creator</code> argument will be ignored. Returns a map of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> to <a href="../../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> if definition(s) are found. Returns
+  <h3 id="description">Description</h3>
+<p>Searches for a schema by either its <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value map is returned, and the <code>creator</code> argument will be ignored. Returns a map of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> to <a href="../../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> if definition(s) are found. Returns
 null if no definition is found, or if neither <code>did</code> nor <code>creator</code> were provided.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">// Search by DID
 final schemas = await MotorFlutter.to.findSchemas(did: 'did:snr:xyz789');
 if (schemas == null) {
@@ -77,6 +79,11 @@ if (schemas == null) {
 }
 print(schemas); // prints: {'MySchema': {label: 'MySchema', fields: {name: String, age: Int}}, 'MyOtherSchema': {label: 'MyOtherSchema', fields: {name: String, age: Int}}}
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li>Build a SchemaDocument from a Definition with <a href="../../motor_flutter/SchemaDefinitionExt.html">SchemaDefinitionExt</a></li>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md">ADR-3</a></li>
+</ul>
 </section>
 
 
@@ -90,11 +97,9 @@ print(schemas); // prints: {'MySchema': {label: 'MySchema', fields: {name: Strin
       return {res.schema.label: res.schema};
     }
   }
-  if (creator != null) {
-    final res = await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator));
-    if (res != null) {
-      return res.schemas;
-    }
+  final res = await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator ?? address.value));
+  if (res != null) {
+    return res.schemas;
   }
   return null;
 }</code></pre>

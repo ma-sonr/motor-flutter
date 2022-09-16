@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the readKeysForDid method from the MotorFlutterHelpers extension, for the Dart programming language.">
-  <title>readKeysForDid method - MotorFlutterHelpers extension - motor_flutter library - Dart API</title>
+  <meta name="description" content="API docs for the readKeysForAddr method from the MotorFlutterHelpers extension, for the Dart programming language.">
+  <title>readKeysForAddr method - MotorFlutterHelpers extension - motor_flutter library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">motor_flutter</a></li>
     <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
     <li><a href="../../motor_flutter/MotorFlutterHelpers.html">MotorFlutterHelpers</a></li>
-    <li class="self-crumb">readKeysForDid method</li>
+    <li class="self-crumb">readKeysForAddr method</li>
   </ol>
-  <div class="self-name">readKeysForDid</div>
+  <div class="self-name">readKeysForAddr</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,7 +44,7 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">readKeysForDid</span> method 
+<h1><span class="kind-method">readKeysForAddr</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
@@ -52,7 +52,7 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/tuple/2.0.0/tuple/Tuple2-class.html">Tuple2</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>&gt;</span>?</span>&gt;</span></span>
-<span class="name ">readKeysForDid</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="readKeysForDid-param-did"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">did</span></span></li>
+<span class="name ">readKeysForAddr</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="readKeysForAddr-param-addr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">addr</span></span></li>
 </ol>)
 
       
@@ -64,18 +64,18 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;Tuple2&lt;List&lt;int&gt;, List&lt;int&gt;&gt;?&gt; readKeysForDid(String did) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;Tuple2&lt;List&lt;int&gt;, List&lt;int&gt;&gt;?&gt; readKeysForAddr(String addr) async {
   &#47;&#47; Read from GetStorage if Debug
-  if (f.kDebugMode) {
-    final dsc = _tempStorage.read(_dscKeyForDid(did));
-    final psk = _tempStorage.read(_pskKeyForDid(did));
+  if (isDebugMode) {
+    final dsc = _tempStorage.read(_dscKeyForDid(addr));
+    final psk = _tempStorage.read(_pskKeyForDid(addr));
     if (dsc != null &amp;&amp; psk != null) {
       return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
     }
   } else {
     &#47;&#47; Read from Keychain
-    final dsc = await FlutterKeychain.get(key: _dscKeyForDid(did));
-    final psk = await FlutterKeychain.get(key: _pskKeyForDid(did));
+    final dsc = await FlutterKeychain.get(key: _dscKeyForDid(addr));
+    final psk = await FlutterKeychain.get(key: _pskKeyForDid(addr));
     if (dsc != null &amp;&amp; psk != null) {
       return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
     }
@@ -98,7 +98,7 @@
   <li><a href="../../index.html">motor_flutter</a></li>
   <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
   <li><a href="../../motor_flutter/MotorFlutterHelpers.html">MotorFlutterHelpers</a></li>
-  <li class="self-crumb">readKeysForDid method</li>
+  <li class="self-crumb">readKeysForAddr method</li>
 </ol>
 
 
@@ -110,8 +110,8 @@
 
 
     <li class="section-title"><a href="../../motor_flutter/MotorFlutterHelpers.html#instance-methods">Methods</a></li>
-    <li><a href="../../motor_flutter/MotorFlutterHelpers/readKeysForDid.html">readKeysForDid</a></li>
-    <li><a href="../../motor_flutter/MotorFlutterHelpers/writeKeysForDid.html">writeKeysForDid</a></li>
+    <li><a href="../../motor_flutter/MotorFlutterHelpers/readKeysForAddr.html">readKeysForAddr</a></li>
+    <li><a href="../../motor_flutter/MotorFlutterHelpers/writeKeysForAddr.html">writeKeysForAddr</a></li>
 
 
 

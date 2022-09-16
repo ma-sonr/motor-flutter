@@ -61,7 +61,9 @@
     </section>
     
 <section class="desc markdown">
-  <p>Purchases a new .snr/ domain for the current account if the <code>alias</code> is available. A succesful transaction will return a <code>MsgBuyAliasResponse</code>.</p>
+  <h3 id="description">Description</h3>
+<p>Purchases a new .snr/ domain for the current account if the <code>alias</code> is available. A succesful transaction will return a <code>MsgBuyAliasResponse</code>.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.buyAlias('hulahoop');
 if (res == null) {
    throw Exception('Failed to buy alias');
@@ -74,6 +76,11 @@ for (final alias in res.aliases) {
    }
 }
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li>List your alias for auction with <a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md">ADR-1</a></li>
+</ul>
 </section>
 
 

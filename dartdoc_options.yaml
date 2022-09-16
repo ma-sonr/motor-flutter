@@ -1,5 +1,5 @@
 dartdoc:
-  nodoc: ["lib/src/gen/*.dart"]
+  nodoc: ["lib/src/types/cosmos/*.dart"]
   linkTo:
     url: "https:/docs.sonr.io"
   ignore:

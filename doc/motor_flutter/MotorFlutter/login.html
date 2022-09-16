@@ -53,7 +53,7 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/LoginResponse-class.html">LoginResponse</a>?</span>&gt;</span></span>
 <span class="name ">login</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
-<li><span class="parameter" id="login-param-did"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">did</span>}</span></li>
+<li><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>}</span></li>
 </ol>)
 
       
@@ -61,33 +61,42 @@
     </section>
     
 <section class="desc markdown">
-  <p>Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>did</code>. Both of these params are required in order
+  <h3 id="description">Description</h3>
+<p>Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>address</code>. Both of these params are required in order
 to return a successful <code>LoginResponse</code>.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
 if (res == null) {
    throw Exception('Login failed');
 }
 print('Account logged in successfully: ${res.address}');
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li>Define a new blockchain verifiable data model using <a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+<li>Buy a .snr/ subdomain to simplify your account address using <a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
+<li>Connect to the p2p network and enable secure device-to-devce communication with <a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md">ADR-1</a></li>
+</ul>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;LoginResponse?&gt; login({required String password, required String did}) async {
-  final auth = await readKeysForDid(did);
+  <pre class="language-dart"><code class="language-dart">Future&lt;LoginResponse?&gt; login({required String password, required String address}) async {
+  final auth = await readKeysForAddr(address);
   if (auth == null) {
-    throw Exception(&#39;No keys found for did: $did&#39;);
+    throw Exception(&#39;No keys found for did: $address&#39;);
   }
   final resp = await MotorFlutterPlatform.instance.loginWithKeys(LoginWithKeysRequest(
-    did: did,
+    did: address,
     password: password,
     aesDscKey: auth.item1,
     aesPskKey: auth.item2,
   ));
   if (resp != null) {
-    address.value = resp.whoIs.owner;
+    this.address(resp.whoIs.owner);
     didDocument.value = resp.whoIs.didDocument;
     authorized.value = true;
   }

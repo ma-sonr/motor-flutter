@@ -1,3 +1,6 @@
+import 'package:flutter/widgets.dart';
+import 'package:motor_flutter/motor_flutter.dart';
+
 export 'gen/motor/v1/request.pb.dart';
 export 'gen/motor/v1/response.pb.dart';
 export 'gen/schema/v1/schema.pb.dart';
@@ -15,3 +18,4 @@ typedef VoidCallback = void Function();
 typedef BoolCallback = void Function(bool);
 typedef ExceptionCallback = void Function(Exception);
 typedef ErrorCallback = void Function(String);
+typedef SchemaDocumentBuilder = Widget Function(BuildContext context, SchemaDocumentValue field);

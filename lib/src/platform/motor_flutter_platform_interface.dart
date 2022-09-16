@@ -153,6 +153,15 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
+  // UploadDocument
+  Future<UploadDocumentResponse?> uploadDocument(UploadDocumentRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
+  Future<GetDocumentResponse?> getDocument(GetDocumentRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
   /// This function returns a Future that will eventually contain a String that may be null.
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');

@@ -258,6 +258,40 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
+  Future<UploadDocumentResponse?> uploadDocument(UploadDocumentRequest req) async {
+    try {
+      final buf = await methodChannel.invokeMethod<Uint8List>('uploadDocument', req.writeToBuffer());
+      if (buf == null) {
+        if (kDebugMode) {
+          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+        }
+        return null;
+      }
+      return UploadDocumentResponse.fromBuffer(buf.toList());
+    } catch (e) {
+      Log.printMotorException(e.toString());
+      return null;
+    }
+  }
+
+  @override
+  Future<GetDocumentResponse?> getDocument(GetDocumentRequest req) async {
+    try {
+      final buf = await methodChannel.invokeMethod<Uint8List>('getDocument', req.writeToBuffer());
+      if (buf == null) {
+        if (kDebugMode) {
+          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+        }
+        return null;
+      }
+      return GetDocumentResponse.fromBuffer(buf.toList());
+    } catch (e) {
+      Log.printMotorException(e.toString());
+      return null;
+    }
+  }
+
+  @override
   Future<StatResponse?> stat() async {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('stat');

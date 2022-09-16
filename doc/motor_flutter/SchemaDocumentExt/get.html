@@ -60,7 +60,9 @@
     </section>
     
 <section class="desc markdown">
-  <p>Returns the provided <code>T</code> value from the <a href="../../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> for the given <code>name</code> of the field, or null if the field does not exist.</p>
+  <h3 id="description">Description</h3>
+<p>Returns the provided <code>T</code> value from the <a href="../../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> for the given <code>name</code> of the field, or null if the field does not exist.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final doc = SchemaDocument();
 final property = doc.get&lt;String&gt;('name'); // returns the value of the field 'name' as a String
 if (property != null) {
@@ -109,8 +111,9 @@ throw Exception('Field not found'); // The field with the key 'name' was not fou
 
 
     <li class="section-title"><a href="../../motor_flutter/SchemaDocumentExt.html#instance-methods">Methods</a></li>
-    <li><a href="../../motor_flutter/SchemaDocumentExt/copyFromDefinition.html">copyFromDefinition</a></li>
     <li><a href="../../motor_flutter/SchemaDocumentExt/get.html">get</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/pull.html">pull</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/save.html">save</a></li>
     <li><a href="../../motor_flutter/SchemaDocumentExt/set.html">set</a></li>
 
 

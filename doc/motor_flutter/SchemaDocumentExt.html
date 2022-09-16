@@ -50,7 +50,8 @@
 
     
 <section class="desc markdown">
-  <p><a href="../motor_flutter/SchemaDocumentExt.html">SchemaDocumentExt</a> is an extension on the <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> class which provides a useful suite of methods
+  <h1 id="schemadocumentext">SchemaDocumentExt</h1>
+<p><a href="../motor_flutter/SchemaDocumentExt.html">SchemaDocumentExt</a> is an extension on the <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> class which provides a useful suite of methods
 to manage user generated data.</p>
 </section>
 
@@ -73,19 +74,6 @@ to manage user generated data.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="copyFromDefinition" class="callable">
-  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/copyFromDefinition.html">copyFromDefinition</a></span><span class="signature">(<wbr><span class="parameter" id="copyFromDefinition-param-d"><span class="type-annotation"><a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a></span> <span class="parameter-name">d</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Wipes the current <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> and replaces it with the default document for the given <a href="../motor_flutter/SchemaKind-class.html">SchemaKind</a> with the provided <a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a>
-  
-
-</dd>
-
         <dt id="get" class="callable">
   <span class="name"><a href="../motor_flutter/SchemaDocumentExt/get.html">get</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="get-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
     <span class="returntype parameter">&#8594; T?</span>
@@ -94,7 +82,33 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Returns the provided <code>T</code> value from the <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> for the given <code>name</code> of the field, or null if the field does not exist.
+  Description
+  
+
+</dd>
+
+        <dt id="pull" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/pull.html">pull</a></span><span class="signature">(<wbr><span class="parameter" id="pull-param-cid">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">cid</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Description
+  
+
+</dd>
+
+        <dt id="save" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/save.html">save</a></span><span class="signature">(<wbr><span class="parameter" id="save-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Description
   
 
 </dd>
@@ -107,7 +121,7 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Sets the provided <code>T</code> <code>value</code> to the <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> for the given <code>name</code> of the field. Returns true if the field was found and set, false otherwise.
+  Description
   
 
 </dd>
@@ -253,10 +267,9 @@ to manage user generated data.</p>
   <li><a href="../motor_flutter/kMotorTempStorageName-constant.html">kMotorTempStorageName</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#properties">Properties</a></li>
+  <li><a href="../motor_flutter/isDebugMode.html">isDebugMode</a></li>
   <li><a href="../motor_flutter/loadingQuotes.html">loadingQuotes</a></li>
 
-  <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#functions">Functions</a></li>
-  <li><a href="../motor_flutter/copyDocumentFromSchema.html">copyDocumentFromSchema</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#enums">Enums</a></li>
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
@@ -266,6 +279,7 @@ to manage user generated data.</p>
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
   <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
+  <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
 
 </ol>
@@ -280,8 +294,9 @@ to manage user generated data.</p>
 
 
     <li class="section-title"><a href="../motor_flutter/SchemaDocumentExt.html#instance-methods">Methods</a></li>
-    <li><a href="../motor_flutter/SchemaDocumentExt/copyFromDefinition.html">copyFromDefinition</a></li>
     <li><a href="../motor_flutter/SchemaDocumentExt/get.html">get</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentExt/pull.html">pull</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentExt/save.html">save</a></li>
     <li><a href="../motor_flutter/SchemaDocumentExt/set.html">set</a></li>
 
 

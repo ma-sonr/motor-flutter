@@ -60,13 +60,20 @@
     </section>
     
 <section class="desc markdown">
-  <p>Refreshes the current instances values of <a href="../../motor_flutter/MotorFlutter/address.html">address</a>, <code>domain</code>, <a href="../../motor_flutter/MotorFlutter/didDocument.html">didDocument</a>, <a href="../../motor_flutter/MotorFlutter/balance.html">balance</a>, <a href="../../motor_flutter/MotorFlutter/didUrl.html">didUrl</a>, and <a href="../../motor_flutter/MotorFlutter/staked.html">staked</a> with the latest values from the blockchain. An
+  <h3 id="description">Description</h3>
+<p>Refreshes the current instances values of <a href="../../motor_flutter/MotorFlutter/address.html">address</a>, <code>domain</code>, <a href="../../motor_flutter/MotorFlutter/didDocument.html">didDocument</a>, <a href="../../motor_flutter/MotorFlutter/balance.html">balance</a>, <a href="../../motor_flutter/MotorFlutter/didUrl.html">didUrl</a>, and <a href="../../motor_flutter/MotorFlutter/staked.html">staked</a> with the latest values from the blockchain. An
 optional <code>callback</code> can be provided to be notified when the refresh is complete.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">// Refresh the current account
 await MotorFlutter.to.refresh();
 print(MotorFlutter.to.address); // prints: 'did:snr:abc123'
 print(MotorFlutter.to.balance); // prints: 1000
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li>Try sending some SNR to other accounts with <a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
+<li><a href="https://www.sonr.dev/">Sonr Technical Documentation</a></li>
+</ul>
 </section>
 
 

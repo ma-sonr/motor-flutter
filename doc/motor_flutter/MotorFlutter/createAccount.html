@@ -60,14 +60,23 @@
     </section>
     
 <section class="desc markdown">
-  <p>Creates a new Account with the given <code>password</code>. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
+  <h3 id="description">Description</h3>
+<p>Creates a new Account with the given <code>password</code>. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
 storage during development. Returns <code>CreateAccountResponse</code> if the account is created successfully.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.createAccount('terrible-password-123');
 if (res == null) {
     throw Exception('Account creation failed');
 }
 print('Account created successfully: ${res.address}');
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li>Login with the newly created account using <a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
+<li>Issue payments to the account using <a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
+<li>Buy a .snr/ subdomain to simplify your account address using <a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md">ADR-1</a></li>
+</ul>
 </section>
 
 
@@ -75,10 +84,8 @@ print('Account created successfully: ${res.address}');
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; createAccount(String password) async {
-  &#47;&#47;CreateAccountResponse? resp;
-  &#47;&#47;if (defaultTargetPlatform == TargetPlatform.android) {
-  final dscKey = Key.fromSecureRandom(32);
-  final pskKey = Key.fromSecureRandom(32);
+  final dscKey = e.Key.fromSecureRandom(32);
+  final pskKey = e.Key.fromSecureRandom(32);
 
   final resp = await MotorFlutterPlatform.instance.createAccountWithKeys(CreateAccountWithKeysRequest(
     password: password,
@@ -90,7 +97,7 @@ print('Account created successfully: ${res.address}');
     address.value = resp.address;
     didDocument.value = resp.whoIs.didDocument;
     authorized.value = true;
-    await writeKeysForDid(dscKey.bytes, pskKey.bytes, resp.whoIs.didDocument.id);
+    await writeKeysForAddr(dscKey.bytes, pskKey.bytes, resp.address);
     return resp.toDefaultResponse();
   }
   return null;

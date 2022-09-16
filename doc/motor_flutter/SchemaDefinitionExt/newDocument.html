@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the toAuthInfo method from the CreateAccountWithKeysResponseExt extension, for the Dart programming language.">
-  <title>toAuthInfo method - CreateAccountWithKeysResponseExt extension - motor_flutter library - Dart API</title>
+  <meta name="description" content="API docs for the newDocument method from the SchemaDefinitionExt extension, for the Dart programming language.">
+  <title>newDocument method - SchemaDefinitionExt extension - motor_flutter library - Dart API</title>
 
 
   
@@ -30,10 +30,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">motor_flutter</a></li>
     <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
-    <li><a href="../../motor_flutter/CreateAccountWithKeysResponseExt.html">CreateAccountWithKeysResponseExt</a></li>
-    <li class="self-crumb">toAuthInfo method</li>
+    <li><a href="../../motor_flutter/SchemaDefinitionExt.html">SchemaDefinitionExt</a></li>
+    <li class="self-crumb">newDocument method</li>
   </ol>
-  <div class="self-name">toAuthInfo</div>
+  <div class="self-name">newDocument</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,31 +44,40 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">toAuthInfo</span> method 
+<h1><span class="kind-method">newDocument</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="../../motor_flutter/AuthInfo-class.html">AuthInfo</a></span>
-<span class="name ">toAuthInfo</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="toAuthInfo-param-pwd"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">pwd</span></span></li>
-</ol>)
+<span class="returntype"><a href="../../motor_flutter/SchemaDocument-class.html">SchemaDocument</a></span>
+<span class="name ">newDocument</span>(<wbr>)
 
       
 
     </section>
     
+<section class="desc markdown">
+  <h3 id="description">Description</h3>
+<p>Converts a <a href="../../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> to a base <a href="../../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> with its fields being set to the associated <a href="../../motor_flutter/SchemaKind-class.html">SchemaKind</a> from the underlying definition.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">AuthInfo toAuthInfo(String pwd) {
-  return AuthInfo(
-    address: address,
-    did: whoIs.didDocument.id,
-    password: pwd,
+  <pre class="language-dart"><code class="language-dart">SchemaDocument newDocument() {
+  return SchemaDocument(
+    creator: creator,
+    did: did,
+    definition: this,
+    fields: List&lt;SchemaDocumentValue&gt;.generate(fields.length, (index) {
+      return SchemaDocumentValue(
+        name: fields[index].name,
+        field_2: fields[index].field_2,
+      );
+    }),
   );
 }</code></pre>
 </section>
@@ -86,21 +95,20 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">motor_flutter</a></li>
   <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
-  <li><a href="../../motor_flutter/CreateAccountWithKeysResponseExt.html">CreateAccountWithKeysResponseExt</a></li>
-  <li class="self-crumb">toAuthInfo method</li>
+  <li><a href="../../motor_flutter/SchemaDefinitionExt.html">SchemaDefinitionExt</a></li>
+  <li class="self-crumb">newDocument method</li>
 </ol>
 
 
-    <h5>CreateAccountWithKeysResponseExt extension</h5>
+    <h5>SchemaDefinitionExt extension</h5>
     <ol>
 
 
 
 
 
-    <li class="section-title"><a href="../../motor_flutter/CreateAccountWithKeysResponseExt.html#instance-methods">Methods</a></li>
-    <li><a href="../../motor_flutter/CreateAccountWithKeysResponseExt/toAuthInfo.html">toAuthInfo</a></li>
-    <li><a href="../../motor_flutter/CreateAccountWithKeysResponseExt/toNormalResponse.html">toNormalResponse</a></li>
+    <li class="section-title"><a href="../../motor_flutter/SchemaDefinitionExt.html#instance-methods">Methods</a></li>
+    <li><a href="../../motor_flutter/SchemaDefinitionExt/newDocument.html">newDocument</a></li>
 
 
 
@@ -117,7 +125,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.3.4
+      0.4.0
   </span>
 
   

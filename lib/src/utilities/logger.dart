@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
 /// It's a class that logs messages
@@ -52,3 +53,5 @@ class Log {
     _loggerNoStack.d(message);
   }
 }
+
+bool get isDebugMode => kDebugMode;

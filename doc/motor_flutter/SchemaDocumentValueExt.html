@@ -50,7 +50,7 @@
 
     
 <section class="desc markdown">
-  <h2 id="schemadocumentvalueext">SchemaDocumentValueExt</h2>
+  <h1 id="schemadocumentvalueext">SchemaDocumentValueExt</h1>
 <p>Extension on the <a href="../motor_flutter/SchemaDocumentValue-class.html">SchemaDocumentValue</a> class which provides a useful suite of methods
 to manage user generated data.</p>
 </section>
@@ -82,7 +82,7 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Returns the underlying value of the <a href="../motor_flutter/SchemaDocumentValue-class.html">SchemaDocumentValue</a> as the provided <code>T</code> type. If the value cannot be cast to the provided type, or the provided <code>T</code> doesnt match <a href="../motor_flutter/SchemaKind-class.html">SchemaKind</a>, then null is returned.
+  Description
   
 
 </dd>
@@ -95,14 +95,14 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Checks if the provided <code>T</code> type matches the <a href="../motor_flutter/SchemaKind-class.html">SchemaKind</a> of the <a href="../motor_flutter/SchemaDocumentValue-class.html">SchemaDocumentValue</a>. If the provided <code>T</code> doesnt match <a href="../motor_flutter/SchemaKind-class.html">SchemaKind</a>, then false is returned.
+  Description
   
 
 </dd>
 
         <dt id="setValue" class="callable">
-  <span class="name"><a href="../motor_flutter/SchemaDocumentValueExt/setValue.html">setValue</a></span><span class="signature">(<wbr><span class="parameter" id="setValue-param-v"><span class="type-annotation">dynamic</span> <span class="parameter-name">v</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  <span class="name"><a href="../motor_flutter/SchemaDocumentValueExt/setValue.html">setValue</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="setValue-param-v"><span class="type-annotation">T</span> <span class="parameter-name">v</span></span>)
+    <span class="returntype parameter">&#8594; T?</span>
   </span>
   
 
@@ -254,10 +254,9 @@ to manage user generated data.</p>
   <li><a href="../motor_flutter/kMotorTempStorageName-constant.html">kMotorTempStorageName</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#properties">Properties</a></li>
+  <li><a href="../motor_flutter/isDebugMode.html">isDebugMode</a></li>
   <li><a href="../motor_flutter/loadingQuotes.html">loadingQuotes</a></li>
 
-  <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#functions">Functions</a></li>
-  <li><a href="../motor_flutter/copyDocumentFromSchema.html">copyDocumentFromSchema</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#enums">Enums</a></li>
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
@@ -267,6 +266,7 @@ to manage user generated data.</p>
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
   <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
+  <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
 
 </ol>

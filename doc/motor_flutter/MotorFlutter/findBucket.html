@@ -61,8 +61,10 @@
     </section>
     
 <section class="desc markdown">
-  <p>Queries the Sonr blockchain for the associated <a href="../../motor_flutter/WhereIs-class.html">WhereIs</a> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
+  <h3 id="description">Description</h3>
+<p>Queries the Sonr blockchain for the associated <a href="../../motor_flutter/WhereIs-class.html">WhereIs</a> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
 Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if no bucket is found, or if neither <code>did</code> nor <code>creator</code> were provided.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">// Search by DID
 final buckets = await MotorFlutter.to.findBucket(did: 'did:snr:xyz789');
 if (buckets == null) {
@@ -75,6 +77,10 @@ if (buckets == null) {
    throw Exception('Failed to find bucket');
 }
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md">ADR-4</a></li>
+</ul>
 </section>
 
 

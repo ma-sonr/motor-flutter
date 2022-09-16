@@ -56,11 +56,17 @@
         </section>
         
 <section class="desc markdown">
-  <p>List of all neerby Motor powered devices. This is updated every time a <a href="../../motor_flutter/RefreshEvent-class.html">RefreshEvent</a> is received on the <a href="https://api.flutter.dev/flutter/services/MethodChannel-class.html">MethodChannel</a>. All nodes are referenced with the <code>Peer</code> object.</p>
+  <h3 id="description">Description</h3>
+<p>List of all neerby Motor powered devices. This is updated every time a <a href="../../motor_flutter/RefreshEvent-class.html">RefreshEvent</a> is received on the <a href="https://api.flutter.dev/flutter/services/MethodChannel-class.html">MethodChannel</a>. All nodes are referenced with the <code>Peer</code> object.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">MotorFlutter.to.nearbyDevices.forEach((peer) {
     print(peer.did);
 });
 </code></pre>
+<h3 id="see-also">See also:</h3>
+<ul>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md">ADR-4</a></li>
+</ul>
 </section>
 
         

@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:fixnum/fixnum.dart';
-import 'package:flutter/foundation.dart' as f;
+
 import 'package:flutter_keychain/flutter_keychain.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:encrypt/encrypt.dart';
+import 'package:encrypt/encrypt.dart' as e;
 import 'package:get_storage/get_storage.dart';
 import 'package:tuple/tuple.dart';
 
@@ -20,40 +20,72 @@ part 'motor_flutter_helpers.dart';
 part 'motor_flutter_ui.dart';
 part 'motor_flutter_extensions.dart';
 
-/// ## MotorFlutter
+/// # MotorFlutter
 ///
-/// This is the main class for the [MotorFlutter] package. For more information on how to use this package, see the [API documentation](https://motor.build).
+/// This is the main class for the [MotorFlutter] package. Create a new [MotorFlutter] instance by calling the [MotorFlutter.init] method in your main method.
+/// ### Resources
+/// - [Flutter API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html)
+/// - [Technical Docs](https://docs.sonr.io)
+/// - [Discord](https://sonr.io/discord)
+/// - [Website](https://sonr.io)
 class MotorFlutter extends GetxService {
-  // This is a method channel that is used to communicate with the native side of the application.
+  // Private variables
   final _methodChannel = const MethodChannel(kMotorPlatformChannelAddr);
+  late final PeerInformation _peerInfo;
+  late final GetStorage _tempStorage;
 
+  // Constructor
+  MotorFlutter() {
+    _methodChannel.setMethodCallHandler(_handleMethodCall);
+  }
+
+  /// ### Description
   /// A Stream of all [RefreshEvent] that are transmitted in the Local Discovery [OLC](https://en.wikipedia.org/wiki/Open_Location_Code)
+  ///
+  /// ### See also:
+  /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
 
+  /// ### Description
   /// Reactive variable that holds the current active [MotorFlutter] wallet address.
+  ///
+  /// ### See also:
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final address = 'snr123abc'.obs;
 
+  /// ### Description
   /// A list of .snr/ domains each mapped to [Alias] objects. These can be used to resolve associated aliases with a given Sonr account.
+  ///
+  /// ### See also:
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final domains = RxList<Alias>();
 
+  /// ### Description
   /// Returns the current active account's liquid SNR balance. This variable is triggered to refresh on the [stat] method.
   final balance = 0.obs;
 
+  /// ### Description
   /// Returns the current accounts staked SNR balance. This variable is triggered to refresh on the [stat] method.
   final staked = '0'.obs;
 
+  /// ### Description
   /// Returns the curret active account's [DIDDocument]. This value is set on account authorization, and can be refreshed with the [stat] method.
+  ///
+  /// ### Example
   ///
   /// ```dart
   ///    print(MotorFlutter.to.didDocument.value.id); // Prints did:snr:abc123
   /// ```
   ///
-  /// See also:
+  /// ### See also:
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final didDocument = DIDDocument().obs;
 
+  /// ### Description
   /// Sets itself to true when the [MotorFlutter] account is created with [createAccount], or [login]. This is used to
   /// determine if the user is ready to be active on the [Sonr Network](https://sonr.io) or not.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// if (MotorFlutter.to.isReady) {
@@ -62,7 +94,10 @@ class MotorFlutter extends GetxService {
   /// ```
   final authorized = false.obs;
 
+  /// ### Description
   /// Sets itself to true when the [MotorFlutter] account is finished bootstrapping to the Sonr Network. The [connect] method triggers the refresh of this variable.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// await MotorFlutter.to.connect();
@@ -70,16 +105,25 @@ class MotorFlutter extends GetxService {
   /// ```
   final connected = false.obs;
 
+  /// ### Description
   /// List of all neerby Motor powered devices. This is updated every time a [RefreshEvent] is received on the [MethodChannel]. All nodes are referenced with the [Peer] object.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// MotorFlutter.to.nearbyDevices.forEach((peer) {
   ///     print(peer.did);
   /// });
   /// ```
+  ///
+  /// ### See also:
+  /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   final nearbyPeers = <Peer>[].obs;
 
+  /// ### Description
   /// A Reference Map for all recently queried [SchemaDefinition]s, and all created [SchemaDocument]s.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// MotorFlutter.to.schemaDefinitions.forEach((def, doc) {
@@ -88,10 +132,15 @@ class MotorFlutter extends GetxService {
   ///     }
   /// });
   /// ```
-  final schemaMap = <SchemaDefinition, SchemaDocument>{}.obs;
+  ///
+  /// ### See also:
+  /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
+  final schemaMap = <String, SchemaDocument>{}.obs;
 
-  // Accessor Method
+  /// ### Description
   /// Use the static [to] getter method allows access to [MotorFlutter] instance anywhere in the application.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';
@@ -100,7 +149,10 @@ class MotorFlutter extends GetxService {
   /// ```
   static MotorFlutter get to => Get.find<MotorFlutter>();
 
+  /// ### Description
   /// Returns true if the [MotorFlutter] service has been injected into the GetX State Management system.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// if (MotorFlutter.isReady) {
@@ -109,22 +161,22 @@ class MotorFlutter extends GetxService {
   /// ```
   static bool get isReady => Get.isRegistered<MotorFlutter>();
 
+  /// ### Description
   /// This getter method returns the current version of the underlying accounts [DIDDocument] id. This is NOT a reactive variable.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// print(MotorFlutter.to.didUrl); // prints 'did:snr:abc123#v1'
   /// ```
+  /// ### See also:
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   String get didUrl => to.didDocument.value.id;
 
-  late final PeerInformation _peerInfo;
-  late final GetStorage _tempStorage;
-
-  // It creates a new instance of the MotorFlutter class.
-  MotorFlutter() {
-    _methodChannel.setMethodCallHandler(_handleMethodCall);
-  }
-
+  /// ### Description
   /// This static method initializes a [MotorFlutter] instance and Injects it into [Get] state management.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';
@@ -135,6 +187,10 @@ class MotorFlutter extends GetxService {
   ///   runApp(MyApp()); // This is the entry point of the application.
   /// }
   /// ```
+  /// ### Next Steps:
+  /// - Register a new user with [createAccount]
+  /// - Login with an existing account using [login]
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   static Future<void> init() async {
     await Get.putAsync(
       () => MotorFlutter()._init(),
@@ -142,8 +198,11 @@ class MotorFlutter extends GetxService {
     );
   }
 
+  /// ### Description
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
   /// storage during development. Returns [CreateAccountResponse] if the account is created successfully.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.createAccount('terrible-password-123');
@@ -152,11 +211,14 @@ class MotorFlutter extends GetxService {
   /// }
   /// print('Account created successfully: ${res.address}');
   /// ```
+  /// ### Next Steps:
+  /// - Login with the newly created account using [login]
+  /// - Issue payments to the account using [sendTokens]
+  /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<CreateAccountResponse?> createAccount(String password) async {
-    //CreateAccountResponse? resp;
-    //if (defaultTargetPlatform == TargetPlatform.android) {
-    final dscKey = Key.fromSecureRandom(32);
-    final pskKey = Key.fromSecureRandom(32);
+    final dscKey = e.Key.fromSecureRandom(32);
+    final pskKey = e.Key.fromSecureRandom(32);
 
     final resp = await MotorFlutterPlatform.instance.createAccountWithKeys(CreateAccountWithKeysRequest(
       password: password,
@@ -168,14 +230,17 @@ class MotorFlutter extends GetxService {
       address.value = resp.address;
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
-      await writeKeysForDid(dscKey.bytes, pskKey.bytes, resp.whoIs.didDocument.id);
+      await writeKeysForAddr(dscKey.bytes, pskKey.bytes, resp.address);
       return resp.toDefaultResponse();
     }
     return null;
   }
 
+  /// ### Description
   /// Logs in to an existing account with the given [password]. During production, this method retrieves the keys from the keychain using [address]. Both of these params are required in order
   /// to return a successful [LoginResponse].
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
@@ -184,6 +249,11 @@ class MotorFlutter extends GetxService {
   /// }
   /// print('Account logged in successfully: ${res.address}');
   /// ```
+  /// ### Next Steps:
+  /// - Define a new blockchain verifiable data model using [createSchema]
+  /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
+  /// - Connect to the p2p network and enable secure device-to-devce communication with [connect]
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<LoginResponse?> login({required String password, required String address}) async {
     final auth = await readKeysForAddr(address);
     if (auth == null) {
@@ -203,7 +273,10 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
+  /// ### Description
   /// Purchases a new .snr/ domain for the current account if the [alias] is available. A succesful transaction will return a [MsgBuyAliasResponse].
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.buyAlias('hulahoop');
@@ -218,6 +291,9 @@ class MotorFlutter extends GetxService {
   ///    }
   /// }
   /// ```
+  /// ### Next Steps:
+  /// - List your alias for auction with [sellAlias]
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<MsgBuyAliasResponse?> buyAlias(String alias, [ResponseCallback<MsgBuyAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.buyAlias(MsgBuyAlias(
       name: alias,
@@ -233,7 +309,10 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
+  /// ### Description
   /// Lists an existing [alias] owned by the current account for sale at the given [amount]. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a [MsgSellAliasResponse].
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.sellAlias('hulahoop', 40.0);
@@ -248,6 +327,9 @@ class MotorFlutter extends GetxService {
   ///   }
   /// }
   /// ```
+  /// ### Next Steps:
+  /// - Buy an alias listed for sale with [transferAlias]
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<MsgSellAliasResponse?> sellAlias(String alias, int amount, [ResponseCallback<MsgSellAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.sellAlias(MsgSellAlias(
       alias: alias,
@@ -264,8 +346,11 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
+  /// ### Description
   /// Transfers an existing [alias] listed for sale from the account which listed it, to the current active account. A succesful transaction will return a [MsgTransferAliasResponse], and will return
   /// an error if the provided [amount] is less than the listed price, or if the [alias] is not listed for sale by the [currentOwner].
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
@@ -277,6 +362,9 @@ class MotorFlutter extends GetxService {
   /// final allOwnedAliases = res.aliases.where((alias) => !alias.isForSale);
   /// print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
   /// ```
+  /// ### Next Steps:
+  /// - Buy an alias listed for sale with [transferAlias]
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<MsgTransferAliasResponse?> transferAlias(String alias, String currentOwner, int amount,
       [ResponseCallback<MsgTransferAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.transferAlias(MsgTransferAlias(
@@ -295,8 +383,12 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
+  /// ### Description
   /// Establishes the Motor libp2p node, bootstraps the node to known DHT peers, and begins listening for incoming connections. An optional [callback] can be provided to be notified
   /// when the node is ready to accept connections.
+  ///
+  /// ### Next Steps:
+  /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   Future<bool> connect([ResponseCallback<bool>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.connect();
     if (callback != null) {
@@ -306,8 +398,11 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
+  /// ### Description
   /// Builds a request for recording a [SchemaDefinition] on the blockchain. [metadata] is for any additional information that should be stored with the schema. [callback] is an optional
   /// function that will be called when the transaction is complete. Returns a [CreateSchemaResponse] if the transaction is successful.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.createSchema('My Schema', {'name': SchemaKind.STRING, 'age': SchemaKind.INT});
@@ -315,6 +410,9 @@ class MotorFlutter extends GetxService {
   ///    throw Exception('Failed to create schema');
   /// }
   /// ```
+  /// ### Next Steps:
+  /// - Build a SchemaDocument from a Definition with [SchemaDefinitionExt]
+  /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
   Future<CreateSchemaResponse?> createSchema(String label, Map<String, SchemaKind> fields, Map<String, String>? metadata,
       [ResponseCallback<CreateSchemaResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
@@ -325,16 +423,14 @@ class MotorFlutter extends GetxService {
     if (callback != null) {
       callback(resp);
     }
-    if (resp != null) {
-      final baseDoc = resp.schemaDefinition.getDefaultDocument();
-      schemaMap[resp.schemaDefinition] = baseDoc;
-      schemaMap.refresh();
-    }
     return resp;
   }
 
+  /// ### Description
   /// Searches for a schema by either its [did] or [creator]. If [did] is provided a single-value map is returned, and the [creator] argument will be ignored. Returns a map of [String] to [SchemaDefinition] if definition(s) are found. Returns
   /// null if no definition is found, or if neither [did] nor [creator] were provided.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// // Search by DID
@@ -351,6 +447,9 @@ class MotorFlutter extends GetxService {
   /// }
   /// print(schemas); // prints: {'MySchema': {label: 'MySchema', fields: {name: String, age: Int}}, 'MyOtherSchema': {label: 'MyOtherSchema', fields: {name: String, age: Int}}}
   /// ```
+  /// ### Next Steps:
+  /// - Build a SchemaDocument from a Definition with [SchemaDefinitionExt]
+  /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
   Future<Map<String, SchemaDefinition>?> findSchemas({String? did, String? creator}) async {
     if (did != null) {
       final res = await MotorFlutterPlatform.instance.querySchema(QueryWhatIsRequest(did: did));
@@ -358,17 +457,18 @@ class MotorFlutter extends GetxService {
         return {res.schema.label: res.schema};
       }
     }
-    if (creator != null) {
-      final res = await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator));
-      if (res != null) {
-        return res.schemas;
-      }
+    final res = await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator ?? address.value));
+    if (res != null) {
+      return res.schemas;
     }
     return null;
   }
 
+  /// ### Description
   /// Queries the Sonr blockchain for the associated [WhereIs] for the provided [did] or [creator]. If [did] is provided a single-value list is returned (if successful), and the [creator] argument will be ignored.
   /// Returns [List<WhereIs>] if bucket(s) are found. Returns null if no bucket is found, or if neither [did] nor [creator] were provided.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// // Search by DID
@@ -383,6 +483,8 @@ class MotorFlutter extends GetxService {
   ///    throw Exception('Failed to find bucket');
   /// }
   /// ```
+  /// ### Next Steps:
+  /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   Future<List<WhereIs>?> findBucket({String? did, String? creator}) async {
     if (did != null) {
       final res = await MotorFlutterPlatform.instance.queryBucket(QueryWhereIsRequest(did: did));
@@ -400,7 +502,10 @@ class MotorFlutter extends GetxService {
     return null;
   }
 
+  /// ### Description
   /// Creates a TX in order to deposit the [amount] of SNR into the [recipient] account. A succesful transaction will return a [PaymentResponse] and will return null if the transaction fails.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.deposit('did:snr:abc123', 3.29);
@@ -409,6 +514,8 @@ class MotorFlutter extends GetxService {
   /// }
   /// print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
   /// ```
+  /// ### Next Steps:
+  /// - [Sonr Blockchain API Reference](https://www.sonr.dev/protodocs/registry/tx.proto)
   Future<PaymentResponse?> sendTokens(String recipient, int amount, {String memo = ""}) async {
     return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(
       to: recipient,
@@ -418,8 +525,11 @@ class MotorFlutter extends GetxService {
     ));
   }
 
+  /// ### Description
   /// Refreshes the current instances values of [address], [domain], [didDocument], [balance], [didUrl], and [staked] with the latest values from the blockchain. An
   /// optional [callback] can be provided to be notified when the refresh is complete.
+  ///
+  /// ### Example
   ///
   /// ```dart
   /// // Refresh the current account
@@ -427,6 +537,9 @@ class MotorFlutter extends GetxService {
   /// print(MotorFlutter.to.address); // prints: 'did:snr:abc123'
   /// print(MotorFlutter.to.balance); // prints: 1000
   /// ```
+  /// ### Next Steps:
+  /// - Try sending some SNR to other accounts with [sendTokens]
+  /// - [Sonr Technical Documentation](https://www.sonr.dev/)
   Future<StatResponse?> stat([ResponseCallback<StatResponse>? callback]) async {
     if (!authorized.value) {
       Log.printFlutterWarn("User is not yet authorized");

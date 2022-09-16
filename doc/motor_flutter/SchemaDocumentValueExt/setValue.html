@@ -31,7 +31,7 @@
     <li><a href="../../index.html">motor_flutter</a></li>
     <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
     <li><a href="../../motor_flutter/SchemaDocumentValueExt.html">SchemaDocumentValueExt</a></li>
-    <li class="self-crumb">setValue method</li>
+    <li class="self-crumb">setValue&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
   </ol>
   <div class="self-name">setValue</div>
   <form class="search navbar-right" role="search">
@@ -44,15 +44,15 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">setValue</span> method 
+<h1><span class="kind-method">setValue&lt;<wbr><span class="type-parameter">T</span>&gt;</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-<span class="name ">setValue</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setValue-param-v"><span class="type-annotation">dynamic</span> <span class="parameter-name">v</span></span></li>
+<span class="returntype">T?</span>
+<span class="name ">setValue</span>&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="setValue-param-v"><span class="type-annotation">T</span> <span class="parameter-name">v</span></span></li>
 </ol>)
 
       
@@ -64,41 +64,41 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool setValue(dynamic v) {
+  <pre class="language-dart"><code class="language-dart">T? setValue&lt;T&gt;(T v) {
   if (v == null) {
-    return false;
+    return null;
   }
   switch (field_2) {
     case SchemaKind.BOOL:
       if (v is bool) {
         boolValue.value = v;
-        return true;
+        return v;
       }
       break;
     case SchemaKind.INT:
       if (v is int) {
         intValue.value = v;
-        return true;
+        return v;
       }
       break;
     case SchemaKind.FLOAT:
       if (v is double) {
         floatValue.value = v;
-        return true;
+        return v;
       }
       break;
 
     case SchemaKind.STRING:
       if (v is String) {
         stringValue.value = v;
-        return true;
+        return v;
       }
       break;
 
     case SchemaKind.BYTES:
       if (v is Uint8List) {
         bytesValue.value = v;
-        return true;
+        return v;
       }
       break;
 
@@ -106,19 +106,19 @@
       if (v is List&lt;SchemaDocumentValue&gt;) {
         arrayValue.value.clear();
         arrayValue.value.addAll(v);
-        return true;
+        return v;
       }
       break;
     case SchemaKind.LINK:
       if (v is String) {
         linkValue.value = v;
-        return true;
+        return v;
       }
       break;
     default:
       break;
   }
-  return false;
+  return null;
 }</code></pre>
 </section>
 
@@ -136,7 +136,7 @@
   <li><a href="../../index.html">motor_flutter</a></li>
   <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
   <li><a href="../../motor_flutter/SchemaDocumentValueExt.html">SchemaDocumentValueExt</a></li>
-  <li class="self-crumb">setValue method</li>
+  <li class="self-crumb">setValue&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
 </ol>
 
 

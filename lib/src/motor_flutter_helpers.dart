@@ -14,7 +14,7 @@ extension MotorFlutterHelpers on MotorFlutter {
       callback(resp);
     }
     Get.lazyPut(() => RegisterController());
-    if (f.kDebugMode) {
+    if (isDebugMode) {
       await GetStorage.init(kMotorTempStorageName);
       _tempStorage = GetStorage(kMotorTempStorageName);
     }
@@ -53,33 +53,33 @@ extension MotorFlutterHelpers on MotorFlutter {
     return bytes.map((e) => e.toRadixString(16).padLeft(2, '0')).join();
   }
 
-  Future<bool> writeKeysForDid(Uint8List dscBytes, Uint8List pskBytes, String did) async {
+  Future<bool> writeKeysForAddr(Uint8List dscBytes, Uint8List pskBytes, String addr) async {
     // Write to GetStorage if Debug
-    if (f.kDebugMode) {
-      _tempStorage.write(_dscKeyForDid(did), _encodeHexString(dscBytes));
-      _tempStorage.write(_pskKeyForDid(did), _encodeHexString(pskBytes));
+    if (isDebugMode) {
+      _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
+      _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
       return true;
     }
 
     // store the two keys in keychain
     var keychainPuts = [
-      FlutterKeychain.put(key: _dscKeyForDid(did), value: _encodeHexString(dscBytes)),
-      FlutterKeychain.put(key: _pskKeyForDid(did), value: _encodeHexString(pskBytes)),
+      FlutterKeychain.put(key: _dscKeyForDid(addr), value: _encodeHexString(dscBytes)),
+      FlutterKeychain.put(key: _pskKeyForDid(addr), value: _encodeHexString(pskBytes)),
     ];
     await Future.wait(keychainPuts, eagerError: true, cleanUp: (dynamic error) {
-      if (f.kDebugMode) {
+      if (isDebugMode) {
         // ignore: avoid_print
         print(error);
       }
-      _tempStorage.write(_dscKeyForDid(did), _encodeHexString(dscBytes));
-      _tempStorage.write(_pskKeyForDid(did), _encodeHexString(pskBytes));
+      _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
+      _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
     });
     return false;
   }
 
   Future<Tuple2<List<int>, List<int>>?> readKeysForAddr(String addr) async {
     // Read from GetStorage if Debug
-    if (f.kDebugMode) {
+    if (isDebugMode) {
       final dsc = _tempStorage.read(_dscKeyForDid(addr));
       final psk = _tempStorage.read(_pskKeyForDid(addr));
       if (dsc != null && psk != null) {
@@ -95,7 +95,9 @@ extension MotorFlutterHelpers on MotorFlutter {
     }
     return null;
   }
+}
 
+extension _CoreMotorFlutterExt on MotorFlutter {
 // Helper method to find the account psk key from DID
   String _dscKeyForDid(String did) {
     return "${did}_DSC_KEY";
@@ -105,18 +107,12 @@ extension MotorFlutterHelpers on MotorFlutter {
   String _pskKeyForDid(String did) {
     return "${did}_PSK_KEY";
   }
-}
 
-SchemaDocument copyDocumentFromSchema(SchemaDefinition def) {
-  return SchemaDocument(
-    creator: def.creator,
-    did: def.did,
-    definition: def,
-    fields: List<SchemaDocumentValue>.generate(def.fields.length, (index) {
-      return SchemaDocumentValue(
-        name: def.fields[index].name,
-        field_2: def.fields[index].field_2,
-      );
-    }),
-  );
+  void setCIDForDid(String did, String cid) {
+    _tempStorage.write(did, cid);
+  }
+
+  String? getCIDForDid(String did) {
+    return _tempStorage.read(did);
+  }
 }

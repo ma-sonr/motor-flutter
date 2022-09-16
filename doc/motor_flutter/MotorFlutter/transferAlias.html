@@ -63,8 +63,10 @@
     </section>
     
 <section class="desc markdown">
-  <p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
+  <h3 id="description">Description</h3>
+<p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
 an error if the provided <code>amount</code> is less than the listed price, or if the <code>alias</code> is not listed for sale by the <code>currentOwner</code>.</p>
+<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
 if (res == null) {
    throw Exception('Failed to transfer alias');
@@ -74,6 +76,11 @@ if (res == null) {
 final allOwnedAliases = res.aliases.where((alias) =&gt; !alias.isForSale);
 print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
 </code></pre>
+<h3 id="next-steps">Next Steps:</h3>
+<ul>
+<li>Buy an alias listed for sale with <a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
+<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md">ADR-1</a></li>
+</ul>
 </section>
 
 
