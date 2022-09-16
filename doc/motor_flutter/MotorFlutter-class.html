@@ -349,7 +349,7 @@ when the node is ready to accept connections.
 </dd>
 
         <dt id="createAccount" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></span><span class="signature">(<wbr><span class="parameter" id="createAccount-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span>)
+  <span class="name"><a href="../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></span><span class="signature">(<wbr><span class="parameter" id="createAccount-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="createAccount-param-onKeysGenerated">{<span class="type-annotation"><a href="../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a>?</span> <span class="parameter-name">onKeysGenerated</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateAccountResponse?</span>&gt;</span></span>
   </span>
   
@@ -405,7 +405,7 @@ null if no definition is found, or if neither <code>did</code> nor <code>creator
 </dd>
 
         <dt id="login" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/login.html">login</a></span><span class="signature">(<wbr><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>}</span>)
+  <span class="name"><a href="../motor_flutter/MotorFlutter/login.html">login</a></span><span class="signature">(<wbr><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>, </span><span class="parameter" id="login-param-pskKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">pskKey</span>, </span><span class="parameter" id="login-param-dscKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">dscKey</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">LoginResponse?</span>&gt;</span></span>
   </span>
   
@@ -602,7 +602,7 @@ an error if the provided <code>amount</code> is less than the listed price, or i
     <h2>Static Methods</h2>
     <dl class="callables">
         <dt id="init" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/init.html">init</a></span><span class="signature">(<wbr>)
+  <span class="name"><a href="../motor_flutter/MotorFlutter/init.html">init</a></span><span class="signature">(<wbr><span class="parameter" id="init-param-enableStorage">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enableStorage</span> = <span class="default-value">true</span>, </span><span class="parameter" id="init-param-autoInject"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoInject</span> = <span class="default-value">true</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
   </span>
   
@@ -640,6 +640,13 @@ an error if the provided <code>amount</code> is less than the listed price, or i
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#classes">Classes</a></li>
   <li><a href="../motor_flutter/Log-class.html">Log</a></li>
   <li><a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a></li>
+  <li><a href="../motor_flutter/NebulaBorders-class.html">NebulaBorders</a></li>
+  <li><a href="../motor_flutter/NebulaColors-class.html">NebulaColors</a></li>
+  <li><a href="../motor_flutter/NebulaDimensions-class.html">NebulaDimensions</a></li>
+  <li><a href="../motor_flutter/NebulaGradients-class.html">NebulaGradients</a></li>
+  <li><a href="../motor_flutter/NebulaRadii-class.html">NebulaRadii</a></li>
+  <li><a href="../motor_flutter/NebulaShadows-class.html">NebulaShadows</a></li>
+  <li><a href="../motor_flutter/NebulaTextStyles-class.html">NebulaTextStyles</a></li>
   <li><a href="../motor_flutter/RegisterController-class.html">RegisterController</a></li>
   <li><a href="../motor_flutter/RegisterModalPage-class.html">RegisterModalPage</a></li>
   <li><a href="../motor_flutter/SonrRegisterButton-class.html">SonrRegisterButton</a></li>
@@ -665,12 +672,14 @@ an error if the provided <code>amount</code> is less than the listed price, or i
 
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#enums">Enums</a></li>
+  <li><a href="../motor_flutter/ButtonVariant.html">ButtonVariant</a></li>
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#typedefs">Typedefs</a></li>
   <li><a href="../motor_flutter/BoolCallback.html">BoolCallback</a></li>
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
   <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
+  <li><a href="../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
   <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
@@ -746,7 +755,7 @@ an error if the provided <code>amount</code> is less than the listed price, or i
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

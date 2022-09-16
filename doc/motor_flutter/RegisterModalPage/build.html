@@ -107,13 +107,13 @@ and</li>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: Colors.white,
+    backgroundColor: NebulaColors.brandSecondary,
     appBar: AppBar(
       title: const Text(
         &#39;Register&#39;,
-        style: TextStyle(color: Colors.white),
+        style: NebulaTextStyles.h4,
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: NebulaColors.brandTertiary,
     ),
     body: controller.obx(
         (state) {
@@ -125,7 +125,7 @@ Widget build(BuildContext context) {
                 Icon(Icons.check_circle, color: Colors.green, size: 100),
                 Text(
                   &quot;Success! Your account has been created.&quot;,
-                  style: TextStyle(fontSize: 20),
+                  style: NebulaTextStyles.h2,
                 ),
               ],
             ),
@@ -138,11 +138,7 @@ Widget build(BuildContext context) {
             const Center(
               child: Text(
                 &quot;Setting Up...&quot;,
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: NebulaTextStyles.display2,
               ),
             ),
             Padding(
@@ -168,32 +164,29 @@ Widget build(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Center(
-              child: Text(&quot;Create Account&quot;,
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  )),
+              child: Text(
+                &quot;Create Account&quot;,
+                style: NebulaTextStyles.display2,
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-              child: Text(&quot;Input a secure password in order to register a new Sonr user&quot;,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black,
-                  )),
+              child: Text(
+                &quot;Input a secure password in order to register a new Sonr user&quot;,
+                textAlign: TextAlign.center,
+                style: NebulaTextStyles.subtitle1,
+              ),
             ),
             const SizedBox(height: 100.0),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
               child: FancyPasswordField(
                 validationRules: {
-                  DigitValidationRule(),
+                  SpecialCharacterValidationRule(),
                   UppercaseValidationRule(),
                   MinCharactersValidationRule(8),
                 },
-                onFieldSubmitted: (String value) =&gt; controller.createAccount(password: value),
+                onFieldSubmitted: (String value) =&gt; controller.createAccount(password: value, onKeysGenerated: onKeysGenerated),
               ),
             ),
           ],
@@ -207,7 +200,7 @@ Widget build(BuildContext context) {
               children: [
                 Text(
                   error.toString(),
-                  style: const TextStyle(color: Colors.red),
+                  style: NebulaTextStyles.subtitle2.copyWith(color: NebulaColors.semanticLightThemeTextDefault),
                 ),
                 ElevatedButton.icon(onPressed: () =&gt; Get.back(), icon: const Icon(Icons.arrow_back), label: const Text(&#39;Return&#39;))
               ]);
@@ -250,6 +243,7 @@ Widget build(BuildContext context) {
     <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></li>
     <li><a href="../../motor_flutter/RegisterModalPage/onCreateAccountResponse.html">onCreateAccountResponse</a></li>
     <li><a href="../../motor_flutter/RegisterModalPage/onError.html">onError</a></li>
+    <li><a href="../../motor_flutter/RegisterModalPage/onKeysGenerated.html">onKeysGenerated</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_simple_get_view/GetView/tag.html">tag</a></li>
 
@@ -283,7 +277,7 @@ Widget build(BuildContext context) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

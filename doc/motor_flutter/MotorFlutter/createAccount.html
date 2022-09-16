@@ -52,7 +52,8 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateAccountResponse?</span>&gt;</span></span>
-<span class="name ">createAccount</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createAccount-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span></li>
+<span class="name ">createAccount</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createAccount-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
+<li><span class="parameter" id="createAccount-param-onKeysGenerated">{<span class="type-annotation"><a href="../../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a>?</span> <span class="parameter-name">onKeysGenerated</span>}</span></li>
 </ol>)
 
       
@@ -62,6 +63,11 @@
 <section class="desc markdown">
   <p>Creates a new Account with the given <code>password</code>. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
 storage during development. Returns <code>CreateAccountResponse</code> if the account is created successfully.</p>
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li><code>password</code> - The password used to encrypt the keys in the keychain.</li>
+<li><code>onKeysGenerated</code> - A callback function that is triggered when the keys are generated. This is useful for storing the keys in a secure location. <em>(optional)</em></li>
+</ul>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.createAccount('terrible-password-123');
 if (res == null) {
@@ -82,9 +88,12 @@ print('Account created successfully: ${res.address}');
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; createAccount(String password) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
   final dscKey = e.Key.fromSecureRandom(32);
   final pskKey = e.Key.fromSecureRandom(32);
+  if (onKeysGenerated != null) {
+    onKeysGenerated(dscKey.bytes, pskKey.bytes);
+  }
 
   final resp = await MotorFlutterPlatform.instance.createAccountWithKeys(CreateAccountWithKeysRequest(
     password: password,
@@ -191,7 +200,7 @@ print('Account created successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

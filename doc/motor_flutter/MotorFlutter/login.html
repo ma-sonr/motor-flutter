@@ -53,7 +53,9 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">LoginResponse?</span>&gt;</span></span>
 <span class="name ">login</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
-<li><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>}</span></li>
+<li><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>, </span></li>
+<li><span class="parameter" id="login-param-pskKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">pskKey</span>, </span></li>
+<li><span class="parameter" id="login-param-dscKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">dscKey</span>}</span></li>
 </ol>)
 
       
@@ -63,6 +65,13 @@
 <section class="desc markdown">
   <p>Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>address</code>. Both of these params are required in order
 to return a successful <code>LoginResponse</code>.</p>
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li><code>address</code> - The address of the account to login to.</li>
+<li><code>password</code> - The password used to encrypt the wallet shards with AES.</li>
+<li><code>pskKey</code> - The pre-shared key used to encrypt the wallet shards with AES. <em>(optional)</em></li>
+<li><code>dscKey</code> - The data signing key used to encrypt the wallet shards with AES. <em>(optional)</em></li>
+</ul>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
 if (res == null) {
@@ -83,7 +92,7 @@ print('Account logged in successfully: ${res.address}');
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;LoginResponse?&gt; login({required String password, required String address}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;LoginResponse?&gt; login({required String password, required String address, List&lt;int&gt;? pskKey, List&lt;int&gt;? dscKey}) async {
   final auth = await readKeysForAddr(address);
   if (auth == null) {
     throw Exception(&#39;No keys found for did: $address&#39;);
@@ -191,7 +200,7 @@ print('Account logged in successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

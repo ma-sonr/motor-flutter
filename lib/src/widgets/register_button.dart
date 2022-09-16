@@ -99,6 +99,23 @@ enum ButtonVariant {
 ///   );
 /// }
 /// ```
+///
+/// ## Options
+///
+/// ### [ButtonVariant.blue]
+/// <img alt='Motor Button Preview' src='https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/cca8ebae-3527-4b6c-e7c5-3180d4465b00/motorFlutterButtonPreviews'>
+///
+/// ### [ButtonVariant.black]
+/// <img alt='Motor Button Preview' src='https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/4895f4cc-36aa-46e5-b887-8702bf7f7100/motorFlutterButtonPreviews'>
+///
+/// ### [ButtonVariant.white]
+/// <img alt='Motor Button Preview' src='https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/61b3f3ca-623d-4586-a815-f5ad3b9fad00/motorFlutterButtonPreviews'>
+///
+/// ### [ButtonVariant.blackOutline]
+/// <img alt='Motor Button Preview' src='https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/cca8ebae-3527-4b6c-e7c5-3180d4465b00/motorFlutterButtonPreviews'>
+///
+/// ### [ButtonVariant.whiteOutline]
+/// <img alt='Motor Button Preview' src='https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/c20af003-5886-42fa-e255-2b5631448400/motorFlutterButtonPreviews'>
 class SonrRegisterButton extends StatelessWidget {
   final ResponseCallback<CreateAccountResponse>? onSuccess;
   final ErrorCallback? onError;

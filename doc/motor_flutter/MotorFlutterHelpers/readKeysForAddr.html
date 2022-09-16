@@ -66,11 +66,15 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;Tuple2&lt;List&lt;int&gt;, List&lt;int&gt;&gt;?&gt; readKeysForAddr(String addr) async {
   &#47;&#47; Read from GetStorage if Debug
-  if (isDebugMode) {
-    final dsc = _tempStorage.read(_dscKeyForDid(addr));
-    final psk = _tempStorage.read(_pskKeyForDid(addr));
-    if (dsc != null &amp;&amp; psk != null) {
-      return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
+  if (isDebugMode || _enabledStorage) {
+    try {
+      final dsc = _tempStorage.read(_dscKeyForDid(addr));
+      final psk = _tempStorage.read(_pskKeyForDid(addr));
+      if (dsc != null &amp;&amp; psk != null) {
+        return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
+      }
+    } catch (e) {
+      Log.printFlutterWarn(&quot;Failed to read AES Keys from GetStorage $e&quot;);
     }
   } else {
     &#47;&#47; Read from Keychain
@@ -128,7 +132,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

@@ -52,7 +52,9 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">init</span>(<wbr>)
+<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-enableStorage">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enableStorage</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="init-param-autoInject"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoInject</span> = <span class="default-value">true</span>}</span></li>
+</ol>)
 
       
 
@@ -60,6 +62,11 @@
     
 <section class="desc markdown">
   <p>This static method initializes a <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance and Injects it into <a href="https://pub.dev/documentation/get/4.6.5/get_core_src_get_main/Get.html">Get</a> state management.</p>
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li><code>autoInject</code> : Automatically injects the <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance into <a href="https://pub.dev/documentation/get/4.6.5/get_core_src_get_main/Get.html">Get</a> state management. Defaults to true.</li>
+<li><code>enableStorage</code> : Initializes GetStorage for <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> to use. Defaults to true.</li>
+</ul>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">import 'package:motor_flutter/motor_flutter.dart';
 
@@ -81,12 +88,13 @@ void main() async {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init() async {
-  await GetStorage.init(kMotorTempStorageName);
-  await Get.putAsync(
-    () =&gt; MotorFlutter()._init(),
-    permanent: true,
-  );
+  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init({bool enableStorage = true, bool autoInject = true}) async {
+  if (autoInject) {
+    await Get.putAsync(
+      () =&gt; MotorFlutter()._init(enableStorage),
+      permanent: true,
+    );
+  }
 }</code></pre>
 </section>
 
@@ -178,7 +186,7 @@ void main() async {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

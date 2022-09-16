@@ -52,7 +52,8 @@
       
 
 <span class="returntype">dynamic</span>
-<span class="name ">createAccount</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createAccount-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>}</span></li>
+<span class="name ">createAccount</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createAccount-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
+<li><span class="parameter" id="createAccount-param-onKeysGenerated"><span class="type-annotation"><a href="../../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a>?</span> <span class="parameter-name">onKeysGenerated</span>}</span></li>
 </ol>)
 
       
@@ -64,14 +65,14 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">createAccount({required String password}) async {
+  <pre class="language-dart"><code class="language-dart">createAccount({required String password, HandleKeysCallback? onKeysGenerated}) async {
   &#47;&#47; Set status to loading
   change(null, status: RxStatus.loading());
   _stopwatch.start();
   Timer.periodic(const Duration(milliseconds: 125), _handleTimer);
 
   &#47;&#47; Create account
-  final res = await MotorFlutter.to.createAccount(password);
+  final res = await MotorFlutter.to.createAccount(password, onKeysGenerated: onKeysGenerated);
   if (res == null) {
     _closeTimer();
     change(null, status: RxStatus.error(&quot;Internal Error - Failed to create account&quot;));
@@ -170,7 +171,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

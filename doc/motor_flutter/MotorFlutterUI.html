@@ -74,7 +74,7 @@
     <h2>Methods</h2>
     <dl class="callables">
         <dt id="showRegisterModal" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutterUI/showRegisterModal.html">showRegisterModal</a></span><span class="signature">(<wbr><span class="parameter" id="showRegisterModal-param-onError">{<span class="type-annotation"><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a>?</span> <span class="parameter-name">onError</span>}</span>)
+  <span class="name"><a href="../motor_flutter/MotorFlutterUI/showRegisterModal.html">showRegisterModal</a></span><span class="signature">(<wbr><span class="parameter" id="showRegisterModal-param-onKeysGenerated">{<span class="type-annotation"><a href="../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a>?</span> <span class="parameter-name">onKeysGenerated</span>, </span><span class="parameter" id="showRegisterModal-param-onError"><span class="type-annotation"><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a>?</span> <span class="parameter-name">onError</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateAccountResponse?</span>&gt;</span></span>
   </span>
   
@@ -82,8 +82,7 @@
 </dt>
 <dd>
   Display a modal dialog above the current application content which walks the user through the process
-of registering a new account. An optional <code>onError</code> callback can be used to handle errors that occur
-during the registration process. Returns <code>CreateAccountResponse</code> if the user successfully creates an
+of registering a new account. Returns <code>CreateAccountResponse</code> if the user successfully creates an
 account, otherwise returns null.
   
 
@@ -118,6 +117,13 @@ account, otherwise returns null.
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#classes">Classes</a></li>
   <li><a href="../motor_flutter/Log-class.html">Log</a></li>
   <li><a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a></li>
+  <li><a href="../motor_flutter/NebulaBorders-class.html">NebulaBorders</a></li>
+  <li><a href="../motor_flutter/NebulaColors-class.html">NebulaColors</a></li>
+  <li><a href="../motor_flutter/NebulaDimensions-class.html">NebulaDimensions</a></li>
+  <li><a href="../motor_flutter/NebulaGradients-class.html">NebulaGradients</a></li>
+  <li><a href="../motor_flutter/NebulaRadii-class.html">NebulaRadii</a></li>
+  <li><a href="../motor_flutter/NebulaShadows-class.html">NebulaShadows</a></li>
+  <li><a href="../motor_flutter/NebulaTextStyles-class.html">NebulaTextStyles</a></li>
   <li><a href="../motor_flutter/RegisterController-class.html">RegisterController</a></li>
   <li><a href="../motor_flutter/RegisterModalPage-class.html">RegisterModalPage</a></li>
   <li><a href="../motor_flutter/SonrRegisterButton-class.html">SonrRegisterButton</a></li>
@@ -143,12 +149,14 @@ account, otherwise returns null.
 
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#enums">Enums</a></li>
+  <li><a href="../motor_flutter/ButtonVariant.html">ButtonVariant</a></li>
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#typedefs">Typedefs</a></li>
   <li><a href="../motor_flutter/BoolCallback.html">BoolCallback</a></li>
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
   <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
+  <li><a href="../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
   <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
@@ -179,7 +187,7 @@ account, otherwise returns null.
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

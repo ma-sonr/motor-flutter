@@ -52,7 +52,8 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateAccountResponse?</span>&gt;</span></span>
-<span class="name ">showRegisterModal</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="showRegisterModal-param-onError">{<span class="type-annotation"><a href="../../motor_flutter/ErrorCallback.html">ErrorCallback</a>?</span> <span class="parameter-name">onError</span>}</span></li>
+<span class="name ">showRegisterModal</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="showRegisterModal-param-onKeysGenerated">{<span class="type-annotation"><a href="../../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a>?</span> <span class="parameter-name">onKeysGenerated</span>, </span></li>
+<li><span class="parameter" id="showRegisterModal-param-onError"><span class="type-annotation"><a href="../../motor_flutter/ErrorCallback.html">ErrorCallback</a>?</span> <span class="parameter-name">onError</span>}</span></li>
 </ol>)
 
       
@@ -61,9 +62,13 @@
     
 <section class="desc markdown">
   <p>Display a modal dialog above the current application content which walks the user through the process
-of registering a new account. An optional <code>onError</code> callback can be used to handle errors that occur
-during the registration process. Returns <code>CreateAccountResponse</code> if the user successfully creates an
+of registering a new account. Returns <code>CreateAccountResponse</code> if the user successfully creates an
 account, otherwise returns null.</p>
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li>Callback <code>onError</code> can be used to handle errors that occur (optional)</li>
+<li>Callback <code>onKeysGenerated</code> is used to handle the dsc, and psk keys that are generated (optional)</li>
+</ul>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">import 'package:motor_flutter/motor_flutter.dart';
 
@@ -78,6 +83,10 @@ MaterialButton(
         Get.offAll(() =&gt; const HomePage());
     }
   },
+  onKeysGenerated: (dsc, psk) {
+    print("DSC Length: ${dsc.length}"); // Output: "DSC Length: 32"
+    print("PSK Length: ${psk.length}"); // Output: "PSK Length: 32"
+  },
 );
 </code></pre>
 </section>
@@ -86,14 +95,18 @@ MaterialButton(
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; showRegisterModal({ErrorCallback? onError}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
   final completer = Completer&lt;CreateAccountResponse?&gt;();
   if (MotorFlutter.isReady) {
     Get.dialog(RegisterModalPage(
       onCreateAccountResponse: (response) {
+        if (response == null &amp;&amp; onKeysGenerated == null) {
+          throw Exception(&quot;onKeysGenerated callback must be provided if GetStorage is not initialized&quot;);
+        }
         completer.complete(response);
       },
       onError: onError,
+      onKeysGenerated: onKeysGenerated,
     ));
   }
   return completer.future;
@@ -143,7 +156,7 @@ MaterialButton(
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   

@@ -68,9 +68,13 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; writeKeysForAddr(Uint8List dscBytes, Uint8List pskBytes, String addr) async {
   &#47;&#47; Write to GetStorage if Debug
-  if (isDebugMode) {
-    _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
-    _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
+  if (isDebugMode || _enabledStorage) {
+    try {
+      _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
+      _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
+    } catch (e) {
+      Log.printFlutterWarn(&quot;Failed to write AES Keys to GetStorage $e&quot;);
+    }
     return true;
   }
 
@@ -80,12 +84,15 @@
     FlutterKeychain.put(key: _pskKeyForDid(addr), value: _encodeHexString(pskBytes)),
   ];
   await Future.wait(keychainPuts, eagerError: true, cleanUp: (dynamic error) {
-    if (isDebugMode) {
-      &#47;&#47; ignore: avoid_print
-      print(error);
+    Log.printFlutterWarn(&quot;Failed to write AES keys to keychain: $error&quot;);
+    if (_enabledStorage) {
+      try {
+        _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
+        _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
+      } catch (e) {
+        Log.printFlutterWarn(&quot;Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e&quot;);
+      }
     }
-    _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
-    _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
   });
   return false;
 }</code></pre>
@@ -135,7 +142,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.5.0
   </span>
 
   
