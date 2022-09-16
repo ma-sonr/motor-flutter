@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 -->
-<img src="https://github.com/sonr-io/motor-flutter/blob/main/doc/static-assets/gh-motor-banner.png?raw=true" width="650px" alt="Sonr motor_flutter banner image for github and pub.dev">
+<img src="https://github.com/sonr-io/motor-flutter/blob/main/doc/static-assets/gh-motor-banner.png?raw=true" alt="Sonr motor_flutter banner image for github and pub.dev">
 <!-- markdownlint-enable MD033 -->
 
 <div align="center">
