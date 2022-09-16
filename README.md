@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD033 -->
-<img src="https://github.com/sonr-io/motor-flutter/blob/main/doc/static-assets/gh-motor-banner.png?raw=true" width="650px" alt="Sonr motor_flutter banner image for github and pub.dev">
+<img src="https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/31d96444-4aa1-4a8a-dc03-192672a9ab00/githubBanner" alt="Sonr motor_flutter banner image for github and pub.dev">
 <!-- markdownlint-enable MD033 -->
 
 <div align="center">
@@ -36,7 +36,7 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.5.0
+  motor_flutter: ^0.5.1
 ```
 
 #### iOS

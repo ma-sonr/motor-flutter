@@ -1,3 +1,7 @@
+## 0.5.1
+* Small docs fixes to `SonrRegisterButton`
+* Remove README fixed size image
+
 ## 0.5.0
 * Upgrade to `motor_pod ~> 6.0.0` which fixes SchemaDocument construction
 * Add GH Actions CI to announce releases
