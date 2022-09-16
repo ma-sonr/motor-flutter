@@ -1,3 +1,6 @@
+## 0.4.1
+* Fix `MotorFlutter` initialization to enable GetStorage
+
 ## 0.4.0
 * Add better documentation for methods
 * Add usage of individual methods in docs

@@ -196,6 +196,7 @@ class MotorFlutter extends GetxService {
       () => MotorFlutter()._init(),
       permanent: true,
     );
+    await GetStorage.init(kMotorTempStorageName);
   }
 
   /// ### Description
