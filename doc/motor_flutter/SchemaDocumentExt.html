@@ -82,7 +82,7 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Description
+  Returns the provided <code>T</code> value from the <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> for the given <code>name</code> of the field, or null if the field does not exist.
   
 
 </dd>
@@ -95,7 +95,8 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Description
+  Pulls the <code>SchemaDocument</code> from the current accounts application-specific data store using the provided <code>cid</code>. The account then decrypts the data and
+its values are returned as a <code>SchemaDocument</code>. A succesful transaction will return a <code>SchemaDocument</code>.
   
 
 </dd>
@@ -108,7 +109,8 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Description
+  Saves the <code>SchemaDocument</code> to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
+able to view the values. A succesful transaction will return a <a href="../motor_flutter/UploadDocumentResponse-class.html">UploadDocumentResponse</a>.
   
 
 </dd>
@@ -121,7 +123,7 @@ to manage user generated data.</p>
 
 </dt>
 <dd>
-  Description
+  Sets the provided <code>T</code> <code>value</code> to the <a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a> for the given <code>name</code> of the field. Returns true if the field was found and set, false otherwise.
   
 
 </dd>
@@ -311,7 +313,7 @@ to manage user generated data.</p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.0
+      0.4.1
   </span>
 
   

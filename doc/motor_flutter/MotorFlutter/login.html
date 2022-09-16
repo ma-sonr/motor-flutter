@@ -61,8 +61,7 @@
     </section>
     
 <section class="desc markdown">
-  <h3 id="description">Description</h3>
-<p>Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>address</code>. Both of these params are required in order
+  <p>Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>address</code>. Both of these params are required in order
 to return a successful <code>LoginResponse</code>.</p>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
@@ -192,7 +191,7 @@ print('Account logged in successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.0
+      0.4.1
   </span>
 
   

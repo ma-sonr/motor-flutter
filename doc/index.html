@@ -58,7 +58,7 @@
 </code></pre>
 <p>or</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
-  motor_flutter: ^0.3.4
+  motor_flutter: ^0.4.2
 </code></pre>
 <h4 id="ios">iOS</h4>
 <p>Add the following to your Podfile:</p>
@@ -68,27 +68,7 @@
 <pre class="language-ruby"><code class="language-ruby">use_frameworks!
 </code></pre>
 <h2 id="usage">Usage</h2>
-<p>Here is a simple example of using the <code>Motor</code> class to control a motor.</p>
-<pre class="language-dart"><code class="language-dart">import 'package:motor_flutter/motor_flutter.dart';
-
-// Initialize the Sonr Motor Node
-final instance = await MotorFlutter();
-
-// Create a new account
-instance.createAccount("secure-password-123", _handleResponse);
-
-// Helper function to handle response
-void _handleResponse(CreateAccountResponse? resp) {
-  if (resp != null) {
-    // Login to an existing account
-    final authInfo = resp.authInfo;
-    instance.login(authInfo, (response) {
-      print(response);
-    });
-  }
-}
-</code></pre>
-<p>We have also introduced a <strong>ModalView widget</strong> to make it easier to <em>register and login</em> to your account.</p>
+<p>We have full usage examples available in the motor_flutter <a href="https://motor.build/motor_flutter/">docs site</a>.</p>
 <h2 id="api-reference">API Reference</h2>
 <p>For full usage documentation on the Motor Flutter class, please see the <a href="https://motor.build/motor_flutter/MotorFlutter-class.html">API Reference</a>.</p>
 <h2 id="contributing">Contributing</h2>
@@ -141,7 +121,7 @@ void _handleResponse(CreateAccountResponse? resp) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.0
+      0.4.1
   </span>
 
   

@@ -60,8 +60,7 @@
     </section>
     
 <section class="desc markdown">
-  <h3 id="description">Description</h3>
-<p>Creates a new Account with the given <code>password</code>. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
+  <p>Creates a new Account with the given <code>password</code>. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
 storage during development. Returns <code>CreateAccountResponse</code> if the account is created successfully.</p>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.createAccount('terrible-password-123');
@@ -192,7 +191,7 @@ print('Account created successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.0
+      0.4.1
   </span>
 
   

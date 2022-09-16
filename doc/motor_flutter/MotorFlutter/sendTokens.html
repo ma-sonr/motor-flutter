@@ -62,8 +62,7 @@
     </section>
     
 <section class="desc markdown">
-  <h3 id="description">Description</h3>
-<p>Creates a TX in order to deposit the <code>amount</code> of SNR into the <code>recipient</code> account. A succesful transaction will return a <code>PaymentResponse</code> and will return null if the transaction fails.</p>
+  <p>Creates a TX in order to deposit the <code>amount</code> of SNR into the <code>recipient</code> account. A succesful transaction will return a <code>PaymentResponse</code> and will return null if the transaction fails.</p>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.deposit('did:snr:abc123', 3.29);
 if (res == null) {
@@ -179,7 +178,7 @@ print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.0
+      0.4.1
   </span>
 
   

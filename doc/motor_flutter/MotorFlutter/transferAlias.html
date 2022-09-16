@@ -63,8 +63,7 @@
     </section>
     
 <section class="desc markdown">
-  <h3 id="description">Description</h3>
-<p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
+  <p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
 an error if the provided <code>amount</code> is less than the listed price, or if the <code>alias</code> is not listed for sale by the <code>currentOwner</code>.</p>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
@@ -194,7 +193,7 @@ print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.0
+      0.4.1
   </span>
 
   

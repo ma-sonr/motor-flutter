@@ -1,3 +1,6 @@
+## 0.4.2
+* Fix formatting issues with DartDoc
+
 ## 0.4.1
 * Fix `MotorFlutter` initialization to enable GetStorage
 
