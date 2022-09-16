@@ -1,6 +1,9 @@
 ## 0.5.1
 * Small docs fixes to `SonrRegisterButton`
 * Remove README fixed size image
+* Replace Header with Cloudflare image
+* Fix Always throws error in `MotorFlutter.login`
+* Fix broken link in README
 
 ## 0.5.0
 * Upgrade to `motor_pod ~> 6.0.0` which fixes SchemaDocument construction

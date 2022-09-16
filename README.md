@@ -50,24 +50,22 @@ Add the following to your Podfile:
 platform :ios, '13.0'
 ```
 
-Then **remove** this line from your Podfile:
+Then **remove or comment out** this line from your Podfile:
 ```ruby
-use_frameworks!
+# use_frameworks!
 ```
 
 
 ## Usage
 
-We have full usage examples available in the motor_flutter [docs site](https://motor.build/motor_flutter/).
-
-## API Reference
-
-For full usage documentation on the Motor Flutter class, please see the [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html).
+We have full usage examples available in the motor_flutter [docs site](https://motor.build/motor_flutter/motor_flutter-library.html). Each method on the
+`MotorFlutter` class has a full example and usage guide for its functionality.
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+This library is still under active core team development. We welcome contributions from the community, but for the time being we would ask
+that you create an issue before submitting a pull request.
 
 ## License
 
-MIT
+Our code is licensed under the [GPLv3](/LICENSE) license.

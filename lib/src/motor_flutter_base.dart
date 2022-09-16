@@ -260,14 +260,14 @@ class MotorFlutter extends GetxService {
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<LoginResponse?> login({required String password, required String address, List<int>? pskKey, List<int>? dscKey}) async {
     final auth = await readKeysForAddr(address);
-    if (auth == null) {
+    if (auth == null && (pskKey == null || dscKey == null)) {
       throw Exception('No keys found for did: $address');
     }
     final resp = await MotorFlutterPlatform.instance.loginWithKeys(LoginWithKeysRequest(
       did: address,
       password: password,
-      aesDscKey: auth.item1,
-      aesPskKey: auth.item2,
+      aesDscKey: auth?.item1 ?? dscKey,
+      aesPskKey: auth?.item2 ?? pskKey,
     ));
     if (resp != null) {
       this.address(resp.whoIs.owner);
