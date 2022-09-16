@@ -51,11 +51,11 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/CreateSchemaResponse-class.html">CreateSchemaResponse</a>?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateSchemaResponse?</span>&gt;</span></span>
 <span class="name ">createSchema</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createSchema-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, </span></li>
-<li><span class="parameter" id="createSchema-param-fields"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="../../motor_flutter/SchemaKind-class.html">SchemaKind</a></span>&gt;</span></span> <span class="parameter-name">fields</span>, </span></li>
+<li><span class="parameter" id="createSchema-param-fields"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">SchemaKind</span>&gt;</span></span> <span class="parameter-name">fields</span>, </span></li>
 <li><span class="parameter" id="createSchema-param-metadata"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">metadata</span>, </span></li>
-<li><span class="parameter" id="createSchema-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/CreateSchemaResponse-class.html">CreateSchemaResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
+<li><span class="parameter" id="createSchema-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateSchemaResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
 </ol>)
 
       
@@ -63,7 +63,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Builds a request for recording a <a href="../../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> on the blockchain. <code>metadata</code> is for any additional information that should be stored with the schema. <code>callback</code> is an optional
+  <p>Builds a request for recording a <code>SchemaDefinition</code> on the blockchain. <code>metadata</code> is for any additional information that should be stored with the schema. <code>callback</code> is an optional
 function that will be called when the transaction is complete. Returns a <code>CreateSchemaResponse</code> if the transaction is successful.</p>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.createSchema('My Schema', {'name': SchemaKind.STRING, 'age': SchemaKind.INT});

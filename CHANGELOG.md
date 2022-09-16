@@ -1,3 +1,9 @@
+## 0.4.4
+* Placed GetStorage write methods into try/catch blocks to prevent crashes when the storage is unavailable.
+* Introduce HandleKeysCallback for allowing developers to store DSC and PSK keys in a secure location.
+* Throws exception when GetStorage method fails and no HandleKeysCallback is provided.
+* Add Initialize options to enable/disable GetStorage and AutoInitialize.
+
 ## 0.4.3
 * Fix GetStorage execution order issue
 

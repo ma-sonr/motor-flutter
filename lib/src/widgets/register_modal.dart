@@ -5,9 +5,15 @@ import 'package:fancy_password_field/fancy_password_field.dart';
 
 class RegisterModalPage extends GetView<RegisterController> {
   final ResponseCallback<CreateAccountResponse>? onCreateAccountResponse;
+  final HandleKeysCallback? onKeysGenerated;
   final ErrorCallback? onError;
 
-  const RegisterModalPage({Key? key, this.onCreateAccountResponse, this.onError}) : super(key: key);
+  const RegisterModalPage({
+    Key? key,
+    this.onCreateAccountResponse,
+    this.onKeysGenerated,
+    this.onError,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,11 +100,11 @@ class RegisterModalPage extends GetView<RegisterController> {
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
                 child: FancyPasswordField(
                   validationRules: {
-                    DigitValidationRule(),
+                    SpecialCharacterValidationRule(),
                     UppercaseValidationRule(),
                     MinCharactersValidationRule(8),
                   },
-                  onFieldSubmitted: (String value) => controller.createAccount(password: value),
+                  onFieldSubmitted: (String value) => controller.createAccount(password: value, onKeysGenerated: onKeysGenerated),
                 ),
               ),
             ],

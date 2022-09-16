@@ -33,14 +33,14 @@ class RegisterController extends GetxController with StateMixin<CreateAccountRes
     change(null, status: RxStatus.empty());
   }
 
-  createAccount({required String password}) async {
+  createAccount({required String password, HandleKeysCallback? onKeysGenerated}) async {
     // Set status to loading
     change(null, status: RxStatus.loading());
     _stopwatch.start();
     Timer.periodic(const Duration(milliseconds: 125), _handleTimer);
 
     // Create account
-    final res = await MotorFlutter.to.createAccount(password);
+    final res = await MotorFlutter.to.createAccount(password, onKeysGenerated: onKeysGenerated);
     if (res == null) {
       _closeTimer();
       change(null, status: RxStatus.error("Internal Error - Failed to create account"));

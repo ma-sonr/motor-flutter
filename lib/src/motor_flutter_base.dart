@@ -33,6 +33,7 @@ class MotorFlutter extends GetxService {
   final _methodChannel = const MethodChannel(kMotorPlatformChannelAddr);
   late final PeerInformation _peerInfo;
   late final GetStorage _tempStorage;
+  late final bool _enabledStorage;
 
   // Constructor
   MotorFlutter() {
@@ -162,6 +163,10 @@ class MotorFlutter extends GetxService {
 
   /// This static method initializes a [MotorFlutter] instance and Injects it into [Get] state management.
   ///
+  /// ### Parameters
+  /// - [autoInject] : Automatically injects the [MotorFlutter] instance into [Get] state management. Defaults to true.
+  /// - [enableStorage] : Initializes GetStorage for [MotorFlutter] to use. Defaults to true.
+  ///
   /// ### Example
   ///
   /// ```dart
@@ -177,16 +182,21 @@ class MotorFlutter extends GetxService {
   /// - Register a new user with [createAccount]
   /// - Login with an existing account using [login]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
-  static Future<void> init() async {
-    await GetStorage.init(kMotorTempStorageName);
-    await Get.putAsync(
-      () => MotorFlutter()._init(),
-      permanent: true,
-    );
+  static Future<void> init({bool enableStorage = true, bool autoInject = true}) async {
+    if (autoInject) {
+      await Get.putAsync(
+        () => MotorFlutter()._init(enableStorage),
+        permanent: true,
+      );
+    }
   }
 
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
   /// storage during development. Returns [CreateAccountResponse] if the account is created successfully.
+  ///
+  /// ### Parameters:
+  /// - [password] - The password used to encrypt the keys in the keychain.
+  /// - [onKeysGenerated] - A callback function that is triggered when the keys are generated. This is useful for storing the keys in a secure location. _(optional)_
   ///
   /// ### Example
   ///
@@ -202,9 +212,12 @@ class MotorFlutter extends GetxService {
   /// - Issue payments to the account using [sendTokens]
   /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
-  Future<CreateAccountResponse?> createAccount(String password) async {
+  Future<CreateAccountResponse?> createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
     final dscKey = e.Key.fromSecureRandom(32);
     final pskKey = e.Key.fromSecureRandom(32);
+    if (onKeysGenerated != null) {
+      onKeysGenerated(dscKey.bytes, pskKey.bytes);
+    }
 
     final resp = await MotorFlutterPlatform.instance.createAccountWithKeys(CreateAccountWithKeysRequest(
       password: password,

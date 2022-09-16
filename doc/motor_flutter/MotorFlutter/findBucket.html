@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/WhereIs-class.html">WhereIs</a></span>&gt;</span>?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">WhereIs</span>&gt;</span>?</span>&gt;</span></span>
 <span class="name ">findBucket</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="findBucket-param-did">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">did</span>, </span></li>
 <li><span class="parameter" id="findBucket-param-creator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">creator</span>}</span></li>
 </ol>)
@@ -61,7 +61,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Queries the Sonr blockchain for the associated <a href="../../motor_flutter/WhereIs-class.html">WhereIs</a> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
+  <p>Queries the Sonr blockchain for the associated <code>WhereIs</code> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
 Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if no bucket is found, or if neither <code>did</code> nor <code>creator</code> were provided.</p>
 <h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">// Search by DID

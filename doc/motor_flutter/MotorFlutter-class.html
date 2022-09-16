@@ -155,7 +155,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
         <dt id="didDocument" class="property">
   <span class="name"><a href="../motor_flutter/MotorFlutter/didDocument.html">didDocument</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/Rx-class.html">Rx</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/DIDDocument-class.html">DIDDocument</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/Rx-class.html">Rx</a><span class="signature">&lt;<wbr><span class="type-parameter">DIDDocument</span>&gt;</span></span> 
 
 </dt>
 <dd>
@@ -170,14 +170,14 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
 </dt>
 <dd>
-  This getter method returns the current version of the underlying accounts <a href="../motor_flutter/DIDDocument-class.html">DIDDocument</a> id. This is NOT a reactive variable.
+  This getter method returns the current version of the underlying accounts <code>DIDDocument</code> id. This is NOT a reactive variable.
   <div class="features">read-only</div>
 
 </dd>
 
         <dt id="discoverEvents" class="property">
   <span class="name"><a href="../motor_flutter/MotorFlutter/discoverEvents.html">discoverEvents</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/StreamController-class.html">StreamController</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/RefreshEvent-class.html">RefreshEvent</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/StreamController-class.html">StreamController</a><span class="signature">&lt;<wbr><span class="type-parameter">RefreshEvent</span>&gt;</span></span> 
 
 </dt>
 <dd>
@@ -188,7 +188,7 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
         <dt id="domains" class="property">
   <span class="name"><a href="../motor_flutter/MotorFlutter/domains.html">domains</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxList-class.html">RxList</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/Alias-class.html">Alias</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxList-class.html">RxList</a><span class="signature">&lt;<wbr><span class="type-parameter">Alias</span>&gt;</span></span> 
 
 </dt>
 <dd>
@@ -232,11 +232,11 @@ determine if the user is ready to be active on the <a href="https://sonr.io">Son
 
         <dt id="nearbyPeers" class="property">
   <span class="name"><a href="../motor_flutter/MotorFlutter/nearbyPeers.html">nearbyPeers</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxList-class.html">RxList</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/Peer-class.html">Peer</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxList-class.html">RxList</a><span class="signature">&lt;<wbr><span class="type-parameter">Peer</span>&gt;</span></span> 
 
 </dt>
 <dd>
-  List of all neerby Motor powered devices. This is updated every time a <a href="../motor_flutter/RefreshEvent-class.html">RefreshEvent</a> is received on the <a href="https://api.flutter.dev/flutter/services/MethodChannel-class.html">MethodChannel</a>. All nodes are referenced with the <code>Peer</code> object.
+  List of all neerby Motor powered devices. This is updated every time a <code>RefreshEvent</code> is received on the <a href="https://api.flutter.dev/flutter/services/MethodChannel-class.html">MethodChannel</a>. All nodes are referenced with the <code>Peer</code> object.
   <div class="features">final</div>
 
 </dd>
@@ -279,11 +279,11 @@ lifetime cycle of the subclass.
 
         <dt id="schemaMap" class="property">
   <span class="name"><a href="../motor_flutter/MotorFlutter/schemaMap.html">schemaMap</a></span>
-  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxMap-class.html">RxMap</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a></span>&gt;</span></span> 
+  <span class="signature">&#8594; <a href="https://pub.dev/documentation/get/4.6.5/rx_types/RxMap-class.html">RxMap</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">SchemaDocument</span>&gt;</span></span> 
 
 </dt>
 <dd>
-  A Reference Map for all recently queried <a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a>s, and all created <code>SchemaDocument</code>s.
+  A Reference Map for all recently queried <code>SchemaDefinition</code>s, and all created <code>SchemaDocument</code>s.
   <div class="features">final</div>
 
 </dd>
@@ -322,8 +322,8 @@ lifetime cycle of the subclass.
 </dd>
 
         <dt id="buyAlias" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></span><span class="signature">(<wbr><span class="parameter" id="buyAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span><span class="parameter" id="buyAlias-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/MsgBuyAliasResponse-class.html">MsgBuyAliasResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/MsgBuyAliasResponse-class.html">MsgBuyAliasResponse</a>?</span>&gt;</span></span>
+  <span class="name"><a href="../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></span><span class="signature">(<wbr><span class="parameter" id="buyAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span><span class="parameter" id="buyAlias-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgBuyAliasResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgBuyAliasResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -350,7 +350,7 @@ when the node is ready to accept connections.
 
         <dt id="createAccount" class="callable">
   <span class="name"><a href="../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></span><span class="signature">(<wbr><span class="parameter" id="createAccount-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/CreateAccountResponse-class.html">CreateAccountResponse</a>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateAccountResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -363,14 +363,14 @@ storage during development. Returns <code>CreateAccountResponse</code> if the ac
 </dd>
 
         <dt id="createSchema" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></span><span class="signature">(<wbr><span class="parameter" id="createSchema-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, </span><span class="parameter" id="createSchema-param-fields"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="../motor_flutter/SchemaKind-class.html">SchemaKind</a></span>&gt;</span></span> <span class="parameter-name">fields</span>, </span><span class="parameter" id="createSchema-param-metadata"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">metadata</span>, </span><span class="parameter" id="createSchema-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/CreateSchemaResponse-class.html">CreateSchemaResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/CreateSchemaResponse-class.html">CreateSchemaResponse</a>?</span>&gt;</span></span>
+  <span class="name"><a href="../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></span><span class="signature">(<wbr><span class="parameter" id="createSchema-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, </span><span class="parameter" id="createSchema-param-fields"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">SchemaKind</span>&gt;</span></span> <span class="parameter-name">fields</span>, </span><span class="parameter" id="createSchema-param-metadata"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">metadata</span>, </span><span class="parameter" id="createSchema-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateSchemaResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateSchemaResponse?</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Builds a request for recording a <a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> on the blockchain. <code>metadata</code> is for any additional information that should be stored with the schema. <code>callback</code> is an optional
+  Builds a request for recording a <code>SchemaDefinition</code> on the blockchain. <code>metadata</code> is for any additional information that should be stored with the schema. <code>callback</code> is an optional
 function that will be called when the transaction is complete. Returns a <code>CreateSchemaResponse</code> if the transaction is successful.
   
 
@@ -378,13 +378,13 @@ function that will be called when the transaction is complete. Returns a <code>C
 
         <dt id="findBucket" class="callable">
   <span class="name"><a href="../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></span><span class="signature">(<wbr><span class="parameter" id="findBucket-param-did">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">did</span>, </span><span class="parameter" id="findBucket-param-creator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">creator</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/WhereIs-class.html">WhereIs</a></span>&gt;</span>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">WhereIs</span>&gt;</span>?</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Queries the Sonr blockchain for the associated <a href="../motor_flutter/WhereIs-class.html">WhereIs</a> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
+  Queries the Sonr blockchain for the associated <code>WhereIs</code> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
 Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if no bucket is found, or if neither <code>did</code> nor <code>creator</code> were provided.
   
 
@@ -392,13 +392,13 @@ Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if
 
         <dt id="findSchemas" class="callable">
   <span class="name"><a href="../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></span><span class="signature">(<wbr><span class="parameter" id="findSchemas-param-did">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">did</span>, </span><span class="parameter" id="findSchemas-param-creator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">creator</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a></span>&gt;</span>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">SchemaDefinition</span>&gt;</span>?</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Searches for a schema by either its <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value map is returned, and the <code>creator</code> argument will be ignored. Returns a map of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> to <a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a> if definition(s) are found. Returns
+  Searches for a schema by either its <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value map is returned, and the <code>creator</code> argument will be ignored. Returns a map of <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> to <code>SchemaDefinition</code> if definition(s) are found. Returns
 null if no definition is found, or if neither <code>did</code> nor <code>creator</code> were provided.
   
 
@@ -406,7 +406,7 @@ null if no definition is found, or if neither <code>did</code> nor <code>creator
 
         <dt id="login" class="callable">
   <span class="name"><a href="../motor_flutter/MotorFlutter/login.html">login</a></span><span class="signature">(<wbr><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/LoginResponse-class.html">LoginResponse</a>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">LoginResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -479,8 +479,8 @@ async request.
 </dd>
 
         <dt id="sellAlias" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></span><span class="signature">(<wbr><span class="parameter" id="sellAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span><span class="parameter" id="sellAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span><span class="parameter" id="sellAlias-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/MsgSellAliasResponse-class.html">MsgSellAliasResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/MsgSellAliasResponse-class.html">MsgSellAliasResponse</a>?</span>&gt;</span></span>
+  <span class="name"><a href="../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></span><span class="signature">(<wbr><span class="parameter" id="sellAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span><span class="parameter" id="sellAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span><span class="parameter" id="sellAlias-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -493,7 +493,7 @@ async request.
 
         <dt id="sendTokens" class="callable">
   <span class="name"><a href="../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></span><span class="signature">(<wbr><span class="parameter" id="sendTokens-param-recipient"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">recipient</span>, </span><span class="parameter" id="sendTokens-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span><span class="parameter" id="sendTokens-param-memo">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">memo</span> = <span class="default-value">&quot;&quot;</span>}</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/PaymentResponse-class.html">PaymentResponse</a>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">PaymentResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -505,8 +505,8 @@ async request.
 </dd>
 
         <dt id="stat" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/stat.html">stat</a></span><span class="signature">(<wbr><span class="parameter" id="stat-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/StatResponse-class.html">StatResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/StatResponse-class.html">StatResponse</a>?</span>&gt;</span></span>
+  <span class="name"><a href="../motor_flutter/MotorFlutter/stat.html">stat</a></span><span class="signature">(<wbr><span class="parameter" id="stat-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">StatResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">StatResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -532,8 +532,8 @@ optional <code>callback</code> can be provided to be notified when the refresh i
 </dd>
 
         <dt id="transferAlias" class="callable">
-  <span class="name"><a href="../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></span><span class="signature">(<wbr><span class="parameter" id="transferAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span><span class="parameter" id="transferAlias-param-currentOwner"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">currentOwner</span>, </span><span class="parameter" id="transferAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span><span class="parameter" id="transferAlias-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/MsgTransferAliasResponse-class.html">MsgTransferAliasResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../motor_flutter/MsgTransferAliasResponse-class.html">MsgTransferAliasResponse</a>?</span>&gt;</span></span>
+  <span class="name"><a href="../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></span><span class="signature">(<wbr><span class="parameter" id="transferAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span><span class="parameter" id="transferAlias-param-currentOwner"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">currentOwner</span>, </span><span class="parameter" id="transferAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span><span class="parameter" id="transferAlias-param-callback">[<span class="type-annotation"><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgTransferAliasResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgTransferAliasResponse?</span>&gt;</span></span>
   </span>
   
 
@@ -638,103 +638,11 @@ an error if the provided <code>amount</code> is less than the listed price, or i
     <h5>motor_flutter library</h5>
     <ol>
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#classes">Classes</a></li>
-  <li><a href="../motor_flutter/AclJwks-class.html">AclJwks</a></li>
-  <li><a href="../motor_flutter/Alias-class.html">Alias</a></li>
-  <li><a href="../motor_flutter/ArrayValue-class.html">ArrayValue</a></li>
-  <li><a href="../motor_flutter/AuthInfo-class.html">AuthInfo</a></li>
-  <li><a href="../motor_flutter/BlockchainModule-class.html">BlockchainModule</a></li>
-  <li><a href="../motor_flutter/BoolValue-class.html">BoolValue</a></li>
-  <li><a href="../motor_flutter/BucketContent-class.html">BucketContent</a></li>
-  <li><a href="../motor_flutter/BucketContentList-class.html">BucketContentList</a></li>
-  <li><a href="../motor_flutter/BucketItem-class.html">BucketItem</a></li>
-  <li><a href="../motor_flutter/BucketRole-class.html">BucketRole</a></li>
-  <li><a href="../motor_flutter/BucketVisibility-class.html">BucketVisibility</a></li>
-  <li><a href="../motor_flutter/BytesValue-class.html">BytesValue</a></li>
-  <li><a href="../motor_flutter/CreateAccountRequest-class.html">CreateAccountRequest</a></li>
-  <li><a href="../motor_flutter/CreateAccountResponse-class.html">CreateAccountResponse</a></li>
-  <li><a href="../motor_flutter/CreateAccountWithKeysRequest-class.html">CreateAccountWithKeysRequest</a></li>
-  <li><a href="../motor_flutter/CreateAccountWithKeysResponse-class.html">CreateAccountWithKeysResponse</a></li>
-  <li><a href="../motor_flutter/CreateBucketRequest-class.html">CreateBucketRequest</a></li>
-  <li><a href="../motor_flutter/CreateBucketResponse-class.html">CreateBucketResponse</a></li>
-  <li><a href="../motor_flutter/CreateSchemaRequest-class.html">CreateSchemaRequest</a></li>
-  <li><a href="../motor_flutter/CreateSchemaResponse-class.html">CreateSchemaResponse</a></li>
-  <li><a href="../motor_flutter/DIDDocument-class.html">DIDDocument</a></li>
-  <li><a href="../motor_flutter/EntityKind-class.html">EntityKind</a></li>
-  <li><a href="../motor_flutter/FloatValue-class.html">FloatValue</a></li>
-  <li><a href="../motor_flutter/GetDocumentRequest-class.html">GetDocumentRequest</a></li>
-  <li><a href="../motor_flutter/GetDocumentResponse-class.html">GetDocumentResponse</a></li>
-  <li><a href="../motor_flutter/InitializeRequest-class.html">InitializeRequest</a></li>
-  <li><a href="../motor_flutter/InitializeResponse-class.html">InitializeResponse</a></li>
-  <li><a href="../motor_flutter/IntValue-class.html">IntValue</a></li>
-  <li><a href="../motor_flutter/KeyValuePair-class.html">KeyValuePair</a></li>
-  <li><a href="../motor_flutter/LinkKind-class.html">LinkKind</a></li>
-  <li><a href="../motor_flutter/LinkValue-class.html">LinkValue</a></li>
-  <li><a href="../motor_flutter/LobbyMessage-class.html">LobbyMessage</a></li>
   <li><a href="../motor_flutter/Log-class.html">Log</a></li>
-  <li><a href="../motor_flutter/LoginRequest-class.html">LoginRequest</a></li>
-  <li><a href="../motor_flutter/LoginResponse-class.html">LoginResponse</a></li>
-  <li><a href="../motor_flutter/LoginWithKeysRequest-class.html">LoginWithKeysRequest</a></li>
-  <li><a href="../motor_flutter/MetadataDefintion-class.html">MetadataDefintion</a></li>
-  <li><a href="../motor_flutter/MotorCallbackMessage-class.html">MotorCallbackMessage</a></li>
   <li><a href="../motor_flutter/MotorFlutter-class.html">MotorFlutter</a></li>
-  <li><a href="../motor_flutter/MsgApi-class.html">MsgApi</a></li>
-  <li><a href="../motor_flutter/MsgBuyAlias-class.html">MsgBuyAlias</a></li>
-  <li><a href="../motor_flutter/MsgBuyAliasResponse-class.html">MsgBuyAliasResponse</a></li>
-  <li><a href="../motor_flutter/MsgCreateWhoIs-class.html">MsgCreateWhoIs</a></li>
-  <li><a href="../motor_flutter/MsgCreateWhoIsResponse-class.html">MsgCreateWhoIsResponse</a></li>
-  <li><a href="../motor_flutter/MsgDeactivateWhoIs-class.html">MsgDeactivateWhoIs</a></li>
-  <li><a href="../motor_flutter/MsgDeactivateWhoIsResponse-class.html">MsgDeactivateWhoIsResponse</a></li>
-  <li><a href="../motor_flutter/MsgSellAlias-class.html">MsgSellAlias</a></li>
-  <li><a href="../motor_flutter/MsgSellAliasResponse-class.html">MsgSellAliasResponse</a></li>
-  <li><a href="../motor_flutter/MsgTransferAlias-class.html">MsgTransferAlias</a></li>
-  <li><a href="../motor_flutter/MsgTransferAliasResponse-class.html">MsgTransferAliasResponse</a></li>
-  <li><a href="../motor_flutter/MsgUpdateWhoIs-class.html">MsgUpdateWhoIs</a></li>
-  <li><a href="../motor_flutter/MsgUpdateWhoIsResponse-class.html">MsgUpdateWhoIsResponse</a></li>
-  <li><a href="../motor_flutter/ObjectReference-class.html">ObjectReference</a></li>
-  <li><a href="../motor_flutter/PaymentRequest-class.html">PaymentRequest</a></li>
-  <li><a href="../motor_flutter/PaymentResponse-class.html">PaymentResponse</a></li>
-  <li><a href="../motor_flutter/Peer-class.html">Peer</a></li>
-  <li><a href="../motor_flutter/Peer_Status-class.html">Peer_Status</a></li>
-  <li><a href="../motor_flutter/QueryRequest-class.html">QueryRequest</a></li>
-  <li><a href="../motor_flutter/QueryResponse-class.html">QueryResponse</a></li>
-  <li><a href="../motor_flutter/QueryResultItem-class.html">QueryResultItem</a></li>
-  <li><a href="../motor_flutter/QuerySchemaRequest-class.html">QuerySchemaRequest</a></li>
-  <li><a href="../motor_flutter/QueryWhatIsByCreatorRequest-class.html">QueryWhatIsByCreatorRequest</a></li>
-  <li><a href="../motor_flutter/QueryWhatIsByCreatorResponse-class.html">QueryWhatIsByCreatorResponse</a></li>
-  <li><a href="../motor_flutter/QueryWhatIsRequest-class.html">QueryWhatIsRequest</a></li>
-  <li><a href="../motor_flutter/QueryWhatIsResponse-class.html">QueryWhatIsResponse</a></li>
-  <li><a href="../motor_flutter/QueryWhereIsByCreatorRequest-class.html">QueryWhereIsByCreatorRequest</a></li>
-  <li><a href="../motor_flutter/QueryWhereIsByCreatorResponse-class.html">QueryWhereIsByCreatorResponse</a></li>
-  <li><a href="../motor_flutter/QueryWhereIsRequest-class.html">QueryWhereIsRequest</a></li>
-  <li><a href="../motor_flutter/QueryWhereIsResponse-class.html">QueryWhereIsResponse</a></li>
-  <li><a href="../motor_flutter/QueryWhoIsRequest-class.html">QueryWhoIsRequest</a></li>
-  <li><a href="../motor_flutter/QueryWhoIsResponse-class.html">QueryWhoIsResponse</a></li>
-  <li><a href="../motor_flutter/RefreshEvent-class.html">RefreshEvent</a></li>
   <li><a href="../motor_flutter/RegisterController-class.html">RegisterController</a></li>
   <li><a href="../motor_flutter/RegisterModalPage-class.html">RegisterModalPage</a></li>
-  <li><a href="../motor_flutter/ResourceIdentifier-class.html">ResourceIdentifier</a></li>
-  <li><a href="../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a></li>
-  <li><a href="../motor_flutter/SchemaDocument-class.html">SchemaDocument</a></li>
-  <li><a href="../motor_flutter/SchemaDocumentValue-class.html">SchemaDocumentValue</a></li>
-  <li><a href="../motor_flutter/SchemaKind-class.html">SchemaKind</a></li>
-  <li><a href="../motor_flutter/SchemaKindDefinition-class.html">SchemaKindDefinition</a></li>
-  <li><a href="../motor_flutter/SeachBucketContentBySchemaRequest-class.html">SeachBucketContentBySchemaRequest</a></li>
-  <li><a href="../motor_flutter/SearchBucketContentBySchemaResponse-class.html">SearchBucketContentBySchemaResponse</a></li>
-  <li><a href="../motor_flutter/SearchResponse-class.html">SearchResponse</a></li>
-  <li><a href="../motor_flutter/Service-class.html">Service</a></li>
   <li><a href="../motor_flutter/SonrRegisterButton-class.html">SonrRegisterButton</a></li>
-  <li><a href="../motor_flutter/StatRequest-class.html">StatRequest</a></li>
-  <li><a href="../motor_flutter/StatResponse-class.html">StatResponse</a></li>
-  <li><a href="../motor_flutter/StringValue-class.html">StringValue</a></li>
-  <li><a href="../motor_flutter/UpdateBucketRequest-class.html">UpdateBucketRequest</a></li>
-  <li><a href="../motor_flutter/UpdateBucketResponse-class.html">UpdateBucketResponse</a></li>
-  <li><a href="../motor_flutter/UploadDocumentRequest-class.html">UploadDocumentRequest</a></li>
-  <li><a href="../motor_flutter/UploadDocumentResponse-class.html">UploadDocumentResponse</a></li>
-  <li><a href="../motor_flutter/UploadObjectResponse-class.html">UploadObjectResponse</a></li>
-  <li><a href="../motor_flutter/VerificationMethod-class.html">VerificationMethod</a></li>
-  <li><a href="../motor_flutter/WhereIs-class.html">WhereIs</a></li>
-  <li><a href="../motor_flutter/WhoIs-class.html">WhoIs</a></li>
-  <li><a href="../motor_flutter/WhoIsType-class.html">WhoIsType</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#extensions">Extensions</a></li>
   <li><a href="../motor_flutter/CreateAccountWithKeysResponseExt.html">CreateAccountWithKeysResponseExt</a></li>

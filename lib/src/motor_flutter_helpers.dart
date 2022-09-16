@@ -6,17 +6,17 @@ const kMotorTempStorageName = "motor_flutter";
 const kMotorPlatformChannelAddr = "io.sonr.motor/MethodChannel";
 
 extension MotorFlutterHelpers on MotorFlutter {
-  Future<MotorFlutter> _init([ResponseCallback<InitializeResponse>? callback]) async {
+  Future<MotorFlutter> _init(bool storageEnabled) async {
     _peerInfo = await PeerInformation.fetch();
     final req = _peerInfo.toInitializeRequest(enableLibp2p: true);
-    final resp = await MotorFlutterPlatform.instance.init(req);
-    if (callback != null) {
-      callback(resp);
-    }
+    await MotorFlutterPlatform.instance.init(req);
     Get.lazyPut(() => RegisterController());
-    if (isDebugMode) {
-      await GetStorage.init(kMotorTempStorageName);
+    if (storageEnabled) {
+      final ok = await GetStorage.init(kMotorTempStorageName);
       _tempStorage = GetStorage(kMotorTempStorageName);
+      _enabledStorage = ok;
+    } else {
+      _enabledStorage = false;
     }
     return this;
   }
@@ -55,9 +55,13 @@ extension MotorFlutterHelpers on MotorFlutter {
 
   Future<bool> writeKeysForAddr(Uint8List dscBytes, Uint8List pskBytes, String addr) async {
     // Write to GetStorage if Debug
-    if (isDebugMode) {
-      _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
-      _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
+    if (isDebugMode || _enabledStorage) {
+      try {
+        _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
+        _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
+      } catch (e) {
+        Log.printFlutterWarn("Failed to write AES Keys to GetStorage $e");
+      }
       return true;
     }
 
@@ -67,23 +71,30 @@ extension MotorFlutterHelpers on MotorFlutter {
       FlutterKeychain.put(key: _pskKeyForDid(addr), value: _encodeHexString(pskBytes)),
     ];
     await Future.wait(keychainPuts, eagerError: true, cleanUp: (dynamic error) {
-      if (isDebugMode) {
-        // ignore: avoid_print
-        print(error);
+      Log.printFlutterWarn("Failed to write AES keys to keychain: $error");
+      if (_enabledStorage) {
+        try {
+          _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
+          _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
+        } catch (e) {
+          Log.printFlutterWarn("Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e");
+        }
       }
-      _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
-      _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
     });
     return false;
   }
 
   Future<Tuple2<List<int>, List<int>>?> readKeysForAddr(String addr) async {
     // Read from GetStorage if Debug
-    if (isDebugMode) {
-      final dsc = _tempStorage.read(_dscKeyForDid(addr));
-      final psk = _tempStorage.read(_pskKeyForDid(addr));
-      if (dsc != null && psk != null) {
-        return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
+    if (isDebugMode || _enabledStorage) {
+      try {
+        final dsc = _tempStorage.read(_dscKeyForDid(addr));
+        final psk = _tempStorage.read(_pskKeyForDid(addr));
+        if (dsc != null && psk != null) {
+          return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
+        }
+      } catch (e) {
+        Log.printFlutterWarn("Failed to read AES Keys from GetStorage $e");
       }
     } else {
       // Read from Keychain
@@ -109,10 +120,23 @@ extension _CoreMotorFlutterExt on MotorFlutter {
   }
 
   void setCIDForDid(String did, String cid) {
-    _tempStorage.write(did, cid);
+    if (_enabledStorage) {
+      try {
+        _tempStorage.write(did, cid);
+      } catch (e) {
+        Log.printFlutterWarn("Failed to write DID/CID Pair to GetStorage $e");
+      }
+    }
   }
 
   String? getCIDForDid(String did) {
-    return _tempStorage.read(did);
+    if (_enabledStorage) {
+      try {
+        return _tempStorage.read(did);
+      } catch (e) {
+        Log.printFlutterWarn("Failed to read DID/CID Pair from GetStorage $e");
+      }
+    }
+    return null;
   }
 }

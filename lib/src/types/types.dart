@@ -19,3 +19,4 @@ typedef BoolCallback = void Function(bool);
 typedef ExceptionCallback = void Function(Exception);
 typedef ErrorCallback = void Function(String);
 typedef SchemaDocumentBuilder = Widget Function(BuildContext context, SchemaDocumentValue field);
+typedef HandleKeysCallback = void Function(List<int> deviceSharedKey, List<int> passwordSecuredKey);
