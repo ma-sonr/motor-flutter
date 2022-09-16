@@ -1,6 +1,19 @@
 ![Motor Flutter Banner](./doc/static-assets/gh-motor-banner.png)
 
+<div align="center">
+
+[![Docs](https://img.shields.io/badge/API%20Docs-motor__flutter-blue.svg)](https://motor.build/motor_flutter/MotorFlutter-class.html)
+[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](/LICENSE)
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://sonr.io)
+
 [![Pub](https://img.shields.io/pub/v/motor_flutter.svg)](https://pub.dev/packages/motor_flutter)
+[![Pod](https://img.shields.io/cocoapods/v/motor_pod)](https://cocoapods.org/pods/motor_pod)
+[![GitHub Issues](https://img.shields.io/github/issues/sonr-io/motor-flutter.svg)](https://github.com/sonr-io/motor-flutter/issues)
+</div>
+
+
+
+
 
 Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io). **See [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html) for more information.**
 

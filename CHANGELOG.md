@@ -3,6 +3,7 @@
 * Introduce HandleKeysCallback for allowing developers to store DSC and PSK keys in a secure location.
 * Throws exception when GetStorage method fails and no HandleKeysCallback is provided.
 * Add Initialize options to enable/disable GetStorage and AutoInitialize.
+* Readme has badges for pub.dev, cocoapods, and github issues.
 
 ## 0.4.3
 * Fix GetStorage execution order issue
