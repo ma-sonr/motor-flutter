@@ -1,3 +1,7 @@
+## 0.3.4
+* Structure as standard flutter library
+* Introduce Extension method for SchemaDefinition to generate a Default SchemaDocument from its data model
+
 ## 0.3.3
 * Introduce Keychain storage for AES Keys in Release mode
 * Introduce RegisterAccount Modal widget

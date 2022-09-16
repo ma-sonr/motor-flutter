@@ -1,4 +1,4 @@
-part of 'motor_flutter.dart';
+part of 'motor_flutter_base.dart';
 
 extension MotorFlutterUI on MotorFlutter {
   /// This function displays a Modal Dialog to allow users to register a new account

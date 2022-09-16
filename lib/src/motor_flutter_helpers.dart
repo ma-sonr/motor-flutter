@@ -1,4 +1,4 @@
-part of 'motor_flutter.dart';
+part of 'motor_flutter_base.dart';
 
 const kMotorKeychainDeviceSharedKey = 'SNR_MTR_DSC_KEY';
 const kMotorKeychainPwdSecuredKey = 'SNR_MTR_PSK_KEY';

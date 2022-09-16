@@ -6,7 +6,7 @@ PODS:
   - Flutter (1.0.0)
   - flutter_keychain (0.0.1):
     - Flutter
-  - motor_flutter (0.3.0):
+  - motor_flutter (0.3.3):
     - Flutter
     - motor_pod
   - motor_pod (4.2.0)
@@ -44,7 +44,7 @@ SPEC CHECKSUMS:
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_keychain: 01aabf894ffe8b01adfda1d9df21c210c1b4b452
-  motor_flutter: 430b593eb635949cf52ba0037bc4079433fa57d1
+  motor_flutter: 567067f3558b71a06128194197edee7cce252a82
   motor_pod: ea41cf62a089cf51b61f54d96b1d8a99dfcc1de6
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
 
