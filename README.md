@@ -41,30 +41,7 @@ use_frameworks!
 
 ## Usage
 
-Here is a simple example of using the `Motor` class to control a motor.
-
-```dart
-import 'package:motor_flutter/motor_flutter.dart';
-
-// Initialize the Sonr Motor Node
-final instance = await MotorFlutter();
-
-// Create a new account
-instance.createAccount("secure-password-123", _handleResponse);
-
-// Helper function to handle response
-void _handleResponse(CreateAccountResponse? resp) {
-  if (resp != null) {
-    // Login to an existing account
-    final authInfo = resp.authInfo;
-    instance.login(authInfo, (response) {
-      print(response);
-    });
-  }
-}
-```
-
-We have also introduced a **ModalView widget** to make it easier to _register and login_ to your account.
+We have full usage examples available in the motor_flutter [docs site](https://motor.build/motor_flutter/).
 
 ## API Reference
 
