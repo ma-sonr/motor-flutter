@@ -7,7 +7,7 @@
 [![Status](https://img.shields.io/badge/status-active-success.svg)](https://sonr.io)
 
 [![Pub](https://img.shields.io/pub/v/motor_flutter.svg)](https://pub.dev/packages/motor_flutter)
-[![Pod](https://img.shields.io/cocoapods/v/motor_pod)](https://cocoapods.org/pods/motor_pod)
+[![Pod](https://img.shields.io/cocoapods/v/motor_pod.svg)](https://cocoapods.org/pods/motor_pod)
 [![GitHub Issues](https://img.shields.io/github/issues/sonr-io/motor-flutter.svg)](https://github.com/sonr-io/motor-flutter/issues)
 </div>
 
