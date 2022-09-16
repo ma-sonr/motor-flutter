@@ -1,3 +1,6 @@
+## 0.5.2
+* Fix iOS Podspec version error
+
 ## 0.5.1
 * Small docs fixes to `SonrRegisterButton`
 * Remove README fixed size image
