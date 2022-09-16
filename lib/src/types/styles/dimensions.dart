@@ -4,5 +4,5 @@ import 'package:flutter/material.dart';
 class NebulaDimensions {
   NebulaDimensions._();
 
-  static const buttonPadding1 = EdgeInsets.symmetric(horizontal: 24, vertical: 16);
+  static const buttonPadding1 = EdgeInsets.symmetric(horizontal: 24, vertical: 12);
 }

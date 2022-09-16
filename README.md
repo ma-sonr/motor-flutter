@@ -14,7 +14,9 @@
 
 </div>
 
-Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io). **See [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html) for more information.**
+The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for Authentication, Data Management, and Wallet interactions for the Sonr Network.
+- Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io)
+- See **[API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html)** for more information.
 
 ## Installation
 
@@ -34,7 +36,7 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.4.4
+  motor_flutter: ^0.5.0
 ```
 
 #### iOS

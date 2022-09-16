@@ -72,7 +72,7 @@ class LoginWidget extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white.withAlpha(160),
+              color: Colors.blueGrey.shade200,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
@@ -87,6 +87,7 @@ class LoginWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 SonrRegisterButton(
+                  variant: ButtonVariant.blue,
                   onSuccess: (p0) {
                     Get.offAll(const HomePage());
                   },
