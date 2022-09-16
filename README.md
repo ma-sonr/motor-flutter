@@ -66,30 +66,6 @@ void _handleResponse(CreateAccountResponse? resp) {
 
 We have also introduced a **ModalView widget** to make it easier to _register and login_ to your account.
 
-```dart
-import 'package:motor_flutter/motor_flutter.dart';
-
-// --
-// 1. Create a basic button
-// --
-MaterialButton(
-    color: Colors.black,
-    child: const Text('Register Account'),
-
-// --
-// 2. Add the RegisterAccount ModalView on tap
-// --
-    onPressed: () async {
-        final res = await MotorFlutter.to.showRegisterModal(onError: (err) {
-            Get.snackbar("Error", err.toString());
-        });
-        if (res != null) {
-            Get.offAll(() => const HomePage());
-        }
-    },
-)
-```
-
 ## API Reference
 
 For full usage documentation on the Motor Flutter class, please see the [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html).

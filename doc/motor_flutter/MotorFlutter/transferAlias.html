@@ -51,11 +51,11 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgTransferAliasResponse?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/MsgTransferAliasResponse-class.html">MsgTransferAliasResponse</a>?</span>&gt;</span></span>
 <span class="name ">transferAlias</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="transferAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span></li>
-<li><span class="parameter" id="transferAlias-param-recipient"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">recipient</span>, </span></li>
+<li><span class="parameter" id="transferAlias-param-currentOwner"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">currentOwner</span>, </span></li>
 <li><span class="parameter" id="transferAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span></li>
-<li><span class="parameter" id="transferAlias-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgTransferAliasResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
+<li><span class="parameter" id="transferAlias-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/MsgTransferAliasResponse-class.html">MsgTransferAliasResponse</a></span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
 </ol>)
 
       
@@ -63,34 +63,37 @@
     </section>
     
 <section class="desc markdown">
-  <p><code>transferAlias</code> is a function that takes a <code>String</code> called <code>alias</code>, a <code>String</code> called <code>recipient</code>,
-an <code>int</code> called <code>amount</code>, and an optional <code>ResponseCallback&lt;MsgTransferAliasResponse&gt;</code> called
-<code>callback</code> and returns a <code>Future&lt;void&gt;</code></p>
-<p>Args:
-alias (String): The alias of the account to transfer from
-recipient (String): The address of the recipient.
-amount (int): The amount of coins to transfer.
-callback (ResponseCallback<msgtransferaliasresponse>): A callback function that will be called
-when the response is received.</msgtransferaliasresponse></p>
+  <p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
+an error if the provided <code>amount</code> is less than the listed price, or if the <code>alias</code> is not listed for sale by the <code>currentOwner</code>.</p>
+<pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
+if (res == null) {
+   throw Exception('Failed to transfer alias');
+}
+
+// Print updated domains list
+final allOwnedAliases = res.aliases.where((alias) =&gt; !alias.isForSale);
+print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
+</code></pre>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;MsgTransferAliasResponse?&gt; transferAlias(String alias, String recipient, int amount,
+  <pre class="language-dart"><code class="language-dart">Future&lt;MsgTransferAliasResponse?&gt; transferAlias(String alias, String currentOwner, int amount,
     [ResponseCallback&lt;MsgTransferAliasResponse&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.transferAlias(MsgTransferAlias(
     alias: alias,
     amount: amount,
-    recipient: recipient,
+    recipient: currentOwner,
     creator: address.value,
   ));
   if (callback != null) {
     callback(resp);
   }
   if (resp != null) {
-    domain.value = alias;
+    domains.addAll(resp.whoIs.alias);
+    domains.refresh();
   }
   return resp;
 }</code></pre>
@@ -131,17 +134,15 @@ when the response is received.</msgtransferaliasresponse></p>
     <li><a href="../../motor_flutter/MotorFlutter/didDocument.html">didDocument</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/didUrl.html">didUrl</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/discoverEvents.html">discoverEvents</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/domain.html">domain</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/domains.html">domains</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/initialized.html">initialized</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/isClosed.html">isClosed</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/methodChannel.html">methodChannel</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/nearbyPeers.html">nearbyPeers</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/objectHistory.html">objectHistory</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/onDelete.html">onDelete</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/onStart.html">onStart</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/schemaHistory.html">schemaHistory</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/schemaMap.html">schemaMap</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/staked.html">staked</a></li>
 
     <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#instance-methods">Methods</a></li>
@@ -150,21 +151,16 @@ when the response is received.</msgtransferaliasresponse></p>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/getPlatformVersion.html">getPlatformVersion</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/init.html">init</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/issueTokens.html">issueTokens</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/queryBucket.html">queryBucket</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/queryBucketByCreator.html">queryBucketByCreator</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/querySchema.html">querySchema</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/querySchemaByCreator.html">querySchemaByCreator</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/querySchemaByDid.html">querySchemaByDid</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -173,8 +169,11 @@ when the response is received.</msgtransferaliasresponse></p>
 
 
         <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#static-properties">Static properties</a></li>
+          <li><a href="../../motor_flutter/MotorFlutter/isReady.html">isReady</a></li>
           <li><a href="../../motor_flutter/MotorFlutter/to.html">to</a></li>
 
+        <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#static-methods">Static methods</a></li>
+          <li><a href="../../motor_flutter/MotorFlutter/init.html">init</a></li>
 
 </ol>
 
@@ -188,7 +187,7 @@ when the response is received.</msgtransferaliasresponse></p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.2
+      0.4.0
   </span>
 
   

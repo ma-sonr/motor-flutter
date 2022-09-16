@@ -6,6 +6,6 @@ cd ${SCRIPTS_DIR}/../
 PROJECT_DIR=$(pwd);
 
 echo "Strarting docs generation..."
-dart doc -o docs
+dart doc -o doc
 echo "\n"
 

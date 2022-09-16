@@ -114,12 +114,4 @@ void main() {
   test('$MethodChannelMotorFlutter is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelMotorFlutter>());
   });
-
-  test('getPlatformVersion', () async {
-    MotorFlutter motorFlutterPlugin = MotorFlutter();
-    MockMotorFlutterPlatform fakePlatform = MockMotorFlutterPlatform();
-    MotorFlutterPlatform.instance = fakePlatform;
-
-    expect(await motorFlutterPlugin.getPlatformVersion(), '42');
-  });
 }

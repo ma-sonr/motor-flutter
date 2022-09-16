@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:motor_flutter/src/motor_flutter_base.dart';
+import 'package:motor_flutter/motor_flutter.dart';
 import 'motor_flutter_platform_interface.dart';
 
 /// An implementation of [MotorFlutterPlatform] that uses method channels.

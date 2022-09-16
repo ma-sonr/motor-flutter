@@ -1,54 +1,17 @@
-import 'package:motor_flutter/motor_flutter.dart';
-
 export 'gen/motor/v1/request.pb.dart';
 export 'gen/motor/v1/response.pb.dart';
 export 'gen/schema/v1/schema.pb.dart';
 export 'gen/schema/v1/document.pb.dart';
 export 'gen/registry/did.pb.dart';
 export 'gen/service/v1/discover.pb.dart';
+export 'gen/bucket/bucket.pb.dart';
+export 'gen/bucket/where_is.pb.dart';
 export 'gen/registry/tx.pb.dart';
 export 'gen/common/v1/info.pb.dart';
-export 'generic.dart';
+export 'gen/registry/who_is.pb.dart';
 
-/// It's creating an extension method on the AuthInfo class.
-extension AuthInfoExt on AuthInfo {
-  LoginRequest toLoginRequest() {
-    return LoginRequest(
-      did: did,
-      password: password,
-    );
-  }
-}
-
-extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
-  CreateAccountResponse? toNormalResponse() {
-    return CreateAccountResponse(
-      address: address,
-      whoIs: whoIs,
-    );
-  }
-
-  AuthInfo toAuthInfo(String pwd) {
-    return AuthInfo(
-      address: address,
-      did: whoIs.didDocument.id,
-      password: pwd,
-    );
-  }
-}
-
-extension SchemaDefinitionExt on SchemaDefinition {
-  SchemaDocument getDefaultDocument() {
-    return SchemaDocument(
-      creator: creator,
-      did: did,
-      definition: this,
-      fields: List<SchemaDocumentValue>.generate(fields.length, (index) {
-        return SchemaDocumentValue(
-          name: fields[index].name,
-          field_2: fields[index].field_2,
-        );
-      }),
-    );
-  }
-}
+typedef ResponseCallback<T> = void Function(T?);
+typedef VoidCallback = void Function();
+typedef BoolCallback = void Function(bool);
+typedef ExceptionCallback = void Function(Exception);
+typedef ErrorCallback = void Function(String);

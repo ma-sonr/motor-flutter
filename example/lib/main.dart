@@ -10,10 +10,7 @@ import 'package:motor_flutter/motor_flutter.dart';
 Future<void> main() async {
   // Init Services
   WidgetsFlutterBinding.ensureInitialized();
-  await Get.putAsync(
-    () => MotorFlutter().init(),
-    permanent: true,
-  );
+  await MotorFlutter.init();
   // await Get.putAsync(
   //   () => QueryService().init(),
   //   permanent: true,

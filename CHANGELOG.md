@@ -1,3 +1,13 @@
+## 0.4.0
+* Add better documentation for methods
+* Add usage of individual methods in docs
+* Introduce SchemaDocument and SchemaDefinition extension methods
+* Consolidate Schema Query methods into single method
+* Consolidate Bucket Query methods into single method
+* Remove Generic Class from Types
+* Introduce SonrRegisterButton widget
+* Add usage and explanation for each MotorFlutter GetxService variable
+
 ## 0.3.4
 * Structure as standard flutter library
 * Introduce Extension method for SchemaDefinition to generate a Default SchemaDocument from its data model

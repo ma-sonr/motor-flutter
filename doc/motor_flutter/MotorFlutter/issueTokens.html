@@ -76,7 +76,7 @@ memo (String): A memo to send with the transaction.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;PaymentResponse?&gt; issueTokens(String to, String from, int amount, {String? memo}) async {
-  return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: amount, memo: memo));
+  return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: Int64(amount), memo: memo));
 }</code></pre>
 </section>
 
@@ -121,11 +121,10 @@ memo (String): A memo to send with the transaction.</p>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/isClosed.html">isClosed</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/methodChannel.html">methodChannel</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/nearbyPeers.html">nearbyPeers</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/objectHistory.html">objectHistory</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/onDelete.html">onDelete</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/onStart.html">onStart</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/schemaHistory.html">schemaHistory</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/schemaMap.html">schemaMap</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/staked.html">staked</a></li>
 
     <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#instance-methods">Methods</a></li>
@@ -157,6 +156,7 @@ memo (String): A memo to send with the transaction.</p>
 
 
         <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#static-properties">Static properties</a></li>
+          <li><a href="../../motor_flutter/MotorFlutter/isReady.html">isReady</a></li>
           <li><a href="../../motor_flutter/MotorFlutter/to.html">to</a></li>
 
 
@@ -172,7 +172,7 @@ memo (String): A memo to send with the transaction.</p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.2
+      0.3.4
   </span>
 
   

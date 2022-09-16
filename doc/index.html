@@ -43,15 +43,22 @@
   <div id="dartdoc-main-content" class="main-content">
       
 <section class="desc markdown">
-  <h1 id="motor_flutter">motor_flutter</h1>
-<p>Flutter bindings for the <a href="https://docs.sonr.io">Sonr Motor Node</a>.</p>
+  <p><img src="./doc/static-assets/gh-motor-banner.png" alt="Motor Flutter Banner"></p>
+<p><a href="https://pub.dev/packages/motor_flutter"><img src="https://img.shields.io/pub/v/motor_flutter.svg" alt="Pub"></a></p>
+<p>Flutter bindings for the <a href="https://docs.sonr.io">Sonr Motor Node</a>. <strong>See <a href="https://motor.build/motor_flutter/MotorFlutter-class.html">API Reference</a> for more information.</strong></p>
 <h2 id="installation">Installation</h2>
-<p>Integrating into your existing Flutter project</p>
+<p>Here's how to install the motor_flutter package in your Flutter project:</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<ul>
+<li><a href="https://flutter.dev/docs/get-started/install">Flutter</a></li>
+<li><a href="https://pub.dev/packages/get">GetX</a></li>
+</ul>
+<p>Using the Flutter CLI</p>
 <pre class="language-sh"><code class="language-sh">flutter pub add motor_flutter
 </code></pre>
 <p>or</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
-  motor_flutter: ^0.2.2
+  motor_flutter: ^0.3.4
 </code></pre>
 <h4 id="ios">iOS</h4>
 <p>Add the following to your Podfile:</p>
@@ -81,6 +88,7 @@ void _handleResponse(CreateAccountResponse? resp) {
   }
 }
 </code></pre>
+<p>We have also introduced a <strong>ModalView widget</strong> to make it easier to <em>register and login</em> to your account.</p>
 <h2 id="api-reference">API Reference</h2>
 <p>For full usage documentation on the Motor Flutter class, please see the <a href="https://motor.build/motor_flutter/MotorFlutter-class.html">API Reference</a>.</p>
 <h2 id="contributing">Contributing</h2>
@@ -97,7 +105,7 @@ void _handleResponse(CreateAccountResponse? resp) {
   <span class="name"><a href="motor_flutter/motor_flutter-library.html">motor_flutter</a></span> 
 
 </dt>
-<dd>
+<dd>Motor Flutter
 </dd>
 
         </dl>
@@ -133,7 +141,7 @@ void _handleResponse(CreateAccountResponse? resp) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.2
+      0.4.0
   </span>
 
   

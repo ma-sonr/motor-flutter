@@ -49,7 +49,8 @@
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">InitializeResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-success">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">success</span>}</span></li>
+      <span class="name ">InitializeResponse</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-success">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">success</span>, </span></li>
+<li><span class="parameter" id="-param-definitions"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/SchemaDefinition-class.html">SchemaDefinition</a></span>&gt;</span>?</span> <span class="parameter-name">definitions</span>}</span></li>
 </ol>)
     </section>
 
@@ -61,10 +62,14 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory InitializeResponse({
   $core.bool? success,
+  $core.Iterable&lt;$5.SchemaDefinition&gt;? definitions,
 }) {
   final _result = create();
   if (success != null) {
     _result.success = success;
+  }
+  if (definitions != null) {
+    _result.definitions.addAll(definitions);
   }
   return _result;
 }</code></pre>
@@ -100,6 +105,7 @@
     <li class="section-title">
       <a href="../../motor_flutter/InitializeResponse-class.html#instance-properties">Properties</a>
     </li>
+    <li><a href="../../motor_flutter/InitializeResponse/definitions.html">definitions</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/eventPlugin.html">eventPlugin</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hashCode.html">hashCode</a></li>
     <li><a href="../../motor_flutter/InitializeResponse/info_.html">info_</a></li>
@@ -195,7 +201,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.2
+      0.4.0
   </span>
 
   

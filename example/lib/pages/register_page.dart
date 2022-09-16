@@ -86,28 +86,10 @@ class LoginWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                ButtonTheme(
-                  minWidth: 300.0,
-                  child: MaterialButton(
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      color: Colors.black,
-                      child: const Text(
-                        'Register Account',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                      onPressed: () async {
-                        final res = await MotorFlutter.to.showRegisterModal(
-                          onError: (err) {
-                            Get.snackbar("Error", err.toString());
-                          },
-                        );
-                        if (res != null) {
-                          Get.offAll(() => const HomePage());
-                        }
-                      }),
+                SonrRegisterButton(
+                  onSuccess: (p0) {
+                    Get.offAll(const HomePage());
+                  },
                 ),
                 ButtonTheme(
                   minWidth: 300.0,

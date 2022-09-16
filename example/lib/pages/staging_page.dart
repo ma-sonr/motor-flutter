@@ -199,9 +199,8 @@ class ConfirmPageController extends GetxController {
       return false;
     }
     if (operation == PaymentOperation.send) {
-      final result = await MotorFlutter.to.issueTokens(
+      final result = await MotorFlutter.to.sendTokens(
         recipient.value,
-        MotorFlutter.to.address.value,
         amount.toInt(),
         memo: forNote.value,
       );
@@ -211,8 +210,7 @@ class ConfirmPageController extends GetxController {
         return false;
       }
     } else {
-      final result = await MotorFlutter.to.issueTokens(
-        MotorFlutter.to.address.value,
+      final result = await MotorFlutter.to.sendTokens(
         recipient.value,
         amount.toInt(),
         memo: forNote.value,

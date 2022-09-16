@@ -50,9 +50,7 @@
 
     <section class="multi-line-signature">
       <span class="name ">LoginRequest</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-did">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">did</span>, </span></li>
-<li><span class="parameter" id="-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">password</span>, </span></li>
-<li><span class="parameter" id="-param-aesDscKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">aesDscKey</span>, </span></li>
-<li><span class="parameter" id="-param-aesPskKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">aesPskKey</span>}</span></li>
+<li><span class="parameter" id="-param-password"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">password</span>}</span></li>
 </ol>)
     </section>
 
@@ -65,8 +63,6 @@
   <pre class="language-dart"><code class="language-dart">factory LoginRequest({
   $core.String? did,
   $core.String? password,
-  $core.List&lt;$core.int&gt;? aesDscKey,
-  $core.List&lt;$core.int&gt;? aesPskKey,
 }) {
   final _result = create();
   if (did != null) {
@@ -74,12 +70,6 @@
   }
   if (password != null) {
     _result.password = password;
-  }
-  if (aesDscKey != null) {
-    _result.aesDscKey = aesDscKey;
-  }
-  if (aesPskKey != null) {
-    _result.aesPskKey = aesPskKey;
   }
   return _result;
 }</code></pre>
@@ -115,8 +105,6 @@
     <li class="section-title">
       <a href="../../motor_flutter/LoginRequest-class.html#instance-properties">Properties</a>
     </li>
-    <li><a href="../../motor_flutter/LoginRequest/aesDscKey.html">aesDscKey</a></li>
-    <li><a href="../../motor_flutter/LoginRequest/aesPskKey.html">aesPskKey</a></li>
     <li><a href="../../motor_flutter/LoginRequest/did.html">did</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/eventPlugin.html">eventPlugin</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hashCode.html">hashCode</a></li>
@@ -152,8 +140,6 @@
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/addExtension.html">addExtension</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/check.html">check</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/clear.html">clear</a></li>
-    <li><a href="../../motor_flutter/LoginRequest/clearAesDscKey.html">clearAesDscKey</a></li>
-    <li><a href="../../motor_flutter/LoginRequest/clearAesPskKey.html">clearAesPskKey</a></li>
     <li><a href="../../motor_flutter/LoginRequest/clearDid.html">clearDid</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/clearExtension.html">clearExtension</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/clearField.html">clearField</a></li>
@@ -170,8 +156,6 @@
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/getField.html">getField</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/getFieldOrNull.html">getFieldOrNull</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/getTagNumber.html">getTagNumber</a></li>
-    <li><a href="../../motor_flutter/LoginRequest/hasAesDscKey.html">hasAesDscKey</a></li>
-    <li><a href="../../motor_flutter/LoginRequest/hasAesPskKey.html">hasAesPskKey</a></li>
     <li><a href="../../motor_flutter/LoginRequest/hasDid.html">hasDid</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hasExtension.html">hasExtension</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hasField.html">hasField</a></li>
@@ -219,7 +203,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.2.2
+      0.4.0
   </span>
 
   

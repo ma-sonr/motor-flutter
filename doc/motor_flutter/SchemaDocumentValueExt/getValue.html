@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the getValue method from the SchemaDocumentValueExt extension, for the Dart programming language.">
+  <title>getValue method - SchemaDocumentValueExt extension - motor_flutter library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">motor_flutter</a></li>
+    <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentValueExt.html">SchemaDocumentValueExt</a></li>
+    <li class="self-crumb">getValue&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
+  </ol>
+  <div class="self-name">getValue</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">getValue&lt;<wbr><span class="type-parameter">T</span>&gt;</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype">T?</span>
+<span class="name ">getValue</span>&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Returns the underlying value of the <a href="../../motor_flutter/SchemaDocumentValue-class.html">SchemaDocumentValue</a> as the provided <code>T</code> type. If the value cannot be cast to the provided type, or the provided <code>T</code> doesnt match <a href="../../motor_flutter/SchemaKind-class.html">SchemaKind</a>, then null is returned.</p>
+<pre class="language-dart"><code class="language-dart">final doc = SchemaDocument();
+String? name = "";
+for (final field in doc.fields) {
+  if(field.name == 'name') {
+     name = field.getValue&lt;String&gt;(); // returns the value of the field 'name' as a String
+  }
+}
+
+if (name != null) {
+ print(name); // prints the value of the field 'name'
+}
+</code></pre>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">T? getValue&lt;T&gt;() {
+  switch (field_2) {
+    case SchemaKind.BOOL:
+      if (T is bool) {
+        return boolValue.value as T;
+      }
+      break;
+    case SchemaKind.INT:
+      if (T is int) {
+        return intValue.value as T;
+      }
+      break;
+    case SchemaKind.FLOAT:
+      if (T is double) {
+        return floatValue.value as T;
+      }
+      break;
+
+    case SchemaKind.STRING:
+      if (T is String) {
+        return stringValue.value as T;
+      }
+      break;
+
+    case SchemaKind.BYTES:
+      if (T is Uint8List) {
+        return bytesValue.value as T;
+      }
+      break;
+
+    case SchemaKind.LIST:
+      if (T is List) {
+        return arrayValue.value as T;
+      }
+      break;
+    case SchemaKind.LINK:
+      if (T is String) {
+        return linkValue.value as T;
+      }
+      break;
+    default:
+      break;
+  }
+  return null;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">motor_flutter</a></li>
+  <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
+  <li><a href="../../motor_flutter/SchemaDocumentValueExt.html">SchemaDocumentValueExt</a></li>
+  <li class="self-crumb">getValue&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
+</ol>
+
+
+    <h5>SchemaDocumentValueExt extension</h5>
+    <ol>
+
+
+
+
+
+    <li class="section-title"><a href="../../motor_flutter/SchemaDocumentValueExt.html#instance-methods">Methods</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentValueExt/getValue.html">getValue</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentValueExt/isMatchingType.html">isMatchingType</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentValueExt/setValue.html">setValue</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    motor_flutter
+      0.4.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

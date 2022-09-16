@@ -6,6 +6,21 @@ const kMotorTempStorageName = "motor_flutter";
 const kMotorPlatformChannelAddr = "io.sonr.motor/MethodChannel";
 
 extension MotorFlutterHelpers on MotorFlutter {
+  Future<MotorFlutter> _init([ResponseCallback<InitializeResponse>? callback]) async {
+    _peerInfo = await PeerInformation.fetch();
+    final req = _peerInfo.toInitializeRequest(enableLibp2p: true);
+    final resp = await MotorFlutterPlatform.instance.init(req);
+    if (callback != null) {
+      callback(resp);
+    }
+    Get.lazyPut(() => RegisterController());
+    if (f.kDebugMode) {
+      await GetStorage.init(kMotorTempStorageName);
+      _tempStorage = GetStorage(kMotorTempStorageName);
+    }
+    return this;
+  }
+
   Future<dynamic> _handleMethodCall(MethodCall call) async {
     switch (call.method) {
       case 'onDiscover':
@@ -62,18 +77,18 @@ extension MotorFlutterHelpers on MotorFlutter {
     return false;
   }
 
-  Future<Tuple2<List<int>, List<int>>?> readKeysForDid(String did) async {
+  Future<Tuple2<List<int>, List<int>>?> readKeysForAddr(String addr) async {
     // Read from GetStorage if Debug
     if (f.kDebugMode) {
-      final dsc = _tempStorage.read(_dscKeyForDid(did));
-      final psk = _tempStorage.read(_pskKeyForDid(did));
+      final dsc = _tempStorage.read(_dscKeyForDid(addr));
+      final psk = _tempStorage.read(_pskKeyForDid(addr));
       if (dsc != null && psk != null) {
         return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
       }
     } else {
       // Read from Keychain
-      final dsc = await FlutterKeychain.get(key: _dscKeyForDid(did));
-      final psk = await FlutterKeychain.get(key: _pskKeyForDid(did));
+      final dsc = await FlutterKeychain.get(key: _dscKeyForDid(addr));
+      final psk = await FlutterKeychain.get(key: _pskKeyForDid(addr));
       if (dsc != null && psk != null) {
         return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
       }
@@ -90,4 +105,18 @@ extension MotorFlutterHelpers on MotorFlutter {
   String _pskKeyForDid(String did) {
     return "${did}_PSK_KEY";
   }
+}
+
+SchemaDocument copyDocumentFromSchema(SchemaDefinition def) {
+  return SchemaDocument(
+    creator: def.creator,
+    did: def.did,
+    definition: def,
+    fields: List<SchemaDocumentValue>.generate(def.fields.length, (index) {
+      return SchemaDocumentValue(
+        name: def.fields[index].name,
+        field_2: def.fields[index].field_2,
+      );
+    }),
+  );
 }

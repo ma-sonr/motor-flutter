@@ -10,103 +10,148 @@ import 'package:tuple/tuple.dart';
 
 import 'controllers/register_controller.dart';
 import 'platform/motor_flutter_platform_interface.dart';
+
 import 'types/types.dart';
 import 'utilities/information.dart';
 import 'utilities/logger.dart';
 import 'widgets/register_modal.dart';
 
-export 'types/types.dart';
-export 'utilities/logger.dart';
-export 'widgets/widgets.dart';
-export 'controllers/register_controller.dart';
-
 part 'motor_flutter_helpers.dart';
 part 'motor_flutter_ui.dart';
+part 'motor_flutter_extensions.dart';
 
-/// > This class is a GetxService that has a `String` property called `name` and a `Stream` property
-/// called `stream` that emits a `String` every second
+/// ## MotorFlutter
+///
+/// This is the main class for the [MotorFlutter] package. For more information on how to use this package, see the [API documentation](https://motor.build).
 class MotorFlutter extends GetxService {
-  /// This is a stream controller that is used to emit events from the native side of the application.
+  // This is a method channel that is used to communicate with the native side of the application.
+  final _methodChannel = const MethodChannel(kMotorPlatformChannelAddr);
+
+  /// A Stream of all [RefreshEvent] that are transmitted in the Local Discovery [OLC](https://en.wikipedia.org/wiki/Open_Location_Code)
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
 
-  /// This is a method channel that is used to communicate with the native side of the application.
-  final methodChannel = const MethodChannel(kMotorPlatformChannelAddr);
-
-  /// Creating a reactive variable called `address` that is initialized to the value `snr123abc`.
+  /// Reactive variable that holds the current active [MotorFlutter] wallet address.
   final address = 'snr123abc'.obs;
 
-  /// Creating a reactive variable called `domain` that is initialized to the value `test.snr/`.
-  final domain = 'test.snr/'.obs;
+  /// A list of .snr/ domains each mapped to [Alias] objects. These can be used to resolve associated aliases with a given Sonr account.
+  final domains = RxList<Alias>();
 
-  /// Creating a reactive variable called `balance` that is initialized to the value `0`.
+  /// Returns the current active account's liquid SNR balance. This variable is triggered to refresh on the [stat] method.
   final balance = 0.obs;
 
-  /// Creating a reactive variable called `didUrl` that is initialized to the value `did:snr:abc123`.
-  final didUrl = 'did:snr:abc123'.obs;
-
-  /// Creating a reactive variable called `staked` that is initialized to the value `0`.
+  /// Returns the current accounts staked SNR balance. This variable is triggered to refresh on the [stat] method.
   final staked = '0'.obs;
 
-  /// Creating a reactive variable called `didDocument` that is initialized to the value
-  /// `DIDDocument()`.
+  /// Returns the curret active account's [DIDDocument]. This value is set on account authorization, and can be refreshed with the [stat] method.
+  ///
+  /// ```dart
+  ///    print(MotorFlutter.to.didDocument.value.id); // Prints did:snr:abc123
+  /// ```
+  ///
+  /// See also:
+  /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final didDocument = DIDDocument().obs;
 
-  /// Creating a reactive variable called `authorized` that is initialized to the value `false`.
+  /// Sets itself to true when the [MotorFlutter] account is created with [createAccount], or [login]. This is used to
+  /// determine if the user is ready to be active on the [Sonr Network](https://sonr.io) or not.
+  ///
+  /// ```dart
+  /// if (MotorFlutter.to.isReady) {
+  ///    print('The user is ready to be active on the Sonr Network');
+  /// }
+  /// ```
   final authorized = false.obs;
 
-  /// Creating a reactive variable called `connected` that is initialized to the value `false`.
+  /// Sets itself to true when the [MotorFlutter] account is finished bootstrapping to the Sonr Network. The [connect] method triggers the refresh of this variable.
+  ///
+  /// ```dart
+  /// await MotorFlutter.to.connect();
+  /// print(MotorFlutter.to.connected.value); // Prints true
+  /// ```
   final connected = false.obs;
 
-  /// Creating a reactive variable called `nearbyPeers` that is initialized to the value `<Peer>[]`.
+  /// List of all neerby Motor powered devices. This is updated every time a [RefreshEvent] is received on the [MethodChannel]. All nodes are referenced with the [Peer] object.
+  ///
+  /// ```dart
+  /// MotorFlutter.to.nearbyDevices.forEach((peer) {
+  ///     print(peer.did);
+  /// });
+  /// ```
   final nearbyPeers = <Peer>[].obs;
 
-  /// Creating a reactive variable called `schemaHistory` that is initialized to the value
-  /// `<SchemaDefinition>[]`.
+  /// A Reference Map for all recently queried [SchemaDefinition]s, and all created [SchemaDocument]s.
+  ///
+  /// ```dart
+  /// MotorFlutter.to.schemaDefinitions.forEach((def, doc) {
+  ///     if(def.did == doc.did) {
+  ///        print("Document ${doc.cid} built from definition: ${def.label}");
+  ///     }
+  /// });
+  /// ```
   final schemaMap = <SchemaDefinition, SchemaDocument>{}.obs;
 
   // Accessor Method
-  /// This is a getter that is used to access the `MotorFlutter` instance.
+  /// Use the static [to] getter method allows access to [MotorFlutter] instance anywhere in the application.
+  ///
+  /// ```dart
+  /// import 'package:motor_flutter/motor_flutter.dart';
+  ///
+  /// print(MotorFlutter.to.address.value); // prints 'snr123abc'
+  /// ```
   static MotorFlutter get to => Get.find<MotorFlutter>();
 
-  /// This is a static method which checks if the `MotorFlutter` instance has been injected into Getx.
+  /// Returns true if the [MotorFlutter] service has been injected into the GetX State Management system.
+  ///
+  /// ```dart
+  /// if (MotorFlutter.isReady) {
+  ///     print('MotorFlutter is ready to be used');
+  /// }
+  /// ```
   static bool get isReady => Get.isRegistered<MotorFlutter>();
+
+  /// This getter method returns the current version of the underlying accounts [DIDDocument] id. This is NOT a reactive variable.
+  ///
+  /// ```dart
+  /// print(MotorFlutter.to.didUrl); // prints 'did:snr:abc123#v1'
+  /// ```
+  String get didUrl => to.didDocument.value.id;
 
   late final PeerInformation _peerInfo;
   late final GetStorage _tempStorage;
 
-  /// It creates a new instance of the MotorFlutter class.
+  // It creates a new instance of the MotorFlutter class.
   MotorFlutter() {
-    methodChannel.setMethodCallHandler(_handleMethodCall);
+    _methodChannel.setMethodCallHandler(_handleMethodCall);
   }
 
-  /// It initializes the motor flutter.
+  /// This static method initializes a [MotorFlutter] instance and Injects it into [Get] state management.
   ///
-  /// Args:
-  ///   callback (ResponseCallback<InitializeResponse>): A callback function that will be called when
-  /// the response is received.
-  Future<MotorFlutter> init([ResponseCallback<InitializeResponse>? callback]) async {
-    _peerInfo = await PeerInformation.fetch();
-    final req = _peerInfo.toInitializeRequest(enableLibp2p: true);
-    final resp = await MotorFlutterPlatform.instance.init(req);
-    if (callback != null) {
-      callback(resp);
-    }
-    Get.lazyPut(() => RegisterController());
-    if (f.kDebugMode) {
-      await GetStorage.init(kMotorTempStorageName);
-      _tempStorage = GetStorage(kMotorTempStorageName);
-    }
-    return this;
+  /// ```dart
+  /// import 'package:motor_flutter/motor_flutter.dart';
+  ///
+  /// void main() async {
+  ///   WidgetsFlutterBinding.ensureInitialized(); // This is required for Flutter apps.
+  ///   await MotorFlutter.init(); // This initializes the MotorFlutter instance.
+  ///   runApp(MyApp()); // This is the entry point of the application.
+  /// }
+  /// ```
+  static Future<void> init() async {
+    await Get.putAsync(
+      () => MotorFlutter()._init(),
+      permanent: true,
+    );
   }
 
-  /// Create a new account with the given password. If the password is correct, the account will be
-  /// created and the account address will be returned. If the password is incorrect, an error will be
-  /// returned.
+  /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
+  /// storage during development. Returns [CreateAccountResponse] if the account is created successfully.
   ///
-  /// Args:
-  ///   password (String): The password to use for the account.
-  ///   callback (ResponseCallback<CreateAccountResponse>): A function that takes a
-  /// CreateAccountResponse as a parameter.
+  /// ```dart
+  /// final res = await MotorFlutter.to.createAccount('terrible-password-123');
+  /// if (res == null) {
+  ///     throw Exception('Account creation failed');
+  /// }
+  /// print('Account created successfully: ${res.address}');
+  /// ```
   Future<CreateAccountResponse?> createAccount(String password) async {
     //CreateAccountResponse? resp;
     //if (defaultTargetPlatform == TargetPlatform.android) {
@@ -121,49 +166,58 @@ class MotorFlutter extends GetxService {
 
     if (resp != null) {
       address.value = resp.address;
-      didUrl.value = resp.whoIs.didDocument.id;
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
       await writeKeysForDid(dscKey.bytes, pskKey.bytes, resp.whoIs.didDocument.id);
-      return resp.toNormalResponse();
+      return resp.toDefaultResponse();
     }
     return null;
   }
 
-  /// This function takes an AuthInfo object and an optional ResponseCallback function, and returns a
-  /// Future<LoginResponse>.
+  /// Logs in to an existing account with the given [password]. During production, this method retrieves the keys from the keychain using [address]. Both of these params are required in order
+  /// to return a successful [LoginResponse].
   ///
-  /// Args:
-  ///   info (AuthInfo): The AuthInfo object that contains the login information.
-  ///   callback (ResponseCallback<LoginResponse>): The callback function that will be called when the
-  /// request is complete.
-  Future<LoginResponse?> login({required String password, required String did}) async {
-    final auth = await readKeysForDid(did);
+  /// ```dart
+  /// final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
+  /// if (res == null) {
+  ///    throw Exception('Login failed');
+  /// }
+  /// print('Account logged in successfully: ${res.address}');
+  /// ```
+  Future<LoginResponse?> login({required String password, required String address}) async {
+    final auth = await readKeysForAddr(address);
     if (auth == null) {
-      throw Exception('No keys found for did: $did');
+      throw Exception('No keys found for did: $address');
     }
     final resp = await MotorFlutterPlatform.instance.loginWithKeys(LoginWithKeysRequest(
-      did: did,
+      did: address,
       password: password,
       aesDscKey: auth.item1,
       aesPskKey: auth.item2,
     ));
     if (resp != null) {
-      address.value = resp.whoIs.owner;
-      didUrl.value = resp.whoIs.didDocument.id;
+      this.address(resp.whoIs.owner);
       didDocument.value = resp.whoIs.didDocument;
       authorized.value = true;
     }
     return resp;
   }
 
-  /// `buyAlias` is a function that takes a `String` and an optional
-  /// `ResponseCallback<MsgBuyAliasResponse>` and returns a `Future<void>`
+  /// Purchases a new .snr/ domain for the current account if the [alias] is available. A succesful transaction will return a [MsgBuyAliasResponse].
   ///
-  /// Args:
-  ///   alias (String): The alias to buy.
-  ///   callback (ResponseCallback<MsgBuyAliasResponse>): A function that will be called when the
-  /// request is complete.
+  /// ```dart
+  /// final res = await MotorFlutter.to.buyAlias('hulahoop');
+  /// if (res == null) {
+  ///    throw Exception('Failed to buy alias');
+  /// }
+  ///
+  /// // Print all owned domains
+  /// for (final alias in res.aliases) {
+  ///     if(!alias.isForSale) {
+  ///        print(alias.name); // prints: hulahoop.snr or hulahoop
+  ///    }
+  /// }
+  /// ```
   Future<MsgBuyAliasResponse?> buyAlias(String alias, [ResponseCallback<MsgBuyAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.buyAlias(MsgBuyAlias(
       name: alias,
@@ -173,19 +227,27 @@ class MotorFlutter extends GetxService {
       callback(resp);
     }
     if (resp != null) {
-      domain.value = alias;
+      domains.addAll(resp.whoIs.alias);
+      domains.refresh();
     }
     return resp;
   }
 
-  /// `sellAlias` is a function that takes a `String` and an `int` and returns a
-  /// `Future<MsgSellAliasResponse>`
+  /// Lists an existing [alias] owned by the current account for sale at the given [amount]. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a [MsgSellAliasResponse].
   ///
-  /// Args:
-  ///   alias (String): The alias to sell
-  ///   amount (int): The amount of coins to sell the alias for.
-  ///   callback (ResponseCallback<MsgSellAliasResponse>): A function that will be called when the
-  /// response is received.
+  /// ```dart
+  /// final res = await MotorFlutter.to.sellAlias('hulahoop', 40.0);
+  /// if (res == null) {
+  ///   throw Exception('Failed to sell alias');
+  /// }
+  ///
+  /// // Print all domains for sale
+  /// for (final alias in res.aliases) {
+  ///    if(alias.isForSale) {
+  ///       print(alias.name); // prints: hulahoop.snr or hulahoop
+  ///   }
+  /// }
+  /// ```
   Future<MsgSellAliasResponse?> sellAlias(String alias, int amount, [ResponseCallback<MsgSellAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.sellAlias(MsgSellAlias(
       alias: alias,
@@ -196,60 +258,63 @@ class MotorFlutter extends GetxService {
       callback(resp);
     }
     if (resp != null) {
-      domain.value = alias;
+      domains.addAll(resp.whoIs.alias);
+      domains.refresh();
     }
     return resp;
   }
 
-  /// `transferAlias` is a function that takes a `String` called `alias`, a `String` called `recipient`,
-  /// an `int` called `amount`, and an optional `ResponseCallback<MsgTransferAliasResponse>` called
-  /// `callback` and returns a `Future<void>`
+  /// Transfers an existing [alias] listed for sale from the account which listed it, to the current active account. A succesful transaction will return a [MsgTransferAliasResponse], and will return
+  /// an error if the provided [amount] is less than the listed price, or if the [alias] is not listed for sale by the [currentOwner].
   ///
-  /// Args:
-  ///   alias (String): The alias of the account to transfer from
-  ///   recipient (String): The address of the recipient.
-  ///   amount (int): The amount of coins to transfer.
-  ///   callback (ResponseCallback<MsgTransferAliasResponse>): A callback function that will be called
-  /// when the response is received.
-  Future<MsgTransferAliasResponse?> transferAlias(String alias, String recipient, int amount,
+  /// ```dart
+  /// final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
+  /// if (res == null) {
+  ///    throw Exception('Failed to transfer alias');
+  /// }
+  ///
+  /// // Print updated domains list
+  /// final allOwnedAliases = res.aliases.where((alias) => !alias.isForSale);
+  /// print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
+  /// ```
+  Future<MsgTransferAliasResponse?> transferAlias(String alias, String currentOwner, int amount,
       [ResponseCallback<MsgTransferAliasResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.transferAlias(MsgTransferAlias(
       alias: alias,
       amount: amount,
-      recipient: recipient,
+      recipient: currentOwner,
       creator: address.value,
     ));
     if (callback != null) {
       callback(resp);
     }
     if (resp != null) {
-      domain.value = alias;
+      domains.addAll(resp.whoIs.alias);
+      domains.refresh();
     }
     return resp;
   }
 
-  /// Connect to the device, and call the callback with the result.
-  ///
-  /// Args:
-  ///   callback (ResponseCallback<bool>): A callback function that will be called when the connection
-  /// is established.
+  /// Establishes the Motor libp2p node, bootstraps the node to known DHT peers, and begins listening for incoming connections. An optional [callback] can be provided to be notified
+  /// when the node is ready to accept connections.
   Future<bool> connect([ResponseCallback<bool>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.connect();
     if (callback != null) {
       callback(resp);
     }
-    connected.value = resp;
+    connected(resp);
     return resp;
   }
 
-  /// `createSchema` creates a schema
+  /// Builds a request for recording a [SchemaDefinition] on the blockchain. [metadata] is for any additional information that should be stored with the schema. [callback] is an optional
+  /// function that will be called when the transaction is complete. Returns a [CreateSchemaResponse] if the transaction is successful.
   ///
-  /// Args:
-  ///   label (String): The label of the schema to create.
-  ///   fields (Map<String, SchemaKind>): A map of field names to their schema kind.
-  ///   metadata (Map<String, String>): A map of metadata to be associated with the schema.
-  ///   callback (ResponseCallback<CreateSchemaResponse>): A callback function that will be called when
-  /// the request is complete.
+  /// ```dart
+  /// final res = await MotorFlutter.to.createSchema('My Schema', {'name': SchemaKind.STRING, 'age': SchemaKind.INT});
+  /// if (res == null) {
+  ///    throw Exception('Failed to create schema');
+  /// }
+  /// ```
   Future<CreateSchemaResponse?> createSchema(String label, Map<String, SchemaKind> fields, Map<String, String>? metadata,
       [ResponseCallback<CreateSchemaResponse>? callback]) async {
     final resp = await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
@@ -268,67 +333,101 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  // querySchema takes in a single string value which can be either a DID URL or a creator address.
-  /// > This function takes a string, `q`, and returns a `Future<QueryWhatIsResponse?>`
+  /// Searches for a schema by either its [did] or [creator]. If [did] is provided a single-value map is returned, and the [creator] argument will be ignored. Returns a map of [String] to [SchemaDefinition] if definition(s) are found. Returns
+  /// null if no definition is found, or if neither [did] nor [creator] were provided.
   ///
-  /// Args:
-  ///   q (String): The query string.
-  Future<QueryWhatIsResponse?> querySchema(String q) async {
-    return await MotorFlutterPlatform.instance.querySchema(QueryWhatIsRequest(did: q));
+  /// ```dart
+  /// // Search by DID
+  /// final schemas = await MotorFlutter.to.findSchemas(did: 'did:snr:xyz789');
+  /// if (schemas == null) {
+  ///   throw Exception('Failed to find schema');
+  /// }
+  /// print(schemas); // prints: {'MySchema': {label: 'MySchema', fields: {name: String, age: Int}}}
+  ///
+  /// // Search by creator
+  /// final schemas = await MotorFlutter.to.findSchemas(creator: 'did:snr:abc123');
+  /// if (schemas == null) {
+  ///  throw Exception('Failed to find schema');
+  /// }
+  /// print(schemas); // prints: {'MySchema': {label: 'MySchema', fields: {name: String, age: Int}}, 'MyOtherSchema': {label: 'MyOtherSchema', fields: {name: String, age: Int}}}
+  /// ```
+  Future<Map<String, SchemaDefinition>?> findSchemas({String? did, String? creator}) async {
+    if (did != null) {
+      final res = await MotorFlutterPlatform.instance.querySchema(QueryWhatIsRequest(did: did));
+      if (res != null) {
+        return {res.schema.label: res.schema};
+      }
+    }
+    if (creator != null) {
+      final res = await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator));
+      if (res != null) {
+        return res.schemas;
+      }
+    }
+    return null;
   }
 
-  /// It queries the schema by creator.
+  /// Queries the Sonr blockchain for the associated [WhereIs] for the provided [did] or [creator]. If [did] is provided a single-value list is returned (if successful), and the [creator] argument will be ignored.
+  /// Returns [List<WhereIs>] if bucket(s) are found. Returns null if no bucket is found, or if neither [did] nor [creator] were provided.
   ///
-  /// Args:
-  ///   creator (String): The creator of the schema.
-  Future<QueryWhatIsByCreatorResponse?> querySchemaByCreator(String creator) async {
-    return await MotorFlutterPlatform.instance.querySchemaByCreator(QueryWhatIsByCreatorRequest(creator: creator));
+  /// ```dart
+  /// // Search by DID
+  /// final buckets = await MotorFlutter.to.findBucket(did: 'did:snr:xyz789');
+  /// if (buckets == null) {
+  ///     throw Exception('Failed to find bucket');
+  /// }
+  ///
+  /// // Search by creator
+  /// final buckets = await MotorFlutter.to.findBucket(creator: 'did:snr:abc123');
+  /// if (buckets == null) {
+  ///    throw Exception('Failed to find bucket');
+  /// }
+  /// ```
+  Future<List<WhereIs>?> findBucket({String? did, String? creator}) async {
+    if (did != null) {
+      final res = await MotorFlutterPlatform.instance.queryBucket(QueryWhereIsRequest(did: did));
+      if (res != null) {
+        return [res.whereIs];
+      }
+    }
+
+    if (creator != null) {
+      final res = await MotorFlutterPlatform.instance.queryBucketByCreator(QueryWhereIsByCreatorRequest(creator: creator));
+      if (res != null) {
+        return res.whereIs;
+      }
+    }
+    return null;
   }
 
-  /// It queries the schema by the DID.
+  /// Creates a TX in order to deposit the [amount] of SNR into the [recipient] account. A succesful transaction will return a [PaymentResponse] and will return null if the transaction fails.
   ///
-  /// Args:
-  ///   did (String): The DID of the schema.
-  Future<QueryWhatIsResponse?> querySchemaByDid(String did) async {
-    return await MotorFlutterPlatform.instance.querySchemaByDid(did);
+  /// ```dart
+  /// final res = await MotorFlutter.to.deposit('did:snr:abc123', 3.29);
+  /// if (res == null) {
+  ///    throw Exception('Failed to deposit SNR');
+  /// }
+  /// print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
+  /// ```
+  Future<PaymentResponse?> sendTokens(String recipient, int amount, {String memo = ""}) async {
+    return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(
+      to: recipient,
+      from: address.value,
+      amount: Int64(amount),
+      memo: memo,
+    ));
   }
 
-  // QueryWhatIs takes in a single string value which can be either a DID URL or a creator address.
-  /// > This function takes a string, and returns a future that will eventually contain a
-  /// QueryWhereIsResponse object, or null
+  /// Refreshes the current instances values of [address], [domain], [didDocument], [balance], [didUrl], and [staked] with the latest values from the blockchain. An
+  /// optional [callback] can be provided to be notified when the refresh is complete.
   ///
-  /// Args:
-  ///   q (String): The query string.
-  Future<QueryWhereIsResponse?> queryBucket(String q) async {
-    return await MotorFlutterPlatform.instance.queryBucket(QueryWhereIsRequest(did: q));
-  }
-
-  /// It queries the bucket by creator.
-  ///
-  /// Args:
-  ///   creator (String): The creator of the bucket.
-  Future<QueryWhereIsByCreatorResponse?> queryBucketByCreator(String creator) async {
-    return await MotorFlutterPlatform.instance.queryBucketByCreator(QueryWhereIsByCreatorRequest(creator: creator));
-  }
-
-  /// Issue tokens to the specified account.
-  ///
-  /// Args:
-  ///   to (String): The account that will receive the tokens
-  ///   from (String): The account that will issue the tokens.
-  ///   amount (int): The amount of tokens to issue.
-  ///   memo (String): A memo to send with the transaction.
-  Future<PaymentResponse?> issueTokens(String to, String from, int amount, {String? memo}) async {
-    return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(to: to, from: from, amount: Int64(amount), memo: memo));
-  }
-
-  /// This function will refresh the stats for the current user, and if a callback is provided, it will
-  /// be called with the response.
-  ///
-  /// Args:
-  ///   callback (ResponseCallback<StatResponse>): A callback function that will be called when the
-  /// response is received.
-  Future<StatResponse?> refresh([ResponseCallback<StatResponse>? callback]) async {
+  /// ```dart
+  /// // Refresh the current account
+  /// await MotorFlutter.to.refresh();
+  /// print(MotorFlutter.to.address); // prints: 'did:snr:abc123'
+  /// print(MotorFlutter.to.balance); // prints: 1000
+  /// ```
+  Future<StatResponse?> stat([ResponseCallback<StatResponse>? callback]) async {
     if (!authorized.value) {
       Log.printFlutterWarn("User is not yet authorized");
     }
@@ -339,9 +438,7 @@ class MotorFlutter extends GetxService {
       if (resp != null) {
         didDocument(resp.didDocument);
         address(resp.address);
-        domain(resp.didDocument.alsoKnownAs.isNotEmpty ? resp.didDocument.alsoKnownAs[0] : "test.snr/");
         balance(resp.balance);
-        didUrl(resp.didDocument.id);
         staked(resp.stake.toString());
       }
       if (callback != null) {
@@ -352,11 +449,6 @@ class MotorFlutter extends GetxService {
       Log.printMotorException(e.toString());
     }
     return null;
-  }
-
-  /// This function returns a Future that resolves to a String that may be null.
-  Future<String?> getPlatformVersion() async {
-    return await MotorFlutterPlatform.instance.getPlatformVersion();
   }
 
   @override

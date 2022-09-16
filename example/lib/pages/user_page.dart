@@ -10,7 +10,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MotorFlutter.to.refresh();
+    MotorFlutter.to.stat();
     return ListView(
       children: <Widget>[
         Container(
@@ -62,9 +62,9 @@ class UserPage extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.only(top: 16),
                   child: Obx(
-                    () => Text(
-                      MotorFlutter.to.domain.value,
-                      style: const TextStyle(
+                    () => const Text(
+                      "Example",
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -151,7 +151,7 @@ class UserPage extends StatelessWidget {
               ),
               subtitle: Obx(
                 () => Text(
-                  MotorFlutter.to.didUrl.value,
+                  MotorFlutter.to.didUrl,
                   style: const TextStyle(
                     fontSize: 18,
                   ),
