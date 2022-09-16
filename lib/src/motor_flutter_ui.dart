@@ -4,7 +4,6 @@ part of 'motor_flutter_base.dart';
 ///
 /// This extension is used to provide UI related functions to the [MotorFlutter] class.
 extension MotorFlutterUI on MotorFlutter {
-  /// ### Description
   /// Display a modal dialog above the current application content which walks the user through the process
   /// of registering a new account. An optional [onError] callback can be used to handle errors that occur
   /// during the registration process. Returns [CreateAccountResponse] if the user successfully creates an

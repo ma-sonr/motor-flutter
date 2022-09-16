@@ -5,7 +5,6 @@ part of 'motor_flutter_base.dart';
 /// An extension on the [CreateAccountWithKeysResponse] class which provides a useful suite of methods
 /// to work with the [CreateAccountResponse] class.
 extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
-  /// ### Description
   /// Converts the [CreateAccountWithKeysResponse] to a [CreateAccountResponse] by copying the common response properties.
   CreateAccountResponse? toDefaultResponse() {
     return CreateAccountResponse(
@@ -20,7 +19,6 @@ extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
 /// Extension on the [SchemaDefinition] class which provides a useful suite of methods
 /// to work with the [SchemaDefinition] class.
 extension SchemaDefinitionExt on SchemaDefinition {
-  /// ### Description
   /// Converts a [SchemaDefinition] to a base [SchemaDocument] with its fields being set to the associated [SchemaKind] from the underlying definition.
   SchemaDocument newDocument() {
     return SchemaDocument(
@@ -42,7 +40,6 @@ extension SchemaDefinitionExt on SchemaDefinition {
 /// [SchemaDocumentExt] is an extension on the [SchemaDocument] class which provides a useful suite of methods
 /// to manage user generated data.
 extension SchemaDocumentExt on SchemaDocument {
-  /// ### Description
   /// Returns the provided [T] value from the [SchemaDocument] for the given [name] of the field, or null if the field does not exist.
   ///
   /// ### Example
@@ -63,7 +60,6 @@ extension SchemaDocumentExt on SchemaDocument {
     return field.getValue<T>();
   }
 
-  /// ### Description
   /// Sets the provided [T] [value] to the [SchemaDocument] for the given [name] of the field. Returns true if the field was found and set, false otherwise.
   ///
   /// ### Example
@@ -80,7 +76,6 @@ extension SchemaDocumentExt on SchemaDocument {
     return field.setValue(value) != null;
   }
 
-  /// ### Description
   /// Saves the [SchemaDocument] to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
   /// able to view the values. A succesful transaction will return a [UploadDocumentResponse].
   /// ### Example
@@ -121,7 +116,6 @@ extension SchemaDocumentExt on SchemaDocument {
     return resp.document;
   }
 
-  /// ### Description
   /// Pulls the [SchemaDocument] from the current accounts application-specific data store using the provided [cid]. The account then decrypts the data and
   /// its values are returned as a [SchemaDocument]. A succesful transaction will return a [SchemaDocument].
   ///
@@ -163,7 +157,6 @@ extension SchemaDocumentExt on SchemaDocument {
 /// Extension on the [SchemaDocumentValue] class which provides a useful suite of methods
 /// to manage user generated data.
 extension SchemaDocumentValueExt on SchemaDocumentValue {
-  /// ### Description
   /// Returns the underlying value of the [SchemaDocumentValue] as the provided [T] type. If the value cannot be cast to the provided type, or the provided [T] doesnt match [SchemaKind], then null is returned.
   ///
   /// ### Example
@@ -227,7 +220,6 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
     return null;
   }
 
-  /// ### Description
   /// Checks if the provided [T] type matches the [SchemaKind] of the [SchemaDocumentValue]. If the provided [T] doesnt match [SchemaKind], then false is returned.
   ///
   /// ### Example

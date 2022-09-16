@@ -39,36 +39,30 @@ class MotorFlutter extends GetxService {
     _methodChannel.setMethodCallHandler(_handleMethodCall);
   }
 
-  /// ### Description
   /// A Stream of all [RefreshEvent] that are transmitted in the Local Discovery [OLC](https://en.wikipedia.org/wiki/Open_Location_Code)
   ///
   /// ### See also:
   /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   final StreamController<RefreshEvent> discoverEvents = StreamController<RefreshEvent>();
 
-  /// ### Description
   /// Reactive variable that holds the current active [MotorFlutter] wallet address.
   ///
   /// ### See also:
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final address = 'snr123abc'.obs;
 
-  /// ### Description
   /// A list of .snr/ domains each mapped to [Alias] objects. These can be used to resolve associated aliases with a given Sonr account.
   ///
   /// ### See also:
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final domains = RxList<Alias>();
 
-  /// ### Description
   /// Returns the current active account's liquid SNR balance. This variable is triggered to refresh on the [stat] method.
   final balance = 0.obs;
 
-  /// ### Description
   /// Returns the current accounts staked SNR balance. This variable is triggered to refresh on the [stat] method.
   final staked = '0'.obs;
 
-  /// ### Description
   /// Returns the curret active account's [DIDDocument]. This value is set on account authorization, and can be refreshed with the [stat] method.
   ///
   /// ### Example
@@ -81,7 +75,6 @@ class MotorFlutter extends GetxService {
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   final didDocument = DIDDocument().obs;
 
-  /// ### Description
   /// Sets itself to true when the [MotorFlutter] account is created with [createAccount], or [login]. This is used to
   /// determine if the user is ready to be active on the [Sonr Network](https://sonr.io) or not.
   ///
@@ -94,7 +87,6 @@ class MotorFlutter extends GetxService {
   /// ```
   final authorized = false.obs;
 
-  /// ### Description
   /// Sets itself to true when the [MotorFlutter] account is finished bootstrapping to the Sonr Network. The [connect] method triggers the refresh of this variable.
   ///
   /// ### Example
@@ -105,7 +97,6 @@ class MotorFlutter extends GetxService {
   /// ```
   final connected = false.obs;
 
-  /// ### Description
   /// List of all neerby Motor powered devices. This is updated every time a [RefreshEvent] is received on the [MethodChannel]. All nodes are referenced with the [Peer] object.
   ///
   /// ### Example
@@ -120,7 +111,6 @@ class MotorFlutter extends GetxService {
   /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   final nearbyPeers = <Peer>[].obs;
 
-  /// ### Description
   /// A Reference Map for all recently queried [SchemaDefinition]s, and all created [SchemaDocument]s.
   ///
   /// ### Example
@@ -137,7 +127,6 @@ class MotorFlutter extends GetxService {
   /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
   final schemaMap = <String, SchemaDocument>{}.obs;
 
-  /// ### Description
   /// Use the static [to] getter method allows access to [MotorFlutter] instance anywhere in the application.
   ///
   /// ### Example
@@ -149,7 +138,6 @@ class MotorFlutter extends GetxService {
   /// ```
   static MotorFlutter get to => Get.find<MotorFlutter>();
 
-  /// ### Description
   /// Returns true if the [MotorFlutter] service has been injected into the GetX State Management system.
   ///
   /// ### Example
@@ -161,7 +149,6 @@ class MotorFlutter extends GetxService {
   /// ```
   static bool get isReady => Get.isRegistered<MotorFlutter>();
 
-  /// ### Description
   /// This getter method returns the current version of the underlying accounts [DIDDocument] id. This is NOT a reactive variable.
   ///
   /// ### Example
@@ -173,7 +160,6 @@ class MotorFlutter extends GetxService {
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   String get didUrl => to.didDocument.value.id;
 
-  /// ### Description
   /// This static method initializes a [MotorFlutter] instance and Injects it into [Get] state management.
   ///
   /// ### Example
@@ -199,7 +185,6 @@ class MotorFlutter extends GetxService {
     await GetStorage.init(kMotorTempStorageName);
   }
 
-  /// ### Description
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
   /// storage during development. Returns [CreateAccountResponse] if the account is created successfully.
   ///
@@ -237,7 +222,6 @@ class MotorFlutter extends GetxService {
     return null;
   }
 
-  /// ### Description
   /// Logs in to an existing account with the given [password]. During production, this method retrieves the keys from the keychain using [address]. Both of these params are required in order
   /// to return a successful [LoginResponse].
   ///
@@ -274,7 +258,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// ### Description
   /// Purchases a new .snr/ domain for the current account if the [alias] is available. A succesful transaction will return a [MsgBuyAliasResponse].
   ///
   /// ### Example
@@ -310,7 +293,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// ### Description
   /// Lists an existing [alias] owned by the current account for sale at the given [amount]. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a [MsgSellAliasResponse].
   ///
   /// ### Example
@@ -347,7 +329,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// ### Description
   /// Transfers an existing [alias] listed for sale from the account which listed it, to the current active account. A succesful transaction will return a [MsgTransferAliasResponse], and will return
   /// an error if the provided [amount] is less than the listed price, or if the [alias] is not listed for sale by the [currentOwner].
   ///
@@ -384,7 +365,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// ### Description
   /// Establishes the Motor libp2p node, bootstraps the node to known DHT peers, and begins listening for incoming connections. An optional [callback] can be provided to be notified
   /// when the node is ready to accept connections.
   ///
@@ -399,7 +379,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// ### Description
   /// Builds a request for recording a [SchemaDefinition] on the blockchain. [metadata] is for any additional information that should be stored with the schema. [callback] is an optional
   /// function that will be called when the transaction is complete. Returns a [CreateSchemaResponse] if the transaction is successful.
   ///
@@ -427,7 +406,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// ### Description
   /// Searches for a schema by either its [did] or [creator]. If [did] is provided a single-value map is returned, and the [creator] argument will be ignored. Returns a map of [String] to [SchemaDefinition] if definition(s) are found. Returns
   /// null if no definition is found, or if neither [did] nor [creator] were provided.
   ///
@@ -465,7 +443,6 @@ class MotorFlutter extends GetxService {
     return null;
   }
 
-  /// ### Description
   /// Queries the Sonr blockchain for the associated [WhereIs] for the provided [did] or [creator]. If [did] is provided a single-value list is returned (if successful), and the [creator] argument will be ignored.
   /// Returns [List<WhereIs>] if bucket(s) are found. Returns null if no bucket is found, or if neither [did] nor [creator] were provided.
   ///
@@ -503,7 +480,6 @@ class MotorFlutter extends GetxService {
     return null;
   }
 
-  /// ### Description
   /// Creates a TX in order to deposit the [amount] of SNR into the [recipient] account. A succesful transaction will return a [PaymentResponse] and will return null if the transaction fails.
   ///
   /// ### Example
@@ -526,7 +502,6 @@ class MotorFlutter extends GetxService {
     ));
   }
 
-  /// ### Description
   /// Refreshes the current instances values of [address], [domain], [didDocument], [balance], [didUrl], and [staked] with the latest values from the blockchain. An
   /// optional [callback] can be provided to be notified when the refresh is complete.
   ///
