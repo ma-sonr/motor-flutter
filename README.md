@@ -1,4 +1,4 @@
-![Motor Flutter Banner](./doc/static-assets/gh-motor-banner.png)
+![Motor Flutter Banner](/doc/static-assets/gh-motor-banner.png)
 
 <div align="center">
 
