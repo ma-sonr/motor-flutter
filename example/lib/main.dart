@@ -11,12 +11,6 @@ Future<void> main() async {
   // Init Services
   WidgetsFlutterBinding.ensureInitialized();
   await MotorFlutter.init();
-  // await Get.putAsync(
-  //   () => QueryService().init(),
-  //   permanent: true,
-  // );
-  // Check Platform
-  await GetStorage.init("motor_example_auth");
   runApp(const InitialPage());
 }
 
