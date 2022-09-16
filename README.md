@@ -5,8 +5,8 @@
 <div align="center">
 
 [![Docs](https://img.shields.io/badge/API%20Docs-motor__flutter-blue.svg)](https://motor.build/motor_flutter/MotorFlutter-class.html)
-[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](/LICENSE)
 [![Status](https://img.shields.io/badge/status-active-success.svg)](https://sonr.io)
+[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](/LICENSE)
 
 [![Pub](https://img.shields.io/pub/v/motor_flutter.svg)](https://pub.dev/packages/motor_flutter)
 [![Pod](https://img.shields.io/cocoapods/v/motor_pod)](https://cocoapods.org/pods/motor_pod)
@@ -15,8 +15,11 @@
 </div>
 
 The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for Authentication, Data Management, and Wallet interactions for the Sonr Network.
-- Flutter bindings for the [Sonr Motor Node](https://docs.sonr.io)
-- See **[API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html)** for more information.
+
+#### Quick Start
+- Getting started by [Registering User Accounts](https://motor.build/motor_flutter/MotorFlutter/createAccount.html)
+- Full Sonr Ecosystem [Technical Documentation](https://docs.sonr.io)
+- Motor Flutter [API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html)
 
 ## Installation
 
