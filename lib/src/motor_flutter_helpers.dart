@@ -11,13 +11,6 @@ extension MotorFlutterHelpers on MotorFlutter {
     final req = _peerInfo.toInitializeRequest(enableLibp2p: true);
     await MotorFlutterPlatform.instance.init(req);
     Get.lazyPut(() => RegisterController());
-    if (storageEnabled) {
-      final ok = await GetStorage.init(kMotorTempStorageName);
-      _tempStorage = GetStorage(kMotorTempStorageName);
-      _enabledStorage = ok;
-    } else {
-      _enabledStorage = false;
-    }
     return this;
   }
 
@@ -54,57 +47,28 @@ extension MotorFlutterHelpers on MotorFlutter {
   }
 
   Future<bool> writeKeysForAddr(Uint8List dscBytes, Uint8List pskBytes, String addr) async {
-    // Write to GetStorage if Debug
-    if (isDebugMode || _enabledStorage) {
-      try {
-        _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
-        _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
-      } catch (e) {
-        Log.warn("Failed to write AES Keys to GetStorage $e");
-      }
-      return true;
-    }
-
     // store the two keys in keychain
     var keychainPuts = [
       FlutterKeychain.put(key: _dscKeyForDid(addr), value: _encodeHexString(dscBytes)),
       FlutterKeychain.put(key: _pskKeyForDid(addr), value: _encodeHexString(pskBytes)),
     ];
     await Future.wait(keychainPuts, eagerError: true, cleanUp: (dynamic error) {
-      Log.warn("Failed to write AES keys to keychain: $error");
-      if (_enabledStorage) {
-        try {
-          _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
-          _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
-        } catch (e) {
-          Log.warn("Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e");
-        }
-      }
+      Log.error("Failed to write AES keys to keychain: $error");
     });
     return false;
   }
 
+  // Read from Keychain
   Future<Tuple2<List<int>, List<int>>?> readKeysForAddr(String addr) async {
-    // Read from GetStorage if Debug
-    if (isDebugMode || _enabledStorage) {
-      try {
-        final dsc = _tempStorage.read(_dscKeyForDid(addr));
-        final psk = _tempStorage.read(_pskKeyForDid(addr));
-        if (dsc != null && psk != null) {
-          return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
-        }
-      } catch (e) {
-        Log.warn("Failed to read AES Keys from GetStorage $e");
-      }
-    } else {
-      // Read from Keychain
+    if (!isDebugMode) {
       final dsc = await FlutterKeychain.get(key: _dscKeyForDid(addr));
       final psk = await FlutterKeychain.get(key: _pskKeyForDid(addr));
       if (dsc != null && psk != null) {
         return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
       }
+      Log.warn("Failed to read AES keys from keychain");
+      return null;
     }
-    return null;
   }
 }
 

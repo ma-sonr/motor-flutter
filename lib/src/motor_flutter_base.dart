@@ -5,7 +5,6 @@ import 'package:flutter_keychain/flutter_keychain.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:encrypt/encrypt.dart' as e;
-import 'package:get_storage/get_storage.dart';
 import 'package:tuple/tuple.dart';
 
 import 'controllers/register_controller.dart';
@@ -32,8 +31,6 @@ class MotorFlutter extends GetxService {
   // Private variables
   final _methodChannel = const MethodChannel(kMotorPlatformChannelAddr);
   late final PeerInformation _peerInfo;
-  late final GetStorage _tempStorage;
-  late final bool _enabledStorage;
 
   // Constructor
   MotorFlutter() {

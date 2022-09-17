@@ -1,3 +1,13 @@
+## 0.5.5
+* Update Logger and Methods
+* Make methods null-safe in MotorFlutter
+* Introduce Exception implementation for Unmarshalling types
+* Remove GetStorage as a dependency
+* Add Docs for Callbacks
+* Fix SchemaDocument pull from IPFS bug involving local storage
+* Migrate Eureka app to sonr-io/examples
+* Introduce new example app
+
 ## 0.5.4
 * Fix a bug where the underlying SchemaDocumentValue would set the Type specific value before the Wrapper was initialized.
 ## 0.5.3
