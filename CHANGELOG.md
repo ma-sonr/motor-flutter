@@ -1,7 +1,7 @@
 ## 0.5.5
 * Update Logger and Methods
 * Make methods null-safe in MotorFlutter
-* Introduce Exception implementation for Unmarshalling types
+* Introduce Exception implementation for Unmarshaling types
 * Remove GetStorage as a dependency
 * Add Docs for Callbacks
 * Fix SchemaDocument pull from IPFS bug involving local storage
@@ -14,7 +14,7 @@
 * Fix issue with SchemaDocumentValue extension method not working with the provided `T`
 
 ## 0.5.2
-* Fix iOS Podspec version error
+* Fix iOS PodSpec version error
 
 ## 0.5.1
 * Small docs fixes to `SonrRegisterButton`
