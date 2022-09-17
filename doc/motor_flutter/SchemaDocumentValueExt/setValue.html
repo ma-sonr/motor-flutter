@@ -59,6 +59,20 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Sets the value of the <code>SchemaDocumentValue</code> to the provided <code>value</code>. If the provided <code>T</code> doesnt match <code>SchemaKind</code>, then false is returned.</p>
+<h3 id="example">Example</h3>
+<pre class="language-dart"><code class="language-dart">// Create a new document
+final doc = SchemaDocument();
+
+// Set the value of the field 'name' to 'John Doe'
+for (final field in doc.fields) {
+  if(field.name == 'name') {
+    field.setValue&lt;String&gt;("John Doe");
+  }
+}
+</code></pre>
+</section>
 
 
     
@@ -71,47 +85,46 @@
   switch (field_2) {
     case SchemaKind.BOOL:
       if (v is bool) {
-        boolValue.value = v;
+        boolValue = BoolValue(value: v);
         return v;
       }
       break;
     case SchemaKind.INT:
       if (v is int) {
-        intValue.value = v;
+        intValue = IntValue(value: v);
         return v;
       }
       break;
     case SchemaKind.FLOAT:
       if (v is double) {
-        floatValue.value = v;
+        floatValue = FloatValue(value: v);
         return v;
       }
       break;
 
     case SchemaKind.STRING:
       if (v is String) {
-        stringValue.value = v;
+        stringValue = StringValue(value: v);
         return v;
       }
       break;
 
     case SchemaKind.BYTES:
       if (v is Uint8List) {
-        bytesValue.value = v;
+        bytesValue = BytesValue(value: v);
         return v;
       }
       break;
 
     case SchemaKind.LIST:
       if (v is List&lt;SchemaDocumentValue&gt;) {
-        arrayValue.value.clear();
-        arrayValue.value.addAll(v);
+        arrayValue = ArrayValue(value: v);
         return v;
       }
       break;
     case SchemaKind.LINK:
       if (v is String) {
-        linkValue.value = v;
+        linkValue = LinkValue(value: v);
         return v;
       }
       break;
@@ -167,7 +180,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.1
+      0.5.4
   </span>
 
   

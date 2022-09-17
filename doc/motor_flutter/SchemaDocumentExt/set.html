@@ -77,7 +77,7 @@ final res = doc.set&lt;String&gt;('name', 'John Doe'); // sets the value of the 
   if (field == null) {
     return false;
   }
-  return field.setValue(value) != null;
+  return field.setValue&lt;T&gt;(value) != null;
 }</code></pre>
 </section>
 
@@ -127,7 +127,7 @@ final res = doc.set&lt;String&gt;('name', 'John Doe'); // sets the value of the 
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.1
+      0.5.4
   </span>
 
   
