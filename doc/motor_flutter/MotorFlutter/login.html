@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">LoginResponse?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">WhoIs</span>&gt;</span></span>
 <span class="name ">login</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="login-param-password">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">password</span>, </span></li>
 <li><span class="parameter" id="login-param-address"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">address</span>, </span></li>
 <li><span class="parameter" id="login-param-pskKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">pskKey</span>, </span></li>
@@ -72,14 +72,13 @@ to return a successful <code>LoginResponse</code>.</p>
 <li><code>pskKey</code> - The pre-shared key used to encrypt the wallet shards with AES. <em>(optional)</em></li>
 <li><code>dscKey</code> - The data signing key used to encrypt the wallet shards with AES. <em>(optional)</em></li>
 </ul>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
 if (res == null) {
    throw Exception('Login failed');
 }
 print('Account logged in successfully: ${res.address}');
 </code></pre>
-<h3 id="next-steps">Next Steps:</h3>
+<p><strong>Next Steps</strong></p>
 <ul>
 <li>Define a new blockchain verifiable data model using <a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
 <li>Buy a .snr/ subdomain to simplify your account address using <a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
@@ -92,7 +91,20 @@ print('Account logged in successfully: ${res.address}');
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;LoginResponse?&gt; login({required String password, required String address, List&lt;int&gt;? pskKey, List&lt;int&gt;? dscKey}) async {
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; final res = await MotorFlutter.to.login(password: &#39;terrible-password-123&#39;, did: &#39;did:snr:abc123&#39;);
+&#47;&#47;&#47; if (res == null) {
+&#47;&#47;&#47;    throw Exception(&#39;Login failed&#39;);
+&#47;&#47;&#47; }
+&#47;&#47;&#47; print(&#39;Account logged in successfully: ${res.address}&#39;);
+&#47;&#47;&#47; ```
+&#47;&#47;&#47; **Next Steps**
+&#47;&#47;&#47; - Define a new blockchain verifiable data model using [createSchema]
+&#47;&#47;&#47; - Buy a .snr&#47; subdomain to simplify your account address using [buyAlias]
+&#47;&#47;&#47; - Connect to the p2p network and enable secure device-to-devce communication with [connect]
+&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
+Future&lt;WhoIs&gt; login({required String password, required String address, List&lt;int&gt;? pskKey, List&lt;int&gt;? dscKey}) async {
   final auth = await readKeysForAddr(address);
   if (auth == null &amp;&amp; (pskKey == null || dscKey == null)) {
     throw Exception(&#39;No keys found for did: $address&#39;);
@@ -103,12 +115,14 @@ print('Account logged in successfully: ${res.address}');
     aesDscKey: auth?.item1 ?? dscKey,
     aesPskKey: auth?.item2 ?? pskKey,
   ));
-  if (resp != null) {
-    this.address(resp.whoIs.owner);
-    didDocument.value = resp.whoIs.didDocument;
-    authorized.value = true;
+  if (resp == null) {
+    throw UnmarshalException&lt;LoginResponse&gt;();
   }
-  return resp;
+  this.address.value = resp.whoIs.owner;
+  didDocument.value = resp.whoIs.didDocument;
+  authorized.value = true;
+
+  return resp.whoIs;
 }</code></pre>
 </section>
 
@@ -166,14 +180,15 @@ print('Account logged in successfully: ${res.address}');
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -200,7 +215,7 @@ print('Account logged in successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

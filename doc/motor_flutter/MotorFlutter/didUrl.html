@@ -62,7 +62,6 @@
 
 <section class="desc markdown">
   <p>This getter method returns the current version of the underlying accounts <code>DIDDocument</code> id. This is NOT a reactive variable.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">print(MotorFlutter.to.didUrl); // prints 'did:snr:abc123#v1'
 </code></pre>
 <h3 id="see-also">See also:</h3>
@@ -74,7 +73,13 @@
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get didUrl =&gt; to.didDocument.value.id;</code></pre>
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; print(MotorFlutter.to.didUrl); &#47;&#47; prints &#39;did:snr:abc123#v1&#39;
+&#47;&#47;&#47; ```
+&#47;&#47;&#47; ### See also:
+&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
+String get didUrl =&gt; to.didDocument.value.id;</code></pre>
 </section>
 
 </section>
@@ -133,14 +138,15 @@
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -167,7 +173,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

@@ -1,10 +1,11 @@
 /// ## Motor Flutter
-///
-/// **Flutter bindings for the All-in-one Motor node by Sonr. Seamless integration with the Sonr P2P network and blockchain - all while providing a Wallet interface which doesnt require a Seed phrase.**
-/// - [Motor API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html)
-/// - [Documentation](https://docs.sonr.io)
-/// - [Discord](https://sonr.io/discord)
-/// - [Website](https://sonr.io)
+/// The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for Authentication, Data Management, and Wallet interactions for the Sonr Network.
+
+/// #### Quick Start
+/// - Get started by [Registering User Accounts](https://motor.build/motor_flutter/MotorFlutter/createAccount.html) and following the **next steps** at the bottom of the doc.
+/// - Read the Full Sonr Stack [Documentation](https://docs.sonr.io) and Motor [Flutter API Reference](https://motor.build/motor_flutter/MotorFlutter-class.html)
+/// - Visit our [Website](https://sonr.io) and Join the Community [Discord](https://sonr.io/discord)
+/// - Submit Feature Requests at [sonr.fyi](https://sonr.fyi)
 library motor_flutter;
 
 export 'src/motor_flutter_base.dart';

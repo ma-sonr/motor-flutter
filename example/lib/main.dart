@@ -2,61 +2,159 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:motor_flutter_example/pages/home_page.dart';
-import 'package:motor_flutter_example/pages/register_page.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 
 Future<void> main() async {
   // Init Services
   WidgetsFlutterBinding.ensureInitialized();
   await MotorFlutter.init();
-  runApp(const InitialPage());
+  runApp(const MyApp());
 }
 
-/// #### Root App Widget
-class InitialPage extends StatelessWidget {
-  const InitialPage({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late final WhoIs? whoIs;
+  late final SchemaDefinition? testSchema;
+  late final SchemaDocument? testDocument;
+  late final List<int>? dscKey;
+  late final List<int>? pskKey;
+  String titleMsg = "Unauthorized";
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      // onInit: () => _checkInitialPage(),
-      themeMode: ThemeMode.dark,
-      navigatorKey: Get.key,
-      navigatorObservers: [
-        GetObserver(),
-      ],
-      home: MotorFlutter.to.authorized.value ? const HomePage() : const RegisterPage(),
+    return MaterialApp(
+      title: 'Motor Flutter Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(titleMsg),
+          leading: IconButton(
+            icon: const Icon(Icons.account_circle_rounded),
+            //
+            // 1. Register a new account
+            //
+            onPressed: () async {
+              // When running your application in Debug mode the device keychain is unavailble in the Simulator.
+              // We have provided a callback which returns your dsc and psk for storing your keys securely.
+              // The Sonr team reccomends either of the following packages to store your keys:
+              // - [biometric_storage] https://pub.dev/packages/biometric_storage
+              // - [flutter_keychain] https://pub.dev/packages/flutter_keychain
+              final res = await MotorFlutter.to.createAccount("hard-to-hack-password", onKeysGenerated: (dsc, psk) {
+                dscKey = dsc;
+                pskKey = psk;
+              });
+              whoIs = res;
+            },
+          ),
+          actions: [
+            IconButton(
+                //
+                // 2. Login to new account
+                //
+                onPressed: () async {
+                  // This line is unnecessary it is the Developers Job to provide a UI
+                  // to be able to input Password, and Account Address. In production mode
+                  // the dscKey and pskKey are stored by the motor_flutter plugin in the device
+                  // keychain.
+                  if (whoIs == null) {
+                    Get.snackbar("Error", "WhoIs Field has not been set");
+                    return;
+                  }
+                  final res = await MotorFlutter.to.login(
+                    password: "hard-to-hack-password",
+                    address: whoIs!.owner,
+                    dscKey: dscKey,
+                    pskKey: pskKey,
+                  );
+                  whoIs = res;
+                  Get.snackbar("Error", "Failed to login user");
+                  return;
+                },
+                icon: const Icon(Icons.login))
+          ],
+        ),
+        body: Column(
+          children: [
+            //
+            // 3. Try creating a Schema
+            //
+            MaterialButton(
+              child: const Text("New Example Schema"),
+              onPressed: () async {
+                // Set the label, followed by a map with the property name and the
+                // associated primitive type.
+                final res = await MotorFlutter.to.createSchema(
+                    "Profile",
+                    Map<String, SchemaKind>.from({
+                      "name": SchemaKind.STRING,
+                      "age": SchemaKind.INT,
+                      "height": SchemaKind.FLOAT,
+                    }));
+                testSchema = res.schemaDefinition;
+              },
+            ),
+            //
+            // 4. Lets build a Document from that schema
+            //
+            MaterialButton(
+              child: const Text("Build Document from Schema"),
+              onPressed: () async {
+                if (testSchema == null) {
+                  Get.snackbar(
+                    "Error",
+                    "Failed to create schema",
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                  );
+                  return;
+                }
+
+                testDocument = testSchema?.newDocument();
+                testDocument!.set<String>("name", "Todd");
+                testDocument!.set<int>("age", 24);
+                testDocument!.set<double>("height", 5.11);
+              },
+            ),
+
+            //
+            // 5. Upload Document to App-Specific Data Store
+            //
+            MaterialButton(
+              child: const Text("Upload Document to User Data Store"),
+              onPressed: () async {
+                if (testDocument == null) {
+                  Get.snackbar(
+                    "Error",
+                    "Failed to find testDocument",
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                  );
+                  return;
+                }
+
+                final doc = await testDocument?.save("hello-flutter");
+                if (doc == null) {
+                  Get.snackbar(
+                    "Error",
+                    "Failed to Upload testDocument",
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                  );
+                  return;
+                }
+                Get.snackbar("Success", "Uploaded document to user encrypted IPFS Store. CID: ${doc.cid}");
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
-
-  // Future<void> _checkInitialPage() async {
-  //   // Create Profile
-  //   final hint = TextUtils.hintFullName;
-  //   final profile = Profile(
-  //     firstName: hint.item1,
-  //     lastName: hint.item2,
-  //     sName: hint.item1[0] + hint.item2,
-  //   );
-
-  //   await SonrService.to.start(
-  //       location: Location(
-  //         latitude: 0,
-  //         longitude: 0,
-  //       ),
-  //       profile: profile);
-
-  //   // All Valid
-  //   if (await Permissions.Location.isGranted) {
-  //     AppPage.Home.off(args: HomeArguments.FirstLoad);
-  //   }
-
-  //   // No Location
-  //   else {
-  //     AppPage.Onboarding.off();
-  //   }
-
-  //   // } else {
-  //   //   AppPage.Error.to(args: ErrorPageArgs.noNetwork());
-  //   // }
-  // }
 }

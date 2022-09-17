@@ -4,13 +4,13 @@ import 'package:motor_flutter/motor_flutter.dart';
 import 'package:fancy_password_field/fancy_password_field.dart';
 
 class RegisterModalPage extends GetView<RegisterController> {
-  final ResponseCallback<CreateAccountResponse>? onCreateAccountResponse;
+  final ResponseCallback<WhoIs>? onComplete;
   final HandleKeysCallback? onKeysGenerated;
   final ErrorCallback? onError;
 
   const RegisterModalPage({
     Key? key,
-    this.onCreateAccountResponse,
+    this.onComplete,
     this.onKeysGenerated,
     this.onError,
   }) : super(key: key);
@@ -28,7 +28,7 @@ class RegisterModalPage extends GetView<RegisterController> {
       ),
       body: controller.obx(
           (state) {
-            onCreateAccountResponse?.call(state);
+            onComplete?.call(state);
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

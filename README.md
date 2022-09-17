@@ -23,7 +23,7 @@ The Official Implementation of the Sonr Motor Node in Flutter. This package prov
 
 ## Installation
 
-Here's how to install the motor_flutter package in your Flutter project:
+Here's how to install the `motor_flutter` package in your Flutter project:
 
 #### Prerequisites
 * [Flutter](https://flutter.dev/docs/get-started/install)
@@ -39,22 +39,17 @@ or
 
 ```yaml
 dependencies:
-  motor_flutter: ^0.5.4
+  motor_flutter: ^0.5.5
 ```
 
-#### iOS
-
-Add the following to your Podfile:
+Update your `ios/Podfile`:
 
 ```ruby
-platform :ios, '13.0'
+platform :ios, '13.0' # At the top of the file
+.
+.
+use_frameworks! # Then **remove or comment out**
 ```
-
-Then **remove or comment out** this line from your Podfile:
-```ruby
-# use_frameworks!
-```
-
 
 ## Usage
 

@@ -158,8 +158,47 @@
   <section class="summary offset-anchor" id="static-methods">
     <h2>Static Methods</h2>
     <dl class="callables">
-        <dt id="printFlutterResult" class="callable">
-  <span class="name"><a href="../motor_flutter/Log/printFlutterResult.html">printFlutterResult</a></span><span class="signature">(<wbr><span class="parameter" id="printFlutterResult-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
+        <dt id="error" class="callable">
+  <span class="name"><a href="../motor_flutter/Log/error.html">error</a></span><span class="signature">(<wbr><span class="parameter" id="error-param-e"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">e</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It prints the message to the console.
+  
+
+</dd>
+
+        <dt id="print" class="callable">
+  <span class="name"><a href="../motor_flutter/Log/print.html">print</a></span><span class="signature">(<wbr><span class="parameter" id="print-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It prints the message to the console.
+  
+
+</dd>
+
+        <dt id="success" class="callable">
+  <span class="name"><a href="../motor_flutter/Log/success.html">success</a></span><span class="signature">(<wbr><span class="parameter" id="success-param-m"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">m</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  It prints the message with a Success status
+  
+
+</dd>
+
+        <dt id="verbose" class="callable">
+  <span class="name"><a href="../motor_flutter/Log/verbose.html">verbose</a></span><span class="signature">(<wbr><span class="parameter" id="verbose-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -171,8 +210,8 @@
 
 </dd>
 
-        <dt id="printFlutterWarn" class="callable">
-  <span class="name"><a href="../motor_flutter/Log/printFlutterWarn.html">printFlutterWarn</a></span><span class="signature">(<wbr><span class="parameter" id="printFlutterWarn-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
+        <dt id="warn" class="callable">
+  <span class="name"><a href="../motor_flutter/Log/warn.html">warn</a></span><span class="signature">(<wbr><span class="parameter" id="warn-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -180,32 +219,6 @@
 </dt>
 <dd>
   It prints a warning message to the console
-  
-
-</dd>
-
-        <dt id="printMotorException" class="callable">
-  <span class="name"><a href="../motor_flutter/Log/printMotorException.html">printMotorException</a></span><span class="signature">(<wbr><span class="parameter" id="printMotorException-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  It prints the message to the console.
-  
-
-</dd>
-
-        <dt id="printMotorResult" class="callable">
-  <span class="name"><a href="../motor_flutter/Log/printMotorResult.html">printMotorResult</a></span><span class="signature">(<wbr><span class="parameter" id="printMotorResult-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  It prints the message to the console.
   
 
 </dd>
@@ -272,14 +285,14 @@
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#typedefs">Typedefs</a></li>
-  <li><a href="../motor_flutter/BoolCallback.html">BoolCallback</a></li>
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
-  <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
   <li><a href="../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
   <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
 
+  <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#exceptions">Exceptions</a></li>
+  <li><a href="../motor_flutter/UnmarshalException-class.html">UnmarshalException</a></li>
 </ol>
 
   </div>
@@ -307,10 +320,11 @@
 
 
         <li class="section-title"><a href="../motor_flutter/Log-class.html#static-methods">Static methods</a></li>
-          <li><a href="../motor_flutter/Log/printFlutterResult.html">printFlutterResult</a></li>
-          <li><a href="../motor_flutter/Log/printFlutterWarn.html">printFlutterWarn</a></li>
-          <li><a href="../motor_flutter/Log/printMotorException.html">printMotorException</a></li>
-          <li><a href="../motor_flutter/Log/printMotorResult.html">printMotorResult</a></li>
+          <li><a href="../motor_flutter/Log/error.html">error</a></li>
+          <li><a href="../motor_flutter/Log/print.html">print</a></li>
+          <li><a href="../motor_flutter/Log/success.html">success</a></li>
+          <li><a href="../motor_flutter/Log/verbose.html">verbose</a></li>
+          <li><a href="../motor_flutter/Log/warn.html">warn</a></li>
 
 </ol>
 
@@ -321,7 +335,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

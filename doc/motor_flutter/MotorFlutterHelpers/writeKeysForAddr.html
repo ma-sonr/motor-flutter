@@ -73,7 +73,7 @@
       _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
       _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
     } catch (e) {
-      Log.printFlutterWarn(&quot;Failed to write AES Keys to GetStorage $e&quot;);
+      Log.warn(&quot;Failed to write AES Keys to GetStorage $e&quot;);
     }
     return true;
   }
@@ -84,13 +84,13 @@
     FlutterKeychain.put(key: _pskKeyForDid(addr), value: _encodeHexString(pskBytes)),
   ];
   await Future.wait(keychainPuts, eagerError: true, cleanUp: (dynamic error) {
-    Log.printFlutterWarn(&quot;Failed to write AES keys to keychain: $error&quot;);
+    Log.warn(&quot;Failed to write AES keys to keychain: $error&quot;);
     if (_enabledStorage) {
       try {
         _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
         _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
       } catch (e) {
-        Log.printFlutterWarn(&quot;Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e&quot;);
+        Log.warn(&quot;Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e&quot;);
       }
     }
   });
@@ -142,7 +142,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

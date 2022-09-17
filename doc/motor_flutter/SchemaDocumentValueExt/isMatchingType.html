@@ -61,7 +61,6 @@
     
 <section class="desc markdown">
   <p>Checks if the provided <code>T</code> type matches the <code>SchemaKind</code> of the <code>SchemaDocumentValue</code>. If the provided <code>T</code> doesnt match <code>SchemaKind</code>, then false is returned.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">// Create a new document
 final doc = SchemaDocument();
 
@@ -78,7 +77,19 @@ for (final field in doc.fields) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool isMatchingType&lt;T&gt;(T value) {
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; &#47;&#47; Create a new document
+&#47;&#47;&#47; final doc = SchemaDocument();
+&#47;&#47;&#47;
+&#47;&#47;&#47; &#47;&#47; Check if the field &#39;name&#39; is a String
+&#47;&#47;&#47; for (final field in doc.fields) {
+&#47;&#47;&#47;    if(field.isMatchingType&lt;String&gt;()) {
+&#47;&#47;&#47;     print(&quot;Found a string field!&quot;);
+&#47;&#47;&#47;   }
+&#47;&#47;&#47; }
+&#47;&#47;&#47; ```
+bool isMatchingType&lt;T&gt;(T value) {
   final v = getValue&lt;T&gt;();
   if (v == null) {
     return false;
@@ -132,7 +143,7 @@ for (final field in doc.fields) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

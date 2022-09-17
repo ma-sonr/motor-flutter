@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse</span>&gt;</span></span>
 <span class="name ">sellAlias</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="sellAlias-param-alias"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">alias</span>, </span></li>
 <li><span class="parameter" id="sellAlias-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span></li>
 <li><span class="parameter" id="sellAlias-param-callback">[<span class="type-annotation"><a href="../../motor_flutter/ResponseCallback.html">ResponseCallback</a><span class="signature">&lt;<wbr><span class="type-parameter">MsgSellAliasResponse</span>&gt;</span>?</span> <span class="parameter-name">callback</span>]</span></li>
@@ -63,7 +63,6 @@
     
 <section class="desc markdown">
   <p>Lists an existing <code>alias</code> owned by the current account for sale at the given <code>amount</code>. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a <code>MsgSellAliasResponse</code>.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.sellAlias('hulahoop', 40.0);
 if (res == null) {
   throw Exception('Failed to sell alias');
@@ -76,7 +75,7 @@ for (final alias in res.aliases) {
   }
 }
 </code></pre>
-<h3 id="next-steps">Next Steps:</h3>
+<p><strong>Next Steps</strong></p>
 <ul>
 <li>Buy an alias listed for sale with <a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 <li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md">ADR-1</a></li>
@@ -87,19 +86,37 @@ for (final alias in res.aliases) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;MsgSellAliasResponse?&gt; sellAlias(String alias, int amount, [ResponseCallback&lt;MsgSellAliasResponse&gt;? callback]) async {
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; final res = await MotorFlutter.to.sellAlias(&#39;hulahoop&#39;, 40.0);
+&#47;&#47;&#47; if (res == null) {
+&#47;&#47;&#47;   throw Exception(&#39;Failed to sell alias&#39;);
+&#47;&#47;&#47; }
+&#47;&#47;&#47;
+&#47;&#47;&#47; &#47;&#47; Print all domains for sale
+&#47;&#47;&#47; for (final alias in res.aliases) {
+&#47;&#47;&#47;    if(alias.isForSale) {
+&#47;&#47;&#47;       print(alias.name); &#47;&#47; prints: hulahoop.snr or hulahoop
+&#47;&#47;&#47;   }
+&#47;&#47;&#47; }
+&#47;&#47;&#47; ```
+&#47;&#47;&#47; **Next Steps**
+&#47;&#47;&#47; - Buy an alias listed for sale with [transferAlias]
+&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
+Future&lt;MsgSellAliasResponse&gt; sellAlias(String alias, int amount, [ResponseCallback&lt;MsgSellAliasResponse&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.sellAlias(MsgSellAlias(
     alias: alias,
     creator: address.value,
     amount: amount,
   ));
-  if (callback != null) {
-    callback(resp);
+
+  if (resp == null) {
+    throw UnmarshalException&lt;MsgSellAliasResponse&gt;();
   }
-  if (resp != null) {
-    domains.addAll(resp.whoIs.alias);
-    domains.refresh();
-  }
+
+  domains.addAll(resp.whoIs.alias);
+  domains.refresh();
+  callback?.call(resp);
   return resp;
 }</code></pre>
 </section>
@@ -158,14 +175,15 @@ for (final alias in res.aliases) {
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -192,7 +210,7 @@ for (final alias in res.aliases) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

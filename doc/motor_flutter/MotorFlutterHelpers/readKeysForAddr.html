@@ -74,7 +74,7 @@
         return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
       }
     } catch (e) {
-      Log.printFlutterWarn(&quot;Failed to read AES Keys from GetStorage $e&quot;);
+      Log.warn(&quot;Failed to read AES Keys from GetStorage $e&quot;);
     }
   } else {
     &#47;&#47; Read from Keychain
@@ -132,7 +132,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

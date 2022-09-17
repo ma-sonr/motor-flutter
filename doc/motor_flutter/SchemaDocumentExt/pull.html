@@ -52,7 +52,7 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
-<span class="name ">pull</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="pull-param-cid">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">cid</span>}</span></li>
+<span class="name ">pull</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="pull-param-cid"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cid</span></span></li>
 </ol>)
 
       
@@ -62,7 +62,6 @@
 <section class="desc markdown">
   <p>Pulls the <code>SchemaDocument</code> from the current accounts application-specific data store using the provided <code>cid</code>. The account then decrypts the data and
 its values are returned as a <code>SchemaDocument</code>. A succesful transaction will return a <code>SchemaDocument</code>.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final cid = MotorFlutter.to.getCIDForDid('did:3:...');
 final doc = await SchemaDocument.pull(cid);
 if (doc != null) {
@@ -75,26 +74,33 @@ if (doc != null) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;SchemaDocument?&gt; pull({String? cid}) async {
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; final cid = MotorFlutter.to.getCIDForDid(&#39;did:3:...&#39;);
+&#47;&#47;&#47; final doc = await SchemaDocument.pull(cid);
+&#47;&#47;&#47; if (doc != null) {
+&#47;&#47;&#47;   print(&#39;Document pulled successfully&#39;);
+&#47;&#47;&#47; }
+&#47;&#47;&#47; ```
+Future&lt;SchemaDocument?&gt; pull(String cid) async {
   if (!MotorFlutter.isReady) {
-    Log.printFlutterWarn(&#39;MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.&#39;);
+    Log.warn(&#39;MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.&#39;);
     return null;
   }
   if (!MotorFlutter.to.authorized.value) {
-    Log.printFlutterWarn(&#39;MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.&#39;);
+    Log.warn(&#39;MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.&#39;);
     return null;
   }
 
   try {
     final resp = await MotorFlutterPlatform.instance.getDocument(GetDocumentRequest(
-      cid: cid ?? MotorFlutter.to.getCIDForDid(did),
+      cid: cid,
     ));
     if (resp == null) {
       return null;
     }
     return resp.document;
   } catch (e) {
-    Log.printFlutterWarn(e.toString());
+    Log.warn(e.toString());
     return null;
   }
 }</code></pre>
@@ -146,7 +152,7 @@ if (doc != null) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

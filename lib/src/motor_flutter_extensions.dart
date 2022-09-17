@@ -35,8 +35,7 @@ extension SchemaDefinitionExt on SchemaDefinition {
 /// to manage user generated data.
 extension SchemaDocumentExt on SchemaDocument {
   /// Returns the provided [T] value from the [SchemaDocument] for the given [name] of the field, or null if the field does not exist.
-  ///
-  /// ### Example
+
   ///
   /// ```dart
   /// final doc = SchemaDocument();
@@ -55,19 +54,18 @@ extension SchemaDocumentExt on SchemaDocument {
   }
 
   /// Sets the provided [T] [value] to the [SchemaDocument] for the given [name] of the field. Returns true if the field was found and set, false otherwise.
-  ///
-  /// ### Example
+
   ///
   /// ```dart
   /// final doc = SchemaDocument();
   /// final res = doc.set<String>('name', 'John Doe'); // sets the value of the field 'name' to 'John Doe'
   /// ```
-  bool set<T>(String name, T value) {
+  T? set<T>(String name, T value) {
     final field = fields.firstWhereOrNull((e) => e.name == name);
     if (field == null) {
-      return false;
+      return null;
     }
-    return field.setValue<T>(value) != null;
+    return field.setValue<T>(value);
   }
 
   /// Saves the [SchemaDocument] to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
@@ -88,11 +86,11 @@ extension SchemaDocumentExt on SchemaDocument {
   /// -
   Future<SchemaDocument?> save(String label) async {
     if (!MotorFlutter.isReady) {
-      Log.printFlutterWarn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
+      Log.warn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
       return null;
     }
     if (!MotorFlutter.to.authorized.value) {
-      Log.printFlutterWarn('MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.');
+      Log.warn('MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.');
       return null;
     }
 
@@ -106,14 +104,12 @@ extension SchemaDocumentExt on SchemaDocument {
       return null;
     }
     MotorFlutter.to.schemaMap[label] = resp.document;
-    MotorFlutter.to.setCIDForDid(did, cid);
     return resp.document;
   }
 
   /// Pulls the [SchemaDocument] from the current accounts application-specific data store using the provided [cid]. The account then decrypts the data and
   /// its values are returned as a [SchemaDocument]. A succesful transaction will return a [SchemaDocument].
-  ///
-  /// ### Example
+
   /// ```dart
   /// final cid = MotorFlutter.to.getCIDForDid('did:3:...');
   /// final doc = await SchemaDocument.pull(cid);
@@ -121,26 +117,26 @@ extension SchemaDocumentExt on SchemaDocument {
   ///   print('Document pulled successfully');
   /// }
   /// ```
-  Future<SchemaDocument?> pull({String? cid}) async {
+  Future<SchemaDocument?> pull(String cid) async {
     if (!MotorFlutter.isReady) {
-      Log.printFlutterWarn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
+      Log.warn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
       return null;
     }
     if (!MotorFlutter.to.authorized.value) {
-      Log.printFlutterWarn('MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.');
+      Log.warn('MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.');
       return null;
     }
 
     try {
       final resp = await MotorFlutterPlatform.instance.getDocument(GetDocumentRequest(
-        cid: cid ?? MotorFlutter.to.getCIDForDid(did),
+        cid: cid,
       ));
       if (resp == null) {
         return null;
       }
       return resp.document;
     } catch (e) {
-      Log.printFlutterWarn(e.toString());
+      Log.warn(e.toString());
       return null;
     }
   }
@@ -150,8 +146,7 @@ extension SchemaDocumentExt on SchemaDocument {
 /// to manage user generated data.
 extension SchemaDocumentValueExt on SchemaDocumentValue {
   /// Returns the underlying value of the [SchemaDocumentValue] as the provided [T] type. If the value cannot be cast to the provided type, or the provided [T] doesnt match [SchemaKind], then null is returned.
-  ///
-  /// ### Example
+
   ///
   /// ```dart
   /// final doc = SchemaDocument();
@@ -213,8 +208,7 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
   }
 
   /// Checks if the provided [T] type matches the [SchemaKind] of the [SchemaDocumentValue]. If the provided [T] doesnt match [SchemaKind], then false is returned.
-  ///
-  /// ### Example
+
   ///
   /// ```dart
   /// // Create a new document
@@ -236,8 +230,7 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
   }
 
   /// Sets the value of the [SchemaDocumentValue] to the provided [value]. If the provided [T] doesnt match [SchemaKind], then false is returned.
-  ///
-  /// ### Example
+
   /// ```dart
   /// // Create a new document
   /// final doc = SchemaDocument();

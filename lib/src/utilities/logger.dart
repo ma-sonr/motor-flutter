@@ -5,7 +5,7 @@ import 'package:logger/logger.dart';
 class Log {
   static final _logger = Logger(
     printer: PrettyPrinter(
-      methodCount: 0,
+      methodCount: 2,
       errorMethodCount: 8,
       lineLength: 120,
       colors: true,
@@ -15,14 +15,16 @@ class Log {
   );
 
   static final _loggerNoStack = Logger(
-    printer: PrettyPrinter(methodCount: 0),
+    printer: PrettyPrinter(
+      methodCount: 0,
+    ),
   );
 
   /// It prints a warning message to the console
   ///
   /// Args:
   ///   message (String): The message to be printed.
-  static void printFlutterWarn(String message) {
+  static void warn(String message) {
     _logger.w(message);
   }
 
@@ -30,26 +32,31 @@ class Log {
   ///
   /// Args:
   ///   message (String): The message to be printed.
-  static void printFlutterResult(String message) {
-    _logger.d(message);
+  static void verbose(String message) {
+    _logger.v(message);
   }
 
   /// It prints the message to the console.
   ///
   /// Args:
   ///   message (String): The message to print to the console.
-  static void printMotorException(String message) {
-    Future.delayed(const Duration(seconds: 1), () {
-      _loggerNoStack.wtf(message);
-    });
-    throw Exception(message);
+  static void error(String e) {
+    _logger.wtf(e);
+  }
+
+  /// It prints the message with a Success status
+  ///
+  /// Args:
+  ///   message (String): The Message to print to the console
+  static void success(String m) {
+    _logger.i(m);
   }
 
   /// It prints the message to the console.
   ///
   /// Args:
   ///   message (String): The message to print to the console.
-  static void printMotorResult(String message) {
+  static void print(String message) {
     _loggerNoStack.d(message);
   }
 }

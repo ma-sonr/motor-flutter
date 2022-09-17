@@ -50,12 +50,13 @@
     
 <section class="desc markdown">
   <h2 id="motor-flutter">Motor Flutter</h2>
-<p><strong>Flutter bindings for the All-in-one Motor node by Sonr. Seamless integration with the Sonr P2P network and blockchain - all while providing a Wallet interface which doesnt require a Seed phrase.</strong></p>
+<p>The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for Authentication, Data Management, and Wallet interactions for the Sonr Network.</p>
+<h4 id="quick-start">Quick Start</h4>
 <ul>
-<li><a href="https://motor.build/motor_flutter/MotorFlutter-class.html">Motor API Reference</a></li>
-<li><a href="https://docs.sonr.io">Documentation</a></li>
-<li><a href="https://sonr.io/discord">Discord</a></li>
-<li><a href="https://sonr.io">Website</a></li>
+<li>Get started by <a href="https://motor.build/motor_flutter/MotorFlutter/createAccount.html">Registering User Accounts</a> and following the <strong>next steps</strong> at the bottom of the doc.</li>
+<li>Read the Full Sonr Stack <a href="https://docs.sonr.io">Documentation</a> and Motor <a href="https://motor.build/motor_flutter/MotorFlutter-class.html">Flutter API Reference</a></li>
+<li>Visit our <a href="https://sonr.io">Website</a> and Join the Community <a href="https://sonr.io/discord">Discord</a></li>
+<li>Submit Feature Requests at <a href="https://sonr.fyi">sonr.fyi</a></li>
 </ul>
 </section>
 
@@ -356,20 +357,6 @@ to manage user generated data.
 
       <dl>
           
-  <dt id="BoolCallback" class="callable">
-    <span class="name"><a href="../motor_flutter/BoolCallback.html">BoolCallback</a></span><span class="signature">
-      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span></span>)</span></span>
-    </span>
-    
-
-  </dt>
-  <dd>
-    
-    
-
-  </dd>
-
-          
   <dt id="ErrorCallback" class="callable">
     <span class="name"><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></span><span class="signature">
       <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span></span>)</span></span>
@@ -378,21 +365,7 @@ to manage user generated data.
 
   </dt>
   <dd>
-    
-    
-
-  </dd>
-
-          
-  <dt id="ExceptionCallback" class="callable">
-    <span class="name"><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></span><span class="signature">
-      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Exception-class.html">Exception</a></span></span>)</span></span>
-    </span>
-    
-
-  </dt>
-  <dd>
-    
+    Callback which returns the message from an error
     
 
   </dd>
@@ -406,7 +379,7 @@ to manage user generated data.
 
   </dt>
   <dd>
-    
+    Callback the returns the AES Keys for <code>deviceSharedKey</code> and <code>passwordSecuredKey</code>
     
 
   </dd>
@@ -420,7 +393,7 @@ to manage user generated data.
 
   </dt>
   <dd>
-    
+    Callback that defines an expected response as a type
     
 
   </dd>
@@ -434,7 +407,7 @@ to manage user generated data.
 
   </dt>
   <dd>
-    
+    Builder Method for Objects conforming to the Flutter Widget model
     
 
   </dd>
@@ -448,7 +421,7 @@ to manage user generated data.
 
   </dt>
   <dd>
-    
+    Callback that does not pass a parameter
     
 
   </dd>
@@ -456,6 +429,21 @@ to manage user generated data.
       </dl>
     </section>
 
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+
+      <dl>
+        <dt id="UnmarshalException">
+  <span class="name "><a href="../motor_flutter/UnmarshalException-class.html">UnmarshalException</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Error for when there is a Exception between the Motor Target platform Framework where the protobuf
+file is failing to unmarshal. You can find this class being used in  <code>motor_flutter_platform_channel.dart</code>
+</dd>
+
+      </dl>
+    </section>
 
   </div> <!-- /.main-content -->
 
@@ -522,14 +510,14 @@ to manage user generated data.
   <li><a href="../motor_flutter/RegisterState.html">RegisterState</a></li>
 
   <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#typedefs">Typedefs</a></li>
-  <li><a href="../motor_flutter/BoolCallback.html">BoolCallback</a></li>
   <li><a href="../motor_flutter/ErrorCallback.html">ErrorCallback</a></li>
-  <li><a href="../motor_flutter/ExceptionCallback.html">ExceptionCallback</a></li>
   <li><a href="../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a></li>
   <li><a href="../motor_flutter/ResponseCallback.html">ResponseCallback</a></li>
   <li><a href="../motor_flutter/SchemaDocumentBuilder.html">SchemaDocumentBuilder</a></li>
   <li><a href="../motor_flutter/VoidCallback.html">VoidCallback</a></li>
 
+  <li class="section-title"><a href="../motor_flutter/motor_flutter-library.html#exceptions">Exceptions</a></li>
+  <li><a href="../motor_flutter/UnmarshalException-class.html">UnmarshalException</a></li>
 </ol>
 
   </div><!--/sidebar-offcanvas-right-->
@@ -539,7 +527,7 @@ to manage user generated data.
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

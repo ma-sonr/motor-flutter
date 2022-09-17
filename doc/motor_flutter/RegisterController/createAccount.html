@@ -72,17 +72,17 @@
   Timer.periodic(const Duration(milliseconds: 125), _handleTimer);
 
   &#47;&#47; Create account
-  final res = await MotorFlutter.to.createAccount(password, onKeysGenerated: onKeysGenerated);
-  if (res == null) {
+  try {
+    final res = await MotorFlutter.to.createAccount(password, onKeysGenerated: onKeysGenerated);
+    &#47;&#47; Set account address
+    _closeTimer();
+    accountAddress(res.owner);
+    change(res, status: RxStatus.success());
+  } catch (e) {
     _closeTimer();
     change(null, status: RxStatus.error(&quot;Internal Error - Failed to create account&quot;));
     return;
   }
-
-  &#47;&#47; Set account address
-  _closeTimer();
-  accountAddress(res.address);
-  change(res, status: RxStatus.success());
 }</code></pre>
 </section>
 
@@ -171,7 +171,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

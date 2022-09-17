@@ -62,7 +62,6 @@
 
 <section class="desc markdown">
   <p>Use the static <a href="../../motor_flutter/MotorFlutter/to.html">to</a> getter method allows access to <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance anywhere in the application.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">import 'package:motor_flutter/motor_flutter.dart';
 
 print(MotorFlutter.to.address.value); // prints 'snr123abc'
@@ -72,7 +71,13 @@ print(MotorFlutter.to.address.value); // prints 'snr123abc'
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static MotorFlutter get to =&gt; Get.find&lt;MotorFlutter&gt;();</code></pre>
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; import &#39;package:motor_flutter&#47;motor_flutter.dart&#39;;
+&#47;&#47;&#47;
+&#47;&#47;&#47; print(MotorFlutter.to.address.value); &#47;&#47; prints &#39;snr123abc&#39;
+&#47;&#47;&#47; ```
+static MotorFlutter get to =&gt; Get.find&lt;MotorFlutter&gt;();</code></pre>
 </section>
 
 </section>
@@ -131,14 +136,15 @@ print(MotorFlutter.to.address.value); // prints 'snr123abc'
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -165,7 +171,7 @@ print(MotorFlutter.to.address.value); // prints 'snr123abc'
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

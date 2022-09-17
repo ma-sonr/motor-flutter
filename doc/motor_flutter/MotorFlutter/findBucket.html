@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">WhereIs</span>&gt;</span>?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">WhereIs</span>&gt;</span></span>&gt;</span></span>
 <span class="name ">findBucket</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="findBucket-param-did">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">did</span>, </span></li>
 <li><span class="parameter" id="findBucket-param-creator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">creator</span>}</span></li>
 </ol>)
@@ -63,7 +63,6 @@
 <section class="desc markdown">
   <p>Queries the Sonr blockchain for the associated <code>WhereIs</code> for the provided <code>did</code> or <code>creator</code>. If <code>did</code> is provided a single-value list is returned (if successful), and the <code>creator</code> argument will be ignored.
 Returns <code>List&lt;WhereIs&gt;</code> if bucket(s) are found. Returns null if no bucket is found, or if neither <code>did</code> nor <code>creator</code> were provided.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">// Search by DID
 final buckets = await MotorFlutter.to.findBucket(did: 'did:snr:xyz789');
 if (buckets == null) {
@@ -76,9 +75,9 @@ if (buckets == null) {
    throw Exception('Failed to find bucket');
 }
 </code></pre>
-<h3 id="next-steps">Next Steps:</h3>
+<p><strong>Next Steps</strong></p>
 <ul>
-<li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md">ADR-4</a></li>
+<li>Read the Arch Diagram for our Storage Module on <a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md">ADR-3</a></li>
 </ul>
 </section>
 
@@ -86,7 +85,7 @@ if (buckets == null) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;WhereIs&gt;?&gt; findBucket({String? did, String? creator}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;WhereIs&gt;&gt; findBucket({String? did, String? creator}) async {
   if (did != null) {
     final res = await MotorFlutterPlatform.instance.queryBucket(QueryWhereIsRequest(did: did));
     if (res != null) {
@@ -100,7 +99,7 @@ if (buckets == null) {
       return res.whereIs;
     }
   }
-  return null;
+  return [];
 }</code></pre>
 </section>
 
@@ -158,14 +157,15 @@ if (buckets == null) {
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -192,7 +192,7 @@ if (buckets == null) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

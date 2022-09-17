@@ -118,9 +118,6 @@ Widget build(BuildContext context) {
           final res = await MotorFlutter.to.showRegisterModal(
             onError: onError,
           );
-          if (res == null) {
-            return;
-          }
           if (onSuccess != null) {
             onSuccess!(res);
           }
@@ -214,7 +211,7 @@ Widget build(BuildContext context) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

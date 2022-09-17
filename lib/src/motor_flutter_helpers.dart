@@ -60,7 +60,7 @@ extension MotorFlutterHelpers on MotorFlutter {
         _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
         _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
       } catch (e) {
-        Log.printFlutterWarn("Failed to write AES Keys to GetStorage $e");
+        Log.warn("Failed to write AES Keys to GetStorage $e");
       }
       return true;
     }
@@ -71,13 +71,13 @@ extension MotorFlutterHelpers on MotorFlutter {
       FlutterKeychain.put(key: _pskKeyForDid(addr), value: _encodeHexString(pskBytes)),
     ];
     await Future.wait(keychainPuts, eagerError: true, cleanUp: (dynamic error) {
-      Log.printFlutterWarn("Failed to write AES keys to keychain: $error");
+      Log.warn("Failed to write AES keys to keychain: $error");
       if (_enabledStorage) {
         try {
           _tempStorage.write(_dscKeyForDid(addr), _encodeHexString(dscBytes));
           _tempStorage.write(_pskKeyForDid(addr), _encodeHexString(pskBytes));
         } catch (e) {
-          Log.printFlutterWarn("Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e");
+          Log.warn("Failed to write DSC, and PSK Keys to GetStorage after trying keychain $e");
         }
       }
     });
@@ -94,7 +94,7 @@ extension MotorFlutterHelpers on MotorFlutter {
           return Tuple2(_decodeHexString(dsc), _decodeHexString(psk));
         }
       } catch (e) {
-        Log.printFlutterWarn("Failed to read AES Keys from GetStorage $e");
+        Log.warn("Failed to read AES Keys from GetStorage $e");
       }
     } else {
       // Read from Keychain
@@ -117,26 +117,5 @@ extension _CoreMotorFlutterExt on MotorFlutter {
   // Helper method to find the account psk key from DID
   String _pskKeyForDid(String did) {
     return "${did}_PSK_KEY";
-  }
-
-  void setCIDForDid(String did, String cid) {
-    if (_enabledStorage) {
-      try {
-        _tempStorage.write(did, cid);
-      } catch (e) {
-        Log.printFlutterWarn("Failed to write DID/CID Pair to GetStorage $e");
-      }
-    }
-  }
-
-  String? getCIDForDid(String did) {
-    if (_enabledStorage) {
-      try {
-        return _tempStorage.read(did);
-      } catch (e) {
-        Log.printFlutterWarn("Failed to read DID/CID Pair from GetStorage $e");
-      }
-    }
-    return null;
   }
 }

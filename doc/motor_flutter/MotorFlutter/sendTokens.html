@@ -51,10 +51,10 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">PaymentResponse?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">PaymentResponse</span>&gt;</span></span>
 <span class="name ">sendTokens</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="sendTokens-param-recipient"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">recipient</span>, </span></li>
 <li><span class="parameter" id="sendTokens-param-amount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">amount</span>, </span></li>
-<li><span class="parameter" id="sendTokens-param-memo">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">memo</span> = <span class="default-value">&quot;&quot;</span>}</span></li>
+<li><span class="parameter" id="sendTokens-param-memo">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">memo</span>}</span></li>
 </ol>)
 
       
@@ -63,16 +63,15 @@
     
 <section class="desc markdown">
   <p>Creates a TX in order to deposit the <code>amount</code> of SNR into the <code>recipient</code> account. A succesful transaction will return a <code>PaymentResponse</code> and will return null if the transaction fails.</p>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.deposit('did:snr:abc123', 3.29);
 if (res == null) {
    throw Exception('Failed to deposit SNR');
 }
 print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
 </code></pre>
-<h3 id="next-steps">Next Steps:</h3>
+<p><strong>Next Steps</strong></p>
 <ul>
-<li><a href="https://www.sonr.dev/protodocs/registry/tx.proto">Sonr Blockchain API Reference</a></li>
+<li>Sonr Blockchain <a href="https://www.sonr.dev/protodocs/registry/tx.proto">API Reference</a></li>
 </ul>
 </section>
 
@@ -80,13 +79,17 @@ print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;PaymentResponse?&gt; sendTokens(String recipient, int amount, {String memo = &quot;&quot;}) async {
-  return await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(
+  <pre class="language-dart"><code class="language-dart">Future&lt;PaymentResponse&gt; sendTokens(String recipient, int amount, {String? memo}) async {
+  final res = await MotorFlutterPlatform.instance.issuePayment(PaymentRequest(
     to: recipient,
     from: address.value,
     amount: Int64(amount),
     memo: memo,
   ));
+  if (res == null) {
+    throw UnmarshalException&lt;PaymentResponse&gt;();
+  }
+  return res;
 }</code></pre>
 </section>
 
@@ -144,14 +147,15 @@ print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -178,7 +182,7 @@ print(res); // prints: {txHash: '0x1234567890abcdef', amount: 3.29}
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

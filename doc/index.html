@@ -59,7 +59,7 @@
 <li>Motor Flutter <a href="https://motor.build/motor_flutter/MotorFlutter-class.html">API Reference</a></li>
 </ul>
 <h2 id="installation">Installation</h2>
-<p>Here's how to install the motor_flutter package in your Flutter project:</p>
+<p>Here's how to install the <code>motor_flutter</code> package in your Flutter project:</p>
 <h4 id="prerequisites">Prerequisites</h4>
 <ul>
 <li><a href="https://flutter.dev/docs/get-started/install">Flutter</a></li>
@@ -70,14 +70,13 @@
 </code></pre>
 <p>or</p>
 <pre class="language-yaml"><code class="language-yaml">dependencies:
-  motor_flutter: ^0.5.4
+  motor_flutter: ^0.5.4 # For the latest beta release use: ^0.6.0-beta.0
 </code></pre>
-<h4 id="ios">iOS</h4>
-<p>Add the following to your Podfile:</p>
-<pre class="language-ruby"><code class="language-ruby">platform :ios, '13.0'
-</code></pre>
-<p>Then <strong>remove or comment out</strong> this line from your Podfile:</p>
-<pre class="language-ruby"><code class="language-ruby"># use_frameworks!
+<p>Update your <code>ios/Podfile</code>:</p>
+<pre class="language-ruby"><code class="language-ruby">platform :ios, '13.0' # At the top of the file
+.
+.
+use_frameworks! # Then **remove or comment out**
 </code></pre>
 <h2 id="usage">Usage</h2>
 <p>We have full usage examples available in the motor_flutter <a href="https://motor.build/motor_flutter/motor_flutter-library.html">docs site</a>. Each method on the
@@ -133,7 +132,7 @@ that you create an issue before submitting a pull request.</p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

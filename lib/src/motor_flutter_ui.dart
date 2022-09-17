@@ -11,8 +11,7 @@ extension MotorFlutterUI on MotorFlutter {
   /// ### Parameters
   /// - Callback [onError] can be used to handle errors that occur (optional)
   /// - Callback [onKeysGenerated] is used to handle the dsc, and psk keys that are generated (optional)
-  ///
-  /// ### Example
+
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';
@@ -34,11 +33,14 @@ extension MotorFlutterUI on MotorFlutter {
   ///   },
   /// );
   /// ```
-  Future<CreateAccountResponse?> showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
-    final completer = Completer<CreateAccountResponse?>();
+  Future<WhoIs> showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
+    if (onKeysGenerated == null && isDebugMode) {
+      Log.warn("HandleKeysCallback was not set. It's reccomended to pass this callback in Debug Mode to avoid errors.");
+    }
+    final completer = Completer<WhoIs>();
     if (MotorFlutter.isReady) {
       Get.dialog(RegisterModalPage(
-        onCreateAccountResponse: (response) {
+        onComplete: (response) {
           if (response == null && onKeysGenerated == null) {
             throw Exception("onKeysGenerated callback must be provided if GetStorage is not initialized");
           }

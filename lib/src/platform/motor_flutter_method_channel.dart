@@ -15,12 +15,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('init', req.writeToBuffer());
       if (buf == null) {
-        Log.printFlutterWarn('init() returned null');
+        Log.warn('init() returned null');
         return null;
       }
       return InitializeResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -34,7 +34,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
       }
       return CreateAccountResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -60,21 +60,24 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
       }
       return LoginResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
 
   @override
   Future<LoginResponse?> loginWithKeys(LoginWithKeysRequest req) async {
-    final buf = await methodChannel.invokeMethod<Uint8List>('loginWithKeys', req.writeToBuffer());
-    if (buf == null) {
-      if (kDebugMode) {
-        print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
+    try {
+      final buf = await methodChannel.invokeMethod<Uint8List>('loginWithKeys', req.writeToBuffer());
+      if (buf == null) {
+        Log.warn("Failed to Unmarshal buffer into Protobuf class");
+        return null;
       }
+      return LoginResponse.fromBuffer(buf.toList());
+    } catch (e) {
+      Log.error(e.toString());
       return null;
     }
-    return LoginResponse.fromBuffer(buf.toList());
   }
 
   @override
@@ -82,7 +85,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       return await methodChannel.invokeMethod<bool>('connect') ?? false;
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return false;
     }
   }
@@ -92,14 +95,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('buyAlias', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return MsgBuyAliasResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -109,14 +110,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('sellAlias', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return MsgSellAliasResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -126,14 +125,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('transferAlias', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return MsgTransferAliasResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -143,14 +140,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('createSchema', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return CreateSchemaResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -160,14 +155,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('querySchema', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return QueryWhatIsResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -177,14 +170,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('querySchemaByCreator', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return QueryWhatIsByCreatorResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -194,14 +185,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('querySchemaByDid', did);
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return QueryWhatIsResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -211,14 +200,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('queryBucket', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return QueryWhereIsResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -228,14 +215,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('queryBucketByCreator', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return QueryWhereIsByCreatorResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -245,14 +230,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('issuePayment', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return PaymentResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -262,14 +245,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('uploadDocument', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return UploadDocumentResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -279,14 +260,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('getDocument', req.writeToBuffer());
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return GetDocumentResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -296,14 +275,12 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('stat');
       if (buf == null) {
-        if (kDebugMode) {
-          print('[GOBIND] ERROR: method returned null for MethodChannel function response.');
-        }
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
       }
       return StatResponse.fromBuffer(buf.toList());
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }
@@ -314,7 +291,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
       final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
       return version;
     } catch (e) {
-      Log.printMotorException(e.toString());
+      Log.error(e.toString());
       return null;
     }
   }

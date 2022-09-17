@@ -52,8 +52,8 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-enableStorage">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enableStorage</span> = <span class="default-value">true</span>, </span></li>
-<li><span class="parameter" id="init-param-autoInject"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoInject</span> = <span class="default-value">true</span>}</span></li>
+<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-autoInject">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoInject</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="init-param-enableStorage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enableStorage</span> = <span class="default-value">true</span>}</span></li>
 </ol>)
 
       
@@ -67,7 +67,6 @@
 <li><code>autoInject</code> : Automatically injects the <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance into <a href="https://pub.dev/documentation/get/4.6.5/get_core_src_get_main/Get.html">Get</a> state management. Defaults to true.</li>
 <li><code>enableStorage</code> : Initializes GetStorage for <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> to use. Defaults to true.</li>
 </ul>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">import 'package:motor_flutter/motor_flutter.dart';
 
 void main() async {
@@ -76,7 +75,7 @@ void main() async {
   runApp(MyApp()); // This is the entry point of the application.
 }
 </code></pre>
-<h3 id="next-steps">Next Steps:</h3>
+<p><strong>Next Steps</strong></p>
 <ul>
 <li>Register a new user with <a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
 <li>Login with an existing account using <a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
@@ -88,7 +87,21 @@ void main() async {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init({bool enableStorage = true, bool autoInject = true}) async {
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; import &#39;package:motor_flutter&#47;motor_flutter.dart&#39;;
+&#47;&#47;&#47;
+&#47;&#47;&#47; void main() async {
+&#47;&#47;&#47;   WidgetsFlutterBinding.ensureInitialized(); &#47;&#47; This is required for Flutter apps.
+&#47;&#47;&#47;   await MotorFlutter.init(); &#47;&#47; This initializes the MotorFlutter instance.
+&#47;&#47;&#47;   runApp(MyApp()); &#47;&#47; This is the entry point of the application.
+&#47;&#47;&#47; }
+&#47;&#47;&#47; ```
+&#47;&#47;&#47; **Next Steps**
+&#47;&#47;&#47; - Register a new user with [createAccount]
+&#47;&#47;&#47; - Login with an existing account using [login]
+&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
+static Future&lt;void&gt; init({bool autoInject = true, bool enableStorage = true}) async {
   if (autoInject) {
     await Get.putAsync(
       () =&gt; MotorFlutter()._init(enableStorage),
@@ -152,14 +165,15 @@ void main() async {
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/stat.html">stat</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
 
@@ -186,7 +200,7 @@ void main() async {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

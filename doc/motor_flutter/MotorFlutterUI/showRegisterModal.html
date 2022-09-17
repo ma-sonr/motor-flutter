@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateAccountResponse?</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">WhoIs</span>&gt;</span></span>
 <span class="name ">showRegisterModal</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="showRegisterModal-param-onKeysGenerated">{<span class="type-annotation"><a href="../../motor_flutter/HandleKeysCallback.html">HandleKeysCallback</a>?</span> <span class="parameter-name">onKeysGenerated</span>, </span></li>
 <li><span class="parameter" id="showRegisterModal-param-onError"><span class="type-annotation"><a href="../../motor_flutter/ErrorCallback.html">ErrorCallback</a>?</span> <span class="parameter-name">onError</span>}</span></li>
 </ol>)
@@ -69,7 +69,6 @@ account, otherwise returns null.</p>
 <li>Callback <code>onError</code> can be used to handle errors that occur (optional)</li>
 <li>Callback <code>onKeysGenerated</code> is used to handle the dsc, and psk keys that are generated (optional)</li>
 </ul>
-<h3 id="example">Example</h3>
 <pre class="language-dart"><code class="language-dart">import 'package:motor_flutter/motor_flutter.dart';
 
 MaterialButton(
@@ -95,11 +94,35 @@ MaterialButton(
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;CreateAccountResponse?&gt; showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
-  final completer = Completer&lt;CreateAccountResponse?&gt;();
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; import &#39;package:motor_flutter&#47;motor_flutter.dart&#39;;
+&#47;&#47;&#47;
+&#47;&#47;&#47; MaterialButton(
+&#47;&#47;&#47;   color: Colors.black,
+&#47;&#47;&#47;   child: const Text(&#39;Register Account&#39;),
+&#47;&#47;&#47;   onPressed: () async {
+&#47;&#47;&#47;     final res = await MotorFlutter.to.showRegisterModal(onError: (err) {
+&#47;&#47;&#47;         Get.snackbar(&quot;Error&quot;, err.toString());
+&#47;&#47;&#47;     });
+&#47;&#47;&#47;     if (res != null) {
+&#47;&#47;&#47;         Get.offAll(() =&gt; const HomePage());
+&#47;&#47;&#47;     }
+&#47;&#47;&#47;   },
+&#47;&#47;&#47;   onKeysGenerated: (dsc, psk) {
+&#47;&#47;&#47;     print(&quot;DSC Length: ${dsc.length}&quot;); &#47;&#47; Output: &quot;DSC Length: 32&quot;
+&#47;&#47;&#47;     print(&quot;PSK Length: ${psk.length}&quot;); &#47;&#47; Output: &quot;PSK Length: 32&quot;
+&#47;&#47;&#47;   },
+&#47;&#47;&#47; );
+&#47;&#47;&#47; ```
+Future&lt;WhoIs&gt; showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
+  if (onKeysGenerated == null &amp;&amp; isDebugMode) {
+    Log.warn(&quot;HandleKeysCallback was not set. It&#39;s reccomended to pass this callback in Debug Mode to avoid errors.&quot;);
+  }
+  final completer = Completer&lt;WhoIs&gt;();
   if (MotorFlutter.isReady) {
     Get.dialog(RegisterModalPage(
-      onCreateAccountResponse: (response) {
+      onComplete: (response) {
         if (response == null &amp;&amp; onKeysGenerated == null) {
           throw Exception(&quot;onKeysGenerated callback must be provided if GetStorage is not initialized&quot;);
         }
@@ -156,7 +179,7 @@ MaterialButton(
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.4
+      0.6.0-beta.0
   </span>
 
   

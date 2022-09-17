@@ -16,7 +16,7 @@ final loadingQuotes = [
   "Finishing up small details",
 ];
 
-class RegisterController extends GetxController with StateMixin<CreateAccountResponse?> {
+class RegisterController extends GetxController with StateMixin<WhoIs?> {
   final accountAddress = "".obs;
   final accountAlias = "".obs;
   final phrase = "".obs;
@@ -40,17 +40,17 @@ class RegisterController extends GetxController with StateMixin<CreateAccountRes
     Timer.periodic(const Duration(milliseconds: 125), _handleTimer);
 
     // Create account
-    final res = await MotorFlutter.to.createAccount(password, onKeysGenerated: onKeysGenerated);
-    if (res == null) {
+    try {
+      final res = await MotorFlutter.to.createAccount(password, onKeysGenerated: onKeysGenerated);
+      // Set account address
+      _closeTimer();
+      accountAddress(res.owner);
+      change(res, status: RxStatus.success());
+    } catch (e) {
       _closeTimer();
       change(null, status: RxStatus.error("Internal Error - Failed to create account"));
       return;
     }
-
-    // Set account address
-    _closeTimer();
-    accountAddress(res.address);
-    change(res, status: RxStatus.success());
   }
 
   _handleTimer(Timer t) {
