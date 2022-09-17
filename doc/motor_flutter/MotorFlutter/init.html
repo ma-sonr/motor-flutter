@@ -87,21 +87,7 @@ void main() async {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; import &#39;package:motor_flutter&#47;motor_flutter.dart&#39;;
-&#47;&#47;&#47;
-&#47;&#47;&#47; void main() async {
-&#47;&#47;&#47;   WidgetsFlutterBinding.ensureInitialized(); &#47;&#47; This is required for Flutter apps.
-&#47;&#47;&#47;   await MotorFlutter.init(); &#47;&#47; This initializes the MotorFlutter instance.
-&#47;&#47;&#47;   runApp(MyApp()); &#47;&#47; This is the entry point of the application.
-&#47;&#47;&#47; }
-&#47;&#47;&#47; ```
-&#47;&#47;&#47; **Next Steps**
-&#47;&#47;&#47; - Register a new user with [createAccount]
-&#47;&#47;&#47; - Login with an existing account using [login]
-&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
-static Future&lt;void&gt; init({bool autoInject = true, bool enableStorage = true}) async {
+  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init({bool autoInject = true, bool enableStorage = true}) async {
   if (autoInject) {
     await Get.putAsync(
       () =&gt; MotorFlutter()._init(enableStorage),
@@ -200,7 +186,7 @@ static Future&lt;void&gt; init({bool autoInject = true, bool enableStorage = tru
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

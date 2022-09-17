@@ -91,20 +91,7 @@ print('Account logged in successfully: ${res.address}');
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; final res = await MotorFlutter.to.login(password: &#39;terrible-password-123&#39;, did: &#39;did:snr:abc123&#39;);
-&#47;&#47;&#47; if (res == null) {
-&#47;&#47;&#47;    throw Exception(&#39;Login failed&#39;);
-&#47;&#47;&#47; }
-&#47;&#47;&#47; print(&#39;Account logged in successfully: ${res.address}&#39;);
-&#47;&#47;&#47; ```
-&#47;&#47;&#47; **Next Steps**
-&#47;&#47;&#47; - Define a new blockchain verifiable data model using [createSchema]
-&#47;&#47;&#47; - Buy a .snr&#47; subdomain to simplify your account address using [buyAlias]
-&#47;&#47;&#47; - Connect to the p2p network and enable secure device-to-devce communication with [connect]
-&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
-Future&lt;WhoIs&gt; login({required String password, required String address, List&lt;int&gt;? pskKey, List&lt;int&gt;? dscKey}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;WhoIs&gt; login({required String password, required String address, List&lt;int&gt;? pskKey, List&lt;int&gt;? dscKey}) async {
   final auth = await readKeysForAddr(address);
   if (auth == null &amp;&amp; (pskKey == null || dscKey == null)) {
     throw Exception(&#39;No keys found for did: $address&#39;);
@@ -215,7 +202,7 @@ Future&lt;WhoIs&gt; login({required String password, required String address, Li
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

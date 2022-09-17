@@ -85,21 +85,7 @@ print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; final res = await MotorFlutter.to.transferAlias(&#39;hulahoop&#39;, &#39;did:snr:abc123&#39;, 42.0);
-&#47;&#47;&#47; if (res == null) {
-&#47;&#47;&#47;    throw Exception(&#39;Failed to transfer alias&#39;);
-&#47;&#47;&#47; }
-&#47;&#47;&#47;
-&#47;&#47;&#47; &#47;&#47; Print updated domains list
-&#47;&#47;&#47; final allOwnedAliases = res.aliases.where((alias) =&gt; !alias.isForSale);
-&#47;&#47;&#47; print(allOwnedAliases); &#47;&#47; prints: [hulahoop.snr] or [hulahoop]
-&#47;&#47;&#47; ```
-&#47;&#47;&#47; **Next Steps**
-&#47;&#47;&#47; - Buy an alias listed for sale with [transferAlias]
-&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
-Future&lt;MsgTransferAliasResponse&gt; transferAlias(String alias, String currentOwner, int amount,
+  <pre class="language-dart"><code class="language-dart">Future&lt;MsgTransferAliasResponse&gt; transferAlias(String alias, String currentOwner, int amount,
     [ResponseCallback&lt;MsgTransferAliasResponse&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.transferAlias(MsgTransferAlias(
     alias: alias,
@@ -206,7 +192,7 @@ Future&lt;MsgTransferAliasResponse&gt; transferAlias(String alias, String curren
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

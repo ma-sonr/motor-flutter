@@ -77,19 +77,7 @@ for (final field in doc.fields) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; &#47;&#47; Create a new document
-&#47;&#47;&#47; final doc = SchemaDocument();
-&#47;&#47;&#47;
-&#47;&#47;&#47; &#47;&#47; Check if the field &#39;name&#39; is a String
-&#47;&#47;&#47; for (final field in doc.fields) {
-&#47;&#47;&#47;    if(field.isMatchingType&lt;String&gt;()) {
-&#47;&#47;&#47;     print(&quot;Found a string field!&quot;);
-&#47;&#47;&#47;   }
-&#47;&#47;&#47; }
-&#47;&#47;&#47; ```
-bool isMatchingType&lt;T&gt;(T value) {
+  <pre class="language-dart"><code class="language-dart">bool isMatchingType&lt;T&gt;(T value) {
   final v = getValue&lt;T&gt;();
   if (v == null) {
     return false;
@@ -143,7 +131,7 @@ bool isMatchingType&lt;T&gt;(T value) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

@@ -94,28 +94,7 @@ MaterialButton(
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; import &#39;package:motor_flutter&#47;motor_flutter.dart&#39;;
-&#47;&#47;&#47;
-&#47;&#47;&#47; MaterialButton(
-&#47;&#47;&#47;   color: Colors.black,
-&#47;&#47;&#47;   child: const Text(&#39;Register Account&#39;),
-&#47;&#47;&#47;   onPressed: () async {
-&#47;&#47;&#47;     final res = await MotorFlutter.to.showRegisterModal(onError: (err) {
-&#47;&#47;&#47;         Get.snackbar(&quot;Error&quot;, err.toString());
-&#47;&#47;&#47;     });
-&#47;&#47;&#47;     if (res != null) {
-&#47;&#47;&#47;         Get.offAll(() =&gt; const HomePage());
-&#47;&#47;&#47;     }
-&#47;&#47;&#47;   },
-&#47;&#47;&#47;   onKeysGenerated: (dsc, psk) {
-&#47;&#47;&#47;     print(&quot;DSC Length: ${dsc.length}&quot;); &#47;&#47; Output: &quot;DSC Length: 32&quot;
-&#47;&#47;&#47;     print(&quot;PSK Length: ${psk.length}&quot;); &#47;&#47; Output: &quot;PSK Length: 32&quot;
-&#47;&#47;&#47;   },
-&#47;&#47;&#47; );
-&#47;&#47;&#47; ```
-Future&lt;WhoIs&gt; showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;WhoIs&gt; showRegisterModal({HandleKeysCallback? onKeysGenerated, ErrorCallback? onError}) async {
   if (onKeysGenerated == null &amp;&amp; isDebugMode) {
     Log.warn(&quot;HandleKeysCallback was not set. It&#39;s reccomended to pass this callback in Debug Mode to avoid errors.&quot;);
   }
@@ -179,7 +158,7 @@ Future&lt;WhoIs&gt; showRegisterModal({HandleKeysCallback? onKeysGenerated, Erro
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

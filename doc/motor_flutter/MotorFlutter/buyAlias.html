@@ -85,24 +85,7 @@ for (final alias in res.aliases) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; final res = await MotorFlutter.to.buyAlias(&#39;hulahoop&#39;);
-&#47;&#47;&#47; if (res == null) {
-&#47;&#47;&#47;    throw Exception(&#39;Failed to buy alias&#39;);
-&#47;&#47;&#47; }
-&#47;&#47;&#47;
-&#47;&#47;&#47; &#47;&#47; Print all owned domains
-&#47;&#47;&#47; for (final alias in res.aliases) {
-&#47;&#47;&#47;     if(!alias.isForSale) {
-&#47;&#47;&#47;        print(alias.name); &#47;&#47; prints: hulahoop.snr or hulahoop
-&#47;&#47;&#47;    }
-&#47;&#47;&#47; }
-&#47;&#47;&#47; ```
-&#47;&#47;&#47; **Next Steps**
-&#47;&#47;&#47; - List your alias for auction with [sellAlias]
-&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
-Future&lt;MsgBuyAliasResponse&gt; buyAlias(String alias, [ResponseCallback&lt;MsgBuyAliasResponse&gt;? callback]) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;MsgBuyAliasResponse&gt; buyAlias(String alias, [ResponseCallback&lt;MsgBuyAliasResponse&gt;? callback]) async {
   final resp = await MotorFlutterPlatform.instance.buyAlias(MsgBuyAlias(
     name: alias,
     creator: address.value,
@@ -208,7 +191,7 @@ Future&lt;MsgBuyAliasResponse&gt; buyAlias(String alias, [ResponseCallback&lt;Ms
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

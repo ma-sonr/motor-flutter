@@ -35,7 +35,6 @@ extension SchemaDefinitionExt on SchemaDefinition {
 /// to manage user generated data.
 extension SchemaDocumentExt on SchemaDocument {
   /// Returns the provided [T] value from the [SchemaDocument] for the given [name] of the field, or null if the field does not exist.
-
   ///
   /// ```dart
   /// final doc = SchemaDocument();
@@ -54,7 +53,6 @@ extension SchemaDocumentExt on SchemaDocument {
   }
 
   /// Sets the provided [T] [value] to the [SchemaDocument] for the given [name] of the field. Returns true if the field was found and set, false otherwise.
-
   ///
   /// ```dart
   /// final doc = SchemaDocument();
@@ -109,7 +107,6 @@ extension SchemaDocumentExt on SchemaDocument {
 
   /// Pulls the [SchemaDocument] from the current accounts application-specific data store using the provided [cid]. The account then decrypts the data and
   /// its values are returned as a [SchemaDocument]. A succesful transaction will return a [SchemaDocument].
-
   /// ```dart
   /// final cid = MotorFlutter.to.getCIDForDid('did:3:...');
   /// final doc = await SchemaDocument.pull(cid);
@@ -146,7 +143,6 @@ extension SchemaDocumentExt on SchemaDocument {
 /// to manage user generated data.
 extension SchemaDocumentValueExt on SchemaDocumentValue {
   /// Returns the underlying value of the [SchemaDocumentValue] as the provided [T] type. If the value cannot be cast to the provided type, or the provided [T] doesnt match [SchemaKind], then null is returned.
-
   ///
   /// ```dart
   /// final doc = SchemaDocument();
@@ -208,7 +204,6 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
   }
 
   /// Checks if the provided [T] type matches the [SchemaKind] of the [SchemaDocumentValue]. If the provided [T] doesnt match [SchemaKind], then false is returned.
-
   ///
   /// ```dart
   /// // Create a new document
@@ -230,7 +225,6 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
   }
 
   /// Sets the value of the [SchemaDocumentValue] to the provided [value]. If the provided [T] doesnt match [SchemaKind], then false is returned.
-
   /// ```dart
   /// // Create a new document
   /// final doc = SchemaDocument();

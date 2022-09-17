@@ -11,7 +11,6 @@ extension MotorFlutterUI on MotorFlutter {
   /// ### Parameters
   /// - Callback [onError] can be used to handle errors that occur (optional)
   /// - Callback [onKeysGenerated] is used to handle the dsc, and psk keys that are generated (optional)
-
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';

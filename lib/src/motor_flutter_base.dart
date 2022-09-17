@@ -65,7 +65,6 @@ class MotorFlutter extends GetxService {
   final staked = '0'.obs;
 
   /// Returns the curret active account's [DIDDocument]. This value is set on account authorization, and can be refreshed with the [refresh] method.
-
   ///
   /// ```dart
   ///    print(MotorFlutter.to.didDocument.value.id); // Prints did:snr:abc123
@@ -77,7 +76,6 @@ class MotorFlutter extends GetxService {
 
   /// Sets itself to true when the [MotorFlutter] account is created with [createAccount], or [login]. This is used to
   /// determine if the user is ready to be active on the [Sonr Network](https://sonr.io) or not.
-
   ///
   /// ```dart
   /// if (MotorFlutter.to.isReady) {
@@ -87,7 +85,6 @@ class MotorFlutter extends GetxService {
   final authorized = false.obs;
 
   /// Sets itself to true when the [MotorFlutter] account is finished bootstrapping to the Sonr Network. The [connect] method triggers the refresh of this variable.
-
   ///
   /// ```dart
   /// await MotorFlutter.to.connect();
@@ -96,7 +93,6 @@ class MotorFlutter extends GetxService {
   final connected = false.obs;
 
   /// List of all neerby Motor powered devices. This is updated every time a [RefreshEvent] is received on the [MethodChannel]. All nodes are referenced with the [Peer] object.
-
   ///
   /// ```dart
   /// MotorFlutter.to.nearbyDevices.forEach((peer) {
@@ -109,7 +105,6 @@ class MotorFlutter extends GetxService {
   final nearbyPeers = <Peer>[].obs;
 
   /// A Reference Map for all recently queried [SchemaDefinition]s, and all created [SchemaDocument]s.
-
   ///
   /// ```dart
   /// MotorFlutter.to.schemaDefinitions.forEach((def, doc) {
@@ -124,7 +119,6 @@ class MotorFlutter extends GetxService {
   final schemaMap = <String, SchemaDocument>{}.obs;
 
   /// Use the static [to] getter method allows access to [MotorFlutter] instance anywhere in the application.
-
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';
@@ -134,7 +128,6 @@ class MotorFlutter extends GetxService {
   static MotorFlutter get to => Get.find<MotorFlutter>();
 
   /// Returns true if the [MotorFlutter] service has been injected into the GetX State Management system.
-
   ///
   /// ```dart
   /// if (MotorFlutter.isReady) {
@@ -144,7 +137,6 @@ class MotorFlutter extends GetxService {
   static bool get isReady => Get.isRegistered<MotorFlutter>();
 
   /// This getter method returns the current version of the underlying accounts [DIDDocument] id. This is NOT a reactive variable.
-
   ///
   /// ```dart
   /// print(MotorFlutter.to.didUrl); // prints 'did:snr:abc123#v1'
@@ -158,7 +150,6 @@ class MotorFlutter extends GetxService {
   /// ### Parameters
   /// - [autoInject] : Automatically injects the [MotorFlutter] instance into [Get] state management. Defaults to true.
   /// - [enableStorage] : Initializes GetStorage for [MotorFlutter] to use. Defaults to true.
-
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';
@@ -188,7 +179,6 @@ class MotorFlutter extends GetxService {
   /// ### Parameters
   /// - [password] - The password used to encrypt the keys in the keychain.
   /// - [onKeysGenerated] - A callback function that is triggered when the keys are generated. This is useful for storing the keys in a secure location. _(optional)_
-
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.createAccount('terrible-password-123');
@@ -231,7 +221,6 @@ class MotorFlutter extends GetxService {
   /// - [password] - The password used to encrypt the wallet shards with AES.
   /// - [pskKey] - The pre-shared key used to encrypt the wallet shards with AES. _(optional)_
   /// - [dscKey] - The data signing key used to encrypt the wallet shards with AES. _(optional)_
-
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.login(password: 'terrible-password-123', did: 'did:snr:abc123');
@@ -267,7 +256,6 @@ class MotorFlutter extends GetxService {
   }
 
   /// Purchases a new .snr/ domain for the current account if the [alias] is available. A succesful transaction will return a [MsgBuyAliasResponse].
-
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.buyAlias('hulahoop');
@@ -302,7 +290,6 @@ class MotorFlutter extends GetxService {
   }
 
   /// Lists an existing [alias] owned by the current account for sale at the given [amount]. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a [MsgSellAliasResponse].
-
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.sellAlias('hulahoop', 40.0);
@@ -339,7 +326,6 @@ class MotorFlutter extends GetxService {
 
   /// Transfers an existing [alias] listed for sale from the account which listed it, to the current active account. A succesful transaction will return a [MsgTransferAliasResponse], and will return
   /// an error if the provided [amount] is less than the listed price, or if the [alias] is not listed for sale by the [currentOwner].
-
   ///
   /// ```dart
   /// final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);

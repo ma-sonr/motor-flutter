@@ -74,14 +74,7 @@ if (doc != null) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; final cid = MotorFlutter.to.getCIDForDid(&#39;did:3:...&#39;);
-&#47;&#47;&#47; final doc = await SchemaDocument.pull(cid);
-&#47;&#47;&#47; if (doc != null) {
-&#47;&#47;&#47;   print(&#39;Document pulled successfully&#39;);
-&#47;&#47;&#47; }
-&#47;&#47;&#47; ```
-Future&lt;SchemaDocument?&gt; pull(String cid) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;SchemaDocument?&gt; pull(String cid) async {
   if (!MotorFlutter.isReady) {
     Log.warn(&#39;MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.&#39;);
     return null;
@@ -152,7 +145,7 @@ Future&lt;SchemaDocument?&gt; pull(String cid) async {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   

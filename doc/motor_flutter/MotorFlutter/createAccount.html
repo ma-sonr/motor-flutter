@@ -87,20 +87,7 @@ print('Account created successfully: ${res.address}');
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
-&#47;&#47;&#47; ```dart
-&#47;&#47;&#47; final res = await MotorFlutter.to.createAccount(&#39;terrible-password-123&#39;);
-&#47;&#47;&#47; if (res == null) {
-&#47;&#47;&#47;     throw Exception(&#39;Account creation failed&#39;);
-&#47;&#47;&#47; }
-&#47;&#47;&#47; print(&#39;Account created successfully: ${res.address}&#39;);
-&#47;&#47;&#47; ```
-&#47;&#47;&#47; **Next Steps**
-&#47;&#47;&#47; - Login with the newly created account using [login]
-&#47;&#47;&#47; - Issue payments to the account using [sendTokens]
-&#47;&#47;&#47; - Buy a .snr&#47; subdomain to simplify your account address using [buyAlias]
-&#47;&#47;&#47; - [ADR-1](https:&#47;&#47;github.com&#47;sonr-io&#47;sonr&#47;blob&#47;dev&#47;docs&#47;architecture&#47;1.md)
-Future&lt;WhoIs&gt; createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;WhoIs&gt; createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
   if (!MotorFlutter.isReady) {}
   final dscKey = e.Key.fromSecureRandom(32);
   final pskKey = e.Key.fromSecureRandom(32);
@@ -211,7 +198,7 @@ Future&lt;WhoIs&gt; createAccount(String password, {HandleKeysCallback? onKeysGe
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0-beta.0
+      0.5.5
   </span>
 
   
