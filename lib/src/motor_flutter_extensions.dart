@@ -256,47 +256,46 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
     switch (field_2) {
       case SchemaKind.BOOL:
         if (v is bool) {
-          boolValue.value = v;
+          boolValue = BoolValue(value: v);
           return v;
         }
         break;
       case SchemaKind.INT:
         if (v is int) {
-          intValue.value = v;
+          intValue = IntValue(value: v);
           return v;
         }
         break;
       case SchemaKind.FLOAT:
         if (v is double) {
-          floatValue.value = v;
+          floatValue = FloatValue(value: v);
           return v;
         }
         break;
 
       case SchemaKind.STRING:
         if (v is String) {
-          stringValue.value = v;
+          stringValue = StringValue(value: v);
           return v;
         }
         break;
 
       case SchemaKind.BYTES:
         if (v is Uint8List) {
-          bytesValue.value = v;
+          bytesValue = BytesValue(value: v);
           return v;
         }
         break;
 
       case SchemaKind.LIST:
         if (v is List<SchemaDocumentValue>) {
-          arrayValue.value.clear();
-          arrayValue.value.addAll(v);
+          arrayValue = ArrayValue(value: v);
           return v;
         }
         break;
       case SchemaKind.LINK:
         if (v is String) {
-          linkValue.value = v;
+          linkValue = LinkValue(value: v);
           return v;
         }
         break;

@@ -1,3 +1,5 @@
+## 0.5.4
+* Fix a bug where the underlying SchemaDocumentValue would set the Type specific value before the Wrapper was initialized.
 ## 0.5.3
 * Fix issue with SchemaDocumentValue extension method not working with the provided `T`
 
