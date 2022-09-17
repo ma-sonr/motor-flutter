@@ -1,3 +1,6 @@
+## 0.5.3
+* Fix issue with SchemaDocumentValue extension method not working with the provided `T`
+
 ## 0.5.2
 * Fix iOS Podspec version error
 

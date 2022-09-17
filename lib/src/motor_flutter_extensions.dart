@@ -1,7 +1,5 @@
 part of 'motor_flutter_base.dart';
 
-/// # CreateAccountWithKeysResponseExt
-///
 /// An extension on the [CreateAccountWithKeysResponse] class which provides a useful suite of methods
 /// to work with the [CreateAccountResponse] class.
 extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
@@ -14,8 +12,6 @@ extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
   }
 }
 
-/// # SchemaDefinitionExt
-///
 /// Extension on the [SchemaDefinition] class which provides a useful suite of methods
 /// to work with the [SchemaDefinition] class.
 extension SchemaDefinitionExt on SchemaDefinition {
@@ -35,8 +31,6 @@ extension SchemaDefinitionExt on SchemaDefinition {
   }
 }
 
-/// # SchemaDocumentExt
-///
 /// [SchemaDocumentExt] is an extension on the [SchemaDocument] class which provides a useful suite of methods
 /// to manage user generated data.
 extension SchemaDocumentExt on SchemaDocument {
@@ -73,7 +67,7 @@ extension SchemaDocumentExt on SchemaDocument {
     if (field == null) {
       return false;
     }
-    return field.setValue(value) != null;
+    return field.setValue<T>(value) != null;
   }
 
   /// Saves the [SchemaDocument] to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
@@ -152,8 +146,6 @@ extension SchemaDocumentExt on SchemaDocument {
   }
 }
 
-/// # SchemaDocumentValueExt
-///
 /// Extension on the [SchemaDocumentValue] class which provides a useful suite of methods
 /// to manage user generated data.
 extension SchemaDocumentValueExt on SchemaDocumentValue {
@@ -225,7 +217,10 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
   /// ### Example
   ///
   /// ```dart
+  /// // Create a new document
   /// final doc = SchemaDocument();
+  ///
+  /// // Check if the field 'name' is a String
   /// for (final field in doc.fields) {
   ///    if(field.isMatchingType<String>()) {
   ///     print("Found a string field!");
@@ -240,6 +235,20 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
     return v == value;
   }
 
+  /// Sets the value of the [SchemaDocumentValue] to the provided [value]. If the provided [T] doesnt match [SchemaKind], then false is returned.
+  ///
+  /// ### Example
+  /// ```dart
+  /// // Create a new document
+  /// final doc = SchemaDocument();
+  ///
+  /// // Set the value of the field 'name' to 'John Doe'
+  /// for (final field in doc.fields) {
+  ///   if(field.name == 'name') {
+  ///     field.setValue<String>("John Doe");
+  ///   }
+  /// }
+  /// ```
   T? setValue<T>(T v) {
     if (v == null) {
       return null;
