@@ -1,3 +1,10 @@
+## 0.6.3
+* Rename Extension `save` method for SchemaDocument to `upload`
+* Rename Extension `pull` method for SchemaDocument to `fetch`
+* Introduce `setList<T>` extension method for SchemaDocument
+* Introduce `getList<T>` extension method for SchemaDocument
+* Remove Cosmos Consensus as generated type directory
+
 ## 0.6.2
 * Fix Issue Tracker Pubspec
 ## 0.6.1

@@ -32,6 +32,7 @@ rm -rf ${GEN_DIR}/cosmos/authz
 rm -rf ${GEN_DIR}/cosmos/base/abci
 rm -rf ${GEN_DIR}/cosmos/base/tendermint
 rm -rf ${GEN_DIR}/cosmos/capability
+rm -rf ${GEN_DIR}/cosmos/consensus
 rm -rf ${GEN_DIR}/cosmos/crisis
 rm -rf ${GEN_DIR}/cosmos/crypto/keyring
 rm -rf ${GEN_DIR}/cosmos/crypto/multisig

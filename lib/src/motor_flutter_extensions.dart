@@ -55,6 +55,24 @@ extension SchemaDocumentExt on SchemaDocument {
     return field.getValue<T>();
   }
 
+  /// Returns the provided [T] value from the [SchemaDocument] for the given [name] as a [List] of [T] values, or null if the field does not exist.
+  ///
+  /// ```dart
+  /// final doc = SchemaDocument();
+  //  final names = doc.getList<String>('names'); // returns the value of the field 'names' as a List<String>
+  /// if (names != null) {
+  ///  print(names); // prints the value of the field 'names'
+  /// }
+  /// throw Exception('Field not found'); // The field with the key 'names' was not found
+  /// ```
+  List<T>? getList<T>(String name) {
+    final field = fields.firstWhereOrNull((e) => e.name == name);
+    if (field == null) {
+      return [];
+    }
+    return field.getList<T>();
+  }
+
   /// Sets the provided [T] [value] to the [SchemaDocument] for the given [name] of the field. Returns true if the field was found and set, false otherwise.
   ///
   /// ```dart
@@ -69,9 +87,24 @@ extension SchemaDocumentExt on SchemaDocument {
     return field.setValue<T>(value);
   }
 
-  /// Saves the [SchemaDocument] to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
+  /// Sets the provided [T] [value] to the [SchemaDocument] for the given [name] of the field as a List. Returns true if the field was found and set, false otherwise.
+  /// If the field does not exist, it will be created.
+  ///
+  /// ```dart
+  /// final doc = SchemaDocument();
+  /// final res = doc.setList<String>('names', ['John Doe', 'Jane Doe']); // sets the value of the field 'names' to ['John Doe', 'Jane Doe']
+  /// ```
+  List<T>? setList<T>(String name, List<T> value) {
+    final field = fields.firstWhereOrNull((e) => e.name == name);
+    if (field == null) {
+      return null;
+    }
+    return field.setList<T>(value);
+  }
+
+  /// Uploads the [SchemaDocument] to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
   /// able to view the values. A succesful transaction will return a [UploadDocumentResponse].
-  /// ### Example
+  ///
   /// ```dart
   /// final doc = defs.first.newDocument();
   /// doc.set<String>('name', 'John Doe');
@@ -83,9 +116,7 @@ extension SchemaDocumentExt on SchemaDocument {
   ///    print('Document saved successfully');
   /// }
   /// ```
-  /// ### See Also
-  /// -
-  Future<SchemaDocument?> save(String label) async {
+  Future<SchemaDocument?> upload(String label) async {
     if (!MotorFlutter.isReady) {
       Log.warn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
       return null;
@@ -108,7 +139,7 @@ extension SchemaDocumentExt on SchemaDocument {
     return resp.document;
   }
 
-  /// Pulls the [SchemaDocument] from the current accounts application-specific data store using the provided [cid]. The account then decrypts the data and
+  /// Fetches the [SchemaDocument] from the current accounts application-specific data store using the provided [cid]. The account then decrypts the data and
   /// its values are returned as a [SchemaDocument]. A succesful transaction will return a [SchemaDocument].
   /// ```dart
   /// final cid = MotorFlutter.to.getCIDForDid('did:3:...');
@@ -117,7 +148,7 @@ extension SchemaDocumentExt on SchemaDocument {
   ///   print('Document pulled successfully');
   /// }
   /// ```
-  Future<SchemaDocument?> pull(String cid) async {
+  Future<SchemaDocument?> fetch(String cid) async {
     if (!MotorFlutter.isReady) {
       Log.warn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
       return null;
@@ -207,6 +238,26 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
     return null;
   }
 
+  /// Checks if the [SchemaDocumentValue] is of the provided [T] type. If the value cannot be cast to the provided type, or the provided [T] doesnt match [SchemaKind], then false is returned.
+  ///
+  /// ```dart
+  /// final doc = SchemaDocument();
+  /// final names = doc.getList<String>('name'); // returns true if the field 'name' is a list of strings
+  /// ```
+  List<T>? getList<T>() {
+    if (field_2 != SchemaKind.LIST) {
+      return null;
+    }
+    final list = <T>[];
+    for (final val in arrayValue.value) {
+      final v = val.getValue<T>();
+      if (v != null) {
+        list.add(v);
+      }
+    }
+    return list;
+  }
+
   /// Checks if the provided [T] type matches the [SchemaKind] of the [SchemaDocumentValue]. If the provided [T] doesnt match [SchemaKind], then false is returned.
   ///
   /// ```dart
@@ -294,5 +345,26 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
         break;
     }
     return null;
+  }
+
+  /// Sets list of values of the [SchemaDocumentValue] to the provided [value]. If the provided [T] doesnt match [SchemaKind], then false is returned.
+  ///
+  /// ```dart
+  /// // Create a new document
+  /// final doc = SchemaDocument();
+  /// doc.setList<String>('name', ['John', 'Doe']); // sets the field 'name' to a list of strings
+  /// ```
+  List<T>? setList<T>(List<T> v) {
+    if (field_2 != SchemaKind.LIST) {
+      return null;
+    }
+    final list = <SchemaDocumentValue>[];
+    for (final val in v) {
+      final value = SchemaDocumentValue();
+      value.setValue<T>(val);
+      list.add(value);
+    }
+    arrayValue = ArrayValue(value: list);
+    return v;
   }
 }
