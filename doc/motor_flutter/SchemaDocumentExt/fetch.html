@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the fetch method from the SchemaDocumentExt extension, for the Dart programming language.">
+  <title>fetch method - SchemaDocumentExt extension - motor_flutter library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">motor_flutter</a></li>
+    <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt.html">SchemaDocumentExt</a></li>
+    <li class="self-crumb">fetch method</li>
+  </ol>
+  <div class="self-name">fetch</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">fetch</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
+<span class="name ">fetch</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="fetch-param-cid"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cid</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Fetches the <code>SchemaDocument</code> from the current accounts application-specific data store using the provided <code>cid</code>. The account then decrypts the data and
+its values are returned as a <code>SchemaDocument</code>. A succesful transaction will return a <code>SchemaDocument</code>.</p>
+<pre class="language-dart"><code class="language-dart">final cid = MotorFlutter.to.getCIDForDid('did:3:...');
+final doc = await SchemaDocument.pull(cid);
+if (doc != null) {
+  print('Document pulled successfully');
+}
+</code></pre>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;SchemaDocument?&gt; fetch(String cid) async {
+  if (!MotorFlutter.isReady) {
+    Log.warn(&#39;MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.&#39;);
+    return null;
+  }
+  if (!MotorFlutter.to.authorized.value) {
+    Log.warn(&#39;MotorFlutter is not authorized. User MotorFlutter.to.createAccount() or MotorFlutter.to.login() to authorize the SDK.&#39;);
+    return null;
+  }
+
+  try {
+    final resp = await MotorFlutterPlatform.instance.getDocument(GetDocumentRequest(
+      cid: cid,
+    ));
+    if (resp == null) {
+      return null;
+    }
+    return resp.document;
+  } catch (e) {
+    Log.warn(e.toString());
+    return null;
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">motor_flutter</a></li>
+  <li><a href="../../motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
+  <li><a href="../../motor_flutter/SchemaDocumentExt.html">SchemaDocumentExt</a></li>
+  <li class="self-crumb">fetch method</li>
+</ol>
+
+
+    <h5>SchemaDocumentExt extension</h5>
+    <ol>
+
+
+
+
+
+    <li class="section-title"><a href="../../motor_flutter/SchemaDocumentExt.html#instance-methods">Methods</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/fetch.html">fetch</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/get.html">get</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/getList.html">getList</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/set.html">set</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/setList.html">setList</a></li>
+    <li><a href="../../motor_flutter/SchemaDocumentExt/upload.html">upload</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    motor_flutter
+      0.6.3
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

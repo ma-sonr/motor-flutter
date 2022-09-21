@@ -74,6 +74,20 @@ to manage user generated data.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="fetch" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/fetch.html">fetch</a></span><span class="signature">(<wbr><span class="parameter" id="fetch-param-cid"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cid</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Fetches the <code>SchemaDocument</code> from the current accounts application-specific data store using the provided <code>cid</code>. The account then decrypts the data and
+its values are returned as a <code>SchemaDocument</code>. A succesful transaction will return a <code>SchemaDocument</code>.
+  
+
+</dd>
+
         <dt id="get" class="callable">
   <span class="name"><a href="../motor_flutter/SchemaDocumentExt/get.html">get</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="get-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
     <span class="returntype parameter">&#8594; T?</span>
@@ -87,30 +101,15 @@ to manage user generated data.</p>
 
 </dd>
 
-        <dt id="pull" class="callable">
-  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/pull.html">pull</a></span><span class="signature">(<wbr><span class="parameter" id="pull-param-cid"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cid</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
+        <dt id="getList" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/getList.html">getList</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getList-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>?</span>
   </span>
   
 
 </dt>
 <dd>
-  Pulls the <code>SchemaDocument</code> from the current accounts application-specific data store using the provided <code>cid</code>. The account then decrypts the data and
-its values are returned as a <code>SchemaDocument</code>. A succesful transaction will return a <code>SchemaDocument</code>.
-  
-
-</dd>
-
-        <dt id="save" class="callable">
-  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/save.html">save</a></span><span class="signature">(<wbr><span class="parameter" id="save-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Saves the <code>SchemaDocument</code> to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
-able to view the values. A succesful transaction will return a <code>UploadDocumentResponse</code>.
+  Returns the provided <code>T</code> value from the <code>SchemaDocument</code> for the given <code>name</code> as a <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a> of <code>T</code> values, or null if the field does not exist.
   
 
 </dd>
@@ -124,6 +123,34 @@ able to view the values. A succesful transaction will return a <code>UploadDocum
 </dt>
 <dd>
   Sets the provided <code>T</code> <code>value</code> to the <code>SchemaDocument</code> for the given <code>name</code> of the field. Returns true if the field was found and set, false otherwise.
+  
+
+</dd>
+
+        <dt id="setList" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/setList.html">setList</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="setList-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="setList-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">value</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Sets the provided <code>T</code> <code>value</code> to the <code>SchemaDocument</code> for the given <code>name</code> of the field as a List. Returns true if the field was found and set, false otherwise.
+If the field does not exist, it will be created.
+  
+
+</dd>
+
+        <dt id="upload" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentExt/upload.html">upload</a></span><span class="signature">(<wbr><span class="parameter" id="upload-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Uploads the <code>SchemaDocument</code> to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
+able to view the values. A succesful transaction will return a <code>UploadDocumentResponse</code>.
   
 
 </dd>
@@ -213,10 +240,12 @@ able to view the values. A succesful transaction will return a <code>UploadDocum
 
 
     <li class="section-title"><a href="../motor_flutter/SchemaDocumentExt.html#instance-methods">Methods</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentExt/fetch.html">fetch</a></li>
     <li><a href="../motor_flutter/SchemaDocumentExt/get.html">get</a></li>
-    <li><a href="../motor_flutter/SchemaDocumentExt/pull.html">pull</a></li>
-    <li><a href="../motor_flutter/SchemaDocumentExt/save.html">save</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentExt/getList.html">getList</a></li>
     <li><a href="../motor_flutter/SchemaDocumentExt/set.html">set</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentExt/setList.html">setList</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentExt/upload.html">upload</a></li>
 
 
 
@@ -230,7 +259,7 @@ able to view the values. A succesful transaction will return a <code>UploadDocum
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.1
+      0.6.3
   </span>
 
   

@@ -74,6 +74,19 @@ to manage user generated data.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="getList" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentValueExt/getList.html">getList</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Checks if the <code>SchemaDocumentValue</code> is of the provided <code>T</code> type. If the value cannot be cast to the provided type, or the provided <code>T</code> doesnt match <code>SchemaKind</code>, then false is returned.
+  
+
+</dd>
+
         <dt id="getValue" class="callable">
   <span class="name"><a href="../motor_flutter/SchemaDocumentValueExt/getValue.html">getValue</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; T?</span>
@@ -96,6 +109,19 @@ to manage user generated data.</p>
 </dt>
 <dd>
   Checks if the provided <code>T</code> type matches the <code>SchemaKind</code> of the <code>SchemaDocumentValue</code>. If the provided <code>T</code> doesnt match <code>SchemaKind</code>, then false is returned.
+  
+
+</dd>
+
+        <dt id="setList" class="callable">
+  <span class="name"><a href="../motor_flutter/SchemaDocumentValueExt/setList.html">setList</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="setList-param-v"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">v</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Sets list of values of the <code>SchemaDocumentValue</code> to the provided <code>value</code>. If the provided <code>T</code> doesnt match <code>SchemaKind</code>, then false is returned.
   
 
 </dd>
@@ -198,8 +224,10 @@ to manage user generated data.</p>
 
 
     <li class="section-title"><a href="../motor_flutter/SchemaDocumentValueExt.html#instance-methods">Methods</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentValueExt/getList.html">getList</a></li>
     <li><a href="../motor_flutter/SchemaDocumentValueExt/getValue.html">getValue</a></li>
     <li><a href="../motor_flutter/SchemaDocumentValueExt/isMatchingType.html">isMatchingType</a></li>
+    <li><a href="../motor_flutter/SchemaDocumentValueExt/setList.html">setList</a></li>
     <li><a href="../motor_flutter/SchemaDocumentValueExt/setValue.html">setValue</a></li>
 
 
@@ -214,7 +242,7 @@ to manage user generated data.</p>
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.1
+      0.6.3
   </span>
 
   
