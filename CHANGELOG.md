@@ -1,3 +1,5 @@
+## 0.6.2
+* Fix Issue Tracker Pubspec
 ## 0.6.1
 * Clean up categories a bit
 ## 0.6.0
@@ -24,7 +26,6 @@
 
 ## 0.5.2
 * Fix iOS PodSpec version error
-
 ## 0.5.1
 * Small docs fixes to `SonrRegisterButton`
 * Remove README fixed size image
