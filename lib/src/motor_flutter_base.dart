@@ -495,6 +495,57 @@ class MotorFlutter extends GetxService {
     return res;
   }
 
+  /// Fetches a document from IPFS using the provided [cid]. Returns the [SchemaDocument] if successful, and null if the document was not found.
+  ///
+  /// ```dart
+  /// final res = await MotorFlutter.to.getDocument('QmXyZ123');
+  /// if (res == null) {
+  ///   throw Exception('Failed to fetch document');
+  /// }
+  /// ```
+  /// **Next Steps**
+  /// - Upload a document to IPFS with [MotorFlutter.uploadDocument]
+  Future<GetDocumentResponse> getDocument({required String cid}) async {
+    final res = await MotorFlutterPlatform.instance.getDocument(GetDocumentRequest(
+      cid: cid,
+    ));
+    if (res == null) {
+      throw UnmarshalException<PaymentResponse>();
+    }
+    return res;
+  }
+
+  /// Uploads a document to IPFS. Returns the [UploadDocumentResponse] if successful, and null if the document was not found.
+  ///
+  /// ```dart
+  /// // Define a document
+  /// final def = SchemaDefinition(label: 'MySchema', fields: {'name': 'String', 'age': 'Int'});
+  ///
+  /// // Create empty document from definition
+  /// final doc = def.newDocument();
+  /// doc.set<String>('name', 'John');
+  /// doc.set<int>('age', 30);
+  ///
+  /// // Upload document to IPFS
+  /// final res = await MotorFlutter.to.uploadDocument(doc);
+  /// if (res == null) {
+  ///  throw Exception('Failed to upload document');
+  /// }
+  /// ```
+  /// **Next Steps**
+  /// - Get a document to IPFS with [MotorFlutter.getDocument]
+  Future<UploadDocumentResponse> uploadDocument({required SchemaDocument doc}) async {
+    final res = await MotorFlutterPlatform.instance.uploadDocument(UploadDocumentRequest(
+      creator: address.value,
+      definition: doc.definition,
+      fields: doc.fields,
+    ));
+    if (res == null) {
+      throw UnmarshalException<PaymentResponse>();
+    }
+    return res;
+  }
+
   /// Returns the current Accounts Info and updates the reactive Variables of [MotorFlutter].
   ///
   /// Values for [address], [didDocument], [balance], [didUrl],

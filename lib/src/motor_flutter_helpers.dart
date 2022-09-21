@@ -69,6 +69,7 @@ extension MotorFlutterHelpers on MotorFlutter {
       Log.warn("Failed to read AES keys from keychain");
       return null;
     }
+    return null;
   }
 }
 

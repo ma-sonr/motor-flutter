@@ -1,3 +1,8 @@
+## 0.5.6
+* Add GetDocument method to MotorFlutter
+* Add UploadDocument method to MotorFlutter
+* Fix trailing null for readKeysForAddr method
+
 ## 0.5.5
 * Update Logger and Methods
 * Make methods null-safe in MotorFlutter
