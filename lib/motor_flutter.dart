@@ -1,4 +1,3 @@
-/// {@category API Reference}
 ///
 /// ## Motor Flutter
 ///

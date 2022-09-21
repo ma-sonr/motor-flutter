@@ -1,15 +1,15 @@
 dartdoc:
   categories:
-    "API Reference":
-      markdown: doc/API.md
-      name: API Reference
-    "Class Extensions":
+    "Start Here":
+      markdown: doc/Index.md
+      name: Start Here
+    "Extensions":
       markdown: doc/EXTENSIONS.md
       name: Class Extensions
     "Widgets":
       markdown: doc/WIDGETS.md
       name: Widgets
-  categoryOrder: ["API Reference", "Class Extensions", "Widgets"]
+  categoryOrder: ["Start Here", "Class Extensions", "Widgets"]
   nodoc: ["lib/src/types/gen/**/*.dart"]
   linkTo:
     url: "https:/docs.sonr.io"

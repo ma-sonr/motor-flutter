@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// {@category Widgets}
+///
 /// This class is used to define radii properties for the nebula theme.
 class NebulaRadii {
   static const extraSmall = BorderRadius.all(Radius.circular(2));

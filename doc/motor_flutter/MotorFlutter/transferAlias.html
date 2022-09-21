@@ -63,8 +63,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@category API Reference}
-{@subCategory Transferring a Subdomain}</p>
+  <p>{@subCategory Transferring a Subdomain}</p>
 <p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
 an error if the provided <code>amount</code> is less than the listed price, or if the <code>alias</code> is not listed for sale by the <code>currentOwner</code>.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
@@ -196,7 +195,7 @@ print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.0
+      0.6.1
   </span>
 
   

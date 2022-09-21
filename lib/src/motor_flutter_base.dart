@@ -19,6 +19,7 @@ part 'motor_flutter_helpers.dart';
 part 'motor_flutter_ui.dart';
 part 'motor_flutter_extensions.dart';
 
+/// {@category Start Here}
 /// # MotorFlutter
 ///
 /// This is the main class for the [MotorFlutter] package. Create a new [MotorFlutter] instance by calling the [MotorFlutter.init] method in your main method.
@@ -142,7 +143,6 @@ class MotorFlutter extends GetxService {
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   String get didUrl => to.didDocument.value.id;
 
-  /// {@category API Reference}
   /// {@subCategory Initialization}
   ///
   /// This static method initializes a [MotorFlutter] instance and Injects it into [Get] state management.
@@ -173,7 +173,6 @@ class MotorFlutter extends GetxService {
     }
   }
 
-  /// {@category API Reference}
   /// {@subCategory Creating a New Account}
   ///
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
@@ -216,7 +215,6 @@ class MotorFlutter extends GetxService {
     return resp.whoIs;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Logging In}
   ///
   /// Logs in to an existing account with the given [password]. During production, this method retrieves the keys from the keychain using [address]. Both of these params are required in order
@@ -261,7 +259,6 @@ class MotorFlutter extends GetxService {
     return resp.whoIs;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Purchasing a Subdomain}
   ///
   /// Purchases a new .snr/ domain for the current account if the [alias] is available. A succesful transaction will return a [MsgBuyAliasResponse].
@@ -298,7 +295,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Listing a Subdomain for Auction}
   ///
   /// Lists an existing [alias] owned by the current account for sale at the given [amount]. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a [MsgSellAliasResponse].
@@ -336,7 +332,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Transferring a Subdomain}
   ///
   /// Transfers an existing [alias] listed for sale from the account which listed it, to the current active account. A succesful transaction will return a [MsgTransferAliasResponse], and will return
@@ -372,7 +367,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Connect to the Sonr Network}
   ///
   /// Establishes the Motor libp2p node, bootstraps the node to known DHT peers, and begins listening for incoming connections. An optional [callback] can be provided to be notified
@@ -387,7 +381,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Create a Schema Definition On-Chain}
   ///
   /// Builds a request for recording a [SchemaDefinition] on the blockchain. [metadata] is for any additional information that should be stored with the schema. [callback] is an optional
@@ -414,7 +407,6 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Search for a Schema Definition}
   ///
   /// Queries for the associated [SchemaDefinition] from the provided [did] on the Sonr Blockchain.
@@ -440,7 +432,6 @@ class MotorFlutter extends GetxService {
     return res.schema;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Find a Schema Definition}
   ///
   /// Searches for all schemas owned by the provided [creator]. If [creator] is not provided it defaults to the [MotorFlutter.address]. Returns a [List] of [SchemaDefinition] if succesful. Returns
@@ -466,7 +457,6 @@ class MotorFlutter extends GetxService {
     return schemaMap.entries.map<SchemaDefinition>((e) => e.value).toList();
   }
 
-  /// {@category API Reference}
   /// {@subCategory Find a Schema Definition}
   ///
   /// Queries the Sonr blockchain for the associated [WhereIs] for the provided [did] or [creator]. If [did] is provided a single-value list is returned (if successful), and the [creator] argument will be ignored.
@@ -504,7 +494,6 @@ class MotorFlutter extends GetxService {
     return [];
   }
 
-  /// {@category API Reference}
   /// {@subCategory Sending Tokens}
   ///
   /// Creates a TX in order to deposit the [amount] of SNR into the [recipient] account. A succesful transaction will return a [PaymentResponse] and will return null if the transaction fails.
@@ -531,7 +520,6 @@ class MotorFlutter extends GetxService {
     return res;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Retreiving a Document}
   ///
   /// Fetches a document from IPFS using the provided [cid]. Returns the [SchemaDocument] if successful, and null if the document was not found.
@@ -554,7 +542,6 @@ class MotorFlutter extends GetxService {
     return res;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Upload a Document}
   ///
   /// Uploads a document to IPFS. Returns the [UploadDocumentResponse] if successful, and null if the document was not found.
@@ -588,7 +575,6 @@ class MotorFlutter extends GetxService {
     return res;
   }
 
-  /// {@category API Reference}
   /// {@subCategory Get Account Info}
   ///
   /// Returns the current Accounts Info and updates the reactive Variables of [MotorFlutter].

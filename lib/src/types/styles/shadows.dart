@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// {@category Widgets}
+///
 /// This class is used to define [BoxShadow] properties for the nebula theme.
 class NebulaShadows {
   static const shadowXs = BoxShadow(

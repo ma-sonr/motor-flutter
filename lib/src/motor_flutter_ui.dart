@@ -1,5 +1,7 @@
 part of 'motor_flutter_base.dart';
 
+/// {@category Widgets}
+///
 /// # MotorFlutterUI
 ///
 /// This extension is used to provide UI related functions to the [MotorFlutter] class.

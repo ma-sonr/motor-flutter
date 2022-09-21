@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// {@category Widgets}
+///
 /// This class is used to define dimension or [EdgeInsets] properties for the nebula theme.
 class NebulaDimensions {
   NebulaDimensions._();

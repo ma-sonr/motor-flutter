@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// {@category Widgets}
+///
 /// This class is used to define [LinearGradient] properties for the nebula theme.
 class NebulaGradients {
   static const semanticLightThemeSurfaceButtonPrimaryHovered = LinearGradient(

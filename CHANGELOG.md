@@ -1,3 +1,5 @@
+## 0.6.1
+* Clean up categories a bit
 ## 0.6.0
 * Upgrade to motor v7.0.0
 * Add GetDocument method to MotorFlutter
