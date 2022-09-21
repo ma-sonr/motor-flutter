@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 
+/// {@category Widgets}
+///
 /// This enum specifies the theme that the button should use. The default theme is [ButtonVariant.blue].
 ///
 /// ## Options
@@ -62,6 +64,8 @@ enum ButtonVariant {
   whiteOutline,
 }
 
+/// {@category Widgets}
+///
 /// The Sonr Register Button provides a Widget that can be used to trigger a dialog which
 /// walks the user through the process of registering a new account. Underneath this method
 /// calls [MotorFlutter.createAccount].

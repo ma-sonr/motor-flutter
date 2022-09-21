@@ -1,4 +1,7 @@
+/// {@category API Reference}
+///
 /// ## Motor Flutter
+///
 /// The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for Authentication, Data Management, and Wallet interactions for the Sonr Network.
 /// **Quick Start**
 /// - Get started by [Registering User Accounts](https://motor.build/motor_flutter/MotorFlutter/createAccount.html) and following the **next steps** at the bottom of the doc.

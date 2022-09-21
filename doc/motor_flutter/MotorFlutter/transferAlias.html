@@ -63,7 +63,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
+  <p>{@category API Reference}</p>
+<p>Transfers an existing <code>alias</code> listed for sale from the account which listed it, to the current active account. A succesful transaction will return a <code>MsgTransferAliasResponse</code>, and will return
 an error if the provided <code>amount</code> is less than the listed price, or if the <code>alias</code> is not listed for sale by the <code>currentOwner</code>.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.transferAlias('hulahoop', 'did:snr:abc123', 42.0);
 if (res == null) {
@@ -157,6 +158,7 @@ print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
@@ -168,6 +170,7 @@ print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/uploadDocument.html">uploadDocument</a></li>
 
     <li class="section-title inherited"><a href="../../motor_flutter/MotorFlutter-class.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
@@ -192,7 +195,7 @@ print(allOwnedAliases); // prints: [hulahoop.snr] or [hulahoop]
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.5
+      0.6.0
   </span>
 
   

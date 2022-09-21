@@ -1,7 +1,9 @@
-## 0.5.6
+## 0.6.0
+* Upgrade to motor v7.0.0
 * Add GetDocument method to MotorFlutter
 * Add UploadDocument method to MotorFlutter
 * Fix trailing null for readKeysForAddr method
+* Add Categories to MotorFlutter Docs
 
 ## 0.5.5
 * Update Logger and Methods

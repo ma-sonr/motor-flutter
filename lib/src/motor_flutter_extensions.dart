@@ -1,5 +1,6 @@
 part of 'motor_flutter_base.dart';
 
+/// {@category Extensions}
 /// An extension on the [CreateAccountWithKeysResponse] class which provides a useful suite of methods
 /// to work with the [CreateAccountResponse] class.
 extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
@@ -12,6 +13,7 @@ extension CreateAccountWithKeysResponseExt on CreateAccountWithKeysResponse {
   }
 }
 
+/// {@category Extensions}
 /// Extension on the [SchemaDefinition] class which provides a useful suite of methods
 /// to work with the [SchemaDefinition] class.
 extension SchemaDefinitionExt on SchemaDefinition {
@@ -31,6 +33,7 @@ extension SchemaDefinitionExt on SchemaDefinition {
   }
 }
 
+/// {@category Extensions}
 /// [SchemaDocumentExt] is an extension on the [SchemaDocument] class which provides a useful suite of methods
 /// to manage user generated data.
 extension SchemaDocumentExt on SchemaDocument {
@@ -139,6 +142,7 @@ extension SchemaDocumentExt on SchemaDocument {
   }
 }
 
+/// {@category Extensions}
 /// Extension on the [SchemaDocumentValue] class which provides a useful suite of methods
 /// to manage user generated data.
 extension SchemaDocumentValueExt on SchemaDocumentValue {

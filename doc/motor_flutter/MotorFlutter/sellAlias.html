@@ -62,7 +62,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>Lists an existing <code>alias</code> owned by the current account for sale at the given <code>amount</code>. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a <code>MsgSellAliasResponse</code>.</p>
+  <p>{@category API Reference}</p>
+<p>Lists an existing <code>alias</code> owned by the current account for sale at the given <code>amount</code>. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a <code>MsgSellAliasResponse</code>.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.sellAlias('hulahoop', 40.0);
 if (res == null) {
   throw Exception('Failed to sell alias');
@@ -158,6 +159,7 @@ for (final alias in res.aliases) {
     <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
@@ -169,6 +171,7 @@ for (final alias in res.aliases) {
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/transferAlias.html">transferAlias</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/uploadDocument.html">uploadDocument</a></li>
 
     <li class="section-title inherited"><a href="../../motor_flutter/MotorFlutter-class.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
@@ -193,7 +196,7 @@ for (final alias in res.aliases) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.5.5
+      0.6.0
   </span>
 
   
