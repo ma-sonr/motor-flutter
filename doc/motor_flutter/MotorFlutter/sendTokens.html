@@ -62,7 +62,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@category API Reference}</p>
+  <p>{@category API Reference}
+{@subCategory Sending Tokens}</p>
 <p>Creates a TX in order to deposit the <code>amount</code> of SNR into the <code>recipient</code> account. A succesful transaction will return a <code>PaymentResponse</code> and will return null if the transaction fails.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.deposit('did:snr:abc123', 3.29);
 if (res == null) {

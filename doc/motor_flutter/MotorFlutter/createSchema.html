@@ -62,7 +62,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@category API Reference}</p>
+  <p>{@category API Reference}
+{@subCategory Create a Schema Definition On-Chain}</p>
 <p>Builds a request for recording a <code>SchemaDefinition</code> on the blockchain. <code>metadata</code> is for any additional information that should be stored with the schema. <code>callback</code> is an optional
 function that will be called when the transaction is complete. Returns a <code>CreateSchemaResponse</code> if the transaction is successful.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.createSchema('My Schema', {'name': SchemaKind.STRING, 'age': SchemaKind.INT});

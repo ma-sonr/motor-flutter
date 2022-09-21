@@ -60,7 +60,8 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@category API Reference}</p>
+  <p>{@category API Reference}
+{@subCategory Find a Schema Definition}</p>
 <p>Searches for all schemas owned by the provided <code>creator</code>. If <code>creator</code> is not provided it defaults to the <a href="../../motor_flutter/MotorFlutter/address.html">MotorFlutter.address</a>. Returns a <code>List</code> of <code>SchemaDefinition</code> if succesful. Returns
 an empty List if no definition is found.</p>
 <pre class="language-dart"><code class="language-dart">final schemas = await MotorFlutter.to.findSchemas(creator: 'did:snr:abc123');
