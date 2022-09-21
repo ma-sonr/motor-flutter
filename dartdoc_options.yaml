@@ -1,7 +1,7 @@
 dartdoc:
   categories:
     "Start Here":
-      markdown: doc/Index.md
+      markdown: doc/INDEX.md
       name: Start Here
     "Extensions":
       markdown: doc/EXTENSIONS.md

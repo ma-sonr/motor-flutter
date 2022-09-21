@@ -139,7 +139,7 @@ class _MyAppState extends State<MyApp> {
                   return;
                 }
 
-                final doc = await testDocument?.save("hello-flutter");
+                final doc = await testDocument?.upload("hello-flutter");
                 if (doc == null) {
                   Get.snackbar(
                     "Error",
