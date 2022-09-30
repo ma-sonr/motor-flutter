@@ -156,6 +156,7 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServi
   '.sonrio.sonr.schema.QuerySchemaResponse': QuerySchemaResponse$json,
   '.sonrio.sonr.schema.SchemaDefinition': $5.SchemaDefinition$json,
   '.sonrio.sonr.schema.SchemaKindDefinition': $5.SchemaKindDefinition$json,
+  '.sonrio.sonr.schema.SchemaItemKindDefinition': $5.SchemaItemKindDefinition$json,
   '.sonrio.sonr.schema.QueryWhatIsRequest': QueryWhatIsRequest$json,
   '.sonrio.sonr.schema.QueryWhatIsResponse': QueryWhatIsResponse$json,
   '.sonrio.sonr.schema.WhatIs': $10.WhatIs$json,

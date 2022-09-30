@@ -62,7 +62,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@subCategory Listing a Subdomain for Auction}</p>
+  <h3 id="listing-a-subdomain-for-auction">Listing a Subdomain for Auction</h3>
 <p>Lists an existing <code>alias</code> owned by the current account for sale at the given <code>amount</code>. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a <code>MsgSellAliasResponse</code>.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.sellAlias('hulahoop', 40.0);
 if (res == null) {
@@ -156,7 +156,7 @@ for (final alias in res.aliases) {
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
@@ -166,6 +166,7 @@ for (final alias in res.aliases) {
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
@@ -196,7 +197,7 @@ for (final alias in res.aliases) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.3
+      0.7.0
   </span>
 
   

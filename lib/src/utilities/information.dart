@@ -100,6 +100,15 @@ class DeviceInformation {
         manufacturer: 'apple',
         model: iosInfo.utsname.machine ?? '',
       );
+    } else if (Platform.isMacOS) {
+      final macInfo = await deviceInfo.macOsInfo;
+      return DeviceInformation(
+        deviceId: macInfo.systemGUID ?? '',
+        platformVersion: macInfo.osRelease,
+        platform: 'macos',
+        manufacturer: 'apple',
+        model: macInfo.model,
+      );
     } else {
       return DeviceInformation();
     }

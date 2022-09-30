@@ -262,6 +262,30 @@ public class SwiftMotorFlutterPlugin: NSObject, FlutterPlugin {
       }
 
     // Resumes the Node
+    case "createBucket":
+      var error: NSError?
+      let args = call.arguments as! FlutterStandardTypedData
+      let rawBuf = Motor.SNRMotorCreateBucket(args.data, &error)
+      if let errorMessage = error?.userInfo.description {
+        result(
+          FlutterError.init(
+            code: "[SWIFT]",
+            message: "Error: " + errorMessage,
+            details: nil))
+      } else {
+        if let buf = rawBuf {
+          let resp = FlutterStandardTypedData.init(bytes: buf)
+          result(resp)
+        } else {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + "Failed to Marshal result",
+              details: nil))
+        }
+      }
+
+    // Resumes the Node
     case "querySchema":
       var error: NSError?
       let args = call.arguments as! FlutterStandardTypedData

@@ -100,6 +100,14 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('newWallet() has not been implemented.');
   }
 
+  /// It creates a schema.
+  ///
+  /// Args:
+  ///   req (CreateSchemaRequest): The request object.
+  Future<CreateBucketResponse?> createBucket(CreateBucketRequest req) {
+    throw UnimplementedError('newWallet() has not been implemented.');
+  }
+
   /// > This function takes a `QueryWhatIsRequest` and returns a `Future<QueryWhatIsResponse?>`
   ///
   /// Args:

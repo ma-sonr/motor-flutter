@@ -63,7 +63,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@subCategory Logging In}</p>
+  <h3 id="logging-in">Logging In</h3>
 <p>Logs in to an existing account with the given <code>password</code>. During production, this method retrieves the keys from the keychain using <code>address</code>. Both of these params are required in order
 to return a successful <code>LoginResponse</code>.</p>
 <h3 id="parameters">Parameters</h3>
@@ -81,7 +81,7 @@ print('Account logged in successfully: ${res.address}');
 </code></pre>
 <p><strong>Next Steps</strong></p>
 <ul>
-<li>Define a new blockchain verifiable data model using <a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+<li>Define a new blockchain verifiable data model using <a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
 <li>Buy a .snr/ subdomain to simplify your account address using <a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
 <li>Connect to the p2p network and enable secure device-to-devce communication with <a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
 <li><a href="https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md">ADR-1</a></li>
@@ -165,7 +165,7 @@ print('Account logged in successfully: ${res.address}');
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
@@ -175,6 +175,7 @@ print('Account logged in successfully: ${res.address}');
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
@@ -205,7 +206,7 @@ print('Account logged in successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.3
+      0.7.0
   </span>
 
   

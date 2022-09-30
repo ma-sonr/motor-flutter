@@ -60,7 +60,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@subCategory Upload a Document}</p>
+  <h3 id="upload-a-document">Upload a Document</h3>
 <p>Uploads a document to IPFS. Returns the <code>UploadDocumentResponse</code> if successful, and null if the document was not found.</p>
 <pre class="language-dart"><code class="language-dart">// Define a document
 final def = SchemaDefinition(label: 'MySchema', fields: {'name': 'String', 'age': 'Int'});
@@ -93,7 +93,7 @@ if (res == null) {
     fields: doc.fields,
   ));
   if (res == null) {
-    throw UnmarshalException&lt;PaymentResponse&gt;();
+    throw UnmarshalException&lt;UploadDocumentResponse&gt;();
   }
   return res;
 }</code></pre>
@@ -150,7 +150,7 @@ if (res == null) {
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
@@ -160,6 +160,7 @@ if (res == null) {
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
@@ -190,7 +191,7 @@ if (res == null) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.3
+      0.7.0
   </span>
 
   

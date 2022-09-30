@@ -74,12 +74,104 @@ class MetadataDefintion extends $pb.GeneratedMessage {
   void clearValue() => clearField(2);
 }
 
+class SchemaItemKindDefinition extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SchemaItemKindDefinition', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
+    ..e<SchemaKind>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'field', $pb.PbFieldType.OE, defaultOrMaker: SchemaKind.LIST, valueOf: SchemaKind.valueOf, enumValues: SchemaKind.values)
+    ..aOM<SchemaItemKindDefinition>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'item', subBuilder: SchemaItemKindDefinition.create)
+    ..e<LinkKind>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'linkKind', $pb.PbFieldType.OE, defaultOrMaker: LinkKind.UNKNOWN, valueOf: LinkKind.valueOf, enumValues: LinkKind.values)
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'link')
+    ..hasRequiredFields = false
+  ;
+
+  SchemaItemKindDefinition._() : super();
+  factory SchemaItemKindDefinition({
+    SchemaKind? field_1,
+    SchemaItemKindDefinition? item,
+    LinkKind? linkKind,
+    $core.String? link,
+  }) {
+    final _result = create();
+    if (field_1 != null) {
+      _result.field_1 = field_1;
+    }
+    if (item != null) {
+      _result.item = item;
+    }
+    if (linkKind != null) {
+      _result.linkKind = linkKind;
+    }
+    if (link != null) {
+      _result.link = link;
+    }
+    return _result;
+  }
+  factory SchemaItemKindDefinition.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SchemaItemKindDefinition.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SchemaItemKindDefinition clone() => SchemaItemKindDefinition()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SchemaItemKindDefinition copyWith(void Function(SchemaItemKindDefinition) updates) => super.copyWith((message) => updates(message as SchemaItemKindDefinition)) as SchemaItemKindDefinition; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SchemaItemKindDefinition create() => SchemaItemKindDefinition._();
+  SchemaItemKindDefinition createEmptyInstance() => create();
+  static $pb.PbList<SchemaItemKindDefinition> createRepeated() => $pb.PbList<SchemaItemKindDefinition>();
+  @$core.pragma('dart2js:noInline')
+  static SchemaItemKindDefinition getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SchemaItemKindDefinition>(create);
+  static SchemaItemKindDefinition? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  SchemaKind get field_1 => $_getN(0);
+  @$pb.TagNumber(1)
+  set field_1(SchemaKind v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasField_1() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearField_1() => clearField(1);
+
+  @$pb.TagNumber(2)
+  SchemaItemKindDefinition get item => $_getN(1);
+  @$pb.TagNumber(2)
+  set item(SchemaItemKindDefinition v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasItem() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearItem() => clearField(2);
+  @$pb.TagNumber(2)
+  SchemaItemKindDefinition ensureItem() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  LinkKind get linkKind => $_getN(2);
+  @$pb.TagNumber(3)
+  set linkKind(LinkKind v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLinkKind() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLinkKind() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get link => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set link($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasLink() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLink() => clearField(4);
+}
+
 class SchemaKindDefinition extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SchemaKindDefinition', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.sonr.schema'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..e<SchemaKind>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'field', $pb.PbFieldType.OE, defaultOrMaker: SchemaKind.LIST, valueOf: SchemaKind.valueOf, enumValues: SchemaKind.values)
     ..e<LinkKind>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'linkKind', $pb.PbFieldType.OE, defaultOrMaker: LinkKind.UNKNOWN, valueOf: LinkKind.valueOf, enumValues: LinkKind.values)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'link')
+    ..aOM<SchemaItemKindDefinition>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'item', subBuilder: SchemaItemKindDefinition.create)
     ..hasRequiredFields = false
   ;
 
@@ -89,6 +181,7 @@ class SchemaKindDefinition extends $pb.GeneratedMessage {
     SchemaKind? field_2,
     LinkKind? linkKind,
     $core.String? link,
+    SchemaItemKindDefinition? item,
   }) {
     final _result = create();
     if (name != null) {
@@ -102,6 +195,9 @@ class SchemaKindDefinition extends $pb.GeneratedMessage {
     }
     if (link != null) {
       _result.link = link;
+    }
+    if (item != null) {
+      _result.item = item;
     }
     return _result;
   }
@@ -161,6 +257,17 @@ class SchemaKindDefinition extends $pb.GeneratedMessage {
   $core.bool hasLink() => $_has(3);
   @$pb.TagNumber(4)
   void clearLink() => clearField(4);
+
+  @$pb.TagNumber(5)
+  SchemaItemKindDefinition get item => $_getN(4);
+  @$pb.TagNumber(5)
+  set item(SchemaItemKindDefinition v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasItem() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearItem() => clearField(5);
+  @$pb.TagNumber(5)
+  SchemaItemKindDefinition ensureItem() => $_ensure(4);
 }
 
 class SchemaDefinition extends $pb.GeneratedMessage {
