@@ -207,6 +207,108 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
         }
         break;
 
+      // Starts the Node
+      case "getBucketObject":
+        try {
+          final String getBucketObjectArgDid = call.argument("bucketDid");
+          final String getBucketObjectArgCid = call.argument("cid");
+          final byte[] getBucketObjectResp = Motor.getBucketObject(getBucketObjectArgDid, getBucketObjectArgCid);
+          result.success(getBucketObjectResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "getBucketObjects":
+        try {
+          final String getBucketObjectsArgDid = call.argument("bucketDid");
+          final byte[] getBucketObjectsResp = Motor.getBucketObjects(getBucketObjectsArgDid);
+          result.success(getBucketObjectsResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "resolveBucket":
+        try {
+          final String resolveBucketArgDid = call.argument("bucketDid");
+          Motor.resolveBucket(resolveBucketArgDid);
+          result.success(true);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "resolveSubBucket":
+        try {
+          final String resolveSubBucketArgDid = call.argument("bucketDid");
+          final String resolveSubBucketArgSubDid = call.argument("subBucketDid");
+          Motor.resolveSubBucket(resolveSubBucketArgDid, resolveSubBucketArgSubDid);
+          result.success(true);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "updateBucketLabel":
+        try {
+          final String updateBucketLabelArgDid = call.argument("bucketDid");
+          final String updateBucketLabelArgLabel = call.argument("label");
+          Motor.updateBucketLabel(updateBucketLabelArgDid, updateBucketLabelArgLabel);
+          result.success(true);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "updateBucketVisibility":
+        try {
+          final String updateBucketVisibilityArgDid = call.argument("bucketDid");
+          final int updateBucketVisibilityArgVis = call.argument("visibility");
+          Motor.updateBucketVisibility(updateBucketVisibilityArgDid, updateBucketVisibilityArgVis);
+          result.success(true);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "addBucketObject":
+        try {
+          final String addBucketObjectArgDid = call.argument("bucketDid");
+          final byte[] addBucketObjectArgObj = call.argument("obj");
+          Motor.addBucketObject(addBucketObjectArgDid, addBucketObjectArgObj);
+          result.success(true);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "removeBucketObject":
+        try {
+          final String removeBucketObjectArgDid = call.argument("bucketDid");
+          final String removeBucketObjectArgCid = call.argument("cid");
+          Motor.removeBucketObject(removeBucketObjectArgDid, removeBucketObjectArgCid);
+          result.success(true);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
       // Stops the Node
       case "getPlatformVersion":
         result.success("Android " + android.os.Build.VERSION.RELEASE);

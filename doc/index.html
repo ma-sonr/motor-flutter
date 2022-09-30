@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,149 +9,173 @@
   <meta name="description" content="motor_flutter API docs, for the Dart programming language.">
   <title>motor_flutter - Dart API docs</title>
 
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_y65RwVF5q9AkX3vs2mDVMBiSCO7myzprKB20k0YbPmR', { api_host: 'https://app.posthog.com' })
+  </script>
 
-  
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="static-assets/github.css?v1">
   <link rel="stylesheet" href="static-assets/styles.css?v1">
   <link rel="icon" href="static-assets/favicon.png?v1">
 
-  
+
 </head>
 
 
 <body data-base-href="" data-using-base-href="false">
 
-<div id="overlay-under-drawer"></div>
+  <div id="overlay-under-drawer"></div>
 
-<header id="title">
-  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
-  <ol class="breadcrumbs gt-separated dark hidden-xs">
-    <li><a href="https://sonr.dev">motor_flutter package</a></li>
-  </ol>
-  <div class="self-name">motor_flutter</div>
-  <form class="search navbar-right" role="search">
-    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-  </form>
-</header>
+  <header id="title">
+    <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+    <ol class="breadcrumbs gt-separated dark hidden-xs">
+      <li><a href="https://sonr.dev">motor_flutter package</a></li>
+    </ol>
+    <div class="self-name">motor_flutter</div>
+    <form class="search navbar-right" role="search">
+      <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead"
+        placeholder="Loading search...">
+    </form>
+  </header>
 
-<main>
+  <main>
 
 
-  <div id="dartdoc-main-content" class="main-content">
-      
-<section class="desc markdown">
-  <!-- markdownlint-disable MD033 --><img src="https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/31d96444-4aa1-4a8a-dc03-192672a9ab00/githubBanner" alt="Sonr motor_flutter banner image for github and pub.dev">
-<!-- markdownlint-enable MD033 --><div align="center">
-<p><a href="https://motor.build/motor_flutter/MotorFlutter-class.html"><img src="https://img.shields.io/badge/API%20Docs-motor__flutter-blue.svg" alt="Docs"></a>
-<a href="https://sonr.io"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a>
-<a href="/LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-blue.svg" alt="License"></a></p>
-<p><a href="https://pub.dev/packages/motor_flutter"><img src="https://img.shields.io/pub/v/motor_flutter.svg" alt="Pub"></a>
-<a href="https://cocoapods.org/pods/motor_pod"><img src="https://img.shields.io/cocoapods/v/motor_pod" alt="Pod"></a>
-<a href="https://github.com/sonr-io/motor-flutter/issues"><img src="https://img.shields.io/github/issues/sonr-io/motor-flutter.svg" alt="GitHub Issues"></a></p></div>
-<p>The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for Authentication, Data Management, and Wallet interactions for the Sonr Network.</p>
-<p><strong>Quick Start</strong></p>
-<ul>
-<li>Get started by <a href="https://motor.build/motor_flutter/MotorFlutter/createAccount.html">Registering User Accounts</a> and following the <strong>next steps</strong> at the bottom of the doc.</li>
-<li>Read the Full Sonr Stack <a href="https://docs.sonr.io">Documentation</a> and Motor <a href="https://motor.build/motor_flutter/MotorFlutter-class.html">Flutter API Reference</a></li>
-<li>Visit our <a href="https://sonr.io">Website</a> and Join the Community <a href="https://sonr.io/discord">Discord</a></li>
-<li>Submit Feature Requests at <a href="https://sonr.fyi">sonr.fyi</a></li>
-</ul>
-<h2 id="installation">Installation</h2>
-<p>Here's how to install the <code>motor_flutter</code> package in your Flutter project:</p>
-<h4 id="prerequisites">Prerequisites</h4>
-<ul>
-<li><a href="https://flutter.dev/docs/get-started/install">Flutter</a></li>
-<li><a href="https://pub.dev/packages/get">GetX</a></li>
-</ul>
-<p>Using the Flutter CLI</p>
-<pre class="language-sh"><code class="language-sh">flutter pub add motor_flutter
+    <div id="dartdoc-main-content" class="main-content">
+
+      <section class="desc markdown">
+        <!-- markdownlint-disable MD033 --><img
+          src="https://imagedelivery.net/B-Y55OAFnxqdmPWhf8E2OA/31d96444-4aa1-4a8a-dc03-192672a9ab00/githubBanner"
+          alt="Sonr motor_flutter banner image for github and pub.dev">
+        <!-- markdownlint-enable MD033 -->
+        <div align="center">
+          <p><a href="https://motor.build/motor_flutter/MotorFlutter-class.html"><img
+                src="https://img.shields.io/badge/API%20Docs-motor__flutter-blue.svg" alt="Docs"></a>
+            <a href="https://sonr.io"><img src="https://img.shields.io/badge/status-active-success.svg"
+                alt="Status"></a>
+            <a href="/LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-blue.svg" alt="License"></a>
+          </p>
+          <p><a href="https://pub.dev/packages/motor_flutter"><img src="https://img.shields.io/pub/v/motor_flutter.svg"
+                alt="Pub"></a>
+            <a href="https://cocoapods.org/pods/motor_pod"><img src="https://img.shields.io/cocoapods/v/motor_pod"
+                alt="Pod"></a>
+            <a href="https://github.com/sonr-io/motor-flutter/issues"><img
+                src="https://img.shields.io/github/issues/sonr-io/motor-flutter.svg" alt="GitHub Issues"></a>
+          </p>
+        </div>
+        <p>The Official Implementation of the Sonr Motor Node in Flutter. This package provides methods for
+          Authentication, Data Management, and Wallet interactions for the Sonr Network.</p>
+        <p><strong>Quick Start</strong></p>
+        <ul>
+          <li>Get started by <a href="https://motor.build/motor_flutter/MotorFlutter/createAccount.html">Registering
+              User Accounts</a> and following the <strong>next steps</strong> at the bottom of the doc.</li>
+          <li>Read the Full Sonr Stack <a href="https://docs.sonr.io">Documentation</a> and Motor <a
+              href="https://motor.build/motor_flutter/MotorFlutter-class.html">Flutter API Reference</a></li>
+          <li>Visit our <a href="https://sonr.io">Website</a> and Join the Community <a
+              href="https://sonr.io/discord">Discord</a></li>
+          <li>Submit Feature Requests at <a href="https://sonr.fyi">sonr.fyi</a></li>
+        </ul>
+        <h2 id="installation">Installation</h2>
+        <p>Here's how to install the <code>motor_flutter</code> package in your Flutter project:</p>
+        <h4 id="prerequisites">Prerequisites</h4>
+        <ul>
+          <li><a href="https://flutter.dev/docs/get-started/install">Flutter</a></li>
+          <li><a href="https://pub.dev/packages/get">GetX</a></li>
+        </ul>
+        <p>Using the Flutter CLI</p>
+        <pre class="language-sh"><code class="language-sh">flutter pub add motor_flutter
 </code></pre>
-<p>or</p>
-<pre class="language-yaml"><code class="language-yaml">dependencies:
-  motor_flutter: ^0.7.0
+        <p>or</p>
+        <pre class="language-yaml"><code class="language-yaml">dependencies:
+  motor_flutter: ^0.7.1
 </code></pre>
-<p>Update your <code>ios/Podfile</code>:</p>
-<pre class="language-ruby"><code class="language-ruby">platform :ios, '13.0' # At the top of the file
+        <p>Update your <code>ios/Podfile</code>:</p>
+        <pre class="language-ruby"><code class="language-ruby">platform :ios, '13.0' # At the top of the file
 .
 .
 use_frameworks! # Then **remove or comment out**
 </code></pre>
-<h2 id="usage">Usage</h2>
-<p>We have full usage examples available in the motor_flutter <a href="https://motor.build/motor_flutter/motor_flutter-library.html">docs site</a>. Each method on the
-<code>MotorFlutter</code> class has a full example and usage guide for its functionality.</p>
-<h2 id="contributing">Contributing</h2>
-<p>This library is still under active core team development. We welcome contributions from the community, but for the time being we would ask
-that you create an issue before submitting a pull request.</p>
-<h2 id="license">License</h2>
-<p>Our code is licensed under the <a href="/LICENSE">GPLv3</a> license.</p>
-</section>
+        <h2 id="usage">Usage</h2>
+        <p>We have full usage examples available in the motor_flutter <a
+            href="https://motor.build/motor_flutter/motor_flutter-library.html">docs site</a>. Each method on the
+          <code>MotorFlutter</code> class has a full example and usage guide for its functionality.
+        </p>
+        <h2 id="contributing">Contributing</h2>
+        <p>This library is still under active core team development. We welcome contributions from the community, but
+          for the time being we would ask
+          that you create an issue before submitting a pull request.</p>
+        <h2 id="license">License</h2>
+        <p>Our code is licensed under the <a href="/LICENSE">GPLv3</a> license.</p>
+      </section>
 
 
       <section class="summary">
-          <h2>Libraries</h2>
+        <h2>Libraries</h2>
         <dl>
           <dt id="motor_flutter">
-  <span class="name"><a href="motor_flutter/motor_flutter-library.html">motor_flutter</a></span> 
+            <span class="name"><a href="motor_flutter/motor_flutter-library.html">motor_flutter</a></span>
 
-</dt>
-<dd>Motor Flutter
-</dd>
+          </dt>
+          <dd>Motor Flutter
+          </dd>
 
         </dl>
       </section>
 
-  </div> <!-- /.main-content -->
+    </div> <!-- /.main-content -->
 
-  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <header id="header-search-sidebar" class="hidden-l">
-  <form class="search-sidebar" role="search">
-    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-  </form>
-</header>
+    <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+      <header id="header-search-sidebar" class="hidden-l">
+        <form class="search-sidebar" role="search">
+          <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead"
+            placeholder="Loading search...">
+        </form>
+      </header>
 
-<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
-  <li><a href="https://sonr.dev">motor_flutter package</a></li>
-</ol>
+      <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+        <li><a href="https://sonr.dev">motor_flutter package</a></li>
+      </ol>
 
 
-    <h5 class="hidden-xs"><span class="package-name">motor_flutter</span> <span class="package-kind">package</span></h5>
-    <ol>
-      <li class="section-title">Topics</li>
+      <h5 class="hidden-xs"><span class="package-name">motor_flutter</span> <span class="package-kind">package</span>
+      </h5>
+      <ol>
+        <li class="section-title">Topics</li>
         <li><a href="topics/Start Here-topic.html">Start&nbsp;Here</a></li>
         <li><a href="topics/Widgets-topic.html">Widgets</a></li>
         <li><a href="topics/Extensions-topic.html">Extensions</a></li>
-      <li class="section-title">Libraries</li>
-      <li><a href="motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
-</ol>
+        <li class="section-title">Libraries</li>
+        <li><a href="motor_flutter/motor_flutter-library.html">motor_flutter</a></li>
+      </ol>
 
-  </div>
+    </div>
 
-  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-  </div>
+    <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    </div>
 
-</main>
+  </main>
 
-<footer>
-  <span class="no-break">
-    motor_flutter
-      0.7.0
-  </span>
-
-  
-</footer>
+  <footer>
+    <span class="no-break">
+      motor_flutter
+      0.7.1
+    </span>
 
 
+  </footer>
 
-<script src="static-assets/highlight.pack.js?v1"></script>
-<script src="static-assets/docs.dart.js"></script>
+
+
+  <script src="static-assets/highlight.pack.js?v1"></script>
+  <script src="static-assets/docs.dart.js"></script>
 
 
 
 </body>
 
 </html>
-

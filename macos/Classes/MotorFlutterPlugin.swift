@@ -495,6 +495,160 @@ public class MotorFlutterPlugin: NSObject, FlutterPlugin {
         }
       }
 
+
+        // Resumes the Node
+       case "resolveBucket":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+         let did = args["did"] as! String
+         MotorMac.SNRMotorResolveBucket(did, &error)
+         if let errorMessage = error?.userInfo.description {
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         }else{
+             result(true)
+         }
+
+        // Resumes the Node
+       case "resolveSubBucket":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+         let did = args["bucketDid"] as! String
+         let subDid = args["subBucketDid"] as! String
+         MotorMac.SNRMotorResolveSubBucket(did, subDid, &error)
+         if let errorMessage = error?.userInfo.description {
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         }else{
+             result(true)
+         }
+
+        // Resumes the Node
+       case "updateBucketLabel":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+         let did = args["bucketDid"] as! String
+         let label = args["label"] as! String
+         MotorMac.SNRMotorUpdateBucketLabel(did, label, &error)
+         if let errorMessage = error?.userInfo.description {
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         }else{
+             result(true)
+         }
+
+        // Resumes the Node
+       case "updateBucketVisibility":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+         let did = args["bucketDid"] as! String
+         let vis = args["visibility"] as! Int
+         MotorMac.SNRMotorUpdateBucketVisibility(did, vis, &error)
+         if let errorMessage = error?.userInfo.description {
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         }else{
+             result(true)
+         }
+
+        // Resumes the Node
+       case "addBucketObject":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+         let did = args["bucketDid"] as! String
+         let obj = args["obj"] as! FlutterStandardTypedData
+        MotorMac.SNRMotorAddBucketObject(did, obj.data, &error)
+         if let errorMessage = error?.userInfo.description {
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         }else{
+             result(true)
+         }
+
+        // Resumes the Node
+       case "removeBucketObject":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+         let did = args["bucketDid"] as! String
+         let cid = args["cid"] as! String
+         MotorMac.SNRMotorRemoveBucketObject(did, cid, &error)
+         if let errorMessage = error?.userInfo.description {
+           result(
+             FlutterError.init(
+               code: "[SWIFT]",
+               message: "Error: " + errorMessage,
+               details: nil))
+         }else{
+             result(true)
+         }
+        // Resumes the Node
+       case "getBucketObject":
+         var error: NSError?
+         guard let args = call.arguments as? [String : Any] else {return}
+        let did = args["bucketDid"] as! String
+        let cid = args["cid"] as! String
+
+        let rawBuf = MotorMac.SNRMotorGetBucketObject(did, cid, &error)
+        if let errorMessage = error?.userInfo.description {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + errorMessage,
+              details: nil))
+        } else {
+          if let buf = rawBuf {
+            let resp = FlutterStandardTypedData.init(bytes: buf)
+            result(resp)
+          } else {
+            result(
+              FlutterError.init(
+                code: "[SWIFT]",
+                message: "Error: " + "Failed to Marshal result",
+                details: nil))
+          }
+        }
+
+        // Resumes the Node
+       case "getBucketObjects":
+        var error: NSError?
+        guard let args = call.arguments as? [String : Any] else {return}
+        let did = args["bucketDid"] as! String
+
+        let rawBuf = MotorMac.SNRMotorGetBucketObjects(did, &error)
+        if let errorMessage = error?.userInfo.description {
+          result(
+            FlutterError.init(
+              code: "[SWIFT]",
+              message: "Error: " + errorMessage,
+              details: nil))
+        } else {
+          if let buf = rawBuf {
+            let resp = FlutterStandardTypedData.init(bytes: buf)
+            result(resp)
+          } else {
+            result(
+              FlutterError.init(
+                code: "[SWIFT]",
+                message: "Error: " + "Failed to Marshal result",
+                details: nil))
+          }
+        }
+
     // Starts the Node
     case "stat":
       var error: NSError?
