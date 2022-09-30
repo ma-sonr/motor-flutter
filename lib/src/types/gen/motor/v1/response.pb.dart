@@ -1020,16 +1020,21 @@ class UploadObjectResponse extends $pb.GeneratedMessage {
 class CreateBucketResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateBucketResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonrio.motor.api.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOM<$0.WhereIs>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'whereIs', subBuilder: $0.WhereIs.create)
     ..hasRequiredFields = false
   ;
 
   CreateBucketResponse._() : super();
   factory CreateBucketResponse({
     $core.String? did,
+    $0.WhereIs? whereIs,
   }) {
     final _result = create();
     if (did != null) {
       _result.did = did;
+    }
+    if (whereIs != null) {
+      _result.whereIs = whereIs;
     }
     return _result;
   }
@@ -1062,6 +1067,17 @@ class CreateBucketResponse extends $pb.GeneratedMessage {
   $core.bool hasDid() => $_has(0);
   @$pb.TagNumber(1)
   void clearDid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $0.WhereIs get whereIs => $_getN(1);
+  @$pb.TagNumber(2)
+  set whereIs($0.WhereIs v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasWhereIs() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWhereIs() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.WhereIs ensureWhereIs() => $_ensure(1);
 }
 
 class UpdateBucketResponse extends $pb.GeneratedMessage {

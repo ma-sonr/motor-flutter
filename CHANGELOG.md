@@ -1,3 +1,22 @@
+## 0.7.1
+* Add Bucket Bind methods to swift and java proxy
+  * `resolveBucket()`
+  * `resolveSubBucket()`
+  * `updateBucketLabel()`
+  * `updateBucketVisibility()`
+  * `addBucketObject()`
+  * `removeBucketObject()`
+  * `getBucketObject()`
+  * `getBucketObjects()`
+* Remove Kotlin related files from example app
+* Add New Bind methods from Proxy into Dart Platform Channels
+* Introduce new Bucket methods into MotorFlutter
+  * `addDocumentToBucket()`
+  * `removeFromBucket()`
+  * `getBucketItem()`
+  * `getAllBucketItems()`
+* Add Posthog metrics to docs
+
 ## 0.7.0
 * Add support for MacOS as a target platform
 * Add Create Bucket as a new method for Plugin

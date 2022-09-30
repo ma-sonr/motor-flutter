@@ -2,7 +2,7 @@ PODS:
   - device_info_plus_macos (0.0.1):
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
-  - "motor_flutter (0.7.0+1)":
+  - motor_flutter (0.7.0):
     - FlutterMacOS
     - motor_mac_pod (~> 1.0.0)
   - motor_mac_pod (1.0.0)
@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   device_info_plus_macos: 1ad388a1ef433505c4038e7dd9605aadd1e2e9c7
   FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
-  motor_flutter: 51032d06eb75569fabc1edeed0d74ae50c099f77
+  motor_flutter: 7cf2ad83a4ca0f26f2019813582db78898fc64b0
   motor_mac_pod: f9a8df8d662c6ddbd0256f705028c66bab2da1a0
   path_provider_macos: 3c0c3b4b0d4a76d2bf989a913c2de869c5641a19
 

@@ -28,7 +28,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (InitializeRequest): The request object.
   Future<InitializeResponse?> init(InitializeRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('init() has not been implemented.');
   }
 
   /// Create an account.
@@ -36,7 +36,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (CreateAccountRequest): The request object that will be sent to the server.
   Future<CreateAccountResponse?> createAccount(CreateAccountRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('createAccount() has not been implemented.');
   }
 
   /// Create an account with specific DSC and PSK keys.
@@ -44,12 +44,12 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (CreateAccountWithKeysRequest): The request object that will be sent to the server.
   Future<CreateAccountWithKeysResponse?> createAccountWithKeys(CreateAccountWithKeysRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('createAccountWithKeys() has not been implemented.');
   }
 
   /// It connects to the database.
   Future<bool> connect() {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('connect() has not been implemented.');
   }
 
   /// This function returns a Future that resolves to a LoginResponse or null.
@@ -57,7 +57,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (LoginRequest): The request object that will be sent to the server.
   Future<LoginResponse?> login(LoginRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('login() has not been implemented.');
   }
 
   /// This function returns a Future that resolves to a LoginResponse or null.
@@ -65,7 +65,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (LoginWithKeysRequest): The request object that will be sent to the server.
   Future<LoginResponse?> loginWithKeys(LoginWithKeysRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('loginWithKeys() has not been implemented.');
   }
 
   /// This function takes a MsgBuyAlias message and returns a MsgBuyAliasResponse message.
@@ -73,7 +73,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (MsgBuyAlias): The request object.
   Future<MsgBuyAliasResponse?> buyAlias(MsgBuyAlias req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('buyAlias() has not been implemented.');
   }
 
   /// It sells an alias.
@@ -81,7 +81,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (MsgSellAlias): The request object.
   Future<MsgSellAliasResponse?> sellAlias(MsgSellAlias req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('sellAlias() has not been implemented.');
   }
 
   /// This function takes a MsgTransferAlias message and returns a MsgTransferAliasResponse message.
@@ -89,7 +89,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (MsgTransferAlias): The request object.
   Future<MsgTransferAliasResponse?> transferAlias(MsgTransferAlias req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('transferAlias() has not been implemented.');
   }
 
   /// It creates a schema.
@@ -97,7 +97,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (CreateSchemaRequest): The request object.
   Future<CreateSchemaResponse?> createSchema(CreateSchemaRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('createSchema() has not been implemented.');
   }
 
   /// It creates a schema.
@@ -105,7 +105,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (CreateSchemaRequest): The request object.
   Future<CreateBucketResponse?> createBucket(CreateBucketRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('createBucket() has not been implemented.');
   }
 
   /// > This function takes a `QueryWhatIsRequest` and returns a `Future<QueryWhatIsResponse?>`
@@ -113,7 +113,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (QueryWhatIsRequest): The request object.
   Future<QueryWhatIsResponse?> querySchema(QueryWhatIsRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('querySchema() has not been implemented.');
   }
 
   /// It queries the schema by creator.
@@ -121,7 +121,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (QueryWhatIsByCreatorRequest): The request object.
   Future<QueryWhatIsByCreatorResponse?> querySchemaByCreator(QueryWhatIsByCreatorRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('querySchemaByCreator() has not been implemented.');
   }
 
   /// It queries the schema by the given DID.
@@ -129,7 +129,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   did (String): The DID of the schema.
   Future<QueryWhatIsResponse?> querySchemaByDid(String did) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('querySchemaByDid() has not been implemented.');
   }
 
   /// If the bucket exists, return the bucket's location, otherwise return null.
@@ -137,7 +137,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (QueryWhereIsRequest): The request object.
   Future<QueryWhereIsResponse?> queryBucket(QueryWhereIsRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('queryBucket() has not been implemented.');
   }
 
   /// It queries the bucket by creator.
@@ -145,7 +145,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (QueryWhereIsByCreatorRequest): The request object.
   Future<QueryWhereIsByCreatorResponse?> queryBucketByCreator(QueryWhereIsByCreatorRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('queryBucketByCreator() has not been implemented.');
   }
 
   /// Issue a payment request to the payment server.
@@ -153,21 +153,53 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
   /// Args:
   ///   req (PaymentRequest): The PaymentRequest object that contains the payment information.
   Future<PaymentResponse?> issuePayment(PaymentRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('issuePayment() has not been implemented.');
   }
 
   /// It returns a future that resolves to a StatResponse or null
   Future<StatResponse?> stat() {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('stat() has not been implemented.');
   }
 
   // UploadDocument
   Future<UploadDocumentResponse?> uploadDocument(UploadDocumentRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('uploadDocument() has not been implemented.');
   }
 
   Future<GetDocumentResponse?> getDocument(GetDocumentRequest req) {
-    throw UnimplementedError('newWallet() has not been implemented.');
+    throw UnimplementedError('getDocument() has not been implemented.');
+  }
+
+  Future<bool> resolveBucket(String did) {
+    throw UnimplementedError('resolveBucket() has not been implemented.');
+  }
+
+  Future<bool> resolveSubBucket(String did, String subDid) {
+    throw UnimplementedError('resolveSubBucket() has not been implemented.');
+  }
+
+  Future<bool> updateBucketLabel(String did, String label) {
+    throw UnimplementedError('updateBucketLabel() has not been implemented.');
+  }
+
+  Future<bool> updateBucketVisibility(String did, BucketVisibility visibility) {
+    throw UnimplementedError('updateBucketVisibility() has not been implemented.');
+  }
+
+  Future<bool> addBucketObject(String did, SchemaDocument doc) {
+    throw UnimplementedError('addBucketObject() has not been implemented.');
+  }
+
+  Future<bool> removeBucketObject(String did, String cid) {
+    throw UnimplementedError('removeBucketObject() has not been implemented.');
+  }
+
+  Future<BucketContent?> getBucketObject(String did, String cid) {
+    throw UnimplementedError('getBucketObject() has not been implemented.');
+  }
+
+  Future<BucketContentList> getBucketObjects(String did) {
+    throw UnimplementedError('getBucketObjects() has not been implemented.');
   }
 
   /// This function returns a Future that will eventually contain a String that may be null.

@@ -484,7 +484,7 @@ class MotorFlutter extends GetxService {
     return schemaMap.entries.map<SchemaDefinition>((e) => e.value).toList();
   }
 
-  /// ### Find a Schema Definition}
+  /// ### Find a Schema Definition
   ///
   /// Queries the Sonr blockchain for the associated [WhereIs] for the provided [did] or [creator]. If [did] is provided a single-value list is returned (if successful), and the [creator] argument will be ignored.
   /// Returns [List<WhereIs>] if bucket(s) are found. Returns null if no bucket is found, or if neither [did] nor [creator] were provided.
@@ -521,7 +521,7 @@ class MotorFlutter extends GetxService {
     return [];
   }
 
-  /// ### Sending Tokens}
+  /// ### Sending Tokens
   ///
   /// Creates a TX in order to deposit the [amount] of SNR into the [recipient] account. A succesful transaction will return a [PaymentResponse] and will return null if the transaction fails.
   ///
@@ -600,6 +600,34 @@ class MotorFlutter extends GetxService {
       throw UnmarshalException<UploadDocumentResponse>();
     }
     return res;
+  }
+
+  /// ### Add Document to Bucket
+  ///
+  /// Takes a [SchemaDocument] and serializes it inorder to store inside a Bucket.
+  Future<bool> addDocumentToBucket({required String bucketDid, required SchemaDocument doc}) async {
+    return await MotorFlutterPlatform.instance.addBucketObject(bucketDid, doc);
+  }
+
+  /// ### Remove Item from Bucket
+  ///
+  /// Takes a [cid] and removes it from the Bucket if it exists.
+  Future<bool> removeFromBucket({required String bucketDid, required String cid}) async {
+    return await MotorFlutterPlatform.instance.removeBucketObject(bucketDid, cid);
+  }
+
+  /// ### Get Item from Bucket
+  ///
+  /// Takes a [cid] and returns the [BucketContent] if it exists.
+  Future<BucketContent?> getBucketItem({required String bucketDid, required String cid}) async {
+    return await MotorFlutterPlatform.instance.getBucketObject(bucketDid, cid);
+  }
+
+  /// ### Get ALL Items from Bucket
+  ///
+  /// Takes a [bucketDid] and returns the [BucketContentList] of all items in the bucket.
+  Future<BucketContentList> getAllBucketItems({required String bucketDid}) async {
+    return await MotorFlutterPlatform.instance.getBucketObjects(bucketDid);
   }
 
   /// ### Get Account Info

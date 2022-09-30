@@ -89,7 +89,9 @@ print('Account created successfully: ${res.address}');
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;WhoIs&gt; createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
-  if (!MotorFlutter.isReady) {}
+  if (!MotorFlutter.isReady) {
+    throw Exception(&#39;MotorFlutter is not initialized&#39;);
+  }
   final dscKey = e.Key.fromSecureRandom(32);
   final pskKey = e.Key.fromSecureRandom(32);
   onKeysGenerated?.call(dscKey.bytes, pskKey.bytes);
@@ -158,12 +160,15 @@ print('Account created successfully: ${res.address}');
 
     <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/$configureLifeCycle.html">$configureLifeCycle</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/addDocumentToBucket.html">addDocumentToBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getAllBucketItems.html">getAllBucketItems</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/getBucketItem.html">getBucketItem</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
@@ -173,6 +178,7 @@ print('Account created successfully: ${res.address}');
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/removeFromBucket.html">removeFromBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -202,7 +208,7 @@ print('Account created successfully: ${res.address}');
 <footer>
   <span class="no-break">
     motor_flutter
-      0.7.0
+      0.7.1
   </span>
 
   

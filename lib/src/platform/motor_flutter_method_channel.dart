@@ -286,6 +286,146 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
+  Future<bool> resolveBucket(String did) async {
+    try {
+      final res = await methodChannel.invokeMethod<bool>('resolveBucket', {"bucketDid": did});
+      if (res == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return false;
+      }
+      return res;
+    } catch (e) {
+      Log.error(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> resolveSubBucket(String did, String subDid) async {
+    try {
+      final res = await methodChannel.invokeMethod<bool>('resolveSubBucket', {
+        "bucketDid": did,
+        "subBucketDid": subDid,
+      });
+      if (res == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return false;
+      }
+      return res;
+    } catch (e) {
+      Log.error(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> updateBucketLabel(String did, String label) async {
+    try {
+      final res = await methodChannel.invokeMethod<bool>('updateBucketLabel', {
+        "bucketDid": did,
+        "label": label,
+      });
+      if (res == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return false;
+      }
+      return res;
+    } catch (e) {
+      Log.error(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> updateBucketVisibility(String did, BucketVisibility visibility) async {
+    try {
+      final res = await methodChannel.invokeMethod<bool>('updateBucketVisibility', {
+        "bucketDid": did,
+        "visibility": visibility.value,
+      });
+      if (res == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return false;
+      }
+      return res;
+    } catch (e) {
+      Log.error(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> addBucketObject(String did, SchemaDocument doc) async {
+    try {
+      final res = await methodChannel.invokeMethod<bool>('addBucketObject', {
+        "bucketDid": did,
+        "obj": doc.writeToBuffer(),
+      });
+      if (res == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return false;
+      }
+      return res;
+    } catch (e) {
+      Log.error(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> removeBucketObject(String did, String cid) async {
+    try {
+      final res = await methodChannel.invokeMethod<bool>('removeBucketObject', {
+        "bucketDid": did,
+        "cid": cid,
+      });
+      if (res == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return false;
+      }
+      return res;
+    } catch (e) {
+      Log.error(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<BucketContent?> getBucketObject(String did, String cid) async {
+    try {
+      final buf = await methodChannel.invokeMethod<Uint8List>('getBucketObject', {
+        "bucketDid": did,
+        "cid": cid,
+      });
+      if (buf == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return null;
+      }
+      return BucketContent.fromBuffer(buf.toList());
+    } catch (e) {
+      Log.error(e.toString());
+      return null;
+    }
+  }
+
+  @override
+  Future<BucketContentList> getBucketObjects(String did) async {
+    try {
+      final buf = await methodChannel.invokeMethod<Uint8List>('getBucketObjects', {
+        "bucketDid": did,
+      });
+      if (buf == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return BucketContentList.create();
+      }
+      return BucketContentList.fromBuffer(buf.toList());
+    } catch (e) {
+      Log.error(e.toString());
+      return BucketContentList.create();
+    }
+  }
+
+  @override
   Future<StatResponse?> stat() async {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('stat');

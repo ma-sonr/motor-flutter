@@ -182,11 +182,12 @@ const CreateBucketResponse$json = const {
   '1': 'CreateBucketResponse',
   '2': const [
     const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'where_is', '3': 2, '4': 1, '5': 11, '6': '.sonrio.sonr.bucket.WhereIs', '10': 'whereIs'},
   ],
 };
 
 /// Descriptor for `CreateBucketResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createBucketResponseDescriptor = $convert.base64Decode('ChRDcmVhdGVCdWNrZXRSZXNwb25zZRIQCgNkaWQYASABKAlSA2RpZA==');
+final $typed_data.Uint8List createBucketResponseDescriptor = $convert.base64Decode('ChRDcmVhdGVCdWNrZXRSZXNwb25zZRIQCgNkaWQYASABKAlSA2RpZBI2Cgh3aGVyZV9pcxgCIAEoCzIbLnNvbnJpby5zb25yLmJ1Y2tldC5XaGVyZUlzUgd3aGVyZUlz');
 @$core.Deprecated('Use updateBucketResponseDescriptor instead')
 const UpdateBucketResponse$json = const {
   '1': 'UpdateBucketResponse',
