@@ -52,7 +52,7 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
           result.error(e.getMessage(), e.getMessage(), null);
         }
         break;
-      
+
       // Starts the Node
       case "createAccountWithKeys":
         try {
@@ -141,6 +141,18 @@ public class MotorFlutterPlugin implements FlutterPlugin, MethodCallHandler {
           final byte[] createSchemaArgs = call.arguments();
           final byte[] createSchemaResp = Motor.createSchema(createSchemaArgs);
           result.success(createSchemaResp);
+        }catch (Exception e) {
+          System.out.println(e.toString());
+          result.error(e.getMessage(), e.getMessage(), null);
+        }
+        break;
+
+      // Starts the Node
+      case "createBucket":
+        try {
+          final byte[] createBucketArgs = call.arguments();
+          final byte[] createBucketResp = Motor.createSchema(createBucketArgs);
+          result.success(createBucketResp);
         }catch (Exception e) {
           System.out.println(e.toString());
           result.error(e.getMessage(), e.getMessage(), null);

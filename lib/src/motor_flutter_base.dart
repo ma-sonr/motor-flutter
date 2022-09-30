@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:fixnum/fixnum.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_keychain/flutter_keychain.dart';
 import 'package:flutter/services.dart';
@@ -143,13 +144,12 @@ class MotorFlutter extends GetxService {
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   String get didUrl => to.didDocument.value.id;
 
-  /// {@subCategory Initialization}
+  /// ### Initialization}
   ///
   /// This static method initializes a [MotorFlutter] instance and Injects it into [Get] state management.
   ///
   /// ### Parameters
   /// - [autoInject] : Automatically injects the [MotorFlutter] instance into [Get] state management. Defaults to true.
-  /// - [enableStorage] : Initializes GetStorage for [MotorFlutter] to use. Defaults to true.
   ///
   /// ```dart
   /// import 'package:motor_flutter/motor_flutter.dart';
@@ -164,16 +164,17 @@ class MotorFlutter extends GetxService {
   /// - Register a new user with [createAccount]
   /// - Login with an existing account using [login]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
-  static Future<void> init({bool autoInject = true, bool enableStorage = true}) async {
+  static Future<void> init({bool autoInject = true}) async {
     if (autoInject) {
+      WidgetsFlutterBinding.ensureInitialized();
       await Get.putAsync(
-        () => MotorFlutter()._init(enableStorage),
+        () => MotorFlutter()._init(),
         permanent: true,
       );
     }
   }
 
-  /// {@subCategory Creating a New Account}
+  /// ### Creating a New Account
   ///
   /// Creates a new Account with the given [password]. This process generates a two random 32 byte keys and stores them in the keychain during production and in the temporary
   /// storage during development. Returns [CreateAccountResponse] if the account is created successfully.
@@ -195,7 +196,9 @@ class MotorFlutter extends GetxService {
   /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
   Future<WhoIs> createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
-    if (!MotorFlutter.isReady) {}
+    if (!MotorFlutter.isReady) {
+      throw Exception('MotorFlutter is not initialized');
+    }
     final dscKey = e.Key.fromSecureRandom(32);
     final pskKey = e.Key.fromSecureRandom(32);
     onKeysGenerated?.call(dscKey.bytes, pskKey.bytes);
@@ -215,7 +218,7 @@ class MotorFlutter extends GetxService {
     return resp.whoIs;
   }
 
-  /// {@subCategory Logging In}
+  /// ### Logging In
   ///
   /// Logs in to an existing account with the given [password]. During production, this method retrieves the keys from the keychain using [address]. Both of these params are required in order
   /// to return a successful [LoginResponse].
@@ -234,7 +237,7 @@ class MotorFlutter extends GetxService {
   /// print('Account logged in successfully: ${res.address}');
   /// ```
   /// **Next Steps**
-  /// - Define a new blockchain verifiable data model using [createSchema]
+  /// - Define a new blockchain verifiable data model using [publishSchema]
   /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
   /// - Connect to the p2p network and enable secure device-to-devce communication with [connect]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
@@ -259,7 +262,7 @@ class MotorFlutter extends GetxService {
     return resp.whoIs;
   }
 
-  /// {@subCategory Purchasing a Subdomain}
+  /// ### Purchasing a Subdomain
   ///
   /// Purchases a new .snr/ domain for the current account if the [alias] is available. A succesful transaction will return a [MsgBuyAliasResponse].
   ///
@@ -295,7 +298,7 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@subCategory Listing a Subdomain for Auction}
+  /// ### Listing a Subdomain for Auction
   ///
   /// Lists an existing [alias] owned by the current account for sale at the given [amount]. The minimum price for an Alias is 10.0 SNR. A succesful transaction will return a [MsgSellAliasResponse].
   ///
@@ -332,7 +335,7 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@subCategory Transferring a Subdomain}
+  /// ### Transferring a Subdomain
   ///
   /// Transfers an existing [alias] listed for sale from the account which listed it, to the current active account. A succesful transaction will return a [MsgTransferAliasResponse], and will return
   /// an error if the provided [amount] is less than the listed price, or if the [alias] is not listed for sale by the [currentOwner].
@@ -367,10 +370,10 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@subCategory Connect to the Sonr Network}
+  /// ### Connect to the Sonr Network
   ///
   /// Establishes the Motor libp2p node, bootstraps the node to known DHT peers, and begins listening for incoming connections. An optional [callback] can be provided to be notified
-  /// when the node is ready to accept connections.
+  /// when the node is ready to accept connections. An optional [callback] can be provided to be notified when the node starts.
   ///
   /// **Next Steps**
   /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
@@ -381,7 +384,31 @@ class MotorFlutter extends GetxService {
     return resp;
   }
 
-  /// {@subCategory Create a Schema Definition On-Chain}
+  /// ### Create a Bucket On-Chain
+  ///
+  /// Takes a CreateBucketRequest as [req] and creates a new bucket on-chain. A succesful transaction will return a [CreateBucketResponse].
+  ///
+  /// ```dart
+  /// final res = await MotorFlutter.to.createBucket(MsgCreateBucket(
+  ///  name: 'my-bucket',
+  /// ));
+  /// if (res == null) {
+  ///   throw Exception('Failed to create bucket');
+  /// }
+  /// ```
+  ///
+  /// **Next Steps**
+  /// - Build a SchemaDocument from a Definition with [SchemaDefinitionExt]
+  /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
+  Future<CreateBucketResponse> createBucket(CreateBucketRequest req) async {
+    final resp = await MotorFlutterPlatform.instance.createBucket(req);
+    if (resp == null) {
+      throw UnmarshalException<CreateBucketResponse>();
+    }
+    return resp;
+  }
+
+  /// ### Publish a Schema Definition On-Chain
   ///
   /// Builds a request for recording a [SchemaDefinition] on the blockchain. [metadata] is for any additional information that should be stored with the schema. [callback] is an optional
   /// function that will be called when the transaction is complete. Returns a [CreateSchemaResponse] if the transaction is successful.
@@ -395,19 +422,19 @@ class MotorFlutter extends GetxService {
   /// **Next Steps**
   /// - Build a SchemaDocument from a Definition with [SchemaDefinitionExt]
   /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
-  Future<CreateSchemaResponse> createSchema(String label, Map<String, SchemaKind> fields, {Map<String, String>? metadata}) async {
+  Future<CreateSchemaResponse> publishSchema(String label, Map<String, SchemaKind> fields, {Map<String, String>? metadata}) async {
     final resp = await MotorFlutterPlatform.instance.createSchema(CreateSchemaRequest(
       label: label,
       fields: fields,
       metadata: metadata,
     ));
     if (resp == null) {
-      throw UnmarshalException<CreateAccountResponse>();
+      throw UnmarshalException<CreateSchemaResponse>();
     }
     return resp;
   }
 
-  /// {@subCategory Search for a Schema Definition}
+  /// ### Search for a Schema Definition
   ///
   /// Queries for the associated [SchemaDefinition] from the provided [did] on the Sonr Blockchain.
   /// Returns [SchemaDefinition] if succesfull and null if the Document was not found.
@@ -432,7 +459,7 @@ class MotorFlutter extends GetxService {
     return res.schema;
   }
 
-  /// {@subCategory Find a Schema Definition}
+  /// ### Find a Schema Definition
   ///
   /// Searches for all schemas owned by the provided [creator]. If [creator] is not provided it defaults to the [MotorFlutter.address]. Returns a [List] of [SchemaDefinition] if succesful. Returns
   /// an empty List if no definition is found.
@@ -457,7 +484,7 @@ class MotorFlutter extends GetxService {
     return schemaMap.entries.map<SchemaDefinition>((e) => e.value).toList();
   }
 
-  /// {@subCategory Find a Schema Definition}
+  /// ### Find a Schema Definition}
   ///
   /// Queries the Sonr blockchain for the associated [WhereIs] for the provided [did] or [creator]. If [did] is provided a single-value list is returned (if successful), and the [creator] argument will be ignored.
   /// Returns [List<WhereIs>] if bucket(s) are found. Returns null if no bucket is found, or if neither [did] nor [creator] were provided.
@@ -494,7 +521,7 @@ class MotorFlutter extends GetxService {
     return [];
   }
 
-  /// {@subCategory Sending Tokens}
+  /// ### Sending Tokens}
   ///
   /// Creates a TX in order to deposit the [amount] of SNR into the [recipient] account. A succesful transaction will return a [PaymentResponse] and will return null if the transaction fails.
   ///
@@ -520,7 +547,7 @@ class MotorFlutter extends GetxService {
     return res;
   }
 
-  /// {@subCategory Retreiving a Document}
+  /// ### Retreiving a Document
   ///
   /// Fetches a document from IPFS using the provided [cid]. Returns the [SchemaDocument] if successful, and null if the document was not found.
   ///
@@ -537,12 +564,12 @@ class MotorFlutter extends GetxService {
       cid: cid,
     ));
     if (res == null) {
-      throw UnmarshalException<PaymentResponse>();
+      throw UnmarshalException<GetDocumentResponse>();
     }
     return res;
   }
 
-  /// {@subCategory Upload a Document}
+  /// ### Upload a Document
   ///
   /// Uploads a document to IPFS. Returns the [UploadDocumentResponse] if successful, and null if the document was not found.
   ///
@@ -570,12 +597,12 @@ class MotorFlutter extends GetxService {
       fields: doc.fields,
     ));
     if (res == null) {
-      throw UnmarshalException<PaymentResponse>();
+      throw UnmarshalException<UploadDocumentResponse>();
     }
     return res;
   }
 
-  /// {@subCategory Get Account Info}
+  /// ### Get Account Info
   ///
   /// Returns the current Accounts Info and updates the reactive Variables of [MotorFlutter].
   ///

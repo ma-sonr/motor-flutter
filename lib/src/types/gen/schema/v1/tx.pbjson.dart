@@ -70,6 +70,7 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
   '.sonrio.sonr.schema.MsgCreateSchema': MsgCreateSchema$json,
   '.sonrio.sonr.schema.SchemaKindDefinition': $5.SchemaKindDefinition$json,
+  '.sonrio.sonr.schema.SchemaItemKindDefinition': $5.SchemaItemKindDefinition$json,
   '.sonrio.sonr.schema.MetadataDefintion': $5.MetadataDefintion$json,
   '.sonrio.sonr.schema.MsgCreateSchemaResponse': MsgCreateSchemaResponse$json,
   '.sonrio.sonr.schema.WhatIs': $10.WhatIs$json,

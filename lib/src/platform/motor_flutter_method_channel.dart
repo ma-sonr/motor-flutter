@@ -151,6 +151,21 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
+  Future<CreateBucketResponse?> createBucket(CreateBucketRequest req) async {
+    try {
+      final buf = await methodChannel.invokeMethod<Uint8List>('createSchema', req.writeToBuffer());
+      if (buf == null) {
+        Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
+        return null;
+      }
+      return CreateBucketResponse.fromBuffer(buf.toList());
+    } catch (e) {
+      Log.error(e.toString());
+      return null;
+    }
+  }
+
+  @override
   Future<QueryWhatIsResponse?> querySchema(QueryWhatIsRequest req) async {
     try {
       final buf = await methodChannel.invokeMethod<Uint8List>('querySchema', req.writeToBuffer());

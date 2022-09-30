@@ -52,8 +52,7 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-autoInject">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoInject</span> = <span class="default-value">true</span>, </span></li>
-<li><span class="parameter" id="init-param-enableStorage"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enableStorage</span> = <span class="default-value">true</span>}</span></li>
+<span class="name ">init</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="init-param-autoInject">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">autoInject</span> = <span class="default-value">true</span>}</span></li>
 </ol>)
 
       
@@ -61,7 +60,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@subCategory Initialization}</p>
+  <h3 id="initialization">Initialization}</h3>
 <p>This static method initializes a <a href="../../motor_flutter/MotorFlutter-class.html">MotorFlutter</a> instance and Injects it into <a href="https://pub.dev/documentation/get/4.6.5/get_core_src_get_main/Get.html">Get</a> state management.</p>
 <h3 id="parameters">Parameters</h3>
 <ul>
@@ -88,10 +87,11 @@ void main() async {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init({bool autoInject = true, bool enableStorage = true}) async {
+  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; init({bool autoInject = true}) async {
   if (autoInject) {
+    WidgetsFlutterBinding.ensureInitialized();
     await Get.putAsync(
-      () =&gt; MotorFlutter()._init(enableStorage),
+      () =&gt; MotorFlutter()._init(),
       permanent: true,
     );
   }
@@ -149,7 +149,7 @@ void main() async {
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
@@ -159,6 +159,7 @@ void main() async {
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
@@ -189,7 +190,7 @@ void main() async {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.3
+      0.7.0
   </span>
 
   

@@ -106,16 +106,22 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
     // TODO: implement login
     throw UnimplementedError();
   }
-  
+
   @override
   Future<GetDocumentResponse?> getDocument(GetDocumentRequest req) {
     // TODO: implement getDocument
     throw UnimplementedError();
   }
-  
+
   @override
   Future<UploadDocumentResponse?> uploadDocument(UploadDocumentRequest req) {
     // TODO: implement uploadDocument
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CreateBucketResponse?> createBucket(CreateBucketRequest req) {
+    // TODO: implement createBucket
     throw UnimplementedError();
   }
 }

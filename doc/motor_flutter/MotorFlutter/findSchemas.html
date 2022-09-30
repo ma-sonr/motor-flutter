@@ -60,7 +60,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>{@subCategory Find a Schema Definition}</p>
+  <h3 id="find-a-schema-definition">Find a Schema Definition</h3>
 <p>Searches for all schemas owned by the provided <code>creator</code>. If <code>creator</code> is not provided it defaults to the <a href="../../motor_flutter/MotorFlutter/address.html">MotorFlutter.address</a>. Returns a <code>List</code> of <code>SchemaDefinition</code> if succesful. Returns
 an empty List if no definition is found.</p>
 <pre class="language-dart"><code class="language-dart">final schemas = await MotorFlutter.to.findSchemas(creator: 'did:snr:abc123');
@@ -142,7 +142,7 @@ if (schemas == null) {
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/createSchema.html">createSchema</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
@@ -152,6 +152,7 @@ if (schemas == null) {
     <li><a href="../../motor_flutter/MotorFlutter/onClose.html">onClose</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onInit.html">onInit</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
+    <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
@@ -182,7 +183,7 @@ if (schemas == null) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.6.3
+      0.7.0
   </span>
 
   

@@ -1,3 +1,8 @@
+## 0.7.0
+* Add support for MacOS as a target platform
+* Add Create Bucket as a new method for Plugin
+* Fix errors with Example App
+
 ## 0.6.3
 * Rename Extension `save` method for SchemaDocument to `upload`
 * Rename Extension `pull` method for SchemaDocument to `fetch`
@@ -7,8 +12,10 @@
 
 ## 0.6.2
 * Fix Issue Tracker Pubspec
+
 ## 0.6.1
 * Clean up categories a bit
+
 ## 0.6.0
 * Upgrade to motor v7.0.0
 * Add GetDocument method to MotorFlutter
@@ -28,11 +35,13 @@
 
 ## 0.5.4
 * Fix a bug where the underlying SchemaDocumentValue would set the Type specific value before the Wrapper was initialized.
+
 ## 0.5.3
 * Fix issue with SchemaDocumentValue extension method not working with the provided `T`
 
 ## 0.5.2
 * Fix iOS PodSpec version error
+
 ## 0.5.1
 * Small docs fixes to `SonrRegisterButton`
 * Remove README fixed size image
@@ -123,17 +132,14 @@
 * Made Android SDK Feature Parity with iOS SDK
 
 ## 0.0.3
-
 * Added Getx to plugin
 * Implemented remaining v0.3.10 methods
 * Added Alias purchasing and management
 * Functions have optional callbacks to offload work from the main thread
 
 ## 0.0.2
-
 * Added Callback
 * Added IssueTokens
 
 ## 0.0.1
-
 * Initial release

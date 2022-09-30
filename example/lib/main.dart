@@ -51,6 +51,9 @@ class _MyAppState extends State<MyApp> {
                 pskKey = psk;
               });
               whoIs = res;
+              setState(() {
+                titleMsg = whoIs?.owner ?? "Error";
+              });
             },
           ),
           actions: [
@@ -90,7 +93,7 @@ class _MyAppState extends State<MyApp> {
               onPressed: () async {
                 // Set the label, followed by a map with the property name and the
                 // associated primitive type.
-                final res = await MotorFlutter.to.createSchema(
+                final res = await MotorFlutter.to.publishSchema(
                     "Profile",
                     Map<String, SchemaKind>.from({
                       "name": SchemaKind.STRING,
