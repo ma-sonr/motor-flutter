@@ -356,7 +356,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<bool> addBucketObject(String did, SchemaDocument doc) async {
+  Future<bool> addBucketObject(String did, BucketItem doc) async {
     try {
       final res = await methodChannel.invokeMethod<bool>('addBucketObject', {
         "bucketDid": did,

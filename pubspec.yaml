@@ -3,7 +3,7 @@ description: >-
   The Official Implementation of the Sonr Motor Node in Flutter.
   This package provides methods for Authentication, Data Management, and
   Wallet interactions for the Sonr Network.
-version: 0.7.1
+version: 0.8.0
 homepage: https://sonr.dev
 repository: https://github.com/sonr-io/motor-flutter
 issue_tracker: https://github.com/sonr-io/motor-flutter/issues
@@ -26,6 +26,7 @@ dependencies:
   fancy_password_field: ^1.0.4
   flutter_keychain: ^2.2.1
   flutter_svg: ^1.1.5
+  webauthn: ^0.0.4
 
 dev_dependencies:
   flutter_test:

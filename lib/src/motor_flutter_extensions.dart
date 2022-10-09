@@ -31,6 +31,25 @@ extension SchemaDefinitionExt on SchemaDefinition {
       }),
     );
   }
+
+  /// Validates if all fields of the provided [doc] match the [SchemaDefinition] fields.
+  bool validate(SchemaDocument doc) {
+    if (doc.definition.did != did) {
+      return false;
+    }
+    if (doc.fields.length != fields.length) {
+      return false;
+    }
+    for (var i = 0; i < fields.length; i++) {
+      if (fields[i].name != doc.fields[i].name) {
+        return false;
+      }
+      if (fields[i].field_2 != doc.fields[i].field_2) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 /// {@category Extensions}
@@ -116,7 +135,7 @@ extension SchemaDocumentExt on SchemaDocument {
   ///    print('Document saved successfully');
   /// }
   /// ```
-  Future<SchemaDocument?> upload(String label) async {
+  Future<SchemaDocument?> upload(String label, {String? creator}) async {
     if (!MotorFlutter.isReady) {
       Log.warn('MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.');
       return null;
@@ -127,7 +146,7 @@ extension SchemaDocumentExt on SchemaDocument {
     }
 
     final resp = await MotorFlutterPlatform.instance.uploadDocument(UploadDocumentRequest(
-      creator: MotorFlutter.to.address.value,
+      creator: creator ?? MotorFlutter.to.address.value,
       fields: fields,
       label: label,
       definition: definition,
@@ -135,7 +154,6 @@ extension SchemaDocumentExt on SchemaDocument {
     if (resp == null) {
       return null;
     }
-    MotorFlutter.to.schemaMap[label] = resp.document;
     return resp.document;
   }
 
@@ -366,5 +384,23 @@ extension SchemaDocumentValueExt on SchemaDocumentValue {
     }
     arrayValue = ArrayValue(value: list);
     return v;
+  }
+}
+
+extension BucketItemExt on BucketItem {
+  Future<SchemaDocument?> getSchemaDocument() async {
+    if (!MotorFlutter.isReady) {
+      return null;
+    }
+    final whatIs = await MotorFlutter.query.whatIs(schemaDid);
+    if (whatIs == null) {
+      return null;
+    }
+    final def = whatIs.schema;
+    final res = await MotorFlutter.to.getDocument(cid: uri);
+    if (!def.validate(res.document)) {
+      return null;
+    }
+    return res.document;
   }
 }

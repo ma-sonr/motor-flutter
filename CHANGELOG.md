@@ -1,3 +1,11 @@
+## 0.8.0
+* Introduce Webauthn for Mobile Keyprint
+* Introduce Onboarding modal with animated GIFs
+* Add DIDDocument update for KeyPrint
+* Add Credential Model and Assertion Model for Webauthn
+* Introduce Bucket Class to simplify interaction with the Bucket/WhereIs
+* Upgrade Framework/AAR to latest version which removes Gas Fee check
+
 ## 0.7.1
 * Add Bucket Bind methods to swift and java proxy
   * `resolveBucket()`

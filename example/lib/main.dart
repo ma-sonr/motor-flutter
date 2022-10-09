@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
@@ -35,56 +36,61 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text(titleMsg),
-          leading: IconButton(
-            icon: const Icon(Icons.account_circle_rounded),
-            //
-            // 1. Register a new account
-            //
-            onPressed: () async {
-              // When running your application in Debug mode the device keychain is unavailble in the Simulator.
-              // We have provided a callback which returns your dsc and psk for storing your keys securely.
-              // The Sonr team reccomends either of the following packages to store your keys:
-              // - [biometric_storage] https://pub.dev/packages/biometric_storage
-              // - [flutter_keychain] https://pub.dev/packages/flutter_keychain
-              final res = await MotorFlutter.to.createAccount("hard-to-hack-password", onKeysGenerated: (dsc, psk) {
-                dscKey = dsc;
-                pskKey = psk;
-              });
-              whoIs = res;
-              setState(() {
-                titleMsg = whoIs?.owner ?? "Error";
-              });
-            },
-          ),
-          actions: [
-            IconButton(
-                //
-                // 2. Login to new account
-                //
-                onPressed: () async {
-                  // This line is unnecessary it is the Developers Job to provide a UI
-                  // to be able to input Password, and Account Address. In production mode
-                  // the dscKey and pskKey are stored by the motor_flutter plugin in the device
-                  // keychain.
-                  if (whoIs == null) {
-                    Get.snackbar("Error", "WhoIs Field has not been set");
-                    return;
-                  }
-                  final res = await MotorFlutter.to.login(
-                    password: "hard-to-hack-password",
-                    address: whoIs!.owner,
-                    dscKey: dscKey,
-                    pskKey: pskKey,
-                  );
-                  whoIs = res;
-                  Get.snackbar("Error", "Failed to login user");
-                  return;
-                },
-                icon: const Icon(Icons.login))
-          ],
+          // actions: [
+          //   IconButton(
+          //       //
+          //       // 2. Login to new account
+          //       //
+          //       onPressed: () async {
+          //         // This line is unnecessary it is the Developers Job to provide a UI
+          //         // to be able to input Password, and Account Address. In production mode
+          //         // the dscKey and pskKey are stored by the motor_flutter plugin in the device
+          //         // keychain.
+          //         if (whoIs == null) {
+          //           Get.snackbar("Error", "WhoIs Field has not been set");
+          //           return;
+          //         }
+          //         final res = await MotorFlutter.to.login(
+          //           password: "hard-to-hack-password",
+          //           address: whoIs!.owner,
+          //           dscKey: dscKey,
+          //           pskKey: pskKey,
+          //         );
+          //         whoIs = res;
+          //         Get.snackbar("Error", "Failed to login user");
+          //         return;
+          //       },
+          //       icon: const Icon(Icons.login))
+          // ],
         ),
         body: Column(
           children: [
+            //
+            // 1. Register a new account
+            //
+            // When running your application in Debug mode the device keychain is unavailble in the Simulator.
+            // We have provided a callback which returns your dsc and psk for storing your keys securely.
+            // The Sonr team reccomends either of the following packages to store your keys:
+            // - [biometric_storage] https://pub.dev/packages/biometric_storage
+            // - [flutter_keychain] https://pub.dev/packages/flutter_keychain
+            ContinueOnSonrButton(
+              variant: ButtonVariant.black,
+              onSuccess: (authInfo) {
+                if (kDebugMode) {
+                  print(authInfo.toString());
+                }
+                setState(() {
+                  if (authInfo != null) {
+                    titleMsg = authInfo.address;
+                  }
+                });
+              },
+              onError: (err) {
+                if (kDebugMode) {
+                  print(err);
+                }
+              },
+            ),
             //
             // 3. Try creating a Schema
             //
@@ -101,6 +107,9 @@ class _MyAppState extends State<MyApp> {
                       "height": SchemaKind.FLOAT,
                     }));
                 testSchema = res.schemaDefinition;
+                if (kDebugMode) {
+                  print(res.toString());
+                }
               },
             ),
             //

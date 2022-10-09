@@ -8,16 +8,14 @@ import 'package:get/get.dart';
 import 'package:encrypt/encrypt.dart' as e;
 import 'package:tuple/tuple.dart';
 
-import 'controllers/register_controller.dart';
+import 'widgets/auth/controllers/wallet_controller.dart';
 import 'platform/motor_flutter_platform_interface.dart';
 
-import 'types/types.dart';
+import 'data/data.dart';
 import 'utilities/information.dart';
 import 'utilities/logger.dart';
-import 'widgets/register_modal.dart';
 
 part 'motor_flutter_helpers.dart';
-part 'motor_flutter_ui.dart';
 part 'motor_flutter_extensions.dart';
 
 /// {@category Start Here}
@@ -103,20 +101,6 @@ class MotorFlutter extends GetxService {
   /// - [ADR-4](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/4.md)
   final nearbyPeers = <Peer>[].obs;
 
-  /// A Reference Map for all recently queried [SchemaDefinition]s, and all created [SchemaDocument]s.
-  ///
-  /// ```dart
-  /// MotorFlutter.to.schemaDefinitions.forEach((def, doc) {
-  ///     if(def.did == doc.did) {
-  ///        print("Document ${doc.cid} built from definition: ${def.label}");
-  ///     }
-  /// });
-  /// ```
-  ///
-  /// ### See also:
-  /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
-  final schemaMap = <String, SchemaDocument>{}.obs;
-
   /// Use the static [to] getter method allows access to [MotorFlutter] instance anywhere in the application.
   ///
   /// ```dart
@@ -125,6 +109,15 @@ class MotorFlutter extends GetxService {
   /// print(MotorFlutter.to.address.value); // prints 'snr123abc'
   /// ```
   static MotorFlutter get to => Get.find<MotorFlutter>();
+
+  /// Use the static REST API Controller [query] in order to search for items on Chain.
+  ///
+  /// ```dart
+  /// import 'package:motor_flutter/motor_flutter.dart';
+  ///
+  /// print(MotorFlutter.to.address.value); // prints 'snr123abc'
+  /// ```
+  static QueryService get query => Get.find<QueryService>();
 
   /// Returns true if the [MotorFlutter] service has been injected into the GetX State Management system.
   ///
@@ -167,8 +160,9 @@ class MotorFlutter extends GetxService {
   static Future<void> init({bool autoInject = true}) async {
     if (autoInject) {
       WidgetsFlutterBinding.ensureInitialized();
+      final qc = Get.put(QueryService(), permanent: true);
       await Get.putAsync(
-        () => MotorFlutter()._init(),
+        () => MotorFlutter()._init(qc),
         permanent: true,
       );
     }
@@ -195,13 +189,12 @@ class MotorFlutter extends GetxService {
   /// - Issue payments to the account using [sendTokens]
   /// - Buy a .snr/ subdomain to simplify your account address using [buyAlias]
   /// - [ADR-1](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/1.md)
-  Future<WhoIs> createAccount(String password, {HandleKeysCallback? onKeysGenerated}) async {
+  Future<AuthInfo> createAccount(String password) async {
     if (!MotorFlutter.isReady) {
       throw Exception('MotorFlutter is not initialized');
     }
     final dscKey = e.Key.fromSecureRandom(32);
     final pskKey = e.Key.fromSecureRandom(32);
-    onKeysGenerated?.call(dscKey.bytes, pskKey.bytes);
 
     final resp = await MotorFlutterPlatform.instance.createAccountWithKeys(CreateAccountWithKeysRequest(
       password: password,
@@ -211,11 +204,17 @@ class MotorFlutter extends GetxService {
     if (resp == null) {
       throw UnmarshalException<CreateAccountResponse>();
     }
+
     address.value = resp.address;
     didDocument.value = resp.whoIs.didDocument;
     authorized.value = true;
     await writeKeysForAddr(dscKey.bytes, pskKey.bytes, resp.address);
-    return resp.whoIs;
+    return AuthInfo(
+      did: resp.whoIs.didDocument.id,
+      aesDscKey: dscKey.bytes,
+      aesPskKey: pskKey.bytes,
+      address: resp.whoIs.owner,
+    );
   }
 
   /// ### Logging In
@@ -400,12 +399,12 @@ class MotorFlutter extends GetxService {
   /// **Next Steps**
   /// - Build a SchemaDocument from a Definition with [SchemaDefinitionExt]
   /// - [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
-  Future<CreateBucketResponse> createBucket(CreateBucketRequest req) async {
+  Future<Bucket> createBucket(CreateBucketRequest req) async {
     final resp = await MotorFlutterPlatform.instance.createBucket(req);
     if (resp == null) {
       throw UnmarshalException<CreateBucketResponse>();
     }
-    return resp;
+    return Bucket.fromResponse(resp);
   }
 
   /// ### Publish a Schema Definition On-Chain
@@ -504,18 +503,18 @@ class MotorFlutter extends GetxService {
   /// ```
   /// **Next Steps**
   /// - Read the Arch Diagram for our Storage Module on [ADR-3](https://github.com/sonr-io/sonr/blob/dev/docs/architecture/3.md)
-  Future<List<WhereIs>> findBucket({String? did, String? creator}) async {
+  Future<List<Bucket>> findBucket({String? did, String? creator}) async {
     if (did != null) {
       final res = await MotorFlutterPlatform.instance.queryBucket(QueryWhereIsRequest(did: did));
       if (res != null) {
-        return [res.whereIs];
+        return [Bucket.fromWhereIs(res.whereIs)];
       }
     }
 
     if (creator != null) {
       final res = await MotorFlutterPlatform.instance.queryBucketByCreator(QueryWhereIsByCreatorRequest(creator: creator));
       if (res != null) {
-        return res.whereIs;
+        return Bucket.fromWhereIsList(res.whereIs);
       }
     }
     return [];
@@ -590,44 +589,17 @@ class MotorFlutter extends GetxService {
   /// ```
   /// **Next Steps**
   /// - Get a document to IPFS with [MotorFlutter.getDocument]
-  Future<UploadDocumentResponse> uploadDocument({required SchemaDocument doc}) async {
+  Future<UploadDocumentResponse> uploadDocument({required SchemaDocument doc, required String label}) async {
     final res = await MotorFlutterPlatform.instance.uploadDocument(UploadDocumentRequest(
       creator: address.value,
       definition: doc.definition,
       fields: doc.fields,
+      label: label,
     ));
     if (res == null) {
       throw UnmarshalException<UploadDocumentResponse>();
     }
     return res;
-  }
-
-  /// ### Add Document to Bucket
-  ///
-  /// Takes a [SchemaDocument] and serializes it inorder to store inside a Bucket.
-  Future<bool> addDocumentToBucket({required String bucketDid, required SchemaDocument doc}) async {
-    return await MotorFlutterPlatform.instance.addBucketObject(bucketDid, doc);
-  }
-
-  /// ### Remove Item from Bucket
-  ///
-  /// Takes a [cid] and removes it from the Bucket if it exists.
-  Future<bool> removeFromBucket({required String bucketDid, required String cid}) async {
-    return await MotorFlutterPlatform.instance.removeBucketObject(bucketDid, cid);
-  }
-
-  /// ### Get Item from Bucket
-  ///
-  /// Takes a [cid] and returns the [BucketContent] if it exists.
-  Future<BucketContent?> getBucketItem({required String bucketDid, required String cid}) async {
-    return await MotorFlutterPlatform.instance.getBucketObject(bucketDid, cid);
-  }
-
-  /// ### Get ALL Items from Bucket
-  ///
-  /// Takes a [bucketDid] and returns the [BucketContentList] of all items in the bucket.
-  Future<BucketContentList> getAllBucketItems({required String bucketDid}) async {
-    return await MotorFlutterPlatform.instance.getBucketObjects(bucketDid);
   }
 
   /// ### Get Account Info

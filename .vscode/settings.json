@@ -8,8 +8,11 @@
         "Getx",
         "IPFS",
         "Keychain",
+        "Keyprint",
+        "Posthog",
         "Protobuf",
         "pubspec",
-        "Unmarshaling"
+        "Unmarshaling",
+        "Webauthn"
     ]
 }
