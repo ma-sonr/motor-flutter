@@ -10,7 +10,6 @@
 library motor_flutter;
 
 export 'src/motor_flutter_base.dart';
-export 'src/types/types.dart';
+export 'src/data/data.dart';
 export 'src/utilities/logger.dart';
 export 'src/widgets/widgets.dart';
-export 'src/controllers/register_controller.dart';

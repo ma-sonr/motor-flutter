@@ -153,7 +153,8 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   @override
   Future<CreateBucketResponse?> createBucket(CreateBucketRequest req) async {
     try {
-      final buf = await methodChannel.invokeMethod<Uint8List>('createSchema', req.writeToBuffer());
+      final buf = await methodChannel.invokeMethod<Uint8List>(
+          'createBucket', req.writeToBuffer());
       if (buf == null) {
         Log.warn("Error calling MethodChannel for Motor Framework. Response returned Null.");
         return null;
@@ -355,7 +356,7 @@ class MethodChannelMotorFlutter extends MotorFlutterPlatform {
   }
 
   @override
-  Future<bool> addBucketObject(String did, SchemaDocument doc) async {
+  Future<bool> addBucketObject(String did, BucketItem doc) async {
     try {
       final res = await methodChannel.invokeMethod<bool>('addBucketObject', {
         "bucketDid": did,

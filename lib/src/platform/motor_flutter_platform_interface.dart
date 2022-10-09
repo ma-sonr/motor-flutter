@@ -186,7 +186,7 @@ abstract class MotorFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('updateBucketVisibility() has not been implemented.');
   }
 
-  Future<bool> addBucketObject(String did, SchemaDocument doc) {
+  Future<bool> addBucketObject(String did, BucketItem doc) {
     throw UnimplementedError('addBucketObject() has not been implemented.');
   }
 

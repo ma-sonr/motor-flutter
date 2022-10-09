@@ -6,11 +6,11 @@ const kMotorTempStorageName = "motor_flutter";
 const kMotorPlatformChannelAddr = "io.sonr.motor/MethodChannel";
 
 extension MotorFlutterHelpers on MotorFlutter {
-  Future<MotorFlutter> _init() async {
+  Future<MotorFlutter> _init(QueryService qc) async {
     _peerInfo = await PeerInformation.fetch();
     final req = _peerInfo.toInitializeRequest(enableLibp2p: true);
     await MotorFlutterPlatform.instance.init(req);
-    Get.lazyPut(() => RegisterController());
+    Get.lazyPut(() => RegisterWalletController());
     return this;
   }
 

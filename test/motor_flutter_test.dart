@@ -124,49 +124,49 @@ class MockMotorFlutterPlatform with MockPlatformInterfaceMixin implements MotorF
     // TODO: implement createBucket
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<bool> addBucketObject(String did, SchemaDocument doc) {
+  Future<bool> addBucketObject(String did, BucketItem doc) {
     // TODO: implement addBucketObject
     throw UnimplementedError();
   }
-  
+
   @override
   Future<BucketContent?> getBucketObject(String did, String cid) {
     // TODO: implement getBucketObject
     throw UnimplementedError();
   }
-  
+
   @override
   Future<BucketContentList> getBucketObjects(String did) {
     // TODO: implement getBucketObjects
     throw UnimplementedError();
   }
-  
+
   @override
   Future<bool> removeBucketObject(String did, String cid) {
     // TODO: implement removeBucketObject
     throw UnimplementedError();
   }
-  
+
   @override
   Future<bool> resolveBucket(String did) {
     // TODO: implement resolveBucket
     throw UnimplementedError();
   }
-  
+
   @override
   Future<bool> resolveSubBucket(String did, String subDid) {
     // TODO: implement resolveSubBucket
     throw UnimplementedError();
   }
-  
+
   @override
   Future<bool> updateBucketLabel(String did, String label) {
     // TODO: implement updateBucketLabel
     throw UnimplementedError();
   }
-  
+
   @override
   Future<bool> updateBucketVisibility(String did, BucketVisibility visibility) {
     // TODO: implement updateBucketVisibility
