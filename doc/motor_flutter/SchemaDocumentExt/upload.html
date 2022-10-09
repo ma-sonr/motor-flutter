@@ -51,8 +51,9 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">SchemaDocument?</span>&gt;</span></span>
-<span class="name ">upload</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="upload-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/SchemaDocument-class.html">SchemaDocument</a>?</span>&gt;</span></span>
+<span class="name ">upload</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="upload-param-label"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">label</span>, </span></li>
+<li><span class="parameter" id="upload-param-creator">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">creator</span>}</span></li>
 </ol>)
 
       
@@ -61,7 +62,7 @@
     
 <section class="desc markdown">
   <p>Uploads the <code>SchemaDocument</code> to the current accounts application-specific data store. The account then encrypts the data and effectively becomes the only entity to be
-able to view the values. A succesful transaction will return a <code>UploadDocumentResponse</code>.</p>
+able to view the values. A succesful transaction will return a <a href="../../motor_flutter/UploadDocumentResponse-class.html">UploadDocumentResponse</a>.</p>
 <pre class="language-dart"><code class="language-dart">final doc = defs.first.newDocument();
 doc.set&lt;String&gt;('name', 'John Doe');
 doc.set&lt;int&gt;('age', 42);
@@ -78,7 +79,7 @@ if (res != null) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;SchemaDocument?&gt; upload(String label) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;SchemaDocument?&gt; upload(String label, {String? creator}) async {
   if (!MotorFlutter.isReady) {
     Log.warn(&#39;MotorFlutter has not been initialized. Please call MotorFlutter.init() before using the SDK.&#39;);
     return null;
@@ -89,7 +90,7 @@ if (res != null) {
   }
 
   final resp = await MotorFlutterPlatform.instance.uploadDocument(UploadDocumentRequest(
-    creator: MotorFlutter.to.address.value,
+    creator: creator ?? MotorFlutter.to.address.value,
     fields: fields,
     label: label,
     definition: definition,
@@ -97,7 +98,6 @@ if (res != null) {
   if (resp == null) {
     return null;
   }
-  MotorFlutter.to.schemaMap[label] = resp.document;
   return resp.document;
 }</code></pre>
 </section>
@@ -150,7 +150,7 @@ if (res != null) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.7.1
+      0.8.0
   </span>
 
   

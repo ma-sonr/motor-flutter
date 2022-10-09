@@ -52,7 +52,8 @@
       <span class="name ">SchemaKindDefinition</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-name">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span></li>
 <li><span class="parameter" id="-param-field_2"><span class="type-annotation"><a href="../../motor_flutter/SchemaKind-class.html">SchemaKind</a>?</span> <span class="parameter-name">field_2</span>, </span></li>
 <li><span class="parameter" id="-param-linkKind"><span class="type-annotation"><a href="../../motor_flutter/LinkKind-class.html">LinkKind</a>?</span> <span class="parameter-name">linkKind</span>, </span></li>
-<li><span class="parameter" id="-param-link"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">link</span>}</span></li>
+<li><span class="parameter" id="-param-link"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">link</span>, </span></li>
+<li><span class="parameter" id="-param-item"><span class="type-annotation"><a href="../../motor_flutter/SchemaItemKindDefinition-class.html">SchemaItemKindDefinition</a>?</span> <span class="parameter-name">item</span>}</span></li>
 </ol>)
     </section>
 
@@ -67,6 +68,7 @@
   SchemaKind? field_2,
   LinkKind? linkKind,
   $core.String? link,
+  SchemaItemKindDefinition? item,
 }) {
   final _result = create();
   if (name != null) {
@@ -80,6 +82,9 @@
   }
   if (link != null) {
     _result.link = link;
+  }
+  if (item != null) {
+    _result.item = item;
   }
   return _result;
 }</code></pre>
@@ -120,6 +125,7 @@
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hashCode.html">hashCode</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/info_.html">info_</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/isFrozen.html">isFrozen</a></li>
+    <li><a href="../../motor_flutter/SchemaKindDefinition/item.html">item</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/link.html">link</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/linkKind.html">linkKind</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/name.html">name</a></li>
@@ -155,6 +161,7 @@
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/clearExtension.html">clearExtension</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/clearField.html">clearField</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/clearField_2.html">clearField_2</a></li>
+    <li><a href="../../motor_flutter/SchemaKindDefinition/clearItem.html">clearItem</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/clearLink.html">clearLink</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/clearLinkKind.html">clearLinkKind</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/clearName.html">clearName</a></li>
@@ -163,6 +170,7 @@
     <li><a href="../../motor_flutter/SchemaKindDefinition/createEmptyInstance.html">createEmptyInstance</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/createMapField.html">createMapField</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/createRepeatedField.html">createRepeatedField</a></li>
+    <li><a href="../../motor_flutter/SchemaKindDefinition/ensureItem.html">ensureItem</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/extensionsAreInitialized.html">extensionsAreInitialized</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/freeze.html">freeze</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/getDefaultForField.html">getDefaultForField</a></li>
@@ -173,6 +181,7 @@
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hasExtension.html">hasExtension</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/protobuf/2.1.0/protobuf/GeneratedMessage/hasField.html">hasField</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/hasField_2.html">hasField_2</a></li>
+    <li><a href="../../motor_flutter/SchemaKindDefinition/hasItem.html">hasItem</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/hasLink.html">hasLink</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/hasLinkKind.html">hasLinkKind</a></li>
     <li><a href="../../motor_flutter/SchemaKindDefinition/hasName.html">hasName</a></li>
@@ -219,7 +228,7 @@
 <footer>
   <span class="no-break">
     motor_flutter
-      0.4.3
+      0.8.0
   </span>
 
   

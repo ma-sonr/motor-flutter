@@ -51,8 +51,8 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">CreateBucketResponse</span>&gt;</span></span>
-<span class="name ">createBucket</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createBucket-param-req"><span class="type-annotation">CreateBucketRequest</span> <span class="parameter-name">req</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../motor_flutter/Bucket-class.html">Bucket</a></span>&gt;</span></span>
+<span class="name ">createBucket</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createBucket-param-req"><span class="type-annotation"><a href="../../motor_flutter/CreateBucketRequest-class.html">CreateBucketRequest</a></span> <span class="parameter-name">req</span></span></li>
 </ol>)
 
       
@@ -61,7 +61,7 @@
     
 <section class="desc markdown">
   <h3 id="create-a-bucket-on-chain">Create a Bucket On-Chain</h3>
-<p>Takes a CreateBucketRequest as <code>req</code> and creates a new bucket on-chain. A succesful transaction will return a <code>CreateBucketResponse</code>.</p>
+<p>Takes a CreateBucketRequest as <code>req</code> and creates a new bucket on-chain. A succesful transaction will return a <a href="../../motor_flutter/CreateBucketResponse-class.html">CreateBucketResponse</a>.</p>
 <pre class="language-dart"><code class="language-dart">final res = await MotorFlutter.to.createBucket(MsgCreateBucket(
  name: 'my-bucket',
 ));
@@ -80,12 +80,12 @@ if (res == null) {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;CreateBucketResponse&gt; createBucket(CreateBucketRequest req) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;Bucket&gt; createBucket(CreateBucketRequest req) async {
   final resp = await MotorFlutterPlatform.instance.createBucket(req);
   if (resp == null) {
     throw UnmarshalException&lt;CreateBucketResponse&gt;();
   }
-  return resp;
+  return Bucket.fromResponse(resp);
 }</code></pre>
 </section>
 
@@ -132,20 +132,16 @@ if (res == null) {
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/onDelete.html">onDelete</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/onStart.html">onStart</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/schemaMap.html">schemaMap</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/staked.html">staked</a></li>
 
     <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_instance_src_lifecycle/GetLifeCycleBase/$configureLifeCycle.html">$configureLifeCycle</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/addDocumentToBucket.html">addDocumentToBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/buyAlias.html">buyAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/connect.html">connect</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createAccount.html">createAccount</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/createBucket.html">createBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findBucket.html">findBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/findSchemas.html">findSchemas</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/getAllBucketItems.html">getAllBucketItems</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/getBucketItem.html">getBucketItem</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getDocument.html">getDocument</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/getSchema.html">getSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/login.html">login</a></li>
@@ -155,7 +151,6 @@ if (res == null) {
     <li class="inherited"><a href="https://pub.dev/documentation/get/4.6.5/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onReady.html">onReady</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/publishSchema.html">publishSchema</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/refresh.html">refresh</a></li>
-    <li><a href="../../motor_flutter/MotorFlutter/removeFromBucket.html">removeFromBucket</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sellAlias.html">sellAlias</a></li>
     <li><a href="../../motor_flutter/MotorFlutter/sendTokens.html">sendTokens</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -168,6 +163,7 @@ if (res == null) {
 
         <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#static-properties">Static properties</a></li>
           <li><a href="../../motor_flutter/MotorFlutter/isReady.html">isReady</a></li>
+          <li><a href="../../motor_flutter/MotorFlutter/query.html">query</a></li>
           <li><a href="../../motor_flutter/MotorFlutter/to.html">to</a></li>
 
         <li class="section-title"><a href="../../motor_flutter/MotorFlutter-class.html#static-methods">Static methods</a></li>
@@ -185,7 +181,7 @@ if (res == null) {
 <footer>
   <span class="no-break">
     motor_flutter
-      0.7.1
+      0.8.0
   </span>
 
   
