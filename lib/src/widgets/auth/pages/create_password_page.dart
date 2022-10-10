@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:motor_flutter/motor_flutter.dart';
 import 'package:fancy_password_field/fancy_password_field.dart';
 
-/// `RegisterModalPage` is a `GetView` that uses `RegisterController` to manage its state
+/// `RegisterModalPage` is a `GetView` that uses `RegisterWalletController` to manage its state
 /// {@category Widgets}
 /// This page is used to help guide users through the process of registering a new account.
 class CreatePasswordPage extends GetView<RegisterWalletController> {
